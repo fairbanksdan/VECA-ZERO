@@ -1,0 +1,485 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		D689E36619799DED003050F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36519799DED003050F5 /* Foundation.framework */; };
+		D689E36819799DED003050F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36719799DED003050F5 /* CoreGraphics.framework */; };
+		D689E36A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
+		D689E37019799DED003050F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D689E36E19799DED003050F5 /* InfoPlist.strings */; };
+		D689E37219799DED003050F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37119799DED003050F5 /* main.m */; };
+		D689E37619799DED003050F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37519799DED003050F5 /* AppDelegate.m */; };
+		D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37719799DED003050F5 /* Main_iPhone.storyboard */; };
+		D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37A19799DED003050F5 /* Main_iPad.storyboard */; };
+		D689E37F19799DED003050F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37E19799DED003050F5 /* ViewController.m */; };
+		D689E38119799DED003050F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D689E38019799DED003050F5 /* Images.xcassets */; };
+		D689E38819799DED003050F5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E38719799DED003050F5 /* XCTest.framework */; };
+		D689E38919799DED003050F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36519799DED003050F5 /* Foundation.framework */; };
+		D689E38A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
+		D689E39219799DED003050F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D689E39019799DED003050F5 /* InfoPlist.strings */; };
+		D689E39419799DED003050F5 /* VECA_ZeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E39319799DED003050F5 /* VECA_ZeroTests.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		D689E38B19799DED003050F5 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = D689E35A19799DED003050F5 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = D689E36119799DED003050F5;
+			remoteInfo = "VECA Zero";
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		D689E36219799DED003050F5 /* VECA Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VECA Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D689E36519799DED003050F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		D689E36719799DED003050F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		D689E36919799DED003050F5 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		D689E36D19799DED003050F5 /* VECA Zero-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VECA Zero-Info.plist"; sourceTree = "<group>"; };
+		D689E36F19799DED003050F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D689E37119799DED003050F5 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		D689E37319799DED003050F5 /* VECA Zero-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "VECA Zero-Prefix.pch"; sourceTree = "<group>"; };
+		D689E37419799DED003050F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		D689E37519799DED003050F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		D689E37819799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
+		D689E37B19799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
+		D689E37D19799DED003050F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		D689E37E19799DED003050F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D689E38019799DED003050F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		D689E38619799DED003050F5 /* VECA ZeroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VECA ZeroTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
+		D689E38719799DED003050F5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		D689E38F19799DED003050F5 /* VECA ZeroTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VECA ZeroTests-Info.plist"; sourceTree = "<group>"; };
+		D689E39119799DED003050F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		D689E39319799DED003050F5 /* VECA_ZeroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VECA_ZeroTests.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		D689E35F19799DED003050F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E36819799DED003050F5 /* CoreGraphics.framework in Frameworks */,
+				D689E36A19799DED003050F5 /* UIKit.framework in Frameworks */,
+				D689E36619799DED003050F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D689E38319799DED003050F5 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E38819799DED003050F5 /* XCTest.framework in Frameworks */,
+				D689E38A19799DED003050F5 /* UIKit.framework in Frameworks */,
+				D689E38919799DED003050F5 /* Foundation.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		D689E35919799DED003050F5 = {
+			isa = PBXGroup;
+			children = (
+				D689E36B19799DED003050F5 /* VECA Zero */,
+				D689E38D19799DED003050F5 /* VECA ZeroTests */,
+				D689E36419799DED003050F5 /* Frameworks */,
+				D689E36319799DED003050F5 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		D689E36319799DED003050F5 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				D689E36219799DED003050F5 /* VECA Zero.app */,
+				D689E38619799DED003050F5 /* VECA ZeroTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		D689E36419799DED003050F5 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				D689E36519799DED003050F5 /* Foundation.framework */,
+				D689E36719799DED003050F5 /* CoreGraphics.framework */,
+				D689E36919799DED003050F5 /* UIKit.framework */,
+				D689E38719799DED003050F5 /* XCTest.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		D689E36B19799DED003050F5 /* VECA Zero */ = {
+			isa = PBXGroup;
+			children = (
+				D689E37419799DED003050F5 /* AppDelegate.h */,
+				D689E37519799DED003050F5 /* AppDelegate.m */,
+				D689E37719799DED003050F5 /* Main_iPhone.storyboard */,
+				D689E37A19799DED003050F5 /* Main_iPad.storyboard */,
+				D689E37D19799DED003050F5 /* ViewController.h */,
+				D689E37E19799DED003050F5 /* ViewController.m */,
+				D689E38019799DED003050F5 /* Images.xcassets */,
+				D689E36C19799DED003050F5 /* Supporting Files */,
+			);
+			path = "VECA Zero";
+			sourceTree = "<group>";
+		};
+		D689E36C19799DED003050F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D689E36D19799DED003050F5 /* VECA Zero-Info.plist */,
+				D689E36E19799DED003050F5 /* InfoPlist.strings */,
+				D689E37119799DED003050F5 /* main.m */,
+				D689E37319799DED003050F5 /* VECA Zero-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D689E38D19799DED003050F5 /* VECA ZeroTests */ = {
+			isa = PBXGroup;
+			children = (
+				D689E39319799DED003050F5 /* VECA_ZeroTests.m */,
+				D689E38E19799DED003050F5 /* Supporting Files */,
+			);
+			path = "VECA ZeroTests";
+			sourceTree = "<group>";
+		};
+		D689E38E19799DED003050F5 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				D689E38F19799DED003050F5 /* VECA ZeroTests-Info.plist */,
+				D689E39019799DED003050F5 /* InfoPlist.strings */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		D689E36119799DED003050F5 /* VECA Zero */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D689E39719799DED003050F5 /* Build configuration list for PBXNativeTarget "VECA Zero" */;
+			buildPhases = (
+				D689E35E19799DED003050F5 /* Sources */,
+				D689E35F19799DED003050F5 /* Frameworks */,
+				D689E36019799DED003050F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = "VECA Zero";
+			productName = "VECA Zero";
+			productReference = D689E36219799DED003050F5 /* VECA Zero.app */;
+			productType = "com.apple.product-type.application";
+		};
+		D689E38519799DED003050F5 /* VECA ZeroTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D689E39A19799DED003050F5 /* Build configuration list for PBXNativeTarget "VECA ZeroTests" */;
+			buildPhases = (
+				D689E38219799DED003050F5 /* Sources */,
+				D689E38319799DED003050F5 /* Frameworks */,
+				D689E38419799DED003050F5 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				D689E38C19799DED003050F5 /* PBXTargetDependency */,
+			);
+			name = "VECA ZeroTests";
+			productName = "VECA ZeroTests";
+			productReference = D689E38619799DED003050F5 /* VECA ZeroTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		D689E35A19799DED003050F5 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0510;
+				ORGANIZATIONNAME = Fairbanksdan;
+				TargetAttributes = {
+					D689E38519799DED003050F5 = {
+						TestTargetID = D689E36119799DED003050F5;
+					};
+				};
+			};
+			buildConfigurationList = D689E35D19799DED003050F5 /* Build configuration list for PBXProject "VECA Zero" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = D689E35919799DED003050F5;
+			productRefGroup = D689E36319799DED003050F5 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				D689E36119799DED003050F5 /* VECA Zero */,
+				D689E38519799DED003050F5 /* VECA ZeroTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		D689E36019799DED003050F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */,
+				D689E38119799DED003050F5 /* Images.xcassets in Resources */,
+				D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */,
+				D689E37019799DED003050F5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D689E38419799DED003050F5 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E39219799DED003050F5 /* InfoPlist.strings in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		D689E35E19799DED003050F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E37F19799DED003050F5 /* ViewController.m in Sources */,
+				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
+				D689E37219799DED003050F5 /* main.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		D689E38219799DED003050F5 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				D689E39419799DED003050F5 /* VECA_ZeroTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		D689E38C19799DED003050F5 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = D689E36119799DED003050F5 /* VECA Zero */;
+			targetProxy = D689E38B19799DED003050F5 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		D689E36E19799DED003050F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D689E36F19799DED003050F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		D689E37719799DED003050F5 /* Main_iPhone.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D689E37819799DED003050F5 /* Base */,
+			);
+			name = Main_iPhone.storyboard;
+			sourceTree = "<group>";
+		};
+		D689E37A19799DED003050F5 /* Main_iPad.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D689E37B19799DED003050F5 /* Base */,
+			);
+			name = Main_iPad.storyboard;
+			sourceTree = "<group>";
+		};
+		D689E39019799DED003050F5 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				D689E39119799DED003050F5 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		D689E39519799DED003050F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		D689E39619799DED003050F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		D689E39819799DED003050F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
+				INFOPLIST_FILE = "VECA Zero/VECA Zero-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		D689E39919799DED003050F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
+				INFOPLIST_FILE = "VECA Zero/VECA Zero-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+		D689E39B19799DED003050F5 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VECA Zero.app/VECA Zero";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = "VECA ZeroTests/VECA ZeroTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Debug;
+		};
+		D689E39C19799DED003050F5 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(BUILT_PRODUCTS_DIR)/VECA Zero.app/VECA Zero";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+					"$(DEVELOPER_FRAMEWORKS_DIR)",
+				);
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
+				INFOPLIST_FILE = "VECA ZeroTests/VECA ZeroTests-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUNDLE_LOADER)";
+				WRAPPER_EXTENSION = xctest;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		D689E35D19799DED003050F5 /* Build configuration list for PBXProject "VECA Zero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D689E39519799DED003050F5 /* Debug */,
+				D689E39619799DED003050F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		D689E39719799DED003050F5 /* Build configuration list for PBXNativeTarget "VECA Zero" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D689E39819799DED003050F5 /* Debug */,
+				D689E39919799DED003050F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+		D689E39A19799DED003050F5 /* Build configuration list for PBXNativeTarget "VECA ZeroTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				D689E39B19799DED003050F5 /* Debug */,
+				D689E39C19799DED003050F5 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = D689E35A19799DED003050F5 /* Project object */;
+}
