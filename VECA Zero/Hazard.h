@@ -10,4 +10,7 @@
 
 @interface Hazard : NSObject
 
+@property (strong, nonatomic) NSString *hazardName;
+@property (strong, nonatomic) NSString *solution;
+
 @end

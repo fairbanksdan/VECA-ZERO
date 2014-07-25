@@ -10,4 +10,6 @@
 
 @interface NewTaskViewController : UIViewController
 
+@property (strong, nonatomic) IBOutlet UIDatePicker *datePicker;
+
 @end

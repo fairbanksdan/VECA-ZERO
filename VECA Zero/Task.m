@@ -10,4 +10,17 @@
 
 @implementation Task
 
+- (instancetype) initWithName:(NSString *)taskName {
+    if (self = [super init]) {
+        self.taskName = taskName;
+    }
+    return self;
+}
+
+- (void) addTaskToJob:(Job *)job {
+    [job.tasksArray addObject:self];
+    self.job = job;
+}
+
+
 @end

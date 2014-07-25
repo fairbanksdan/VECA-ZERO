@@ -7,6 +7,7 @@
 //
 
 #import "HomeViewController.h"
+#import "NewTaskViewController.h"
 
 @interface HomeViewController ()
 
@@ -34,6 +35,16 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+//    
+//    if ([segue.identifier isEqualToString:@"New Task"]) {
+//        UINavigationController *navigationController = segue.destinationViewController;
+//        NewTaskViewController *controller = (NewTaskViewController *)navigationController;
+//        controller.delegate = self;
+//    }
+//    
+//}
 
 /*
 #pragma mark - Navigation

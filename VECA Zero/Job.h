@@ -10,4 +10,13 @@
 
 @interface Job : NSObject
 
+@property (nonatomic, strong) NSString *jobNumber;
+@property (nonatomic, strong) NSString *jobName;
+
+@property (nonatomic, strong) NSMutableArray *tasksArray;
+
+- (instancetype) initWithName:(NSString *)job;
+
+- (void) addNewTaskWithName: (NSString *)name;
+
 @end

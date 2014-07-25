@@ -26,7 +26,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    _datePicker.backgroundColor = [UIColor whiteColor];
+    
+    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    [_jobNumberTextField setLeftViewMode:UITextFieldViewModeAlways];
+//    [_jobNumberTextField setLeftView:spacerView];
+    
 }
 
 - (void)didReceiveMemoryWarning

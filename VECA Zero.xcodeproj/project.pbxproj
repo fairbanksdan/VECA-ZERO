@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D61AB7CB197ED3F6003AD671 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AB7CA197ED3F6003AD671 /* logo.png */; };
+		D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7CD197ED57C003AD671 /* HomeViewController.m */; };
+		D61AB7D4197ED63E003AD671 /* NewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */; };
+		D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */; };
+		D61AB7DA197ED69F003AD671 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D9197ED69F003AD671 /* SignInViewController.m */; };
+		D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */; };
+		D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */; };
+		D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E3197ED74A003AD671 /* SignOutViewController.m */; };
 		D689E36619799DED003050F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36519799DED003050F5 /* Foundation.framework */; };
 		D689E36819799DED003050F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36719799DED003050F5 /* CoreGraphics.framework */; };
 		D689E36A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
@@ -15,13 +23,20 @@
 		D689E37619799DED003050F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37519799DED003050F5 /* AppDelegate.m */; };
 		D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37719799DED003050F5 /* Main_iPhone.storyboard */; };
 		D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37A19799DED003050F5 /* Main_iPad.storyboard */; };
-		D689E37F19799DED003050F5 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37E19799DED003050F5 /* ViewController.m */; };
+		D689E37F19799DED003050F5 /* HistoryViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37E19799DED003050F5 /* HistoryViewController.m */; };
 		D689E38119799DED003050F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D689E38019799DED003050F5 /* Images.xcassets */; };
 		D689E38819799DED003050F5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E38719799DED003050F5 /* XCTest.framework */; };
 		D689E38919799DED003050F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36519799DED003050F5 /* Foundation.framework */; };
 		D689E38A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
 		D689E39219799DED003050F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D689E39019799DED003050F5 /* InfoPlist.strings */; };
 		D689E39419799DED003050F5 /* VECA_ZeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E39319799DED003050F5 /* VECA_ZeroTests.m */; };
+		D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */; };
+		D6F2D3C6197F384D0056FDAA /* ISCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */; };
+		D6F2D3C919805A2E0056FDAA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C819805A2E0056FDAA /* Person.m */; };
+		D6F2D3CC19805A440056FDAA /* Job.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3CB19805A440056FDAA /* Job.m */; };
+		D6F2D3CF19805A530056FDAA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3CE19805A530056FDAA /* Task.m */; };
+		D6F2D3D219805A6A0056FDAA /* Hazard.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3D119805A6A0056FDAA /* Hazard.m */; };
+		D6F2D3D8198078C50056FDAA /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3D7198078C50056FDAA /* TaskViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -35,6 +50,21 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		D61AB7CA197ED3F6003AD671 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
+		D61AB7CC197ED57C003AD671 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
+		D61AB7CD197ED57C003AD671 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
+		D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTaskViewController.h; sourceTree = "<group>"; };
+		D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTaskViewController.m; sourceTree = "<group>"; };
+		D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHazardsViewController.h; sourceTree = "<group>"; };
+		D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHazardsViewController.m; sourceTree = "<group>"; };
+		D61AB7D8197ED69F003AD671 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
+		D61AB7D9197ED69F003AD671 /* SignInViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignInViewController.m; sourceTree = "<group>"; };
+		D61AB7DB197ED6D2003AD671 /* AddPersonViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddPersonViewController.h; sourceTree = "<group>"; };
+		D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddPersonViewController.m; sourceTree = "<group>"; };
+		D61AB7DF197ED6F9003AD671 /* MidTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MidTaskViewController.h; sourceTree = "<group>"; };
+		D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidTaskViewController.m; sourceTree = "<group>"; };
+		D61AB7E2197ED74A003AD671 /* SignOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignOutViewController.h; sourceTree = "<group>"; };
+		D61AB7E3197ED74A003AD671 /* SignOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignOutViewController.m; sourceTree = "<group>"; };
 		D689E36219799DED003050F5 /* VECA Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VECA Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D689E36519799DED003050F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D689E36719799DED003050F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -47,14 +77,28 @@
 		D689E37519799DED003050F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D689E37819799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
 		D689E37B19799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
-		D689E37D19799DED003050F5 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		D689E37E19799DED003050F5 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		D689E37D19799DED003050F5 /* HistoryViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HistoryViewController.h; sourceTree = "<group>"; };
+		D689E37E19799DED003050F5 /* HistoryViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HistoryViewController.m; sourceTree = "<group>"; };
 		D689E38019799DED003050F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		D689E38619799DED003050F5 /* VECA ZeroTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "VECA ZeroTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D689E38719799DED003050F5 /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
 		D689E38F19799DED003050F5 /* VECA ZeroTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VECA ZeroTests-Info.plist"; sourceTree = "<group>"; };
 		D689E39119799DED003050F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D689E39319799DED003050F5 /* VECA_ZeroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VECA_ZeroTests.m; sourceTree = "<group>"; };
+		D6F2D3BD197F1B9F0056FDAA /* AddJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJobViewController.h; sourceTree = "<group>"; };
+		D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJobViewController.m; sourceTree = "<group>"; };
+		D6F2D3C4197F384D0056FDAA /* ISCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCoreDataController.h; sourceTree = "<group>"; };
+		D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISCoreDataController.m; sourceTree = "<group>"; };
+		D6F2D3C719805A2E0056FDAA /* Person.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Person.h; sourceTree = "<group>"; };
+		D6F2D3C819805A2E0056FDAA /* Person.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Person.m; sourceTree = "<group>"; };
+		D6F2D3CA19805A440056FDAA /* Job.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Job.h; sourceTree = "<group>"; };
+		D6F2D3CB19805A440056FDAA /* Job.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Job.m; sourceTree = "<group>"; };
+		D6F2D3CD19805A530056FDAA /* Task.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Task.h; sourceTree = "<group>"; };
+		D6F2D3CE19805A530056FDAA /* Task.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Task.m; sourceTree = "<group>"; };
+		D6F2D3D019805A6A0056FDAA /* Hazard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hazard.h; sourceTree = "<group>"; };
+		D6F2D3D119805A6A0056FDAA /* Hazard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hazard.m; sourceTree = "<group>"; };
+		D6F2D3D6198078C50056FDAA /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
+		D6F2D3D7198078C50056FDAA /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -81,6 +125,57 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		D61AB7CF197ED585003AD671 /* Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				D61AB7CC197ED57C003AD671 /* HomeViewController.h */,
+				D61AB7CD197ED57C003AD671 /* HomeViewController.m */,
+				D689E37D19799DED003050F5 /* HistoryViewController.h */,
+				D689E37E19799DED003050F5 /* HistoryViewController.m */,
+				D6F2D3BD197F1B9F0056FDAA /* AddJobViewController.h */,
+				D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */,
+				D6F2D3D6198078C50056FDAA /* TaskViewController.h */,
+				D6F2D3D7198078C50056FDAA /* TaskViewController.m */,
+				D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */,
+				D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */,
+				D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */,
+				D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */,
+				D61AB7D8197ED69F003AD671 /* SignInViewController.h */,
+				D61AB7D9197ED69F003AD671 /* SignInViewController.m */,
+				D61AB7DB197ED6D2003AD671 /* AddPersonViewController.h */,
+				D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */,
+				D61AB7DF197ED6F9003AD671 /* MidTaskViewController.h */,
+				D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */,
+				D61AB7E2197ED74A003AD671 /* SignOutViewController.h */,
+				D61AB7E3197ED74A003AD671 /* SignOutViewController.m */,
+			);
+			name = Controllers;
+			sourceTree = "<group>";
+		};
+		D61AB7D0197ED5AE003AD671 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				D689E37719799DED003050F5 /* Main_iPhone.storyboard */,
+				D689E37A19799DED003050F5 /* Main_iPad.storyboard */,
+			);
+			name = Views;
+			sourceTree = "<group>";
+		};
+		D61AB7D1197ED5BF003AD671 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D6F2D3C719805A2E0056FDAA /* Person.h */,
+				D6F2D3C819805A2E0056FDAA /* Person.m */,
+				D6F2D3CA19805A440056FDAA /* Job.h */,
+				D6F2D3CB19805A440056FDAA /* Job.m */,
+				D6F2D3CD19805A530056FDAA /* Task.h */,
+				D6F2D3CE19805A530056FDAA /* Task.m */,
+				D6F2D3D019805A6A0056FDAA /* Hazard.h */,
+				D6F2D3D119805A6A0056FDAA /* Hazard.m */,
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
 		D689E35919799DED003050F5 = {
 			isa = PBXGroup;
 			children = (
@@ -88,6 +183,7 @@
 				D689E38D19799DED003050F5 /* VECA ZeroTests */,
 				D689E36419799DED003050F5 /* Frameworks */,
 				D689E36319799DED003050F5 /* Products */,
+				D6F2D3C3197F384D0056FDAA /* Core Data Stack */,
 			);
 			sourceTree = "<group>";
 		};
@@ -116,11 +212,10 @@
 			children = (
 				D689E37419799DED003050F5 /* AppDelegate.h */,
 				D689E37519799DED003050F5 /* AppDelegate.m */,
-				D689E37719799DED003050F5 /* Main_iPhone.storyboard */,
-				D689E37A19799DED003050F5 /* Main_iPad.storyboard */,
-				D689E37D19799DED003050F5 /* ViewController.h */,
-				D689E37E19799DED003050F5 /* ViewController.m */,
+				D61AB7D1197ED5BF003AD671 /* Models */,
+				D61AB7D0197ED5AE003AD671 /* Views */,
 				D689E38019799DED003050F5 /* Images.xcassets */,
+				D61AB7CF197ED585003AD671 /* Controllers */,
 				D689E36C19799DED003050F5 /* Supporting Files */,
 			);
 			path = "VECA Zero";
@@ -129,6 +224,7 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D61AB7CA197ED3F6003AD671 /* logo.png */,
 				D689E36D19799DED003050F5 /* VECA Zero-Info.plist */,
 				D689E36E19799DED003050F5 /* InfoPlist.strings */,
 				D689E37119799DED003050F5 /* main.m */,
@@ -153,6 +249,15 @@
 				D689E39019799DED003050F5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6F2D3C3197F384D0056FDAA /* Core Data Stack */ = {
+			isa = PBXGroup;
+			children = (
+				D6F2D3C4197F384D0056FDAA /* ISCoreDataController.h */,
+				D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */,
+			);
+			path = "Core Data Stack";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -202,6 +307,9 @@
 				LastUpgradeCheck = 0510;
 				ORGANIZATIONNAME = Fairbanksdan;
 				TargetAttributes = {
+					D689E36119799DED003050F5 = {
+						DevelopmentTeam = NZE8FE4Y4H;
+					};
 					D689E38519799DED003050F5 = {
 						TestTargetID = D689E36119799DED003050F5;
 					};
@@ -232,6 +340,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */,
+				D61AB7CB197ED3F6003AD671 /* logo.png in Resources */,
 				D689E38119799DED003050F5 /* Images.xcassets in Resources */,
 				D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */,
 				D689E37019799DED003050F5 /* InfoPlist.strings in Resources */,
@@ -253,9 +362,23 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				D689E37F19799DED003050F5 /* ViewController.m in Sources */,
+				D6F2D3D8198078C50056FDAA /* TaskViewController.m in Sources */,
+				D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */,
+				D61AB7DA197ED69F003AD671 /* SignInViewController.m in Sources */,
+				D689E37F19799DED003050F5 /* HistoryViewController.m in Sources */,
+				D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */,
+				D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */,
+				D6F2D3C6197F384D0056FDAA /* ISCoreDataController.m in Sources */,
 				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
+				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
+				D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */,
+				D6F2D3C919805A2E0056FDAA /* Person.m in Sources */,
+				D6F2D3CF19805A530056FDAA /* Task.m in Sources */,
+				D61AB7D4197ED63E003AD671 /* NewTaskViewController.m in Sources */,
 				D689E37219799DED003050F5 /* main.m in Sources */,
+				D6F2D3D219805A6A0056FDAA /* Hazard.m in Sources */,
+				D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */,
+				D6F2D3CC19805A440056FDAA /* Job.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -390,10 +513,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
 				INFOPLIST_FILE = "VECA Zero/VECA Zero-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -403,10 +529,13 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_LAUNCHIMAGE_NAME = LaunchImage;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VECA Zero/VECA Zero-Prefix.pch";
 				INFOPLIST_FILE = "VECA Zero/VECA Zero-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -470,6 +599,7 @@
 				D689E39919799DED003050F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		D689E39A19799DED003050F5 /* Build configuration list for PBXNativeTarget "VECA ZeroTests" */ = {
 			isa = XCConfigurationList;
@@ -478,6 +608,7 @@
 				D689E39C19799DED003050F5 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

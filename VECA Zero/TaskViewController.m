@@ -7,26 +7,23 @@
 //
 
 #import "TaskViewController.h"
+#import "Task.h"
+#import "Job.h"
+#import "HistoryViewController.h"
 
-@interface TaskViewController ()
+@interface TaskViewController () <UITableViewDataSource, UITableViewDelegate>
+
+//@property (nonatomic, strong) NSMutableArray *taskArray;
+
+@property (strong, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
 @implementation TaskViewController
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +32,29 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    NSLog(@"%lu", (unsigned long)self.job.tasksArray.count);
+    return self.job.tasksArray.count;
 }
-*/
+
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    static NSString *SimpleTableIdentifier = @"TaskCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+    }
+    
+    Task *newTask = [self.job.tasksArray objectAtIndex:indexPath.row];
+    
+    NSLog(@"%@", newTask.taskName);
+    
+    cell.textLabel.text = newTask.taskName;
+    
+    return cell;
+    
+}
 
 @end
