@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface AddJobViewController : UIViewController
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 
 @end

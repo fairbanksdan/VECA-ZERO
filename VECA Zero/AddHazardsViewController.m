@@ -8,7 +8,7 @@
 
 #import "AddHazardsViewController.h"
 
-@interface AddHazardsViewController ()
+@interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -33,6 +33,25 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 2;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = nil;
+    
+    if (indexPath.row == 0) {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
+    }
+    return cell;
 }
 
 /*

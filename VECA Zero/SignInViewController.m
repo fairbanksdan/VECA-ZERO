@@ -7,8 +7,11 @@
 //
 
 #import "SignInViewController.h"
+#import "Person.h"
 
 @interface SignInViewController ()
+
+@property (strong, nonatomic) NSMutableArray *personArray;
 
 @end
 
@@ -26,7 +29,13 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    self.personArray = [NSMutableArray new];
+    
+    Person *person1 = [Person new];
+    person1.firstName = @"Dan";
+    
+    [self.personArray addObject:person1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -35,15 +44,27 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    
+    return self.personArray.count +1;
 }
-*/
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *SimpleTableIdentifier = @"personCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    
+    if (cell == nil) {
+        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+    }
+    if (indexPath.row < self.personArray.count) {
+        Person *person = [self.personArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = person.firstName;
+    } else {
+        cell.textLabel.text = @"Add New Person";
+    }
+    
+    return cell;
+}
 
 @end
