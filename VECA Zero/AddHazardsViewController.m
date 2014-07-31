@@ -10,6 +10,7 @@
 
 @interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
 
+
 @end
 
 @implementation AddHazardsViewController
@@ -33,6 +34,14 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2) {
+        return 88;
+    } else {
+        return 44;
+    }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
