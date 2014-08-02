@@ -45,20 +45,27 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 1;
+    return 2;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    if (section == 0) {
+        return 2;
+    } else {
+    return 1;
+    }
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = nil;
-    
-    if (indexPath.row == 0) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+    if (indexPath.section == 0) {
+        if (indexPath.row == 0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
+        }
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
+        cell = [tableView dequeueReusableCellWithIdentifier:@"AddNewHazardCell"];
     }
     return cell;
 }

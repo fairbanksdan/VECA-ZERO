@@ -46,13 +46,12 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
     [super viewDidLoad];
     
     // setup our data source
-    NSMutableDictionary *itemOne = [@{ kTitleKey : @"" } mutableCopy];
+    NSMutableDictionary *itemOne = [@{ kTitleKey : @"Pick a Start Date and End Date:" } mutableCopy];
     NSMutableDictionary *itemTwo = [@{ kTitleKey : @"Start Date",
                                        kDateKey : [NSDate date] } mutableCopy];
     NSMutableDictionary *itemThree = [@{ kTitleKey : @"End Date",
                                          kDateKey : [NSDate date] } mutableCopy];
-    //NSMutableDictionary *itemFour = [@{ kTitleKey : @"" } mutableCopy];
-    //NSMutableDictionary *itemFive = [@{ kTitleKey : @"" } mutableCopy];
+
     self.dataArray = @[itemOne, itemTwo, itemThree];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
@@ -124,7 +123,7 @@ NSUInteger DeviceSystemMajorVersion()
     targetedRow++;
     
     UITableViewCell *checkDatePickerCell =
-    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:targetedRow inSection:0]];
+    [self.tableView cellForRowAtIndexPath:[NSIndexPath indexPathForRow:targetedRow inSection:1]];
     UIDatePicker *checkDatePicker = (UIDatePicker *)[checkDatePickerCell viewWithTag:kDatePickerTag];
     
     hasDatePicker = (checkDatePicker != nil);
@@ -194,19 +193,21 @@ NSUInteger DeviceSystemMajorVersion()
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
     if (section == 0) {
-        
-    
+        return 2;
+    } else if (section == 1) {
+
         if ([self hasInlineDatePicker]) {
         // we have a date picker, so allow for it in the number of rows in this section
             NSInteger numRows = self.dataArray.count;
+            NSLog(@"%lu", numRows);
             return ++numRows;
         }
     
     return self.dataArray.count;
-    } else if (section == 1) {
-        return 1;
-    } else {
+    } else if (section == 2) {
         return 2;
+    } else {
+        return 1;
     }
 }
 
@@ -217,67 +218,74 @@ NSUInteger DeviceSystemMajorVersion()
     NSString *cellID = kOtherCell;
     
     if (indexPath.section == 0) {
-    
-        if ([self indexPathHasPicker:indexPath])
-        {
-            // the indexPath is the one containing the inline date picker
-            cellID = kDatePickerID;     // the current/opened date picker cell
+        if (indexPath.row == 0) {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"TaskNameCell"];
+            
+        } else {
+            cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
         }
-        else if ([self indexPathHasDate:indexPath])
-        {
-            // the indexPath is one that contains the date information
-            cellID = kDateCellID;       // the start/end date cells
-        }
-    
-        cell = [tableView dequeueReusableCellWithIdentifier:cellID];
-    
-        if (indexPath.row == 0)
-        {
-            // we decide here that first cell in the table is not selectable (it's just an indicator)
-            cell.selectionStyle = UITableViewCellSelectionStyleNone;
-        }
-    
-        // if we have a date picker open whose cell is above the cell we want to update,
-        // then we have one more cell than the model allows
-        //
-        NSInteger modelRow = indexPath.row;
-        if (self.datePickerIndexPath != nil && self.datePickerIndexPath.row <= indexPath.row)
-        {
-            modelRow--;
-        }
-        
-        NSDictionary *itemData = self.dataArray[modelRow];
-    
-        // proceed to configure our cell
-        if ([cellID isEqualToString:kDateCellID])
-        {
-            // we have either start or end date cells, populate their date field
-            //
-            cell.textLabel.text = [itemData valueForKey:kTitleKey];
-            cell.detailTextLabel.text = [self.dateFormatter stringFromDate:[itemData valueForKey:kDateKey]];
-        }
-        else if ([cellID isEqualToString:kOtherCell])
-        {
-            // this cell is a non-date cell, just assign it's text label
-            //
-            cell.textLabel.text = [itemData valueForKey:kTitleKey];
-        }
-        
     } else if (indexPath.section == 1) {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"LocationCell"];
-    } else {
+    
+            if ([self indexPathHasPicker:indexPath])
+            {
+                // the indexPath is the one containing the inline date picker
+                cellID = kDatePickerID;     // the current/opened date picker cell
+            }
+            else if ([self indexPathHasDate:indexPath])
+            {
+                // the indexPath is one that contains the date information
+                cellID = kDateCellID;       // the start/end date cells
+            }
+    
+            cell = [tableView dequeueReusableCellWithIdentifier:cellID];
+    
+            if (indexPath.row == 0)
+            {
+                // we decide here that first cell in the table is not selectable (it's just an indicator)
+                cell.selectionStyle = UITableViewCellSelectionStyleNone;
+            }
+    
+            // if we have a date picker open whose cell is above the cell we want to update,
+            // then we have one more cell than the model allows
+            //
+            NSInteger modelRow = indexPath.row;
+            if (self.datePickerIndexPath != nil && self.datePickerIndexPath.row <= indexPath.row)
+            {
+                modelRow--;
+            }
+        
+            NSDictionary *itemData = self.dataArray[modelRow];
+    
+            // proceed to configure our cell
+            if ([cellID isEqualToString:kDateCellID])
+            {
+                // we have either start or end date cells, populate their date field
+                //
+                cell.textLabel.text = [itemData valueForKey:kTitleKey];
+                cell.detailTextLabel.text = [self.dateFormatter stringFromDate:[itemData valueForKey:kDateKey]];
+            }
+            else if ([cellID isEqualToString:kOtherCell])
+            {
+                // this cell is a non-date cell, just assign it's text label
+                //
+                cell.textLabel.text = [itemData valueForKey:kTitleKey];
+            }
+        
+    } else if (indexPath.section == 2){
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"PrimaryEvacuation"];
         } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"SecondaryEvacuation"];
-    }
+            cell = [tableView dequeueReusableCellWithIdentifier:@"SecondaryEvacuation"];
+        }
+    } else {
+        cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
     }
     return cell;
-        
-    }
+}
+
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 3;
+    return 4;
 }
 
 /*! Adds or removes a UIDatePicker cell below the given indexPath.
@@ -288,7 +296,7 @@ NSUInteger DeviceSystemMajorVersion()
 {
     [self.tableView beginUpdates];
     
-    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:0]];
+    NSArray *indexPaths = @[[NSIndexPath indexPathForRow:indexPath.row + 1 inSection:1]];
     
     // check if 'indexPath' has an attached date picker below it
     if ([self hasPickerForIndexPath:indexPath])
@@ -327,7 +335,7 @@ NSUInteger DeviceSystemMajorVersion()
     // remove any date picker cell if it exists
     if ([self hasInlineDatePicker])
     {
-        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.datePickerIndexPath.row inSection:0]]
+        [self.tableView deleteRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:self.datePickerIndexPath.row inSection:1]]
                               withRowAnimation:UITableViewRowAnimationFade];
         self.datePickerIndexPath = nil;
     }
@@ -336,10 +344,10 @@ NSUInteger DeviceSystemMajorVersion()
     {
         // hide the old date picker and display the new one
         NSInteger rowToReveal = (before ? indexPath.row - 1 : indexPath.row);
-        NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:rowToReveal inSection:0];
+        NSIndexPath *indexPathToReveal = [NSIndexPath indexPathForRow:rowToReveal inSection:1];
         
         [self toggleDatePickerForSelectedIndexPath:indexPathToReveal];
-        self.datePickerIndexPath = [NSIndexPath indexPathForRow:indexPathToReveal.row + 1 inSection:0];
+        self.datePickerIndexPath = [NSIndexPath indexPathForRow:indexPathToReveal.row + 1 inSection:1];
     }
     
     // always deselect the row containing the start or end date
@@ -420,7 +428,7 @@ NSUInteger DeviceSystemMajorVersion()
     {
         // inline date picker: update the cell's date "above" the date picker cell
         //
-        targetedCellIndexPath = [NSIndexPath indexPathForRow:self.datePickerIndexPath.row - 1 inSection:0];
+        targetedCellIndexPath = [NSIndexPath indexPathForRow:self.datePickerIndexPath.row - 1 inSection:1];
     }
     else
     {
