@@ -16,6 +16,7 @@
 @property (nonatomic, strong) NSMutableArray *jobArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *AddJobBarButton;
 
 @end
 
@@ -57,6 +58,7 @@
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    self.AddJobBarButton.tintColor = [UIColor whiteColor];
 
     
     

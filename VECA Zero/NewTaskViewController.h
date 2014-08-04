@@ -11,5 +11,7 @@
 @interface NewTaskViewController : UIViewController
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) UIColor *navBarColor;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextBarButton;
 
 @end

@@ -49,6 +49,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="AddJobBarButton" destination="vCi-gp-hYy" id="v4C-cs-Og6"/>
                         <outlet property="tableView" destination="ORa-y1-Idc" id="4tD-jD-f7q"/>
                     </connections>
                 </viewController>
@@ -97,6 +98,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addTaskBarButton" destination="scV-zt-KyJ" id="0v4-jJ-nbt"/>
                         <outlet property="tableView" destination="2J8-HQ-8it" id="vWX-RH-ftY"/>
                     </connections>
                 </viewController>
@@ -367,6 +369,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="cancelButton" destination="ual-mk-Sho" id="fNN-ga-dfM"/>
+                        <outlet property="nextBarButton" destination="BCY-Rv-aUu" id="qsW-TA-YZq"/>
                         <outlet property="pickerView" destination="rSd-Zm-M1r" id="Qbd-kE-KBR"/>
                         <outlet property="tableView" destination="00o-yl-fUG" id="OAV-RT-WY9"/>
                     </connections>
@@ -457,7 +460,11 @@
                         <color key="backgroundColor" red="0.95629384569999998" green="0.95629384569999998" blue="0.95629384569999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
                     <navigationItem key="navigationItem" title="New Hazards" id="bfl-i3-CmZ">
-                        <barButtonItem key="rightBarButtonItem" systemItem="done" id="KLh-AK-e8w"/>
+                        <barButtonItem key="rightBarButtonItem" title="Next" id="KLh-AK-e8w">
+                            <connections>
+                                <segue destination="oeJ-cH-2OG" kind="push" id="xBo-ES-BQ0"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REi-TH-Ltu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -481,14 +488,14 @@
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="personCell" id="x9b-XR-L87">
-                                        <rect key="frame" x="0.0" y="22" width="320" height="44"/>
+                                        <rect key="frame" x="0.0" y="86" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="x9b-XR-L87" id="mAJ-pb-4AD">
                                             <rect key="frame" x="0.0" y="0.0" width="287" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                         </tableViewCellContentView>
                                         <connections>
-                                            <segue destination="zA6-kV-JuD" kind="push" id="j36-Ui-rDW"/>
+                                            <segue destination="zA6-kV-JuD" kind="push" id="rOV-Hk-diD"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -524,12 +531,44 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="p4e-JV-fAH">
-                                <rect key="frame" x="0.0" y="124" width="320" height="30"/>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-w2-SGi">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                                <prototypes>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="NameCell" id="OOJ-9A-Xsf">
+                                        <rect key="frame" x="0.0" y="119" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OOJ-9A-Xsf" id="HDo-ac-Uct">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="cKG-Vg-T4T">
+                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                                    <textInputTraits key="textInputTraits"/>
+                                                </textField>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="HazardCell" id="uCk-1n-PbU">
+                                        <rect key="frame" x="0.0" y="163" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCk-1n-PbU" id="JaK-s4-WlI">
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" accessoryType="checkmark" indentationWidth="10" reuseIdentifier="SolutionCell" id="JQp-iK-7mR">
+                                        <rect key="frame" x="0.0" y="207" width="320" height="44"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JQp-iK-7mR" id="Yan-oP-AFs">
+                                            <rect key="frame" x="0.0" y="0.0" width="281" height="43"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
                         </subviews>
                         <color key="backgroundColor" red="0.95629384569999998" green="0.95629384569999998" blue="0.95629384569999998" alpha="1" colorSpace="calibratedRGB"/>
                     </view>
@@ -539,7 +578,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="wDy-DG-Ald" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="3545" y="924"/>
+            <point key="canvasLocation" x="3540" y="924"/>
         </scene>
         <!--Sign Out View Controller-->
         <scene sceneID="l7L-bL-m5c">

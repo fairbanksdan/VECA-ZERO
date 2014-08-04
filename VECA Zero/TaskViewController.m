@@ -16,6 +16,7 @@
 //@property (nonatomic, strong) NSMutableArray *taskArray;
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addTaskBarButton;
 
 @end
 
@@ -24,6 +25,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.addTaskBarButton.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
 - (void)didReceiveMemoryWarning
