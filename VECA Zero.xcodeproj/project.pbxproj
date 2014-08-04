@@ -15,6 +15,14 @@
 		D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */; };
 		D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */; };
 		D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E3197ED74A003AD671 /* SignOutViewController.m */; };
+		D62E7397198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */; };
+		D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739A198F603E00DB3441 /* BG Blur 8.png */; };
+		D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739B198F603E00DB3441 /* BG Blur 5.png */; };
+		D62E73A0198F603E00DB3441 /* BG Blur 7.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739C198F603E00DB3441 /* BG Blur 7.png */; };
+		D62E73A1198F603E00DB3441 /* BG Blur 6.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739D198F603E00DB3441 /* BG Blur 6.png */; };
+		D62E73A3198F678100DB3441 /* VECA V Logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E73A2198F678100DB3441 /* VECA V Logo.png */; };
+		D62E73A5198F698400DB3441 /* VECA V Black.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E73A4198F698400DB3441 /* VECA V Black.png */; };
+		D62E73A7198F6A6400DB3441 /* VECA Logo Black.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */; };
 		D689E36619799DED003050F5 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36519799DED003050F5 /* Foundation.framework */; };
 		D689E36819799DED003050F5 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36719799DED003050F5 /* CoreGraphics.framework */; };
 		D689E36A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
@@ -65,6 +73,14 @@
 		D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidTaskViewController.m; sourceTree = "<group>"; };
 		D61AB7E2197ED74A003AD671 /* SignOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignOutViewController.h; sourceTree = "<group>"; };
 		D61AB7E3197ED74A003AD671 /* SignOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignOutViewController.m; sourceTree = "<group>"; };
+		D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-08-03 at 11.20.02 PM.png"; sourceTree = "<group>"; };
+		D62E739A198F603E00DB3441 /* BG Blur 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 8.png"; sourceTree = "<group>"; };
+		D62E739B198F603E00DB3441 /* BG Blur 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 5.png"; sourceTree = "<group>"; };
+		D62E739C198F603E00DB3441 /* BG Blur 7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 7.png"; sourceTree = "<group>"; };
+		D62E739D198F603E00DB3441 /* BG Blur 6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 6.png"; sourceTree = "<group>"; };
+		D62E73A2198F678100DB3441 /* VECA V Logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VECA V Logo.png"; sourceTree = "<group>"; };
+		D62E73A4198F698400DB3441 /* VECA V Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VECA V Black.png"; sourceTree = "<group>"; };
+		D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "VECA Logo Black.png"; sourceTree = "<group>"; };
 		D689E36219799DED003050F5 /* VECA Zero.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "VECA Zero.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		D689E36519799DED003050F5 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		D689E36719799DED003050F5 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -224,6 +240,14 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
+				D62E73A4198F698400DB3441 /* VECA V Black.png */,
+				D62E73A2198F678100DB3441 /* VECA V Logo.png */,
+				D62E739A198F603E00DB3441 /* BG Blur 8.png */,
+				D62E739B198F603E00DB3441 /* BG Blur 5.png */,
+				D62E739C198F603E00DB3441 /* BG Blur 7.png */,
+				D62E739D198F603E00DB3441 /* BG Blur 6.png */,
+				D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */,
 				D61AB7CA197ED3F6003AD671 /* logo.png */,
 				D689E36D19799DED003050F5 /* VECA Zero-Info.plist */,
 				D689E36E19799DED003050F5 /* InfoPlist.strings */,
@@ -339,8 +363,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D62E7397198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png in Resources */,
 				D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */,
+				D62E73A3198F678100DB3441 /* VECA V Logo.png in Resources */,
+				D62E73A7198F6A6400DB3441 /* VECA Logo Black.png in Resources */,
+				D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */,
+				D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */,
+				D62E73A5198F698400DB3441 /* VECA V Black.png in Resources */,
+				D62E73A1198F603E00DB3441 /* BG Blur 6.png in Resources */,
 				D61AB7CB197ED3F6003AD671 /* logo.png in Resources */,
+				D62E73A0198F603E00DB3441 /* BG Blur 7.png in Resources */,
 				D689E38119799DED003050F5 /* Images.xcassets in Resources */,
 				D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */,
 				D689E37019799DED003050F5 /* InfoPlist.strings in Resources */,
@@ -468,7 +500,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -501,7 +533,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 7.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 7.0;
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;

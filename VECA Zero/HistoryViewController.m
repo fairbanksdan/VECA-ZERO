@@ -25,6 +25,8 @@
 {
     [super viewDidLoad];
     
+    self.navBarColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
+    
     self.jobArray = [[NSMutableArray alloc] init];
     
     Job *job1 = [[Job alloc] initWithName:@"Olive 8"];
@@ -51,7 +53,10 @@
     
     self.jobArray = [NSMutableArray arrayWithObjects:job1, job2, nil];
     
-    NSLog(@"%@, %@", job1.tasksArray[0], job2.tasksArray[0]);
+    self.navigationController.navigationBar.barTintColor = self.navBarColor;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
 
     
     

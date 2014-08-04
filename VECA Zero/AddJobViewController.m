@@ -9,6 +9,7 @@
 #import "AddJobViewController.h"
 
 @interface AddJobViewController ()
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 
 @end
 
@@ -29,6 +30,15 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navBarColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
+    
+    self.navigationController.navigationBar.barTintColor = self.navBarColor;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.cancelButton.tintColor = [UIColor whiteColor];
+    self.doneBarButton.tintColor = [UIColor whiteColor];
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     // Do any additional setup after loading the view.
 }
 
