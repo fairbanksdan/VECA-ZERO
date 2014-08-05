@@ -59,8 +59,6 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
-
-    
     
 }
 
@@ -80,11 +78,15 @@
     
     if (cell == nil) {
         cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+        
     }
     
     Job *newJob = [self.jobArray objectAtIndex:indexPath.row];
     
+    cell.backgroundColor = [[UIColor alloc] initWithRed:0 green:0 blue:0 alpha:.3];
+    cell.textLabel.textColor = [UIColor whiteColor];
     cell.textLabel.text = newJob.jobName;
+    
     
     return cell;
     

@@ -39,7 +39,17 @@
     self.cancelButton.tintColor = [UIColor whiteColor];
     self.doneBarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
-    // Do any additional setup after loading the view.
+    
+    UIColor *color = [UIColor whiteColor];
+    
+    self.jobNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Job #" attributes:@{NSForegroundColorAttributeName: color}];
+    self.projectNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Project Name" attributes:@{NSForegroundColorAttributeName: color}];
+    self.foremanNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Name" attributes:@{NSForegroundColorAttributeName: color}];
+    self.foremanEmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Email" attributes:@{NSForegroundColorAttributeName: color}];
+    
+//    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+//    [self.jobNumberTextField setLeftViewMode:UITextFieldViewModeAlways];
+//    [self.jobNumberTextField setLeftView:spacerView];
 }
 
 - (void)didReceiveMemoryWarning

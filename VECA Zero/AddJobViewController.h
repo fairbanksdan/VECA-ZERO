@@ -11,5 +11,9 @@
 @interface AddJobViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIColor *navBarColor;
+@property (weak, nonatomic) IBOutlet UITextField *jobNumberTextField;
+@property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *foremanNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *foremanEmailTextField;
 
 @end

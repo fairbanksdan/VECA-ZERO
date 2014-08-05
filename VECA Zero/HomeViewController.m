@@ -45,7 +45,7 @@
     self.NameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName: color}];
     // Do any additional setup after loading the view.
     
-//    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
+    
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{

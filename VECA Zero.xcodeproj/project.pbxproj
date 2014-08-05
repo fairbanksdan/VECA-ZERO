@@ -38,6 +38,7 @@
 		D689E38A19799DED003050F5 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E36919799DED003050F5 /* UIKit.framework */; };
 		D689E39219799DED003050F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D689E39019799DED003050F5 /* InfoPlist.strings */; };
 		D689E39419799DED003050F5 /* VECA_ZeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E39319799DED003050F5 /* VECA_ZeroTests.m */; };
+		D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */; };
 		D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */; };
 		D6F2D3C6197F384D0056FDAA /* ISCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */; };
 		D6F2D3C919805A2E0056FDAA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C819805A2E0056FDAA /* Person.m */; };
@@ -101,6 +102,7 @@
 		D689E38F19799DED003050F5 /* VECA ZeroTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "VECA ZeroTests-Info.plist"; sourceTree = "<group>"; };
 		D689E39119799DED003050F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D689E39319799DED003050F5 /* VECA_ZeroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VECA_ZeroTests.m; sourceTree = "<group>"; };
+		D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png"; sourceTree = "<group>"; };
 		D6F2D3BD197F1B9F0056FDAA /* AddJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJobViewController.h; sourceTree = "<group>"; };
 		D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJobViewController.m; sourceTree = "<group>"; };
 		D6F2D3C4197F384D0056FDAA /* ISCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCoreDataController.h; sourceTree = "<group>"; };
@@ -240,6 +242,7 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
 				D62E73A2198F678100DB3441 /* VECA V Logo.png */,
@@ -368,6 +371,7 @@
 				D62E73A3198F678100DB3441 /* VECA V Logo.png in Resources */,
 				D62E73A7198F6A6400DB3441 /* VECA Logo Black.png in Resources */,
 				D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */,
+				D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */,
 				D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */,
 				D62E73A5198F698400DB3441 /* VECA V Black.png in Resources */,
 				D62E73A1198F603E00DB3441 /* BG Blur 6.png in Resources */,
