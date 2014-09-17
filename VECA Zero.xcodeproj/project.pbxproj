@@ -39,6 +39,8 @@
 		D689E39219799DED003050F5 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = D689E39019799DED003050F5 /* InfoPlist.strings */; };
 		D689E39419799DED003050F5 /* VECA_ZeroTests.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E39319799DED003050F5 /* VECA_ZeroTests.m */; };
 		D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */; };
+		D6AA5B931992D026007FE5A8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA5B921992D026007FE5A8 /* DataController.m */; };
+		D6AA5B951992E126007FE5A8 /* Job.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6AA5B941992E126007FE5A8 /* Job.plist */; };
 		D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */; };
 		D6F2D3C6197F384D0056FDAA /* ISCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */; };
 		D6F2D3C919805A2E0056FDAA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C819805A2E0056FDAA /* Person.m */; };
@@ -103,6 +105,9 @@
 		D689E39119799DED003050F5 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		D689E39319799DED003050F5 /* VECA_ZeroTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = VECA_ZeroTests.m; sourceTree = "<group>"; };
 		D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png"; sourceTree = "<group>"; };
+		D6AA5B911992D026007FE5A8 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
+		D6AA5B921992D026007FE5A8 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
+		D6AA5B941992E126007FE5A8 /* Job.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Job.plist; sourceTree = "<group>"; };
 		D6F2D3BD197F1B9F0056FDAA /* AddJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJobViewController.h; sourceTree = "<group>"; };
 		D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJobViewController.m; sourceTree = "<group>"; };
 		D6F2D3C4197F384D0056FDAA /* ISCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCoreDataController.h; sourceTree = "<group>"; };
@@ -146,6 +151,8 @@
 		D61AB7CF197ED585003AD671 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				D6AA5B911992D026007FE5A8 /* DataController.h */,
+				D6AA5B921992D026007FE5A8 /* DataController.m */,
 				D61AB7CC197ED57C003AD671 /* HomeViewController.h */,
 				D61AB7CD197ED57C003AD671 /* HomeViewController.m */,
 				D689E37D19799DED003050F5 /* HistoryViewController.h */,
@@ -253,6 +260,7 @@
 				D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */,
 				D61AB7CA197ED3F6003AD671 /* logo.png */,
 				D689E36D19799DED003050F5 /* VECA Zero-Info.plist */,
+				D6AA5B941992E126007FE5A8 /* Job.plist */,
 				D689E36E19799DED003050F5 /* InfoPlist.strings */,
 				D689E37119799DED003050F5 /* main.m */,
 				D689E37319799DED003050F5 /* VECA Zero-Prefix.pch */,
@@ -370,6 +378,7 @@
 				D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */,
 				D62E73A3198F678100DB3441 /* VECA V Logo.png in Resources */,
 				D62E73A7198F6A6400DB3441 /* VECA Logo Black.png in Resources */,
+				D6AA5B951992E126007FE5A8 /* Job.plist in Resources */,
 				D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */,
 				D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */,
 				D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */,
@@ -415,6 +424,7 @@
 				D6F2D3D219805A6A0056FDAA /* Hazard.m in Sources */,
 				D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */,
 				D6F2D3CC19805A440056FDAA /* Job.m in Sources */,
+				D6AA5B931992D026007FE5A8 /* DataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

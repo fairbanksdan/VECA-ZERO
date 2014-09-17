@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>Job</key>
+	<array>
+		<dict>
+			<key>jobName</key>
+			<string>Olive 8</string>
+			<key>jobNumber</key>
+			<string>512345</string>
+		</dict>
+	</array>
+</dict>
+</plist>

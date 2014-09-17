@@ -13,6 +13,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *EmailTextField;
 @property (strong,nonatomic) NSArray *textFields;
 @property (weak, nonatomic) IBOutlet UITextField *NameTextField;
+@property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
 
@@ -43,7 +44,8 @@
     self.EmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.NameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Name" attributes:@{NSForegroundColorAttributeName: color}];
-    // Do any additional setup after loading the view.
+    
+    [self.continueButton.layer setCornerRadius:3];
     
     
 }

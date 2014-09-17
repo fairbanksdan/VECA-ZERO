@@ -7,9 +7,15 @@
 //
 
 #import "AddJobViewController.h"
+#import "HistoryViewController.h"
+#import "DataController.h"
 
-@interface AddJobViewController ()
+@interface AddJobViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
+@property (weak, nonatomic) IBOutlet UIImageView *jobTFBackgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *projectNumberTFBackgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *foremanNameTFBackgroundImage;
+@property (weak, nonatomic) IBOutlet UIImageView *foremanEmailTFBackgroundImage;
 
 @end
 
@@ -47,6 +53,10 @@
     self.foremanNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Name" attributes:@{NSForegroundColorAttributeName: color}];
     self.foremanEmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Email" attributes:@{NSForegroundColorAttributeName: color}];
     
+    [self.jobTFBackgroundImage.layer setCornerRadius:3];
+    [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
+    [self.foremanNameTFBackgroundImage.layer setCornerRadius:3];
+    [self.foremanEmailTFBackgroundImage.layer setCornerRadius:3];
 //    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
 //    [self.jobNumberTextField setLeftViewMode:UITextFieldViewModeAlways];
 //    [self.jobNumberTextField setLeftView:spacerView];
@@ -57,6 +67,30 @@
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+//-(void)viewWillDisappear:(BOOL)animated {
+//    [super viewWillDisappear:animated];
+//    self.selectedJob.jobNumber = _jobNumberTextField.text;
+//    self.selectedJob.jobName = _projectNameTextField.text;
+//    self.selectedJob.foremanName = _foremanNameTextField.text;
+//    self.selectedJob.foremanEmail = _foremanEmailTextField.text;
+//    
+//    
+//    [[DataController sharedData] save];
+//}
+
+- (IBAction)doneButtonPressed:(id)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    self.selectedJob.jobNumber = _jobNumberTextField.text;
+    self.selectedJob.jobName = _projectNameTextField.text;
+    self.selectedJob.foremanName = _foremanNameTextField.text;
+    self.selectedJob.foremanEmail = _foremanEmailTextField.text;
+    
+//    [[DataController sharedData] save];
+    
+}
+
 
 /*
 #pragma mark - Navigation

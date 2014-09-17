@@ -10,6 +10,8 @@
 
 @interface HistoryViewController : UIViewController
 
+
+@property (nonatomic, strong) NSMutableArray *jobArray;
 @property (strong, nonatomic) UIColor *navBarColor;
 
 @end

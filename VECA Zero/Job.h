@@ -12,6 +12,8 @@
 
 @property (nonatomic, strong) NSString *jobNumber;
 @property (nonatomic, strong) NSString *jobName;
+@property (nonatomic, strong) NSString *foremanName;
+@property (nonatomic, strong) NSString *foremanEmail;
 
 @property (nonatomic, strong) NSMutableArray *tasksArray;
 

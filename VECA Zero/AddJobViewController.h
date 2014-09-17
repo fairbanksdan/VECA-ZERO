@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Job.h"
 
 @interface AddJobViewController : UIViewController
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
@@ -15,5 +16,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foremanNameTextField;
 @property (weak, nonatomic) IBOutlet UITextField *foremanEmailTextField;
+
+@property (strong, nonatomic) Job *selectedJob;
 
 @end

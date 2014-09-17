@@ -214,10 +214,8 @@ NSUInteger DeviceSystemMajorVersion()
         }
     
     return self.dataArray.count;
-    } else if (section == 2) {
-        return 2;
     } else {
-        return 1;
+        return 2;
     }
 }
 
@@ -281,21 +279,21 @@ NSUInteger DeviceSystemMajorVersion()
                 cell.textLabel.text = [itemData valueForKey:kTitleKey];
             }
         
-    } else if (indexPath.section == 2){
+    } else /*if (indexPath.section == 2)*/{
         if (indexPath.row == 0) {
             cell = [tableView dequeueReusableCellWithIdentifier:@"PrimaryEvacuation"];
         } else {
             cell = [tableView dequeueReusableCellWithIdentifier:@"SecondaryEvacuation"];
         }
-    } else {
+    } /* else {
         cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
-    }
+    }*/
     return cell;
 }
 
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView{
-    return 4;
+    return 3;
 }
 
 /*! Adds or removes a UIDatePicker cell below the given indexPath.
