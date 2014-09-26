@@ -7,13 +7,16 @@
 //
 
 #import "AddHazardsViewController.h"
+#import "Hazard.h"
 
 @interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
-
 
 @end
 
 @implementation AddHazardsViewController
+{
+    NSMutableArray *_hazards;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -28,6 +31,20 @@
 {
     [super viewDidLoad];
     
+    
+    
+    _hazards = [NSMutableArray new];
+    
+    Hazard *hazard = [Hazard new];
+    
+    hazard.hazardName = @"Ladder";
+    hazard.solution = @"Do not go above the second to top rung of ladder";
+    [_hazards addObject:hazard];
+    
+//    hazard.hazardName = @"Hole in Ground";
+//    hazard.solution = @"Avoid the Hole.";
+//    [_hazards addObject:hazard];
+    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
 
@@ -38,27 +55,35 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.row % 2) {
-        return 88;
+    if (indexPath.section < [_hazards count]) {
+        if (indexPath.row % 2) {
+            return 88;
+        } else {
+            return 44;
+        }
     } else {
         return 44;
     }
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return [_hazards count] +1;
+    [tableView reloadData];
+
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
+    if (section < [_hazards count]) {
         return 2;
+//        return [_hazards count] * 2;
+//        NSLog(@"hazards count is: %ul", [_hazards count]);
     } else {
     return 1;
     }
 }
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
-    if (section ==0) {
+    if (section == 0) {
         return @"Complete this page at task location";
     } else {
         return @"";
@@ -66,17 +91,93 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = nil;
-    if (indexPath.section == 0) {
-        if (indexPath.row == 0) {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+//    NSString *CellIdentifier = @"HazardCell";
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+    
+    if (indexPath.section < [_hazards count]) {
+        if (indexPath.row % 2) {
+            NSString *CellIdentifier = @"SolutionCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
+            //            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            return cell;
+            
         } else {
-            cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
+            
+                
+                NSString *CellIdentifier = @"HazardCell";
+                UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+                
+                //            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
+                if (cell == nil) {
+                    cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+            return cell;
+//            cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
+            
         }
     } else {
-        cell = [tableView dequeueReusableCellWithIdentifier:@"AddNewHazardCell"];
+        NSString *CellIdentifier = @"AddNewHazardCell";
+        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+        if (cell == nil) {
+            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            
+        }
+        return cell;
     }
-    return cell;
+//    return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section >= [_hazards count]) {
+        Hazard *hazard = [Hazard new];
+        [_hazards addObject:hazard];
+        [tableView reloadData];
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.section == 0) {
+        return UITableViewCellEditingStyleNone;
+    } else if (indexPath.section == [_hazards count]){
+        return UITableViewCellEditingStyleNone;
+    } else {
+        return UITableViewCellEditingStyleDelete;
+    }
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
+forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        [_hazards removeObjectAtIndex:indexPath.row];
+        //    NSArray *indexPaths = @[indexPath];
+        //    [tableView deleteRowsAtIndexPaths:indexPaths
+        //                     withRowAnimation:UITableViewRowAnimationAutomatic];
+        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
+    }
+    
+    
+    
+//    if (indexPath.row % 2) {
+//        [tableView beginUpdates];
+//        [_hazards removeObjectAtIndex:indexPath.row];
+//        [_hazards removeObjectAtIndex:indexPath.row -1];
+//        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
+//        [tableView reloadData];
+//        [tableView endUpdates];
+//    } else {
+//        [tableView beginUpdates];
+//        [_hazards removeObjectAtIndex:indexPath.row];
+//        [_hazards removeObjectAtIndex:indexPath.row +1];
+//        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
+//        [tableView reloadData];
+//        [tableView endUpdates];
+//    }
 }
 
 /*

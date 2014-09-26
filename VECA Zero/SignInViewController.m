@@ -33,7 +33,7 @@
     self.personArray = [NSMutableArray new];
     
     Person *person1 = [Person new];
-    person1.firstName = @"Dan";
+    person1.firstName = @"Dan Fairbanks";
     
     [self.personArray addObject:person1];
 }
