@@ -7,8 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
 
 @interface MidTaskViewController : UIViewController
 @property (weak, nonatomic) IBOutlet UIButton *checkOutButton;
+@property (strong, nonatomic) Person *person;
 
 @end

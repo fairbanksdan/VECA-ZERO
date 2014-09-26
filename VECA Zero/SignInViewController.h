@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddPersonViewController.h"
 
-@interface SignInViewController : UIViewController
+@interface SignInViewController : UIViewController <AddPersonViewControllerDelegate>
 
 @end

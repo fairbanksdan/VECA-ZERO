@@ -36,6 +36,7 @@
     NSString *documentsDirectory = [paths firstObject];
     return documentsDirectory;
 }
+
 - (NSString *)dataFilePath
 {
     return [[self documentsDirectory]
@@ -131,9 +132,8 @@
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
- numberOfRowsInSection:(NSInteger)section { //required method for a TableView asking for the number of rows per section.
-//    NSLog(@"Number of jobs is %lu", [_items count]);
-    return  [_items count];  //How many rows we want per TableView section
+ numberOfRowsInSection:(NSInteger)section {
+    return  [_items count];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -201,8 +201,6 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-    
-    
     
     Job *myJob;
     

@@ -98,8 +98,6 @@
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            
-            //            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
@@ -110,13 +108,10 @@
                 
                 NSString *CellIdentifier = @"HazardCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-                
-                //            cell = [tableView dequeueReusableCellWithIdentifier:@"HazardCell"];
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
             return cell;
-//            cell = [tableView dequeueReusableCellWithIdentifier:@"SolutionCell"];
             
         }
     } else {
@@ -128,7 +123,7 @@
         }
         return cell;
     }
-//    return cell;
+
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
