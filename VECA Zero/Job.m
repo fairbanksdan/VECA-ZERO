@@ -20,12 +20,30 @@
     return self;
 }
 
-- (void) addNewTaskWithName: (NSString *)name {
-    
-    Task *task = [[Task alloc] initWithName:name];
-    
-    [task addTaskToJob:self];
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super init])) {
+        self.jobName = [aDecoder decodeObjectForKey:@"jobName"];
+        self.jobNumber = [aDecoder decodeObjectForKey:@"jobNumber"];
+    }
+    return self;
 }
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.jobName forKey:@"jobName"];
+    [aCoder encodeObject:self.jobNumber forKey:@"jobNumber"];
+}
+
+
+
+
+//- (void) addNewTaskWithName: (NSString *)name {
+//    
+//    Task *task = [[Task alloc] initWithName:name];
+//    
+//    [task addTaskToJob:self];
+//}
 
 
 @end

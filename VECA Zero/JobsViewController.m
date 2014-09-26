@@ -29,11 +29,60 @@
     NSMutableArray *_items; //creates a mutable Array with the variable "_items"
 }
 
+- (NSString *)documentsDirectory
+{
+    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+                                                         NSDocumentDirectory, NSUserDomainMask, YES);
+    NSString *documentsDirectory = [paths firstObject];
+    return documentsDirectory;
+}
+- (NSString *)dataFilePath
+{
+    return [[self documentsDirectory]
+            stringByAppendingPathComponent:@"VECA Zero.plist"];
+}
+
+- (void)saveJobs
+{
+    NSMutableData *data = [[NSMutableData alloc] init];
+    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
+                                 initForWritingWithMutableData:data];
+    [archiver encodeObject:_items forKey:@"Jobs"];
+    [archiver finishEncoding];
+    [data writeToFile:[self dataFilePath] atomically:YES];
+}
+
+- (void)loadJobs
+{
+    NSString *path = [self dataFilePath];
+    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+                                         initForReadingWithData:data];
+        _items = [unarchiver decodeObjectForKey:@"Jobs"];
+        
+        [unarchiver finishDecoding];
+    } else {
+        _items = [[NSMutableArray alloc] initWithCapacity:20];
+    }
+}
+
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super initWithCoder:aDecoder])) {
+        [self loadJobs];
+    }
+    return self;
+}
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    _items = [NSMutableArray new];
+    NSLog(@"Documents folder is %@", [self documentsDirectory]);
+    NSLog(@"Data file path is %@", [self dataFilePath]);
+    
+//    _items = [NSMutableArray new];
     
 //    Job *job;
 //    
@@ -88,26 +137,9 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"Task" sender:nil];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
-
-//- (void)tableView:(UITableView *)tableView
-//commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-//forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    [_items removeObjectAtIndex:indexPath.row];
-//    
-////    [self saveChecklistItems];
-//    
-//    NSArray *indexPaths = @[indexPath];
-//    [tableView deleteRowsAtIndexPaths:indexPaths
-//                     withRowAnimation:UITableViewRowAnimationAutomatic];
-//}
-
-//- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
-//    // Return NO if you do not want the specified item to be editable.
-//    return YES;
-//}
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -144,7 +176,7 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
     
-//    [self saveChecklistItems];
+    [self saveJobs];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -156,7 +188,8 @@
     UITableViewCell *cell = [self.tableView
                              cellForRowAtIndexPath:indexPath];
     [self configureTextForCell:cell withJobName:job];
-//    [self saveChecklistItems];
+    
+    [self saveJobs];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -271,6 +304,8 @@
             NSArray *indexPaths = @[cellIndexPath];
             [self.tableView deleteRowsAtIndexPaths:indexPaths
                              withRowAnimation:UITableViewRowAnimationLeft];
+            
+            [self saveJobs];
             break;
         }
         default:
@@ -280,10 +315,6 @@
 
 -(void) segueToAddJobVC{
     [self performSegueWithIdentifier:@"EditJob" sender:self];
-}
-
-- (IBAction)cellTapped:(UITapGestureRecognizer *)sender {
-    [self performSegueWithIdentifier:@"Task" sender:self];
 }
 
 

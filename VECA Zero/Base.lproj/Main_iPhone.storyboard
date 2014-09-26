@@ -1,14 +1,13 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6245" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="FhP-jV-e8o">
     <dependencies>
-        <deployment defaultVersion="1792" identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6238"/>
     </dependencies>
     <scenes>
-        <!--History View Controller-->
+        <!--Jobs View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="History View Controller" customClass="JobsViewController" sceneMemberID="viewController">
+                <viewController id="vXZ-lx-hvc" userLabel="Jobs View Controller" customClass="JobsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -34,17 +33,12 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
-                                                    <connections>
-                                                        <outletCollection property="gestureRecognizers" destination="97F-wj-B6I" appends="YES" id="z2V-V4-M4F"/>
-                                                    </connections>
                                                 </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <gestureRecognizers/>
                                         <connections>
-                                            <outletCollection property="gestureRecognizers" destination="97F-wj-B6I" appends="YES" id="AIg-cE-kya"/>
-                                            <segue destination="dLl-Zp-jad" kind="modal" identifier="EditJob" trigger="accessoryAction" id="LYQ-iY-SX4"/>
-                                            <segue destination="BnN-g2-Luv" kind="push" identifier="Task" id="6no-nA-5QR"/>
+                                            <segue destination="BnN-g2-Luv" kind="push" identifier="Task" id="00i-s1-8el"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -66,14 +60,10 @@
                     <connections>
                         <outlet property="AddJobBarButton" destination="vCi-gp-hYy" id="v4C-cs-Og6"/>
                         <outlet property="tableView" destination="ORa-y1-Idc" id="4tD-jD-f7q"/>
+                        <segue destination="dLl-Zp-jad" kind="modal" identifier="EditJob" id="sSD-HF-z6h"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="x5A-6p-PRh" sceneMemberID="firstResponder"/>
-                <tapGestureRecognizer id="97F-wj-B6I">
-                    <connections>
-                        <action selector="cellTapped:" destination="vXZ-lx-hvc" id="zSN-Cw-1S8"/>
-                    </connections>
-                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="743" y="108"/>
         </scene>
@@ -124,7 +114,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jp5-Co-ad9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1260" y="924"/>
+            <point key="canvasLocation" x="1228" y="924"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Oxm-D2-WcR">

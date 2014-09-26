@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Job : NSObject
+@interface Job : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *jobNumber;
 @property (nonatomic, strong) NSString *jobName;
