@@ -135,7 +135,7 @@
 - (void)AddJobViewController:(AddJobViewController *)controller
          didFinishAddingItem:(Job *)job; {
     NSInteger newRowIndex = [_items count];
-    [_items addObject:job];
+    [_items insertObject:job atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];

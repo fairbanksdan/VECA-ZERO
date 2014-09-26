@@ -813,7 +813,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="34a-Lx-3mb"/>
         <segue reference="03l-ge-r2K"/>
-        <segue reference="LYQ-iY-SX4"/>
     </inferredMetricsTieBreakers>
 </document>
