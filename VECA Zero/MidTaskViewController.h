@@ -9,5 +9,6 @@
 #import <UIKit/UIKit.h>
 
 @interface MidTaskViewController : UIViewController
+@property (weak, nonatomic) IBOutlet UIButton *checkOutButton;
 
 @end

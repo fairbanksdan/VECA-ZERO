@@ -7,15 +7,13 @@
 //
 
 #import "AddJobViewController.h"
-#import "HistoryViewController.h"
+#import "JobsViewController.h"
 #import "DataController.h"
 
 @interface AddJobViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @property (weak, nonatomic) IBOutlet UIImageView *jobTFBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *projectNumberTFBackgroundImage;
-@property (weak, nonatomic) IBOutlet UIImageView *foremanNameTFBackgroundImage;
-@property (weak, nonatomic) IBOutlet UIImageView *foremanEmailTFBackgroundImage;
 
 @end
 
@@ -29,13 +27,22 @@
     }
     return self;
 }
-- (IBAction)cancelButton:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
+//- (IBAction)cancelButton:(id)sender {
+//    [self.delegate AddJobViewControllerDidCancel:self];
+////    [self dismissViewControllerAnimated:YES completion:nil];
+//}
+
+
+
+- (IBAction)Cancel {
+    [self.delegate AddJobViewControllerDidCancel:self];
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    [self setNeedsStatusBarAppearanceUpdate];
     
     self.navBarColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
     
@@ -50,22 +57,34 @@
     
     self.jobNumberTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Job #" attributes:@{NSForegroundColorAttributeName: color}];
     self.projectNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Project Name" attributes:@{NSForegroundColorAttributeName: color}];
-    self.foremanNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Name" attributes:@{NSForegroundColorAttributeName: color}];
-    self.foremanEmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Foreman Email" attributes:@{NSForegroundColorAttributeName: color}];
     
+    self.doneBarButton.enabled = NO;
+//    [self nameOfJobDoesExist];
+    
+    if (self.itemToEdit != nil) {
+        self.navBar.title = @"Edit Job";
+        self.jobNumberTextField.text = self.itemToEdit.jobNumber;
+        self.projectNameTextField.text = self.itemToEdit.jobName;
+        self.doneBarButton.enabled = YES;
+    }
+    
+    
+
     [self.jobTFBackgroundImage.layer setCornerRadius:3];
     [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
-    [self.foremanNameTFBackgroundImage.layer setCornerRadius:3];
-    [self.foremanEmailTFBackgroundImage.layer setCornerRadius:3];
-//    UIView *spacerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, 20, 20)];
-//    [self.jobNumberTextField setLeftViewMode:UITextFieldViewModeAlways];
-//    [self.jobNumberTextField setLeftView:spacerView];
 }
 
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
+}
+- (IBAction)jobNameAdded:(UITextField *)sender {
+    [self nameOfJobDoesExist];
 }
 
 //-(void)viewWillDisappear:(BOOL)animated {
@@ -80,27 +99,34 @@
 //}
 
 - (IBAction)doneButtonPressed:(id)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-    
-    self.selectedJob.jobNumber = _jobNumberTextField.text;
-    self.selectedJob.jobName = _projectNameTextField.text;
-    self.selectedJob.foremanName = _foremanNameTextField.text;
-    self.selectedJob.foremanEmail = _foremanEmailTextField.text;
+    if (self.itemToEdit == nil) {
+        Job *job = [[Job alloc] init];
+        job.jobName = self.projectNameTextField.text;
+        job.jobNumber = self.jobNumberTextField.text;
+        [self.delegate AddJobViewController:self didFinishAddingItem:job];
+    } else {
+        self.itemToEdit.jobName = self.projectNameTextField.text;
+        self.itemToEdit.jobNumber = self.jobNumberTextField.text;
+        [self.delegate AddJobViewController:self didFinishEditingItem:self.itemToEdit];
+    }
     
 //    [[DataController sharedData] save];
     
 }
 
+//- (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+//{
+//    NSString *newText = [self.projectNameTextField.text stringByReplacingCharactersInRange:range withString:string];
+//    self.doneBarButton.enabled = ([newText length] > 0);
+//    return YES;
+//}
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (void)nameOfJobDoesExist {
+    if ([self.projectNameTextField.text length] > 0) {
+        self.doneBarButton.enabled = YES;
+    } else {
+        self.doneBarButton.enabled = NO;
+    }
 }
-*/
 
 @end

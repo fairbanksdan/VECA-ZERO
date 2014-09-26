@@ -9,7 +9,7 @@
 #import "TaskViewController.h"
 #import "Task.h"
 #import "Job.h"
-#import "HistoryViewController.h"
+#import "JobsViewController.h"
 
 @interface TaskViewController () <UITableViewDataSource, UITableViewDelegate>
 

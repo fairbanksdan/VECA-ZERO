@@ -45,7 +45,7 @@
     
     self.NameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
     
-    [self.continueButton.layer setCornerRadius:3];
+    [self.continueButton.layer setCornerRadius:5];
     
     
 }

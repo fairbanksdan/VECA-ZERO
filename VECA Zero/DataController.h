@@ -10,12 +10,12 @@
 
 @interface DataController : NSObject <UITableViewDataSource>
 
-@property (nonatomic, strong) NSMutableArray *jobArray, *taskArray, *hazardArray;
-
--(instancetype)initWithJobs;
-
-+(DataController *)sharedData;
-
--(void)save;
+//@property (nonatomic, strong) NSMutableArray *jobArray, *taskArray, *hazardArray;
+//
+//-(instancetype)initWithJobs;
+//
+//+(DataController *)sharedData;
+//
+//-(void)save;
 
 @end

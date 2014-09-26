@@ -15,8 +15,8 @@
 #define kDateKey        @"date"    // key for obtaining the data source item's date value
 
 // keep track of which rows have date cells
-#define kDateStartRow   1
-#define kDateEndRow     2
+#define kDateStartRow   0
+#define kDateEndRow     1
 
 static NSString *kDateCellID = @"dateCell";     // the cells with the start or end date
 static NSString *kDatePickerID = @"datePicker"; // the cell containing the date picker
@@ -56,13 +56,13 @@ static NSString *kOtherCell = @"otherCell";     // the remaining cells at the en
     self.nextBarButton.tintColor = [UIColor whiteColor];
     
     // setup our data source
-    NSMutableDictionary *itemOne = [@{ kTitleKey : @"Pick a Start Date and End Date:" } mutableCopy];
-    NSMutableDictionary *itemTwo = [@{ kTitleKey : @"Start Date",
+   //NSMutableDictionary *itemOne = [@{ kTitleKey : @"Pick a Start Date and End Date:" } mutableCopy];
+    NSMutableDictionary *itemTwo = [@{ kTitleKey : @"Date",
                                        kDateKey : [NSDate date] } mutableCopy];
-    NSMutableDictionary *itemThree = [@{ kTitleKey : @"End Date",
-                                         kDateKey : [NSDate date] } mutableCopy];
+/*    NSMutableDictionary *itemThree = [@{ kTitleKey : @"End Date",
+                                         kDateKey : [NSDate date] } mutableCopy];*/
 
-    self.dataArray = @[itemOne, itemTwo, itemThree];
+    self.dataArray = @[/*itemOne, */itemTwo/*, itemThree*/];
     
     self.dateFormatter = [[NSDateFormatter alloc] init];
     [self.dateFormatter setDateStyle:NSDateFormatterShortStyle];    // show short-style date format
@@ -197,7 +197,11 @@ NSUInteger DeviceSystemMajorVersion()
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    return ([self indexPathHasPicker:indexPath] ? self.pickerCellRowHeight : self.tableView.rowHeight);
+    if (indexPath.section == 1) {
+        return ([self indexPathHasPicker:indexPath] ? self.pickerCellRowHeight : self.tableView.rowHeight);
+    } else {
+        return 44;
+    }
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
@@ -247,11 +251,11 @@ NSUInteger DeviceSystemMajorVersion()
     
             cell = [tableView dequeueReusableCellWithIdentifier:cellID];
     
-            if (indexPath.row == 0)
+            /*if (indexPath.row == 0)
             {
                 // we decide here that first cell in the table is not selectable (it's just an indicator)
                 cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            }
+            }*/
     
             // if we have a date picker open whose cell is above the cell we want to update,
             // then we have one more cell than the model allows
