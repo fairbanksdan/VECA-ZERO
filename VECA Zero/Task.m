@@ -33,8 +33,8 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.taskName forKey:@"taskName"];
-    [aCoder encodeBool:self.date forKey:@"Date"];
-    [aCoder encodeBool:self.hazardArray forKey:@"hazardArray"];
+    [aCoder encodeObject:self.date forKey:@"Date"];
+    [aCoder encodeObject:self.hazardArray forKey:@"hazardArray"];
     [aCoder encodeObject:self.specificTaskLocation forKey:@"specificTaskLocation"];
     [aCoder encodeObject:self.PrimaryEvacuation forKey:@"PrimaryEvacuation"];
     [aCoder encodeObject:self.SecondaryEvacuation forKey:@"SecondaryEvacuation"];

@@ -7,6 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Task.h"
+#import "HazardTableViewCell.h"
 
 @class AddHazardsViewController;
 @class Hazard;
@@ -21,8 +23,10 @@
 
 @end
 
-@interface AddHazardsViewController : UIViewController
+@interface AddHazardsViewController : UIViewController <HazardTableViewCellDelegate>
 
+@property (strong, nonatomic) Task *task;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @property (nonatomic, weak) id <AddHazardsViewControllerDelegate> delegate;
 

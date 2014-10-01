@@ -9,6 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "SWTableViewCell.h"
 
+
 @interface PersonTableViewCell : SWTableViewCell
 
 @property (weak, nonatomic) UILabel *PersonNameLabel;

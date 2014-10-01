@@ -35,11 +35,11 @@
     
     _hazards = [NSMutableArray new];
     
-    Hazard *hazard = [Hazard new];
-    
-    hazard.hazardName = @"Ladder";
-    hazard.solution = @"Do not go above the second to top rung of ladder";
-    [_hazards addObject:hazard];
+//    Hazard *hazard = [Hazard new];
+//    
+//    hazard.hazardName = @"Ladder";
+//    hazard.solution = @"Do not go above the second to top rung of ladder";
+//    [_hazards addObject:hazard];
     
 //    hazard.hazardName = @"Hole in Ground";
 //    hazard.solution = @"Avoid the Hole.";
@@ -94,6 +94,8 @@
 //    NSString *CellIdentifier = @"HazardCell";
 //    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
     
+    
+    
     if (indexPath.section < [_hazards count]) {
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
@@ -108,8 +110,11 @@
                 
                 NSString *CellIdentifier = @"HazardCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+                    UITextField *textField = [[UITextField alloc] init];
+                    textField.tag = tableView[indexPath.row];
             }
             return cell;
             
@@ -155,35 +160,27 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         //                     withRowAnimation:UITableViewRowAnimationAutomatic];
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
     }
-    
-    
-    
-//    if (indexPath.row % 2) {
-//        [tableView beginUpdates];
-//        [_hazards removeObjectAtIndex:indexPath.row];
-//        [_hazards removeObjectAtIndex:indexPath.row -1];
-//        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
-//        [tableView reloadData];
-//        [tableView endUpdates];
-//    } else {
-//        [tableView beginUpdates];
-//        [_hazards removeObjectAtIndex:indexPath.row];
-//        [_hazards removeObjectAtIndex:indexPath.row +1];
-//        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationTop];
-//        [tableView reloadData];
-//        [tableView endUpdates];
-//    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+- (IBAction)hazardTFChanged:(UITextField *)sender {
+    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
+    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
+    Hazard *hazard = [Hazard new];
+    hazard =
+    hazard.hazardName =
 }
-*/
+
+
+//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
+//    //Replace the string manually in the textbox
+//    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
+//    //perform any logic here now that you are sure the textbox text has changed
+//    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
+//    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
+//    [self didChangeTextInTextField:textField];
+//    return NO; //this make iOS not to perform any action
+//}
+
+
 
 @end

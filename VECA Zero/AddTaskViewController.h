@@ -30,6 +30,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *specificTaskLocationTextField;
 @property (weak, nonatomic) IBOutlet UITextField *PrimaryEvacTextField;
 @property (weak, nonatomic) IBOutlet UITextField *SecondaryEvacTextField;
+@property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (nonatomic, weak) id <AddTaskViewControllerDelegate> delegate;
 

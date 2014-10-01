@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A361c" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0xP-Zd-z3S">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="6249" systemVersion="14A379a" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" initialViewController="0xP-Zd-z3S">
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="6243"/>
@@ -503,6 +503,7 @@
                         <outlet property="PrimaryEvacTextField" destination="aMe-qW-ZL0" id="fIc-og-K4T"/>
                         <outlet property="SecondaryEvacTextField" destination="Sox-bb-QJq" id="S3I-2V-zqr"/>
                         <outlet property="cancelButton" destination="qUs-uk-jqq" id="jZK-NV-7oG"/>
+                        <outlet property="dateLabel" destination="6DM-hD-kp1" id="dVD-hr-qLo"/>
                         <outlet property="nextBarButton" destination="yUT-JD-94m" id="obP-OW-9K8"/>
                         <outlet property="specificTaskLocationTextField" destination="HgH-TN-g1x" id="dkS-wR-q6a"/>
                         <outlet property="taskNameTextField" destination="xec-7S-FbT" id="QRB-NU-DEa"/>
@@ -528,7 +529,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="517"/>
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HazardCell" id="OVP-IS-MNj">
+                                    <tableViewCell tag="1000" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HazardCell" id="OVP-IS-MNj" customClass="HazardTableViewCell">
                                         <rect key="frame" x="0.0" y="119" width="320" height="44"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVP-IS-MNj" id="IGV-ie-tfj">
@@ -539,11 +540,18 @@
                                                     <rect key="frame" x="20" y="7" width="280" height="30"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
+                                                    <connections>
+                                                        <action selector="hazardTFChanged:" destination="dL0-Hl-mkZ" eventType="editingChanged" id="poC-pk-Fso"/>
+                                                        <action selector="hazardTFTextChanged:" destination="OVP-IS-MNj" eventType="editingChanged" id="4Dk-GQ-lck"/>
+                                                    </connections>
                                                 </textField>
                                             </subviews>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="hazardTextField" destination="JwB-Fz-v9D" id="mX0-ph-29I"/>
+                                        </connections>
                                     </tableViewCell>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SolutionCell" rowHeight="88" id="m6i-H2-4mC">
+                                    <tableViewCell tag="1001" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SolutionCell" rowHeight="88" id="m6i-H2-4mC">
                                         <rect key="frame" x="0.0" y="163" width="320" height="88"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" tableViewCell="m6i-H2-4mC" id="HRr-Sa-cLA">
@@ -591,6 +599,9 @@
                             </connections>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="tableView" destination="vFC-nm-LVo" id="11v-0O-bKf"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REi-TH-Ltu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

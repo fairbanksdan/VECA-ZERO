@@ -22,7 +22,6 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddJobBarButton;
-@property (strong, nonatomic) DataController *myDataController;
 
 @end
 

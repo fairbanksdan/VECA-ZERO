@@ -11,8 +11,12 @@
 #import "Job.h"
 #import "JobsViewController.h"
 #import "AddHazardsViewController.h"
+#import "DataModel.h"
 
 @interface TaskViewController () <UITableViewDataSource, UITableViewDelegate>
+{
+    DataModel *_dataModel;
+}
 
 //@property (nonatomic, strong) NSMutableArray *taskArray;
 
@@ -38,6 +42,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)saveData
+{
+    [_dataModel saveJobs];
+}
+
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return [self.job.tasksForJobArray count];
 }
@@ -46,7 +55,11 @@
                  withJobName:(Task *)task
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
+    
+    
     label.text = task.taskName;
+    
+    
 }
 
 
@@ -56,6 +69,10 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
     Task *task = self.job.tasksForJobArray[indexPath.row];
+    
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+    cell.detailTextLabel.text = [formatter stringFromDate:task.date];
     
     [self configureTextForCell:cell withJobName:task];
     
@@ -99,6 +116,7 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 //    [self dismissViewControllerAnimated:YES completion:nil];
 //    [self performSegueWithIdentifier:@"NewHazards" sender:task];
+    [self saveData];
     NSLog(@"Task Added");
 }
 

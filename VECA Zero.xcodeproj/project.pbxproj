@@ -16,6 +16,7 @@
 		D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */; };
 		D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E3197ED74A003AD671 /* SignOutViewController.m */; };
 		D623489919DB5E7B00E61655 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D623489819DB5E7B00E61655 /* AddTaskViewController.m */; };
+		D626BAD619DCBA0900209DC5 /* HazardTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D626BAD519DCBA0900209DC5 /* HazardTableViewCell.m */; };
 		D62E7397198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */; };
 		D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739A198F603E00DB3441 /* BG Blur 8.png */; };
 		D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739B198F603E00DB3441 /* BG Blur 5.png */; };
@@ -88,6 +89,8 @@
 		D61AB7E3197ED74A003AD671 /* SignOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignOutViewController.m; sourceTree = "<group>"; };
 		D623489719DB5E7B00E61655 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
 		D623489819DB5E7B00E61655 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
+		D626BAD419DCBA0900209DC5 /* HazardTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardTableViewCell.h; sourceTree = "<group>"; };
+		D626BAD519DCBA0900209DC5 /* HazardTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardTableViewCell.m; sourceTree = "<group>"; };
 		D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-08-03 at 11.20.02 PM.png"; sourceTree = "<group>"; };
 		D62E739A198F603E00DB3441 /* BG Blur 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 8.png"; sourceTree = "<group>"; };
 		D62E739B198F603E00DB3441 /* BG Blur 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 5.png"; sourceTree = "<group>"; };
@@ -270,6 +273,8 @@
 			children = (
 				D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */,
 				D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */,
+				D626BAD419DCBA0900209DC5 /* HazardTableViewCell.h */,
+				D626BAD519DCBA0900209DC5 /* HazardTableViewCell.m */,
 			);
 			name = "Hazard View Controllers";
 			sourceTree = "<group>";
@@ -519,6 +524,7 @@
 				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
 				D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */,
 				D6F816B019DA0BD9004E630B /* DataModel.m in Sources */,
+				D626BAD619DCBA0900209DC5 /* HazardTableViewCell.m in Sources */,
 				D65B5B3D19D4B8CE00FD9021 /* SWLongPressGestureRecognizer.m in Sources */,
 				D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */,
 				D65B5B3C19D4B8CE00FD9021 /* SWCellScrollView.m in Sources */,
