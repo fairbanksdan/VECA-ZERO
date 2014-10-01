@@ -13,10 +13,11 @@
 @property (nonatomic, strong) NSString *jobNumber;
 @property (nonatomic, strong) NSString *jobName;
 
-@property (nonatomic, strong) NSMutableArray *tasksArray;
+@property (nonatomic, strong) NSMutableArray *tasksForJobArray;
+//@property (nonatomic, strong) NSMutableArray *jobsArray;
 
-- (instancetype) initWithName:(NSString *)job;
-
-- (void) addNewTaskWithName: (NSString *)name;
+//- (instancetype) initWithName:(NSString *)job;
+//
+//- (void) addNewTaskWithName: (NSString *)name;
 
 @end

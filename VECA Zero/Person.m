@@ -10,4 +10,17 @@
 
 @implementation Person
 
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super init])) {
+        self.fullName = [aDecoder decodeObjectForKey:@"fullName"];
+    }
+    return self;
+}
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.fullName forKey:@"fullName"];
+}
+
 @end

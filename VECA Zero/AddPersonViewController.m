@@ -11,6 +11,7 @@
 
 
 @interface AddPersonViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
 @end
 
@@ -33,12 +34,26 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    [self setNeedsStatusBarAppearanceUpdate];
+    
+    self.navBarColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
+    
+    self.navigationController.navigationBar.barTintColor = self.navBarColor;
+    self.navigationController.navigationBar.translucent = NO;
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+    
+    
     if (self.personToEdit != nil) {
-        self.title = @"Edit Person";
+        self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
     }
     
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (IBAction)doneButtonPressed:(id)sender {
@@ -62,29 +77,34 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return 2;
+    return 1;
 }
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    if (section == 0) {
-        return 1;
-    } else {
-        return 2;
-    }
+    return 2;
     
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+    if (section == 0) {
+        return @"Review and Check Off Hazards";
+    } else {
+        return @"";
+    }
+}
+
+-(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (indexPath.row % 2) {
+        return 88;
+    } else {
+        return 44;
+    }
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        NSString *CellIdentifier = @"FullName";
-        UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-        if (cell == nil) {
-            cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-        }
-        return cell;
-    } else {
+    
         if (indexPath.row == 0) {
             NSString *CellIdentifier = @"HazardCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -100,7 +120,6 @@
             }
             return cell;
         }
-    }
 }
 
 /*

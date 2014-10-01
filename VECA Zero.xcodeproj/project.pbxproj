@@ -15,6 +15,7 @@
 		D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */; };
 		D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */; };
 		D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7E3197ED74A003AD671 /* SignOutViewController.m */; };
+		D623489919DB5E7B00E61655 /* AddTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D623489819DB5E7B00E61655 /* AddTaskViewController.m */; };
 		D62E7397198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */; };
 		D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739A198F603E00DB3441 /* BG Blur 8.png */; };
 		D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */ = {isa = PBXBuildFile; fileRef = D62E739B198F603E00DB3441 /* BG Blur 5.png */; };
@@ -55,6 +56,8 @@
 		D6F2D3CF19805A530056FDAA /* Task.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3CE19805A530056FDAA /* Task.m */; };
 		D6F2D3D219805A6A0056FDAA /* Hazard.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3D119805A6A0056FDAA /* Hazard.m */; };
 		D6F2D3D8198078C50056FDAA /* TaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3D7198078C50056FDAA /* TaskViewController.m */; };
+		D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F816AC19D9C407004E630B /* PersonTableViewCell.m */; };
+		D6F816B019DA0BD9004E630B /* DataModel.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F816AF19DA0BD9004E630B /* DataModel.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -83,6 +86,8 @@
 		D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MidTaskViewController.m; sourceTree = "<group>"; };
 		D61AB7E2197ED74A003AD671 /* SignOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignOutViewController.h; sourceTree = "<group>"; };
 		D61AB7E3197ED74A003AD671 /* SignOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignOutViewController.m; sourceTree = "<group>"; };
+		D623489719DB5E7B00E61655 /* AddTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddTaskViewController.h; sourceTree = "<group>"; };
+		D623489819DB5E7B00E61655 /* AddTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddTaskViewController.m; sourceTree = "<group>"; };
 		D62E7396198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Screen Shot 2014-08-03 at 11.20.02 PM.png"; sourceTree = "<group>"; };
 		D62E739A198F603E00DB3441 /* BG Blur 8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 8.png"; sourceTree = "<group>"; };
 		D62E739B198F603E00DB3441 /* BG Blur 5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "BG Blur 5.png"; sourceTree = "<group>"; };
@@ -144,6 +149,10 @@
 		D6F2D3D119805A6A0056FDAA /* Hazard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Hazard.m; sourceTree = "<group>"; };
 		D6F2D3D6198078C50056FDAA /* TaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaskViewController.h; sourceTree = "<group>"; };
 		D6F2D3D7198078C50056FDAA /* TaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaskViewController.m; sourceTree = "<group>"; };
+		D6F816AB19D9C407004E630B /* PersonTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonTableViewCell.h; sourceTree = "<group>"; };
+		D6F816AC19D9C407004E630B /* PersonTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonTableViewCell.m; sourceTree = "<group>"; };
+		D6F816AE19DA0BD9004E630B /* DataModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataModel.h; sourceTree = "<group>"; };
+		D6F816AF19DA0BD9004E630B /* DataModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataModel.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,14 +207,16 @@
 		D61AB7D1197ED5BF003AD671 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				D6F2D3C719805A2E0056FDAA /* Person.h */,
-				D6F2D3C819805A2E0056FDAA /* Person.m */,
+				D6F816AE19DA0BD9004E630B /* DataModel.h */,
+				D6F816AF19DA0BD9004E630B /* DataModel.m */,
 				D6F2D3CA19805A440056FDAA /* Job.h */,
 				D6F2D3CB19805A440056FDAA /* Job.m */,
 				D6F2D3CD19805A530056FDAA /* Task.h */,
 				D6F2D3CE19805A530056FDAA /* Task.m */,
 				D6F2D3D019805A6A0056FDAA /* Hazard.h */,
 				D6F2D3D119805A6A0056FDAA /* Hazard.m */,
+				D6F2D3C719805A2E0056FDAA /* Person.h */,
+				D6F2D3C819805A2E0056FDAA /* Person.m */,
 				D65B5B2619D3062E00FD9021 /* VECA Zero-Bridging-Header.h */,
 			);
 			name = Models;
@@ -248,8 +259,8 @@
 			children = (
 				D6F2D3D6198078C50056FDAA /* TaskViewController.h */,
 				D6F2D3D7198078C50056FDAA /* TaskViewController.m */,
-				D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */,
-				D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */,
+				D623489719DB5E7B00E61655 /* AddTaskViewController.h */,
+				D623489819DB5E7B00E61655 /* AddTaskViewController.m */,
 			);
 			name = "Task View Controllers";
 			sourceTree = "<group>";
@@ -270,6 +281,8 @@
 				D61AB7D9197ED69F003AD671 /* SignInViewController.m */,
 				D61AB7DB197ED6D2003AD671 /* AddPersonViewController.h */,
 				D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */,
+				D6F816AB19D9C407004E630B /* PersonTableViewCell.h */,
+				D6F816AC19D9C407004E630B /* PersonTableViewCell.m */,
 			);
 			name = "Check In View Controllers";
 			sourceTree = "<group>";
@@ -334,6 +347,8 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */,
+				D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
@@ -502,6 +517,8 @@
 				D65B5B3F19D4B8CE00FD9021 /* SWUtilityButtonTapGestureRecognizer.m in Sources */,
 				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
 				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
+				D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */,
+				D6F816B019DA0BD9004E630B /* DataModel.m in Sources */,
 				D65B5B3D19D4B8CE00FD9021 /* SWLongPressGestureRecognizer.m in Sources */,
 				D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */,
 				D65B5B3C19D4B8CE00FD9021 /* SWCellScrollView.m in Sources */,
@@ -511,6 +528,7 @@
 				D689E37219799DED003050F5 /* main.m in Sources */,
 				D65B5B3E19D4B8CE00FD9021 /* SWTableViewCell.m in Sources */,
 				D65B5B4319D4BD7E00FD9021 /* JobTableViewCell.m in Sources */,
+				D623489919DB5E7B00E61655 /* AddTaskViewController.m in Sources */,
 				D6F2D3D219805A6A0056FDAA /* Hazard.m in Sources */,
 				D65B5B4019D4B8CE00FD9021 /* SWUtilityButtonView.m in Sources */,
 				D65B5B3B19D4B8CE00FD9021 /* NSMutableArray+SWUtilityButtons.m in Sources */,

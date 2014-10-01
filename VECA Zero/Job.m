@@ -11,20 +11,18 @@
 
 @implementation Job
 
-- (instancetype) initWithName:(NSString *)job {
-    if (self = [super init]) {
-        self.jobName = job;
-        self.tasksArray = [NSMutableArray new];
-        
+- (id)init {
+    if ((self = [super init])) {
+        self.tasksForJobArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
-    return self;
-}
+    return self; }
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {
     if ((self = [super init])) {
         self.jobName = [aDecoder decodeObjectForKey:@"jobName"];
         self.jobNumber = [aDecoder decodeObjectForKey:@"jobNumber"];
+        self.tasksForJobArray = [aDecoder decodeObjectForKey:@"tasksForJobArray"];
     }
     return self;
 }
@@ -33,6 +31,7 @@
 {
     [aCoder encodeObject:self.jobName forKey:@"jobName"];
     [aCoder encodeObject:self.jobNumber forKey:@"jobNumber"];
+    [aCoder encodeObject:self.tasksForJobArray forKey:@"tasksForJobArray"];
 }
 
 

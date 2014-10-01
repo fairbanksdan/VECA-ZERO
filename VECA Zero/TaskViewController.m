@@ -10,6 +10,7 @@
 #import "Task.h"
 #import "Job.h"
 #import "JobsViewController.h"
+#import "AddHazardsViewController.h"
 
 @interface TaskViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -28,6 +29,7 @@
     
     self.addTaskBarButton.tintColor = [UIColor whiteColor];
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+//    self.title = self.job.jobName;
 }
 
 - (void)didReceiveMemoryWarning
@@ -37,8 +39,14 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    NSLog(@"%lu", (unsigned long)self.job.tasksArray.count);
-    return self.job.tasksArray.count;
+    return [self.job.tasksForJobArray count];
+}
+
+- (void)configureTextForCell:(UITableViewCell *)cell
+                 withJobName:(Task *)task
+{
+    UILabel *label = (UILabel *)[cell viewWithTag:1000];
+    label.text = task.taskName;
 }
 
 
@@ -47,18 +55,63 @@
     static NSString *SimpleTableIdentifier = @"TaskCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
-    if (cell == nil) {
-        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
-    }
+    Task *task = self.job.tasksForJobArray[indexPath.row];
     
-    Task *newTask = [self.job.tasksArray objectAtIndex:indexPath.row];
+    [self configureTextForCell:cell withJobName:task];
     
-    NSLog(@"%@", newTask.taskName);
+//    if (cell == nil) {
+//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
+//    }
     
-    cell.textLabel.text = newTask.taskName;
+//    Task *newTask = [self.job.tasksArray objectAtIndex:indexPath.row];
+    
+//    NSLog(@"%@", newTask.taskName);
+    
+//    cell.textLabel.text = newTask.taskName;
     
     return cell;
     
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    [self.job.tasksForJobArray removeObjectAtIndex:indexPath.row];
+    
+    NSArray *indexPaths = @[indexPath];
+    [tableView deleteRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)AddTaskViewControllerDidCancel:(AddTaskViewController *)controller {
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task {
+    NSInteger newRowIndex = [self.job.tasksForJobArray count];
+    [self.job.tasksForJobArray addObject:task];
+    
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
+    NSArray *indexPaths = @[indexPath];
+    [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+//    [self dismissViewControllerAnimated:YES completion:nil];
+//    [self performSegueWithIdentifier:@"NewHazards" sender:task];
+    NSLog(@"Task Added");
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"NewTask"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddTaskViewController *controller = (AddTaskViewController *)navigationController.topViewController;
+        controller.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"NewHazards"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddHazardsViewController *controller = (AddHazardsViewController *)navigationController.topViewController;
+        controller.delegate = self;
+    }
 }
 
 @end

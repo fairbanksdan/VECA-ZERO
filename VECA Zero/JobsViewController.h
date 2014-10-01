@@ -9,10 +9,15 @@
 #import <UIKit/UIKit.h>
 #import "AddJobViewController.h"
 
+
+@class DataModel;
+
 @interface JobsViewController : UIViewController <AddJobViewControllerDelegate>
 
-
+@property (nonatomic, strong) Job *job;
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (strong, nonatomic) UIColor *navBarColor;
+
+@property (nonatomic, strong) DataModel *dataModel;
 
 @end

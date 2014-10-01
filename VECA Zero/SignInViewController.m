@@ -9,10 +9,14 @@
 #import "SignInViewController.h"
 #import "Person.h"
 #import "MidTaskViewController.h"
+#import "NSMutableArray+SWUtilityButtons.h"
+#import "SWTableViewCell.h"
+#import "PersonTableViewCell.h"
 
 @interface SignInViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *saveTaskButton;
 
 
 @end
@@ -33,7 +37,7 @@
 - (NSString *)dataFilePath
 {
     return [[self documentsDirectory]
-            stringByAppendingPathComponent:@"VECA Zero.plist"];
+            stringByAppendingPathComponent:@"VECA Zero Person.plist"];
 }
 
 - (void)savePersons
@@ -88,6 +92,8 @@
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
+    [self.saveTaskButton.layer setCornerRadius:5];
+    
 //    self.personArray = [NSMutableArray new];
 //    
 //    Person *person1 = [Person new];
@@ -124,13 +130,16 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"MidTask" sender:nil];
+    [self performSegueWithIdentifier:@"EditPerson" sender:self];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *SimpleTableIdentifier = @"PersonCell";
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
     
     Person *person = _persons[indexPath.row];
     [self configureTextForCell:cell withPersonName:person];
@@ -153,7 +162,7 @@
 
 - (void)AddPersonViewController:(AddPersonViewController *)controller didFinishAddingItem:(Person *)person {
     NSInteger newRowIndex = [_persons count];
-    [_persons insertObject:person atIndex:0];
+    [_persons addObject:person];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];
@@ -195,7 +204,7 @@
         segue.destinationViewController;
         AddPersonViewController *controller = (AddPersonViewController *)navigationController;
         controller.delegate = self;
-    } else if ([segue.identifier isEqualToString:@"EditPerson]"]) {
+    } else if ([segue.identifier isEqualToString:@"EditPerson"]) {
         UINavigationController *navigationController =
         segue.destinationViewController;
         AddPersonViewController *controller = (AddPersonViewController *)navigationController;
@@ -218,6 +227,51 @@
     
 }
 
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Edit"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    
+    PersonTableViewCell *cell;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return rightUtilityButtons;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            NSLog(@"Edit button was pressed");
+            [self segueToAddPersonVC];
+            break;
+        }
+        case 1:
+        {
+            // Delete button was pressed
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            [_persons removeObjectAtIndex:cellIndexPath.row];
+            
+            NSArray *indexPaths = @[cellIndexPath];
+            [self.tableView deleteRowsAtIndexPaths:indexPaths
+                                  withRowAnimation:UITableViewRowAnimationLeft];
+            
+            [self savePersons];
+            break;
+        }
+        default:
+            break;
+    }
+}
+
+-(void) segueToAddPersonVC{
+    [self performSegueWithIdentifier:@"EditPerson" sender:self];
+}
 
 
 @end

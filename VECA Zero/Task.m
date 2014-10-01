@@ -17,10 +17,30 @@
     return self;
 }
 
-- (void) addTaskToJob:(Job *)job {
-    [job.tasksArray addObject:self];
-    self.job = job;
+- (id)initWithCoder:(NSCoder *)aDecoder
+{
+    if ((self = [super init])) {
+        self.taskName = [aDecoder decodeObjectForKey:@"taskName"];
+        self.date = [aDecoder decodeObjectForKey:@"Date"];
+        self.hazardArray = [aDecoder decodeObjectForKey:@"hazardArray"];
+        self.specificTaskLocation = [aDecoder decodeObjectForKey:@"specificTaskLocation"];
+        self.PrimaryEvacuation = [aDecoder decodeObjectForKey:@"PrimaryEvacuation"];
+        self.SecondaryEvacuation = [aDecoder decodeObjectForKey:@"SecondaryEvacuation"];
+    }
+    return self;
 }
+
+- (void)encodeWithCoder:(NSCoder *)aCoder
+{
+    [aCoder encodeObject:self.taskName forKey:@"taskName"];
+    [aCoder encodeBool:self.date forKey:@"Date"];
+    [aCoder encodeBool:self.hazardArray forKey:@"hazardArray"];
+    [aCoder encodeObject:self.specificTaskLocation forKey:@"specificTaskLocation"];
+    [aCoder encodeObject:self.PrimaryEvacuation forKey:@"PrimaryEvacuation"];
+    [aCoder encodeObject:self.SecondaryEvacuation forKey:@"SecondaryEvacuation"];
+}
+
+
 
 
 @end

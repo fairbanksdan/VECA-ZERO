@@ -15,6 +15,8 @@
 #import "NSMutableArray+SWUtilityButtons.h"
 #import "SWTableViewCell.h"
 #import "JobTableViewCell.h"
+#import "DataModel.h"
+#import "AppDelegate.h"
 
 @interface JobsViewController  () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
 
@@ -26,62 +28,56 @@
 
 @implementation JobsViewController
 {
-    NSMutableArray *_items; //creates a mutable Array with the variable "_items"
+    NSMutableArray *_lists; //creates a mutable Array with the variable "_items"
+    DataModel *_dataModel;
 }
 
-- (NSString *)documentsDirectory
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-                                                         NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths firstObject];
-    return documentsDirectory;
-}
-
-- (NSString *)dataFilePath
-{
-    return [[self documentsDirectory]
-            stringByAppendingPathComponent:@"VECA Zero.plist"];
-}
-
-- (void)saveJobs
-{
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
-                                 initForWritingWithMutableData:data];
-    [archiver encodeObject:_items forKey:@"Jobs"];
-    [archiver finishEncoding];
-    [data writeToFile:[self dataFilePath] atomically:YES];
-}
-
-- (void)loadJobs
-{
-    NSString *path = [self dataFilePath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
-                                         initForReadingWithData:data];
-        _items = [unarchiver decodeObjectForKey:@"Jobs"];
-        
-        [unarchiver finishDecoding];
-    } else {
-        _items = [[NSMutableArray alloc] initWithCapacity:20];
-    }
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder])) {
-        [self loadJobs];
-    }
-    return self;
-}
+//- (NSString *)documentsDirectory
+//{
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+//                                                         NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths firstObject];
+//    return documentsDirectory;
+//}
+//
+//- (NSString *)dataFilePath
+//{
+//    return [[self documentsDirectory]
+//            stringByAppendingPathComponent:@"VECA Zero.plist"];
+//}
+//
+//- (void)saveJobs
+//{
+//    NSMutableData *data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
+//                                 initForWritingWithMutableData:data];
+//    [archiver encodeObject:_items forKey:@"Jobs"];
+//    [archiver finishEncoding];
+//    [data writeToFile:[self dataFilePath] atomically:YES];
+//}
+//
+//- (void)loadJobs
+//{
+//    NSString *path = [self dataFilePath];
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+//        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+//                                         initForReadingWithData:data];
+//        _items = [unarchiver decodeObjectForKey:@"Jobs"];
+//        
+//        [unarchiver finishDecoding];
+//    } else {
+//        _items = [[NSMutableArray alloc] initWithCapacity:20];
+//    }
+//}
+//
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
-    NSLog(@"Documents folder is %@", [self documentsDirectory]);
-    NSLog(@"Data file path is %@", [self dataFilePath]);
+//    NSLog(@"Documents folder is %@", [self documentsDirectory]);
+//    NSLog(@"Data file path is %@", [self dataFilePath]);
     
 //    _items = [NSMutableArray new];
     
@@ -115,6 +111,11 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)saveData
+{
+    [_dataModel saveJobs];
+}
+
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
@@ -133,11 +134,12 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return  [_items count];
+    return  [self.dataModel.tasksForJobs count];
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"Task" sender:nil];
+    Job *job = self.dataModel.tasksForJobs[indexPath.row];
+    [self performSegueWithIdentifier:@"Task" sender:job];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -158,7 +160,7 @@
 
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JobCell"];
     
-    Job *job = _items[indexPath.row];
+    Job *job = self.dataModel.tasksForJobs[indexPath.row];
     [self configureTextForCell:cell withJobName:job];
     
     return cell; //returns what is in each "cell" as defined in this method
@@ -166,8 +168,8 @@
 
 - (void)AddJobViewController:(AddJobViewController *)controller
          didFinishAddingItem:(Job *)job; {
-    NSInteger newRowIndex = [_items count];
-    [_items insertObject:job atIndex:0];
+    NSInteger newRowIndex = [self.dataModel.tasksForJobs count];
+    [self.dataModel.tasksForJobs insertObject:job atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];
@@ -176,20 +178,20 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
     
-    [self saveJobs];
+    [self saveData];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (void)AddJobViewController:(AddJobViewController *)controller didFinishEditingItem:(Job *)job {
-    NSInteger index = [_items indexOfObject:job];
+    NSInteger index = [self.dataModel.tasksForJobs indexOfObject:job];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
                                                 inSection:0];
     UITableViewCell *cell = [self.tableView
                              cellForRowAtIndexPath:indexPath];
     [self configureTextForCell:cell withJobName:job];
     
-    [self saveJobs];
+    [self saveData];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -200,9 +202,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-    
-    Job *myJob;
+//    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+//    
+//    Job *myJob;
     
     if ([segue.identifier isEqualToString:@"AddJob"]) {
 //        AddJobViewController *addJobVC = segue.destinationViewController;
@@ -218,6 +220,7 @@
         navigationController;
         // 3
         controller.delegate = self;
+        controller.jobToEdit = nil;
         NSLog(@"AddJob Segue");
     } else if ([segue.identifier isEqualToString:@"EditJob"])
     {
@@ -229,42 +232,23 @@
         
         NSIndexPath *indexPath = [self.tableView
                                   indexPathForCell:sender];
-        controller.itemToEdit = [Job new];
+        controller.jobToEdit = [Job new];
         
-        controller.itemToEdit = _items[indexPath.row];
-        controller.jobNumberTextField.text = controller.itemToEdit.jobNumber;
-        controller.projectNameTextField.text = controller.itemToEdit.jobName;
+        controller.jobToEdit = self.dataModel.tasksForJobs[indexPath.row];
+        controller.jobNumberTextField.text = controller.jobToEdit.jobNumber;
+        controller.projectNameTextField.text = controller.jobToEdit.jobName;
         controller.delegate = self;
         NSLog(@"EditJob Segue");
     } else if ([segue.identifier isEqualToString:@"Task"]) {
         NSLog(@"Task Segue");
         TaskViewController *destViewController = segue.destinationViewController;
         destViewController.job = sender;
-        myJob = [_items objectAtIndex:myIndexPath.row];
+//        self.dataModel.tasksForJobs = sender;
+////        myJob = [self.dataModel.tasksForJobs objectAtIndex:myIndexPath.row];
         //destViewController.tasks = job.jobName;
         destViewController.title = @"Tasks";
-        destViewController.job = myJob;
-    }
-    
-    
-    
-    
-//    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-//    
-//    Job *myJob;
-//    
-//    if ([segue.identifier isEqualToString:@"AddJob"]) {
-//        AddJobViewController *addJobVC = segue.destinationViewController;
-//        myJob = [Job new];
-//        [[[DataController sharedData] jobArray] insertObject:myJob atIndex:0];
-//        addJobVC.selectedJob = myJob;
-//    } else {
-//        TaskViewController *destViewController = segue.destinationViewController;
-//            myJob = [self.myDataController.jobArray objectAtIndex:myIndexPath.row];
-////        destViewController.tasks = job.jobName;
-//        destViewController.title = @"Tasks";
 //        destViewController.job = myJob;
-//    }
+    }
     
     
 }
@@ -297,13 +281,13 @@
         {
             // Delete button was pressed
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-            [_items removeObjectAtIndex:cellIndexPath.row];
+            [self.dataModel.tasksForJobs removeObjectAtIndex:cellIndexPath.row];
             
             NSArray *indexPaths = @[cellIndexPath];
             [self.tableView deleteRowsAtIndexPaths:indexPaths
                              withRowAnimation:UITableViewRowAnimationLeft];
             
-            [self saveJobs];
+            [self saveData];
             break;
         }
         default:

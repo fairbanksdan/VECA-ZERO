@@ -11,7 +11,11 @@
 @interface Person : NSObject
 
 @property (nonatomic, strong) NSString *fullName;
-@property (nonatomic, strong) UIImage *initials;
+@property (nonatomic, strong) UIImage *checkInInitials;
+@property (nonatomic, strong) UIImage *checkOutInitials;
+@property (nonatomic) BOOL *injured;
+@property (nonatomic, strong) NSString *supervisor;
+@property (nonatomic, strong) NSString *incidentDescription;
 
 
 @end

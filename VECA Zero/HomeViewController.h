@@ -7,7 +7,10 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "DataModel.h"
 
 @interface HomeViewController : UIViewController
+
+//@property (nonatomic, strong) DataModel *dataModel;
 
 @end

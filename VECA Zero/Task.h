@@ -9,15 +9,21 @@
 #import <Foundation/Foundation.h>
 #import "Job.h"
 
-@interface Task : NSObject
+@interface Task : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *taskName;
 @property (nonatomic, strong) NSDate *date;
+@property (nonatomic, strong) NSString *specificTaskLocation;
+@property (nonatomic, strong) NSString *PrimaryEvacuation;
+@property (nonatomic, strong) NSString *SecondaryEvacuation;
 
-@property (readwrite) Job *job;
+@property (nonatomic, strong) NSMutableArray *hazardArray;
+@property (nonatomic, strong) NSMutableArray *personArray;
 
-- (instancetype) initWithName:(NSString *)taskName;
+//@property (readwrite) Job *job;
 
-- (void) addTaskToJob:(Job *)job;
+//- (instancetype) initWithName:(NSString *)taskName;
+//
+//- (void) addTaskToJob:(Job *)job;
 
 @end

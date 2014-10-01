@@ -1,0 +1,39 @@
+//
+//  AddTaskViewController.h
+//  VECA Zero
+//
+//  Created by Daniel Fairbanks on 9/30/14.
+//  Copyright (c) 2014 Fairbanksdan. All rights reserved.
+//
+
+#import <UIKit/UIKit.h>
+
+@class AddTaskViewController;
+@class Task;
+
+@protocol AddTaskViewControllerDelegate <NSObject>
+
+- (void)AddTaskViewControllerDidCancel:(AddTaskViewController *)controller;
+
+- (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task;
+
+- (void)AddTaskViewController:(AddTaskViewController *)controller didFinishEditingItem:(Task *)task;
+
+@end
+
+@interface AddTaskViewController : UITableViewController
+
+@property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
+@property (strong, nonatomic) UIColor *navBarColor;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextBarButton;
+@property (weak, nonatomic) IBOutlet UITextField *taskNameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *specificTaskLocationTextField;
+@property (weak, nonatomic) IBOutlet UITextField *PrimaryEvacTextField;
+@property (weak, nonatomic) IBOutlet UITextField *SecondaryEvacTextField;
+
+@property (nonatomic, weak) id <AddTaskViewControllerDelegate> delegate;
+
+- (IBAction)cancel;
+- (IBAction)next;
+
+@end

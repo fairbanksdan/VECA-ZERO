@@ -9,6 +9,7 @@
 #import "AddJobViewController.h"
 #import "JobsViewController.h"
 #import "DataController.h"
+#import "Task.h"
 
 @interface AddJobViewController () <UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
@@ -61,10 +62,10 @@
     self.doneBarButton.enabled = NO;
 //    [self nameOfJobDoesExist];
     
-    if (self.itemToEdit != nil) {
+    if (self.jobToEdit != nil) {
         self.navBar.title = @"Edit Job";
-        self.jobNumberTextField.text = self.itemToEdit.jobNumber;
-        self.projectNameTextField.text = self.itemToEdit.jobName;
+        self.jobNumberTextField.text = self.jobToEdit.jobNumber;
+        self.projectNameTextField.text = self.jobToEdit.jobName;
         self.doneBarButton.enabled = YES;
     }
     
@@ -99,15 +100,15 @@
 //}
 
 - (IBAction)doneButtonPressed:(id)sender {
-    if (self.itemToEdit == nil) {
+    if (self.jobToEdit == nil) {
         Job *job = [[Job alloc] init];
         job.jobName = self.projectNameTextField.text;
         job.jobNumber = self.jobNumberTextField.text;
         [self.delegate AddJobViewController:self didFinishAddingItem:job];
     } else {
-        self.itemToEdit.jobName = self.projectNameTextField.text;
-        self.itemToEdit.jobNumber = self.jobNumberTextField.text;
-        [self.delegate AddJobViewController:self didFinishEditingItem:self.itemToEdit];
+        self.jobToEdit.jobName = self.projectNameTextField.text;
+        self.jobToEdit.jobNumber = self.jobNumberTextField.text;
+        [self.delegate AddJobViewController:self didFinishEditingItem:self.jobToEdit];
     }
     
 //    [[DataController sharedData] save];
