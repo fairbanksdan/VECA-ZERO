@@ -535,21 +535,7 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="OVP-IS-MNj" id="IGV-ie-tfj">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="43"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Hazard" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="JwB-Fz-v9D">
-                                                    <rect key="frame" x="20" y="7" width="280" height="30"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                    <connections>
-                                                        <action selector="hazardTFChanged:" destination="dL0-Hl-mkZ" eventType="editingChanged" id="poC-pk-Fso"/>
-                                                        <action selector="hazardTFTextChanged:" destination="OVP-IS-MNj" eventType="editingChanged" id="4Dk-GQ-lck"/>
-                                                    </connections>
-                                                </textField>
-                                            </subviews>
                                         </tableViewCellContentView>
-                                        <connections>
-                                            <outlet property="hazardTextField" destination="JwB-Fz-v9D" id="mX0-ph-29I"/>
-                                        </connections>
                                     </tableViewCell>
                                     <tableViewCell tag="1001" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="SolutionCell" rowHeight="88" id="m6i-H2-4mC">
                                         <rect key="frame" x="0.0" y="163" width="320" height="88"/>

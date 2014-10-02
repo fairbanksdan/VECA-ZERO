@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Hazard : NSObject
+@interface Hazard : NSObject <NSCoding>
 
 @property (strong, nonatomic) NSString *hazardName;
 @property (strong, nonatomic) NSString *solution;

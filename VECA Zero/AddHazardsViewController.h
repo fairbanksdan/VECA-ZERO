@@ -27,6 +27,7 @@
 
 @property (strong, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITextField *textField;
 
 @property (nonatomic, weak) id <AddHazardsViewControllerDelegate> delegate;
 

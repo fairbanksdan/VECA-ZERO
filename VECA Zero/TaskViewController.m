@@ -9,6 +9,7 @@
 #import "TaskViewController.h"
 #import "Task.h"
 #import "Job.h"
+#import "Hazard.h"
 #import "JobsViewController.h"
 #import "AddHazardsViewController.h"
 #import "DataModel.h"
@@ -68,13 +69,13 @@
     static NSString *SimpleTableIdentifier = @"TaskCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
-    Task *task = self.job.tasksForJobArray[indexPath.row];
+    _task = self.job.tasksForJobArray[indexPath.row];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
-    cell.detailTextLabel.text = [formatter stringFromDate:task.date];
+    cell.detailTextLabel.text = [formatter stringFromDate:_task.date];
     
-    [self configureTextForCell:cell withJobName:task];
+    [self configureTextForCell:cell withJobName:_task];
     
 //    if (cell == nil) {
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
@@ -118,6 +119,12 @@
 //    [self performSegueWithIdentifier:@"NewHazards" sender:task];
     [self saveData];
     NSLog(@"Task Added");
+}
+
+-(void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
+    [self.task.hazardArray addObject:hazard];
+    NSLog(@"Hazard Array Count is: %lu",[self.task.hazardArray count]);
+    NSLog(@"Hazard Name is %@", hazard.hazardName);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

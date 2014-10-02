@@ -15,7 +15,8 @@
     if ((self = [super init])) {
         self.tasksForJobArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
-    return self; }
+    return self;
+}
 
 - (id)initWithCoder:(NSCoder *)aDecoder
 {

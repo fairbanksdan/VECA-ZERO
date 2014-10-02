@@ -8,7 +8,7 @@
 
 #import <Foundation/Foundation.h>
 
-@interface Person : NSObject
+@interface Person : NSObject <NSCoding>
 
 @property (nonatomic, strong) NSString *fullName;
 @property (nonatomic, strong) UIImage *checkInInitials;

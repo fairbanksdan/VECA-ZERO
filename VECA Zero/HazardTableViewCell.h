@@ -15,7 +15,7 @@
 @interface HazardTableViewCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UITextField *hazardTextField;
-- (IBAction)hazardTFTextChanged:(UITextField *)sender;
+//- (IBAction)hazardTFTextChanged:(UITextField *)sender;
 
 @property (nonatomic, weak) id <HazardTableViewCellDelegate> delegate;
 

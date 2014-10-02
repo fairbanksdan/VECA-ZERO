@@ -10,10 +10,12 @@
 #import "Job.h"
 #import "Task.h"
 #import "AddTaskViewController.h"
+#import "AddHazardsViewController.h"
 
-@interface TaskViewController : UIViewController <AddTaskViewControllerDelegate>
+@interface TaskViewController : UIViewController <AddTaskViewControllerDelegate, AddHazardsViewControllerDelegate>
 
 @property (strong, nonatomic) Job *job;
+@property (strong, nonatomic) Task *task;
 //@property (strong, nonatomic) NSString *tasks;
 //@property (readwrite) Task *task;
 

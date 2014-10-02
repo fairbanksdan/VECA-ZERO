@@ -10,8 +10,15 @@
 
 @implementation Task
 
+- (id)init {
+    if ((self = [super init])) {
+        self.hazardArray = [[NSMutableArray alloc] initWithCapacity:20];
+    }
+    return self;
+}
+
 - (instancetype) initWithName:(NSString *)taskName {
-    if (self = [super init]) {
+    if (self = [super init]) {        
         self.taskName = taskName;
     }
     return self;

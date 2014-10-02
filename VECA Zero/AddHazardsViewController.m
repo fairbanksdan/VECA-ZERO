@@ -8,6 +8,9 @@
 
 #import "AddHazardsViewController.h"
 #import "Hazard.h"
+#import "Job.h"
+#import "Task.h"
+#import "HazardTableViewCell.h"
 
 @interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -15,7 +18,7 @@
 
 @implementation AddHazardsViewController
 {
-    NSMutableArray *_hazards;
+    NSMutableArray *_localHazardsArray;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -31,15 +34,13 @@
 {
     [super viewDidLoad];
     
-    
-    
-    _hazards = [NSMutableArray new];
+    _localHazardsArray = [[NSMutableArray alloc] initWithCapacity:20];
     
 //    Hazard *hazard = [Hazard new];
 //    
 //    hazard.hazardName = @"Ladder";
 //    hazard.solution = @"Do not go above the second to top rung of ladder";
-//    [_hazards addObject:hazard];
+//    [self.task.hazardArray addObject:hazard];
     
 //    hazard.hazardName = @"Hole in Ground";
 //    hazard.solution = @"Avoid the Hole.";
@@ -55,7 +56,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section < [_hazards count]) {
+    if (indexPath.section < ([_localHazardsArray count]+ 1)) {
         if (indexPath.row % 2) {
             return 88;
         } else {
@@ -67,13 +68,13 @@
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
-    return [_hazards count] +1;
+    return [_localHazardsArray count] + 2;
     [tableView reloadData];
 
 }
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    if (section < [_hazards count]) {
+    if (section < ([_localHazardsArray count] + 1)) {
         return 2;
 //        return [_hazards count] * 2;
 //        NSLog(@"hazards count is: %ul", [_hazards count]);
@@ -96,7 +97,7 @@
     
     
     
-    if (indexPath.section < [_hazards count]) {
+    if (indexPath.section < ([_localHazardsArray count]+ 1)) {
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -113,9 +114,21 @@
             
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    UITextField *textField = [[UITextField alloc] init];
-                    textField.tag = tableView[indexPath.row];
+                    
+                    
+                    
+                    
             }
+            self.textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 7, 280, 30)];
+            
+            [self.textField setBorderStyle:UITextBorderStyleNone];
+            self.textField.tag = indexPath.section;
+            self.textField.placeholder = @"Hazard";
+            NSLog(@"Hazard number is: %lu", self.textField.tag);
+            
+            
+            [cell addSubview:self.textField];
+            
             return cell;
             
         }
@@ -128,22 +141,46 @@
         }
         return cell;
     }
+    
+    self.textField = (UITextField*)[self.view viewWithTag:indexPath.section];
+    NSString* textString = self.textField.text;
+    
+    Hazard *hazard = [Hazard new];
+    hazard.hazardName = textString;
+    NSLog(@"Hazard Name from Cell is %@", hazard.hazardName);
+
 
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section >= [_hazards count]) {
+    if (indexPath.section == ([_localHazardsArray count]+ 1)) {
+        self.textField = (UITextField*)[self.view viewWithTag:indexPath.section];
+        NSString* textString = self.textField.text;
+
         Hazard *hazard = [Hazard new];
-        [_hazards addObject:hazard];
+        hazard.hazardName = textString;
+//        NSLog(@"Hazard Name from Cell is %@", hazard.hazardName);
+//        if (indexPath.section == [_localHazardsArray count]) {
+//            
+//            if (indexPath.row == 0) {
+//                hazard.hazardName == ;
+//            }
+//            
+//        }
+        [_localHazardsArray addObject:hazard];
+        
+        [self.delegate AddHazardsViewController:self didFinishAddingItem:hazard];
+        NSLog(@"Hazard Array Count is: %lu", [_localHazardsArray count]);
         [tableView reloadData];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
         return UITableViewCellEditingStyleNone;
-    } else if (indexPath.section == [_hazards count]){
+    } else if (indexPath.section == ([_localHazardsArray count]+ 1)){
         return UITableViewCellEditingStyleNone;
     } else {
         return UITableViewCellEditingStyleDelete;
@@ -154,7 +191,7 @@
 forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-        [_hazards removeObjectAtIndex:indexPath.row];
+        [_localHazardsArray removeObjectAtIndex:indexPath.row];
         //    NSArray *indexPaths = @[indexPath];
         //    [tableView deleteRowsAtIndexPaths:indexPaths
         //                     withRowAnimation:UITableViewRowAnimationAutomatic];
@@ -162,13 +199,13 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
     }
 }
 
-- (IBAction)hazardTFChanged:(UITextField *)sender {
-    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
-    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
-    Hazard *hazard = [Hazard new];
-    hazard =
-    hazard.hazardName =
-}
+//- (IBAction)hazardTFChanged:(UITextField *)sender {
+//    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
+//    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
+//    Hazard *hazard = [Hazard new];
+//    hazard =
+//    hazard.hazardName =
+//}
 
 
 //- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
