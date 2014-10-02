@@ -8,6 +8,8 @@
 
 #import "AddTaskViewController.h"
 #import "Task.h"
+#import "Hazard.h"
+#import "AddHazardsViewController.h"
 
 @interface AddTaskViewController ()
 
@@ -16,6 +18,8 @@
 @implementation AddTaskViewController
 {
     NSDate *_date;
+    Hazard *_hazard;
+    
     BOOL _datePickerVisible;
 }
 
@@ -59,17 +63,17 @@
     [self.delegate AddTaskViewControllerDidCancel:self];
 }
 
-- (IBAction)next {
-    Task *task = [Task new];
-    task.taskName = self.taskNameTextField.text;
-    task.specificTaskLocation = self.specificTaskLocationTextField.text;
-    task.PrimaryEvacuation = self.PrimaryEvacTextField.text;
-    task.SecondaryEvacuation = self.SecondaryEvacTextField.text;
-    task.date = _date;
-    NSLog(@"Next Button Pressed");
-    
-    [self.delegate AddTaskViewController:self didFinishAddingItem:task];
-}
+//- (IBAction)next {
+//    Task *task = [Task new];
+//    task.taskName = self.taskNameTextField.text;
+//    task.specificTaskLocation = self.specificTaskLocationTextField.text;
+//    task.PrimaryEvacuation = self.PrimaryEvacTextField.text;
+//    task.SecondaryEvacuation = self.SecondaryEvacTextField.text;
+//    task.date = _date;
+//    NSLog(@"Next Button Pressed");
+//    
+//    [self.delegate AddTaskViewController:self didFinishAddingItem:task];
+//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"NewHazards"]) {
@@ -84,6 +88,7 @@
     task.PrimaryEvacuation = self.PrimaryEvacTextField.text;
     task.SecondaryEvacuation = self.SecondaryEvacTextField.text;
     task.date = _date;
+//    [task.hazardArray addObject:_]
     NSLog(@"Next Button Pressed");
     
     [self.delegate AddTaskViewController:self didFinishAddingItem:task];
@@ -244,5 +249,7 @@ indentationLevelForRowAtIndexPath:indexPath];
     [self hideDatePicker];
     }
 }
+
+
 
 @end

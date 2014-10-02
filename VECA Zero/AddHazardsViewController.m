@@ -18,7 +18,13 @@
 
 @implementation AddHazardsViewController
 {
-    NSMutableArray *_localHazardsArray;
+    
+    UITextField *_newTextField;
+    UITextField *_solutionTextField;
+    NSString *_string;
+    NSMutableArray *_textFields;
+    NSMutableArray *_solutionTextFields;
+//    NSMutableArray *_tags;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -36,15 +42,9 @@
     
     _localHazardsArray = [[NSMutableArray alloc] initWithCapacity:20];
     
-//    Hazard *hazard = [Hazard new];
-//    
-//    hazard.hazardName = @"Ladder";
-//    hazard.solution = @"Do not go above the second to top rung of ladder";
-//    [self.task.hazardArray addObject:hazard];
+    _textFields = [[NSMutableArray alloc] initWithCapacity:20];
     
-//    hazard.hazardName = @"Hole in Ground";
-//    hazard.solution = @"Avoid the Hole.";
-//    [_hazards addObject:hazard];
+    _solutionTextFields = [[NSMutableArray alloc] initWithCapacity:20];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
@@ -76,8 +76,6 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     if (section < ([_localHazardsArray count] + 1)) {
         return 2;
-//        return [_hazards count] * 2;
-//        NSLog(@"hazards count is: %ul", [_hazards count]);
     } else {
     return 1;
     }
@@ -92,85 +90,82 @@
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    NSString *CellIdentifier = @"HazardCell";
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-    
-    
-    
+
     if (indexPath.section < ([_localHazardsArray count]+ 1)) {
+        
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
+            if (indexPath.section >= ([_solutionTextFields count])) {
+                UITextField *cellTextField = [UITextField new];
+                cellTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 7, 280, 80)];
+                
+                [cellTextField setBorderStyle:UITextBorderStyleNone];
+                [cellTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
+                cellTextField.placeholder = @"Solution";
+                
+                
+                [_solutionTextFields addObject:cellTextField];
+                
+                [cell addSubview:cellTextField];
+                
+                return cell;
+                
+            } else {
+                
+                return cell;
+                
+            }
+        
+            
+            
+            
             return cell;
             
         } else {
-            
-                
                 NSString *CellIdentifier = @"HazardCell";
                 UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             
                 if (cell == nil) {
                     cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-                    
-                    
-                    
-                    
+                }
+            if (indexPath.section >= ([_textFields count])) {
+                UITextField *cellTextField = [UITextField new];
+                cellTextField = [[UITextField alloc] initWithFrame:CGRectMake(20, 7, 280, 30)];
+                
+                [cellTextField setBorderStyle:UITextBorderStyleNone];
+                cellTextField.placeholder = @"Hazard";
+                
+                [_textFields addObject:cellTextField];
+                
+                [cell addSubview:cellTextField];
+                
+                return cell;
+                
+            } else {
+            
+                return cell;
+            
             }
-            self.textField = [[UITextField alloc] initWithFrame:CGRectMake(20, 7, 280, 30)];
-            
-            [self.textField setBorderStyle:UITextBorderStyleNone];
-            self.textField.tag = indexPath.section;
-            self.textField.placeholder = @"Hazard";
-            NSLog(@"Hazard number is: %lu", self.textField.tag);
-            
-            
-            [cell addSubview:self.textField];
-            
-            return cell;
-            
         }
     } else {
         NSString *CellIdentifier = @"AddNewHazardCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
         if (cell == nil) {
             cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            
         }
         return cell;
     }
-    
-    self.textField = (UITextField*)[self.view viewWithTag:indexPath.section];
-    NSString* textString = self.textField.text;
-    
-    Hazard *hazard = [Hazard new];
-    hazard.hazardName = textString;
-    NSLog(@"Hazard Name from Cell is %@", hazard.hazardName);
-
-
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == ([_localHazardsArray count]+ 1)) {
-        self.textField = (UITextField*)[self.view viewWithTag:indexPath.section];
-        NSString* textString = self.textField.text;
-
-        Hazard *hazard = [Hazard new];
-        hazard.hazardName = textString;
-//        NSLog(@"Hazard Name from Cell is %@", hazard.hazardName);
-//        if (indexPath.section == [_localHazardsArray count]) {
-//            
-//            if (indexPath.row == 0) {
-//                hazard.hazardName == ;
-//            }
-//            
-//        }
-        [_localHazardsArray addObject:hazard];
+        _string = @"1";
+        [_localHazardsArray addObject:_string];
         
-        [self.delegate AddHazardsViewController:self didFinishAddingItem:hazard];
-        NSLog(@"Hazard Array Count is: %lu", [_localHazardsArray count]);
         [tableView reloadData];
     }
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -192,32 +187,37 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_localHazardsArray removeObjectAtIndex:indexPath.row];
-        //    NSArray *indexPaths = @[indexPath];
-        //    [tableView deleteRowsAtIndexPaths:indexPaths
-        //                     withRowAnimation:UITableViewRowAnimationAutomatic];
+
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
-//- (IBAction)hazardTFChanged:(UITextField *)sender {
-//    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
-//    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
-//    Hazard *hazard = [Hazard new];
-//    hazard =
-//    hazard.hazardName =
-//}
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"CheckIn"]) {
+        [self saveHazard];
+    }
+}
 
+-(void)saveHazard {
+    int i = 0;
+    while (i < ([_textFields count])) {
+        
+        _newTextField = [_textFields objectAtIndex:i];
+        _solutionTextField = [_solutionTextFields objectAtIndex:i];
 
-//- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string {
-//    //Replace the string manually in the textbox
-//    textField.text = [textField.text stringByReplacingCharactersInRange:range withString:string];
-//    //perform any logic here now that you are sure the textbox text has changed
-//    CGPoint hitPoint = [sender convertPoint:CGPointZero toView:self.tableView];
-//    NSIndexPath *hitIndex = [self.tableView indexPathForRowAtPoint:hitPoint];
-//    [self didChangeTextInTextField:textField];
-//    return NO; //this make iOS not to perform any action
-//}
-
-
+        Hazard *hazard = [Hazard new];
+        hazard.hazardName = _newTextField.text;
+        hazard.solution = _solutionTextField.text;
+        
+        [self.delegate AddHazardsViewController:self didFinishAddingItem:hazard];
+        
+        NSLog(@"Hazard Name is %@", hazard.hazardName);
+        NSLog(@"Hazard Solution is %@", hazard.solution);
+        NSLog(@"_textFields count is: %lu", [_textFields count]);
+        NSLog(@"_textFields count is: %lu", [_solutionTextFields count]);
+        
+        i += 1;
+    }
+}
 
 @end

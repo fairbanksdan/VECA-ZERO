@@ -488,11 +488,13 @@
                     </tableView>
                     <navigationItem key="navigationItem" title="New Task" id="vtm-Wo-t0P">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="qUs-uk-jqq">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="cancel" destination="UYT-O3-bg7" id="9r5-nr-XK0"/>
                             </connections>
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="yUT-JD-94m">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <action selector="next" destination="UYT-O3-bg7" id="GKq-CI-Rvj"/>
                                 <segue destination="dL0-Hl-mkZ" kind="push" identifier="NewHazards" id="wcR-SI-Efi"/>
@@ -543,13 +545,6 @@
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="redraw" tableViewCell="m6i-H2-4mC" id="HRr-Sa-cLA">
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="87"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="top" placeholder="Solution" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="btM-Eq-Xjy">
-                                                    <rect key="frame" x="20" y="7" width="280" height="80"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                                    <textInputTraits key="textInputTraits"/>
-                                                </textField>
-                                            </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="AddNewHazardCell" id="n8n-jp-Wd2">
@@ -580,8 +575,9 @@
                     <navigationItem key="navigationItem" title="New Hazards" id="bfl-i3-CmZ">
                         <barButtonItem key="backBarButtonItem" title="Back" id="aS2-Oz-Z42"/>
                         <barButtonItem key="rightBarButtonItem" title="Next" id="KLh-AK-e8w">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
-                                <segue destination="oeJ-cH-2OG" kind="push" id="xBo-ES-BQ0"/>
+                                <segue destination="oeJ-cH-2OG" kind="push" identifier="CheckIn" id="xBo-ES-BQ0"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
@@ -658,6 +654,7 @@
                     <navigationItem key="navigationItem" title="Check In" id="yNe-WP-a5P">
                         <barButtonItem key="backBarButtonItem" title="Back" id="KOJ-Mz-IIs"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vd4-Qa-6XK">
+                            <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                             <connections>
                                 <segue destination="zA6-kV-JuD" kind="modal" identifier="AddPerson" id="t8B-rt-Q5i"/>
                             </connections>
@@ -1097,6 +1094,7 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="n6H-D9-P86">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <color key="barTintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                     </navigationBar>
                     <nil name="viewControllers"/>
                     <connections>

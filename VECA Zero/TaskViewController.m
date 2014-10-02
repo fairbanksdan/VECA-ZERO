@@ -56,9 +56,12 @@
                  withJobName:(Task *)task
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    
+    UILabel *hazardLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 7, 50, 30)];
+    [cell addSubview:hazardLabel];
     
     label.text = task.taskName;
+
+    hazardLabel.text = [NSString stringWithFormat:@"%lu", [task.hazardArray count]];
     
     
 }
@@ -70,12 +73,14 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
     _task = self.job.tasksForJobArray[indexPath.row];
+//    _hazard = [self.task.hazardArray objectAtIndex:0];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     cell.detailTextLabel.text = [formatter stringFromDate:_task.date];
     
-    [self configureTextForCell:cell withJobName:_task];
+    [self configureTextForCell:cell
+                   withJobName:_task];
     
 //    if (cell == nil) {
 //        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
@@ -123,8 +128,10 @@
 
 -(void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
     [self.task.hazardArray addObject:hazard];
-    NSLog(@"Hazard Array Count is: %lu",[self.task.hazardArray count]);
-    NSLog(@"Hazard Name is %@", hazard.hazardName);
+    NSLog(@"DidFinishAddingHazard Called");
+//    NSLog(@"Hazard Array Count is: %lu",[self.task.hazardArray count]);
+//    NSLog(@"Hazard Name from Task is %@", hazard.hazardName);
+//    NSLog(@"Hazard Solution from task is %@", hazard.solution);
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {

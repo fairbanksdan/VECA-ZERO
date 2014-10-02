@@ -23,13 +23,16 @@
 
 @end
 
-@interface AddHazardsViewController : UIViewController <HazardTableViewCellDelegate>
+@interface AddHazardsViewController : UIViewController
 
 @property (strong, nonatomic) Task *task;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
-@property (strong, nonatomic) UITextField *textField;
+//@property (strong, nonatomic) UITextField *textField;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
+@property NSMutableArray *localHazardsArray;
 
 @property (nonatomic, weak) id <AddHazardsViewControllerDelegate> delegate;
+
 
 
 
