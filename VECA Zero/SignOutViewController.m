@@ -8,7 +8,7 @@
 
 #import "SignOutViewController.h"
 
-@interface SignOutViewController ()
+@interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate>
 
 @end
 
@@ -26,6 +26,9 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
     // Do any additional setup after loading the view.
 }
 
@@ -33,6 +36,20 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+- (IBAction)cancel:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:self completion:nil];
+}
+
+-(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return 1;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *SimpleTableIdentifier = @"PersonCell";
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    
+    return cell;
 }
 
 /*

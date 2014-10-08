@@ -14,6 +14,8 @@
 @property (nonatomic, strong) NSString *jobName;
 
 @property (nonatomic, strong) NSMutableArray *tasksForJobArray;
+
+@property NSInteger jobIndexPath;
 //@property (nonatomic, strong) NSMutableArray *jobsArray;
 
 //- (instancetype) initWithName:(NSString *)job;

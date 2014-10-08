@@ -10,6 +10,27 @@
 
 @implementation DataModel
 
++ (DataModel *)myDataModel {
+    static DataModel *sharedModel = nil;
+    static dispatch_once_t once = 0;
+    dispatch_once(&once, ^{
+        sharedModel = [[self alloc] init];
+//        sharedModel.jobsArray = [[NSMutableArray alloc] init];
+    });
+    return sharedModel;
+}
+
+- (id)init
+{
+    self = [super init];
+    if (self) {
+        [self loadJobs];
+//        DataModel *_dataModel = [DataModel myDataModel];
+//        _jobsArray = [[NSMutableArray alloc] initWithCapacity:20];
+    }
+    return  self;
+}
+
 - (NSString *)documentsDirectory
 {
     NSArray *paths = NSSearchPathForDirectoriesInDomains(
@@ -29,7 +50,7 @@
     NSMutableData *data = [[NSMutableData alloc] init];
     NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
                                  initForWritingWithMutableData:data];
-    [archiver encodeObject:self.tasksForJobs forKey:@"tasksForJobs"];
+    [archiver encodeObject:_jobsArray forKey:@"tasksForJobs"];
     [archiver finishEncoding];
     [data writeToFile:[self dataFilePath] atomically:YES];
 }
@@ -41,20 +62,22 @@
         NSData *data = [[NSData alloc] initWithContentsOfFile:path];
         NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
                                          initForReadingWithData:data];
-        self.tasksForJobs = [unarchiver decodeObjectForKey:@"tasksForJobs"];
+        _jobsArray = [unarchiver decodeObjectForKey:@"tasksForJobs"];
 
         [unarchiver finishDecoding];
     } else {
-        self.tasksForJobs = [[NSMutableArray alloc] initWithCapacity:20];
+        _jobsArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
 }
 
-- (id)init
-{
-    if ((self = [super init])) {
-        [self loadJobs];
-    }
-    return self;
+- (NSInteger)indexOfSelectedJob {
+    return [[NSUserDefaults standardUserDefaults]
+            integerForKey:@"JobIndex"];
+}
+
+- (void)setIndexOfSelectedJob:(NSInteger)index {
+    [[NSUserDefaults standardUserDefaults]
+     setInteger:index forKey:@"JobIndex"];
 }
 
 

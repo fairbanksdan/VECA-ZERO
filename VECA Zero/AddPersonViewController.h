@@ -8,6 +8,9 @@
 
 #import <UIKit/UIKit.h>
 #import "Person.h"
+#import "SignatureView.h"
+#import "Job.h"
+#import "Task.h"
 
 @class AddPersonViewController;
 @class Person;
@@ -32,8 +35,12 @@
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIColor *navBarColor;
 @property (weak, nonatomic) IBOutlet UITextField *fullNameTextField;
+@property (weak, nonatomic) UIImage *signature;
+@property (weak, nonatomic) IBOutlet SignatureView *signatureView;
 
 @property (strong, nonatomic) Person *personToEdit;
+@property (strong, nonatomic) Job *job;
+@property (strong, nonatomic) Task *task;
 
 @property (nonatomic, weak) id <AddPersonViewControllerDelegate> delegate;
 

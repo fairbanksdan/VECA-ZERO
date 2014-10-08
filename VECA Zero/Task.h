@@ -20,6 +20,8 @@
 @property (nonatomic, strong) NSMutableArray *hazardArray;
 @property (nonatomic, strong) NSMutableArray *personArray;
 
+@property NSInteger taskIndexPath;
+
 //@property (readwrite) Job *job;
 
 //- (instancetype) initWithName:(NSString *)taskName;

@@ -14,6 +14,7 @@
 {
     if ((self = [super init])) {
         self.fullName = [aDecoder decodeObjectForKey:@"fullName"];
+        self.checkInSignature = [aDecoder decodeObjectForKey:@"checkInSignature"];
     }
     return self;
 }
@@ -21,6 +22,7 @@
 - (void)encodeWithCoder:(NSCoder *)aCoder
 {
     [aCoder encodeObject:self.fullName forKey:@"fullName"];
+    [aCoder encodeObject:self.checkInSignature forKey:@"checkInSignature"];
 }
 
 @end

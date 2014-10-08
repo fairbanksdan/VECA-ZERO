@@ -12,17 +12,17 @@
 #import "JobsViewController.h"
 
 @implementation AppDelegate
-{
-    DataModel *_dataModel;
-}
+//{
+//    DataModel *_dataModel;
+//}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    _dataModel = [[DataModel alloc] init];
+//    _myDataModel = [[DataModel alloc] init];
     
-    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-    JobsViewController *controller = navigationController.viewControllers[0];
-    controller.dataModel = _dataModel;
+//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
+//    JobsViewController *controller = navigationController.viewControllers[0];
+//    controller.jobsArray = DataModel.myDataModel.jobsArray;
     
     return YES;
 }
@@ -35,7 +35,7 @@
 
 - (void)saveData
 {
-    [_dataModel saveJobs];
+    [DataModel.myDataModel saveJobs];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

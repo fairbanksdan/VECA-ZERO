@@ -12,6 +12,10 @@
 #import "NSMutableArray+SWUtilityButtons.h"
 #import "SWTableViewCell.h"
 #import "PersonTableViewCell.h"
+#import "Task.h"
+#import "Hazard.h"
+#import "DataModel.h"
+#import "Job.h"
 
 @interface SignInViewController () <UITableViewDelegate, UITableViewDataSource, UITextFieldDelegate>
 
@@ -24,54 +28,58 @@
 @implementation SignInViewController
 {
     NSMutableArray *_persons; //creates a mutable Array with the variable "_items"
+    Job *_job;
+    Task *_task;
+    Hazard *_hazard;
+    NSMutableArray *_newHazardsArray;
 }
-
-- (NSString *)documentsDirectory
-{
-    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-                                                         NSDocumentDirectory, NSUserDomainMask, YES);
-    NSString *documentsDirectory = [paths firstObject];
-    return documentsDirectory;
-}
-
-- (NSString *)dataFilePath
-{
-    return [[self documentsDirectory]
-            stringByAppendingPathComponent:@"VECA Zero Person.plist"];
-}
-
-- (void)savePersons
-{
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
-                                 initForWritingWithMutableData:data];
-    [archiver encodeObject:_persons forKey:@"Persons"];
-    [archiver finishEncoding];
-    [data writeToFile:[self dataFilePath] atomically:YES];
-}
-
-- (void)loadPersons
-{
-    NSString *path = [self dataFilePath];
-    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
-                                         initForReadingWithData:data];
-        _persons = [unarchiver decodeObjectForKey:@"Persons"];
-        
-        [unarchiver finishDecoding];
-    } else {
-        _persons = [[NSMutableArray alloc] initWithCapacity:20];
-    }
-}
-
-- (id)initWithCoder:(NSCoder *)aDecoder
-{
-    if ((self = [super initWithCoder:aDecoder])) {
-        [self loadPersons];
-    }
-    return self;
-}
+//
+//- (NSString *)documentsDirectory
+//{
+//    NSArray *paths = NSSearchPathForDirectoriesInDomains(
+//                                                         NSDocumentDirectory, NSUserDomainMask, YES);
+//    NSString *documentsDirectory = [paths firstObject];
+//    return documentsDirectory;
+//}
+//
+//- (NSString *)dataFilePath
+//{
+//    return [[self documentsDirectory]
+//            stringByAppendingPathComponent:@"VECA Zero Person.plist"];
+//}
+//
+//- (void)savePersons
+//{
+//    NSMutableData *data = [[NSMutableData alloc] init];
+//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
+//                                 initForWritingWithMutableData:data];
+//    [archiver encodeObject:_persons forKey:@"Persons"];
+//    [archiver finishEncoding];
+//    [data writeToFile:[self dataFilePath] atomically:YES];
+//}
+//
+//- (void)loadPersons
+//{
+//    NSString *path = [self dataFilePath];
+//    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
+//        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
+//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
+//                                         initForReadingWithData:data];
+//        _persons = [unarchiver decodeObjectForKey:@"Persons"];
+//        
+//        [unarchiver finishDecoding];
+//    } else {
+//        _persons = [[NSMutableArray alloc] initWithCapacity:20];
+//    }
+//}
+//
+//- (id)initWithCoder:(NSCoder *)aDecoder
+//{
+//    if ((self = [super initWithCoder:aDecoder])) {
+//        [self loadPersons];
+//    }
+//    return self;
+//}
 //
 //- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 //{
@@ -86,15 +94,20 @@
 {
     [super viewDidLoad];
     
-    NSLog(@"Documents folder is %@", [self documentsDirectory]);
-    NSLog(@"Data file path is %@", [self dataFilePath]);
+//    NSLog(@"Documents folder is %@", [self documentsDirectory]);
+//    NSLog(@"Data file path is %@", [self dataFilePath]);
     
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
     [self.saveTaskButton.layer setCornerRadius:5];
     
-//    self.personArray = [NSMutableArray new];
+    [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
+    
+    _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
+    
+    NSLog(@"Check In VC _job.jobIndexPath is: %lu", _job.jobIndexPath);
+    NSLog(@"Check In VC _task.jobIndexPath is: %lu", _task.taskIndexPath);
 //    
 //    Person *person1 = [Person new];
 //    person1.fullName = @"Dan Fairbanks";
@@ -130,7 +143,8 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    [self performSegueWithIdentifier:@"EditPerson" sender:self];
+    Person *person = _persons[indexPath.row];
+    [self performSegueWithIdentifier:@"EditPerson" sender:person];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
@@ -171,7 +185,7 @@
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
     
-    [self savePersons];
+//    [self savePersons];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -184,7 +198,7 @@
                              cellForRowAtIndexPath:indexPath];
     [self configureTextForCell:cell withPersonName:person];
     
-    [self savePersons];
+//    [self savePersons];
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -204,22 +218,30 @@
         segue.destinationViewController;
         AddPersonViewController *controller = (AddPersonViewController *)navigationController;
         controller.delegate = self;
+        controller.personToEdit = nil;
+        controller.job = _job;
+        controller.task = _task;
+        controller.task.hazardArray = _task.hazardArray;
     } else if ([segue.identifier isEqualToString:@"EditPerson"]) {
         UINavigationController *navigationController =
         segue.destinationViewController;
         AddPersonViewController *controller = (AddPersonViewController *)navigationController;
         
         NSIndexPath *indexPath = [self.tableView
-                                  indexPathForCell:sender];
-        controller.personToEdit = [Person new];
+                                  indexPathForSelectedRow];
+//        controller.personToEdit = [Person new];
         controller.personToEdit = _persons[indexPath.row];
-        controller.fullNameTextField.text = controller.personToEdit.fullName;
+//        controller.fullNameTextField.text = controller.personToEdit.fullName;
+//        controller.signatureView.image = controller.personToEdit.checkInSignature;
         controller.delegate = self;
+        NSLog(@"Edit Person");
     } else if ([segue.identifier isEqualToString:@"MidTask"]) {
         MidTaskViewController *destViewController = segue.destinationViewController;
         destViewController.person = sender;
         myPerson = [_persons objectAtIndex:myIndexPath.row];
         destViewController.person = myPerson;
+      
+        
     }
     
     
@@ -248,7 +270,10 @@
         case 0:
         {
             NSLog(@"Edit button was pressed");
-            [self segueToAddPersonVC];
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            Person *person = _persons[cellIndexPath.row];
+            
+            [self performSegueWithIdentifier:@"EditPerson" sender:person];
             break;
         }
         case 1:
@@ -261,7 +286,7 @@
             [self.tableView deleteRowsAtIndexPaths:indexPaths
                                   withRowAnimation:UITableViewRowAnimationLeft];
             
-            [self savePersons];
+//            [self savePersons];
             break;
         }
         default:
@@ -273,5 +298,14 @@
     [self performSegueWithIdentifier:@"EditPerson" sender:self];
 }
 
+- (IBAction)saveAllTaskData:(UIButton *)sender {
+    
+    
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveAllTaskData" object:nil];
+
+    
+    NSLog(@"_persons array in Check In VC is: %lu", [_persons count]);
+}
 
 @end

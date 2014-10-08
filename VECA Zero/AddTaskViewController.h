@@ -7,6 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "AddHazardsViewController.h"
 
 @class AddTaskViewController;
 @class Task;
@@ -17,11 +18,13 @@
 
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task;
 
+@optional
+
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishEditingItem:(Task *)task;
 
 @end
 
-@interface AddTaskViewController : UITableViewController
+@interface AddTaskViewController : UITableViewController <AddHazardsViewControllerDelegate>
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIColor *navBarColor;
@@ -33,6 +36,9 @@
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
 @property (nonatomic, weak) id <AddTaskViewControllerDelegate> delegate;
+
+@property (nonatomic, strong) Job *job;
+@property (nonatomic, strong) Task *task;
 
 - (IBAction)cancel;
 - (IBAction)next;

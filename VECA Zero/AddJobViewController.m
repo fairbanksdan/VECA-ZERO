@@ -28,12 +28,6 @@
     }
     return self;
 }
-//- (IBAction)cancelButton:(id)sender {
-//    [self.delegate AddJobViewControllerDidCancel:self];
-////    [self dismissViewControllerAnimated:YES completion:nil];
-//}
-
-
 
 - (IBAction)Cancel {
     [self.delegate AddJobViewControllerDidCancel:self];

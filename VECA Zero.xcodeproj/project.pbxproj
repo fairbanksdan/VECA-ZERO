@@ -50,6 +50,8 @@
 		D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */ = {isa = PBXBuildFile; fileRef = D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */; };
 		D6AA5B931992D026007FE5A8 /* DataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6AA5B921992D026007FE5A8 /* DataController.m */; };
 		D6AA5B951992E126007FE5A8 /* Job.plist in Resources */ = {isa = PBXBuildFile; fileRef = D6AA5B941992E126007FE5A8 /* Job.plist */; };
+		D6C79A4219DF18E300E04E4A /* PersonCheckOutViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C79A4119DF18E300E04E4A /* PersonCheckOutViewController.m */; };
+		D6C79A4619DF253600E04E4A /* SignatureView.m in Sources */ = {isa = PBXBuildFile; fileRef = D6C79A4519DF253600E04E4A /* SignatureView.m */; };
 		D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */; };
 		D6F2D3C6197F384D0056FDAA /* ISCoreDataController.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C5197F384D0056FDAA /* ISCoreDataController.m */; };
 		D6F2D3C919805A2E0056FDAA /* Person.m in Sources */ = {isa = PBXBuildFile; fileRef = D6F2D3C819805A2E0056FDAA /* Person.m */; };
@@ -138,6 +140,10 @@
 		D6AA5B911992D026007FE5A8 /* DataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DataController.h; sourceTree = "<group>"; };
 		D6AA5B921992D026007FE5A8 /* DataController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DataController.m; sourceTree = "<group>"; };
 		D6AA5B941992E126007FE5A8 /* Job.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = Job.plist; sourceTree = "<group>"; };
+		D6C79A4019DF18E300E04E4A /* PersonCheckOutViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PersonCheckOutViewController.h; sourceTree = "<group>"; };
+		D6C79A4119DF18E300E04E4A /* PersonCheckOutViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PersonCheckOutViewController.m; sourceTree = "<group>"; };
+		D6C79A4419DF253600E04E4A /* SignatureView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignatureView.h; sourceTree = "<group>"; };
+		D6C79A4519DF253600E04E4A /* SignatureView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SignatureView.m; sourceTree = "<group>"; };
 		D6F2D3BD197F1B9F0056FDAA /* AddJobViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddJobViewController.h; sourceTree = "<group>"; };
 		D6F2D3BE197F1B9F0056FDAA /* AddJobViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddJobViewController.m; sourceTree = "<group>"; };
 		D6F2D3C4197F384D0056FDAA /* ISCoreDataController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISCoreDataController.h; sourceTree = "<group>"; };
@@ -299,6 +305,8 @@
 				D61AB7E0197ED6F9003AD671 /* MidTaskViewController.m */,
 				D61AB7E2197ED74A003AD671 /* SignOutViewController.h */,
 				D61AB7E3197ED74A003AD671 /* SignOutViewController.m */,
+				D6C79A4019DF18E300E04E4A /* PersonCheckOutViewController.h */,
+				D6C79A4119DF18E300E04E4A /* PersonCheckOutViewController.m */,
 			);
 			name = "Check Out View Controllers";
 			sourceTree = "<group>";
@@ -339,6 +347,7 @@
 			children = (
 				D689E37419799DED003050F5 /* AppDelegate.h */,
 				D689E37519799DED003050F5 /* AppDelegate.m */,
+				D6C79A4319DF253600E04E4A /* Source */,
 				D65B5B2E19D4B8B100FD9021 /* PodFiles */,
 				D61AB7D1197ED5BF003AD671 /* Models */,
 				D61AB7D0197ED5AE003AD671 /* Views */,
@@ -389,6 +398,15 @@
 				D689E39019799DED003050F5 /* InfoPlist.strings */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		D6C79A4319DF253600E04E4A /* Source */ = {
+			isa = PBXGroup;
+			children = (
+				D6C79A4419DF253600E04E4A /* SignatureView.h */,
+				D6C79A4519DF253600E04E4A /* SignatureView.m */,
+			);
+			path = Source;
 			sourceTree = "<group>";
 		};
 		D6F2D3C3197F384D0056FDAA /* Core Data Stack */ = {
@@ -515,6 +533,7 @@
 				D6F2D3D8198078C50056FDAA /* TaskViewController.m in Sources */,
 				D61AB7E4197ED74A003AD671 /* SignOutViewController.m in Sources */,
 				D61AB7DA197ED69F003AD671 /* SignInViewController.m in Sources */,
+				D6C79A4619DF253600E04E4A /* SignatureView.m in Sources */,
 				D689E37F19799DED003050F5 /* JobsViewController.m in Sources */,
 				D61AB7E1197ED6F9003AD671 /* MidTaskViewController.m in Sources */,
 				D6F2D3BF197F1B9F0056FDAA /* AddJobViewController.m in Sources */,
@@ -523,6 +542,7 @@
 				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
 				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
 				D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */,
+				D6C79A4219DF18E300E04E4A /* PersonCheckOutViewController.m in Sources */,
 				D6F816B019DA0BD9004E630B /* DataModel.m in Sources */,
 				D626BAD619DCBA0900209DC5 /* HazardTableViewCell.m in Sources */,
 				D65B5B3D19D4B8CE00FD9021 /* SWLongPressGestureRecognizer.m in Sources */,

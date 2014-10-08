@@ -11,6 +11,7 @@
 #import "Job.h"
 #import "Task.h"
 #import "HazardTableViewCell.h"
+#import "SignInViewController.h"
 
 @interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
 
@@ -18,12 +19,13 @@
 
 @implementation AddHazardsViewController
 {
+    NSMutableArray *_localHazardsArray;
     
-    UITextField *_newTextField;
     UITextField *_solutionTextField;
     NSString *_string;
     NSMutableArray *_textFields;
     NSMutableArray *_solutionTextFields;
+    NSMutableArray *_newPersonsArray;
 //    NSMutableArray *_tags;
 }
 
@@ -45,6 +47,8 @@
     _textFields = [[NSMutableArray alloc] initWithCapacity:20];
     
     _solutionTextFields = [[NSMutableArray alloc] initWithCapacity:20];
+    
+    _newPersonsArray = [[NSMutableArray alloc] initWithCapacity:20];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
 }
@@ -106,8 +110,8 @@
                 [cellTextField setBorderStyle:UITextBorderStyleNone];
                 [cellTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
                 cellTextField.placeholder = @"Solution";
-                
-                
+//                cellTextField.text = _myTextField.text;
+              
                 [_solutionTextFields addObject:cellTextField];
                 
                 [cell addSubview:cellTextField];
@@ -119,10 +123,6 @@
                 return cell;
                 
             }
-        
-            
-            
-            
             return cell;
             
         } else {
@@ -148,9 +148,9 @@
             } else {
             
                 return cell;
-            
             }
         }
+        
     } else {
         NSString *CellIdentifier = @"AddNewHazardCell";
         UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
@@ -187,37 +187,65 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
         [_localHazardsArray removeObjectAtIndex:indexPath.row];
+        [_textFields removeObjectAtIndex:indexPath.row];
+        [_solutionTextFields removeObjectAtIndex:indexPath.row];
 
         [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
     }
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    if ([segue.identifier isEqualToString:@"CheckIn"]) {
+    if ([segue.identifier isEqualToString:@"CheckIn"]) {{
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"saveAllTaskData" object:nil];
+            UINavigationController *navigationController = segue.destinationViewController;
+            SignInViewController *controller = (SignInViewController *)navigationController;
+            controller.delegate = self;
+            //        [self saveTask];
+//            controller.task = sender;
+            controller.job = _job;
+            controller.task = _task;
+            controller.task.hazardArray = _textFields;
+        }
         [self saveHazard];
     }
 }
 
+-(void)SignInViewController:(SignInViewController *)controller didFinishSavingPersonArray:(NSMutableArray *)personsArray {
+    _newPersonsArray = personsArray;
+    
+    NSLog(@"_newPersonsArray Count is: %lu", [_newPersonsArray count]);
+}
+
 -(void)saveHazard {
     int i = 0;
+//    NSMutableArray *newHazards = [[NSMutableArray alloc] initWithCapacity:20];
     while (i < ([_textFields count])) {
         
-        _newTextField = [_textFields objectAtIndex:i];
+        _myTextField = [_textFields objectAtIndex:i];
         _solutionTextField = [_solutionTextFields objectAtIndex:i];
 
         Hazard *hazard = [Hazard new];
-        hazard.hazardName = _newTextField.text;
+        hazard.hazardName = _myTextField.text;
         hazard.solution = _solutionTextField.text;
+        
+//        _newPersonsArray = _task.personArray;
+//        [newHazards addObject:hazard];
         
         [self.delegate AddHazardsViewController:self didFinishAddingItem:hazard];
         
         NSLog(@"Hazard Name is %@", hazard.hazardName);
         NSLog(@"Hazard Solution is %@", hazard.solution);
         NSLog(@"_textFields count is: %lu", [_textFields count]);
-        NSLog(@"_textFields count is: %lu", [_solutionTextFields count]);
+        NSLog(@"_solutionsTextFields count is: %lu", [_solutionTextFields count]);
         
         i += 1;
     }
+    
+    [self.delegate AddHazardsViewController:self AndPersonsArray:_newPersonsArray];
+    
+    
 }
+
+
 
 @end

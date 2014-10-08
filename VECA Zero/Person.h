@@ -16,6 +16,8 @@
 @property (nonatomic) BOOL *injured;
 @property (nonatomic, strong) NSString *supervisor;
 @property (nonatomic, strong) NSString *incidentDescription;
+@property (nonatomic, strong) UIImage *checkInSignature;
+@property (nonatomic, strong) UIImage *checkOutSignature;
 
 
 @end

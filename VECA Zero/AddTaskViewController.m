@@ -18,9 +18,10 @@
 @implementation AddTaskViewController
 {
     NSDate *_date;
-    Hazard *_hazard;
     
     BOOL _datePickerVisible;
+    
+    Task *_newTask;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -35,15 +36,38 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setNeedsStatusBarAppearanceUpdate];
+    
     _date = [NSDate date];
     
     [self updateDueDateLabel];
+    
+    self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    _newTask = [Task new];
+    
+    self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self
+                                             selector:@selector(updateTask)
+                                                 name:@"saveAllTaskData"
+                                               object:nil];
+  
+  [[NSNotificationCenter defaultCenter] addObserver:self
+                                           selector:@selector(saveTask)
+                                               name:@"saveTaskData"
+                                             object:nil];
+  
 
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
+}
+
+-(UIStatusBarStyle)preferredStatusBarStyle{
+    return UIStatusBarStyleLightContent;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -61,42 +85,60 @@
 
 - (IBAction)cancel {
     [self.delegate AddTaskViewControllerDidCancel:self];
+//    [self saveTask];
 }
-
-//- (IBAction)next {
-//    Task *task = [Task new];
-//    task.taskName = self.taskNameTextField.text;
-//    task.specificTaskLocation = self.specificTaskLocationTextField.text;
-//    task.PrimaryEvacuation = self.PrimaryEvacTextField.text;
-//    task.SecondaryEvacuation = self.SecondaryEvacTextField.text;
-//    task.date = _date;
-//    NSLog(@"Next Button Pressed");
-//    
-//    [self.delegate AddTaskViewController:self didFinishAddingItem:task];
-//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"NewHazards"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddHazardsViewController *controller = (AddHazardsViewController *)navigationController;
+        controller.delegate = self;
+//        [self saveTask];
+        controller.task = sender;
+        controller.job = _job;
+        controller.task = _task;
+      if (_newTask.taskName == nil) {
         [self saveTask];
+      } else {
+        [self updateTask];
+        controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
+      }
+      
     }
 }
 
 -(void)saveTask {
-    Task *task = [Task new];
-    task.taskName = self.taskNameTextField.text;
-    task.specificTaskLocation = self.specificTaskLocationTextField.text;
-    task.PrimaryEvacuation = self.PrimaryEvacTextField.text;
-    task.SecondaryEvacuation = self.SecondaryEvacTextField.text;
-    task.date = _date;
+//    Task *myTask = [[Task alloc] init];
+    _newTask.taskName = self.taskNameTextField.text;
+    _newTask.specificTaskLocation = self.specificTaskLocationTextField.text;
+    _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
+    _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
+    _newTask.date = _date;
+    
+//    _newTask.hazardArray = _newTask.hazardArray;
+    NSLog(@"myTask.hazardArray count is: %lu", [_newTask.hazardArray count]);
 //    [task.hazardArray addObject:_]
     NSLog(@"Next Button Pressed");
     
-    [self.delegate AddTaskViewController:self didFinishAddingItem:task];
+    [self.delegate AddTaskViewController:self didFinishAddingItem:_newTask];
+    
 }
 
-//- (void)saveTask {
-//    
-//}
+-(void)updateTask {
+  _newTask.taskName = self.taskNameTextField.text;
+  _newTask.specificTaskLocation = self.specificTaskLocationTextField.text;
+  _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
+  _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
+  _newTask.date = _date;
+  
+  //    _newTask.hazardArray = _newTask.hazardArray;
+  NSLog(@"myTask.hazardArray count is: %lu", [_newTask.hazardArray count]);
+  //    [task.hazardArray addObject:_]
+  NSLog(@"Next Button Pressed");
+  
+  [self.delegate AddTaskViewController:self didFinishEditingItem:_newTask];
+  
+}
 
 #pragma mark - Table view data source
 
@@ -248,6 +290,22 @@ indentationLevelForRowAtIndexPath:indexPath];
     } else {
     [self hideDatePicker];
     }
+}
+
+-(void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
+    [_newTask.hazardArray addObject:hazard];
+    
+    NSLog(@"DidFinishAddingHazard");
+        NSLog(@"Hazard Array Count is: %lu",[_newTask.hazardArray count]);
+        NSLog(@"Hazard Name from Task is %@", hazard.hazardName);
+        NSLog(@"Hazard Solution from task is %@", hazard.solution);
+    
+//    [self saveData];
+}
+
+-(void)AddHazardsViewController:(AddHazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray {
+    [_newTask.personArray addObjectsFromArray:myPersonArray];
+    NSLog(@"Persons Array Count is: %lu", [_newTask.personArray count]);
 }
 
 

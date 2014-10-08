@@ -9,27 +9,40 @@
 #import <UIKit/UIKit.h>
 #import "Task.h"
 #import "HazardTableViewCell.h"
+#import "SignInViewController.h"
+#import "Person.h"
 
 @class AddHazardsViewController;
 @class Hazard;
 
 @protocol AddHazardsViewControllerDelegate <NSObject>
 
-- (void)AddHazardsViewControllerDidCancel:(AddHazardsViewController *)controller;
+
 
 - (void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard;
 
+- (void)AddHazardsViewController:(AddHazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray;
+
+
+
+@optional
+
+- (void)AddHazardsViewControllerDidCancel:(AddHazardsViewController *)controller;
+
 - (void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishEditingItem:(Hazard *)hazard;
+
 
 @end
 
-@interface AddHazardsViewController : UIViewController
+
+@interface AddHazardsViewController : UIViewController <SignInViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) Job *job;
+@property UITextField *myTextField;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 //@property (strong, nonatomic) UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
-@property NSMutableArray *localHazardsArray;
 
 @property (nonatomic, weak) id <AddHazardsViewControllerDelegate> delegate;
 

@@ -10,8 +10,13 @@
 
 @interface DataModel : NSObject
 
-@property (nonatomic, strong) NSMutableArray *tasksForJobs;
+@property (nonatomic, strong) NSMutableArray *jobsArray;
+
++ (DataModel *)myDataModel;
 
 - (void)saveJobs;
+
+- (NSInteger)indexOfSelectedJob;
+- (void)setIndexOfSelectedJob:(NSInteger)index;
 
 @end

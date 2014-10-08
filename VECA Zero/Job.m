@@ -24,6 +24,7 @@
         self.jobName = [aDecoder decodeObjectForKey:@"jobName"];
         self.jobNumber = [aDecoder decodeObjectForKey:@"jobNumber"];
         self.tasksForJobArray = [aDecoder decodeObjectForKey:@"tasksForJobArray"];
+        self.jobIndexPath = [aDecoder decodeIntegerForKey:@"jobIndexPath"];
     }
     return self;
 }
@@ -33,6 +34,7 @@
     [aCoder encodeObject:self.jobName forKey:@"jobName"];
     [aCoder encodeObject:self.jobNumber forKey:@"jobNumber"];
     [aCoder encodeObject:self.tasksForJobArray forKey:@"tasksForJobArray"];
+    [aCoder encodeInteger:self.jobIndexPath forKey:@"jobIndexPath"];
 }
 
 

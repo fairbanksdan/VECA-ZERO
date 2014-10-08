@@ -8,6 +8,12 @@
 
 #import "AddPersonViewController.h"
 #import "SignInViewController.h"
+#import "SignatureView.h"
+#import "DataModel.h"
+#import "Job.h"
+#import "Task.h"
+#import "Hazard.h"
+#import "Person.h"
 
 
 @interface AddPersonViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -16,6 +22,10 @@
 @end
 
 @implementation AddPersonViewController
+{
+    NSMutableArray *_localHazardArray;
+    NSMutableArray *_localSolutionArray;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -37,17 +47,26 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
+    [self.signatureView setLineWidth:2.0];
+    self.signatureView.foregroundLineColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
+    [self.signatureView.layer setCornerRadius:5];
+    
     self.navBarColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
     
     self.navigationController.navigationBar.barTintColor = self.navBarColor;
     self.navigationController.navigationBar.translucent = NO;
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
+  
+    _localHazardArray = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray];
+    
+    NSLog(@"Add Person VC _localHazardsArray count is: %lu", [_localHazardArray count]);
     
     
     if (self.personToEdit != nil) {
         self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
+        self.signatureView.image = self.personToEdit.checkInSignature;
     }
     
 }
@@ -60,9 +79,12 @@
     if (self.personToEdit == nil) {
         Person *person = [Person new];
         person.fullName = self.fullNameTextField.text;
+        person.checkInSignature = [self.signatureView signatureImage];
+        
         [self.delegate AddPersonViewController:self didFinishAddingItem:person];
     } else {
         self.personToEdit.fullName = self.fullNameTextField.text;
+        self.personToEdit.checkInSignature = self.signatureView.image;
         [self.delegate AddPersonViewController:self didFinishEditingItem:self.personToEdit];
     }
     
@@ -82,7 +104,7 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return 2;
+    return ([_localHazardArray count] *2);
     
 }
 
@@ -96,7 +118,7 @@
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.row % 2) {
-        return 88;
+        return 110;
     } else {
         return 44;
     }
@@ -105,21 +127,35 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-        if (indexPath.row == 0) {
-            NSString *CellIdentifier = @"HazardCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
-            return cell;
-        } else {
+        if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
             UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
+            UITextView *solutionLabel = [[UITextView alloc] initWithFrame:CGRectMake(16, 7, 250, 80)];
+            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
+            solutionLabel.text = [[_localHazardArray objectAtIndex:((indexPath.row -1) / 2)] solution];
+            
+            [cell addSubview:solutionLabel];
+            return cell;
+        } else {
+            NSString *CellIdentifier = @"HazardCell";
+            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+            if (cell == nil) {
+                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+            }
+//            NSLog(@"Hazard at index %lu is %@", indexPath.row, [_localHazardArray objectAtIndex:indexPath.row]);
+            UILabel *hazardLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 7, 259, 30)];
+            hazardLabel.text = [[_localHazardArray objectAtIndex:(indexPath.row / 2)] hazardName];
+            
+            [cell addSubview:hazardLabel];
             return cell;
         }
+}
+- (IBAction)clearButton:(UIButton *)sender {
+    [self.signatureView clear];
+    
 }
 
 /*
