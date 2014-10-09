@@ -7,7 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Person.h"
+#import "Job.h"
+#import "Task.h"
+#import "Hazard.h"
 
 @interface SignOutViewController : UIViewController
+
+@property (strong, nonatomic) Job *job;
+@property (strong, nonatomic) Task *task;
+@property (strong, nonatomic) Person *person;
 
 @end

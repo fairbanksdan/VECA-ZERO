@@ -176,7 +176,7 @@
 
 - (void)AddPersonViewController:(AddPersonViewController *)controller didFinishAddingItem:(Person *)person {
     NSInteger newRowIndex = [_persons count];
-    [_persons addObject:person];
+    [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] addObject:person];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];
@@ -209,9 +209,9 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-    
-    Person *myPerson;
+//    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+//    
+//    Person *myPerson;
     
     if ([segue.identifier isEqualToString:@"AddPerson"]) {
         UINavigationController *navigationController =
@@ -237,9 +237,11 @@
         NSLog(@"Edit Person");
     } else if ([segue.identifier isEqualToString:@"MidTask"]) {
         MidTaskViewController *destViewController = segue.destinationViewController;
-        destViewController.person = sender;
-        myPerson = [_persons objectAtIndex:myIndexPath.row];
-        destViewController.person = myPerson;
+        destViewController.job = _job;
+        destViewController.task = _task;
+        destViewController.task.personArray = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
+//        myPerson = [_persons objectAtIndex:myIndexPath.row];
+//        destViewController.person = myPerson;
       
         
     }
@@ -280,7 +282,7 @@
         {
             // Delete button was pressed
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-            [_persons removeObjectAtIndex:cellIndexPath.row];
+            [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] removeObjectAtIndex:cellIndexPath.row];
             
             NSArray *indexPaths = @[cellIndexPath];
             [self.tableView deleteRowsAtIndexPaths:indexPaths

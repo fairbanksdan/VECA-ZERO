@@ -18,6 +18,7 @@
 
 @interface AddPersonViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -67,6 +68,17 @@
         self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
         self.signatureView.image = self.personToEdit.checkInSignature;
+    }
+    
+    if (_localHazardArray.count == 1) {
+        _tableView.viewForBaselineLayout.frame = CGRectMake(0, 62, 320, 226);
+        _tableView.contentSize = CGSizeMake(320, 226);
+//        _tableView.viewForBaselineLayout.bounds = CGRectMake(0, 62, 320, 226);
+    } else if (_localHazardArray.count > 1) {
+        _tableView.viewForBaselineLayout.frame = CGRectMake(0, 62, 320, 426);
+        _tableView.contentSize = CGSizeMake(320, 426);
+        
+//        _tableView.viewForBaselineLayout.bounds = CGRectMake(0, 62, 320, 426);
     }
     
 }
@@ -133,8 +145,10 @@
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-            UITextView *solutionLabel = [[UITextView alloc] initWithFrame:CGRectMake(16, 7, 250, 80)];
-            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
+            UILabel *solutionLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 7, 250, 80)];
+//            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
+//            [solutionLabel setEditable:NO];
+            solutionLabel.numberOfLines = 0;
             solutionLabel.text = [[_localHazardArray objectAtIndex:((indexPath.row -1) / 2)] solution];
             
             [cell addSubview:solutionLabel];
@@ -153,6 +167,23 @@
             return cell;
         }
 }
+
+- (void)tableView:(UITableView *)tableView
+didSelectRowAtIndexPath:(NSIndexPath *)indexPath
+{
+    UITableViewCell *cell = [tableView
+                             cellForRowAtIndexPath:indexPath];
+    if (cell.accessoryType == UITableViewCellAccessoryNone) {
+        cell.accessoryType = UITableViewCellAccessoryCheckmark;
+    } else {
+        cell.accessoryType = UITableViewCellAccessoryNone;
+    }
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+    
+}
+
 - (IBAction)clearButton:(UIButton *)sender {
     [self.signatureView clear];
     

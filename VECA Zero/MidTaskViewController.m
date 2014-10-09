@@ -7,6 +7,8 @@
 //
 
 #import "MidTaskViewController.h"
+#import "SignOutViewController.h"
+#import "DataModel.h"
 
 @interface MidTaskViewController ()
 
@@ -36,6 +38,17 @@
 }
 - (IBAction)AddPersonMidTaskButtonPressed:(UIButton *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"SignOut"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        SignOutViewController *controller = (SignOutViewController *)navigationController.topViewController;
+        controller.job = _job;
+        controller.task = _task;
+        controller.task.personArray = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
+        
+    }
 }
 
 /*

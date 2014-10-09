@@ -7,8 +7,11 @@
 //
 
 #import "SignOutViewController.h"
+#import "DataModel.h"
+#import "PersonCheckOutViewController.h"
 
 @interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate>
+@property (weak, nonatomic) IBOutlet UITableView *tableView;
 
 @end
 
@@ -42,14 +45,67 @@
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 1;
+    return [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] count];
 }
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *SimpleTableIdentifier = @"PersonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
+    cell.textLabel.text = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:indexPath.row] fullName];
+    
     return cell;
+}
+
+-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [self performSegueWithIdentifier:@"PersonCheckOut" sender:[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:indexPath.row]];
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    if ([segue.identifier isEqualToString:@"PersonCheckOut"]) {
+        NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
+        
+        UINavigationController *navigationController = segue.destinationViewController;
+        PersonCheckOutViewController *controller = (PersonCheckOutViewController *)navigationController.topViewController;
+        controller.job = _job;
+        controller.task = _task;
+        controller.person = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:myIndexPath.row];
+    
+    
+    }
+}
+
+- (IBAction)Submit:(UIBarButtonItem *)sender {
+    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
+    [formatter setDateStyle:NSDateFormatterMediumStyle];
+
+    
+    NSString *jobName = [[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] jobName];
+    NSString *jobNumber = [[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] jobNumber];
+    NSString *taskName = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] taskName];
+    NSString *taskDate = [formatter stringFromDate:[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] date]];
+    NSString *hazardName = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] hazardName];
+    NSString *hazardSolution = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] solution];
+    
+    
+    NSString *message = [NSString stringWithFormat:@"Job Name: %@ \nJob Number: %@\nTask Name: %@\nTask Date: %@\nHazard Name: %@\nHazard Solution: %@", jobName, jobNumber, taskName, taskDate, hazardName, hazardSolution];
+    
+    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[message] applicationActivities:nil];;
+    activityViewController.excludedActivityTypes = @[UIActivityTypePrint,
+                                                     UIActivityTypeCopyToPasteboard,
+                                                     UIActivityTypeAssignToContact,
+                                                     UIActivityTypeSaveToCameraRoll,
+                                                     UIActivityTypeAddToReadingList,
+                                                     UIActivityTypePostToFlickr,
+                                                     UIActivityTypePostToVimeo,
+                                                     UIActivityTypePostToFacebook,
+                                                     UIActivityTypePostToTwitter,
+                                                     UIActivityTypeMessage,
+                                                     UIActivityTypePostToTencentWeibo,
+                                                     UIActivityTypePostToWeibo];
+    
+    [self presentViewController:activityViewController animated:YES completion:nil];
 }
 
 /*

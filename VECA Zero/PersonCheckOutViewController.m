@@ -7,6 +7,7 @@
 //
 
 #import "PersonCheckOutViewController.h"
+#import "DataModel.h"
 
 @interface PersonCheckOutViewController ()
 
@@ -22,6 +23,8 @@
     self.checkOutSignature.foregroundLineColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
+    
+    self.title = _person.fullName;
 }
 
 - (void)didReceiveMemoryWarning {
