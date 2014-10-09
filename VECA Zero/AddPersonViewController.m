@@ -61,9 +61,6 @@
   
     _localHazardArray = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray];
     
-    NSLog(@"Add Person VC _localHazardsArray count is: %lu", [_localHazardArray count]);
-    
-    
     if (self.personToEdit != nil) {
         self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
@@ -159,7 +156,7 @@
             if (cell == nil) {
                 cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
             }
-//            NSLog(@"Hazard at index %lu is %@", indexPath.row, [_localHazardArray objectAtIndex:indexPath.row]);
+
             UILabel *hazardLabel = [[UILabel alloc] initWithFrame:CGRectMake(20, 7, 259, 30)];
             hazardLabel.text = [[_localHazardArray objectAtIndex:(indexPath.row / 2)] hazardName];
             

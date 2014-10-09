@@ -7,7 +7,6 @@
 //
 
 #import "HomeViewController.h"
-#import "NewTaskViewController.h"
 
 @interface HomeViewController () <UIGestureRecognizerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *EmailTextField;

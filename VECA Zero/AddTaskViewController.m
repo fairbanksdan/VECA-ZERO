@@ -115,13 +115,7 @@
     _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
     _newTask.date = _date;
     
-//    _newTask.hazardArray = _newTask.hazardArray;
-    NSLog(@"myTask.hazardArray count is: %lu", [_newTask.hazardArray count]);
-//    [task.hazardArray addObject:_]
-    NSLog(@"Next Button Pressed");
-    
     [self.delegate AddTaskViewController:self didFinishAddingItem:_newTask];
-    
 }
 
 -(void)updateTask {
@@ -130,11 +124,6 @@
   _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
   _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
   _newTask.date = _date;
-  
-  //    _newTask.hazardArray = _newTask.hazardArray;
-  NSLog(@"myTask.hazardArray count is: %lu", [_newTask.hazardArray count]);
-  //    [task.hazardArray addObject:_]
-  NSLog(@"Next Button Pressed");
   
   [self.delegate AddTaskViewController:self didFinishEditingItem:_newTask];
   
@@ -294,18 +283,10 @@ indentationLevelForRowAtIndexPath:indexPath];
 
 -(void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
     [_newTask.hazardArray addObject:hazard];
-    
-    NSLog(@"DidFinishAddingHazard");
-        NSLog(@"Hazard Array Count is: %lu",[_newTask.hazardArray count]);
-        NSLog(@"Hazard Name from Task is %@", hazard.hazardName);
-        NSLog(@"Hazard Solution from task is %@", hazard.solution);
-    
-//    [self saveData];
 }
 
 -(void)AddHazardsViewController:(AddHazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray {
     [_newTask.personArray addObjectsFromArray:myPersonArray];
-    NSLog(@"Persons Array Count is: %lu", [_newTask.personArray count]);
 }
 
 

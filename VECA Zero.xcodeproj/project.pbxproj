@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		D61AB7CB197ED3F6003AD671 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AB7CA197ED3F6003AD671 /* logo.png */; };
 		D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7CD197ED57C003AD671 /* HomeViewController.m */; };
-		D61AB7D4197ED63E003AD671 /* NewTaskViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */; };
 		D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */; };
 		D61AB7DA197ED69F003AD671 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D9197ED69F003AD671 /* SignInViewController.m */; };
 		D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */; };
@@ -77,8 +76,6 @@
 		D61AB7CA197ED3F6003AD671 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D61AB7CC197ED57C003AD671 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D61AB7CD197ED57C003AD671 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
-		D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewTaskViewController.h; sourceTree = "<group>"; };
-		D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewTaskViewController.m; sourceTree = "<group>"; };
 		D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHazardsViewController.h; sourceTree = "<group>"; };
 		D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHazardsViewController.m; sourceTree = "<group>"; };
 		D61AB7D8197ED69F003AD671 /* SignInViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SignInViewController.h; sourceTree = "<group>"; };
@@ -361,8 +358,6 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				D61AB7D2197ED63E003AD671 /* NewTaskViewController.h */,
-				D61AB7D3197ED63E003AD671 /* NewTaskViewController.m */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
@@ -550,7 +545,6 @@
 				D65B5B3C19D4B8CE00FD9021 /* SWCellScrollView.m in Sources */,
 				D6F2D3C919805A2E0056FDAA /* Person.m in Sources */,
 				D6F2D3CF19805A530056FDAA /* Task.m in Sources */,
-				D61AB7D4197ED63E003AD671 /* NewTaskViewController.m in Sources */,
 				D689E37219799DED003050F5 /* main.m in Sources */,
 				D65B5B3E19D4B8CE00FD9021 /* SWTableViewCell.m in Sources */,
 				D65B5B4319D4BD7E00FD9021 /* JobTableViewCell.m in Sources */,

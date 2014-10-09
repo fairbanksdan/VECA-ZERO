@@ -33,12 +33,6 @@
 {
     [super viewDidLoad];
     self.addTaskBarButton.tintColor = [UIColor whiteColor];
-
-    NSLog(@"Task VC _job.jobIndexPath is: %lu", _job.jobIndexPath);
-    
-
-//    self.title = self.job.jobName;
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -76,37 +70,15 @@
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
     _task = self.job.tasksForJobArray[indexPath.row];
-//    _hazard = [self.task.hazardArray objectAtIndex:0];
     
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
     cell.detailTextLabel.text = [formatter stringFromDate:_task.date];
-    
-//    UILabel *hazardLabel = [[UILabel alloc] initWithFrame:CGRectMake(150, 7, 50, 30)];
-//    [cell addSubview:hazardLabel];
-//    
-//    hazardLabel.text = [NSString stringWithFormat:@"%lu", [_task.hazardArray count]];
-//    
-//    
-//    
-//    
-//    NSLog(@"Task VC - _task.hazardArray count is: %lu", [_task.hazardArray count]);
   
     [self configureTextForCell:cell
                    withJobName:_task];
     
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
-//    }
-    
-//    Task *newTask = [self.job.tasksArray objectAtIndex:indexPath.row];
-    
-//    NSLog(@"%@", newTask.taskName);
-    
-//    cell.textLabel.text = newTask.taskName;
-    
     return cell;
-    
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
@@ -124,7 +96,6 @@
 
 - (void)AddTaskViewControllerDidCancel:(AddTaskViewController *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
-//    [self.tableView reloadData];
 }
 
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task {
@@ -137,7 +108,6 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
 
     [self saveData];
-    NSLog(@"Task Added");
 }
 
 
@@ -147,7 +117,6 @@
   [self.job.tasksForJobArray replaceObjectAtIndex:newRowIndex withObject:task];
 
   [self saveData];
-  NSLog(@"Task Edited");
   [self.tableView reloadData];
 
 }
@@ -165,10 +134,6 @@
         controller.job = _job;
         controller.task = myTask;
         controller.task.taskIndexPath = myIndexPath;
-      
-        
-//        
-//        NSLog(@"Task VC _task.taskIndex Path is: %lu", _task.taskIndexPath);
     }
 }
 

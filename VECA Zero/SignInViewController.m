@@ -94,9 +94,6 @@
 {
     [super viewDidLoad];
     
-//    NSLog(@"Documents folder is %@", [self documentsDirectory]);
-//    NSLog(@"Data file path is %@", [self dataFilePath]);
-    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -105,14 +102,6 @@
     [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
     
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
-    
-    NSLog(@"Check In VC _job.jobIndexPath is: %lu", _job.jobIndexPath);
-    NSLog(@"Check In VC _task.jobIndexPath is: %lu", _task.taskIndexPath);
-//    
-//    Person *person1 = [Person new];
-//    person1.fullName = @"Dan Fairbanks";
-//    
-//    [self.personArray addObject:person1];
 }
 
 - (void)didReceiveMemoryWarning
@@ -234,7 +223,6 @@
 //        controller.fullNameTextField.text = controller.personToEdit.fullName;
 //        controller.signatureView.image = controller.personToEdit.checkInSignature;
         controller.delegate = self;
-        NSLog(@"Edit Person");
     } else if ([segue.identifier isEqualToString:@"MidTask"]) {
         MidTaskViewController *destViewController = segue.destinationViewController;
         destViewController.job = _job;
@@ -271,7 +259,6 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"Edit button was pressed");
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
             Person *person = _persons[cellIndexPath.row];
             
@@ -301,13 +288,7 @@
 }
 
 - (IBAction)saveAllTaskData:(UIButton *)sender {
-    
-    
-    
     [[NSNotificationCenter defaultCenter] postNotificationName:@"saveAllTaskData" object:nil];
-
-    
-    NSLog(@"_persons array in Check In VC is: %lu", [_persons count]);
 }
 
 @end

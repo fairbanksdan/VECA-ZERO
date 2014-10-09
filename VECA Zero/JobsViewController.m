@@ -46,13 +46,6 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
-    
-//    _sharedDataModel = DataModel.myDataModel;
-    
-//    _jobsArray = DataModel.myDataModel.jobsArray;
-    
-//    NSLog(@"Data Model Job Array Count is: %lu", [_jobsArray count]);
-    
 }
 
 - (void)didReceiveMemoryWarning
@@ -183,7 +176,6 @@
         // 3
         controller.delegate = self;
         controller.jobToEdit = nil;
-        NSLog(@"AddJob Segue");
     } else if ([segue.identifier isEqualToString:@"EditJob"])
     {
         UINavigationController *navigationController =
@@ -193,13 +185,10 @@
 
         NSIndexPath *indexPath = [self.tableView
                                   indexPathForCell:sender];
-        NSLog(@"Sender number is: %@", sender);
         _jobsArray[indexPath.row] = sender;
         controller.jobToEdit = DataModel.myDataModel.jobsArray[indexPath.row];
         controller.delegate = self;
-        NSLog(@"EditJob Segue");
     } else if ([segue.identifier isEqualToString:@"Task"]) {
-        NSLog(@"Task Segue");
         TaskViewController *destViewController = segue.destinationViewController;
         destViewController.job = sender;
         
@@ -208,7 +197,6 @@
         destViewController.title = @"Tasks";
         destViewController.job = myJob;
         destViewController.job.jobIndexPath = myIndexPath.row;
-        NSLog(@"IndexPath for Job is: %ld", (long)myIndexPath.row);
     }
     
     
@@ -234,9 +222,6 @@
     switch (index) {
         case 0:
         {
-            NSLog(@"Edit button was pressed");
-//            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-//            Job *job = self.dataModel.tasksForJobs[2];
             [self performSegueWithIdentifier:@"EditJob" sender:self];
             break;
         }

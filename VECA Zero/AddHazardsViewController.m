@@ -200,8 +200,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             UINavigationController *navigationController = segue.destinationViewController;
             SignInViewController *controller = (SignInViewController *)navigationController;
             controller.delegate = self;
-            //        [self saveTask];
-//            controller.task = sender;
+
             controller.job = _job;
             controller.task = _task;
             controller.task.hazardArray = _textFields;
@@ -212,13 +211,10 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
 
 -(void)SignInViewController:(SignInViewController *)controller didFinishSavingPersonArray:(NSMutableArray *)personsArray {
     _newPersonsArray = personsArray;
-    
-    NSLog(@"_newPersonsArray Count is: %lu", [_newPersonsArray count]);
 }
 
 -(void)saveHazard {
     int i = 0;
-//    NSMutableArray *newHazards = [[NSMutableArray alloc] initWithCapacity:20];
     while (i < ([_textFields count])) {
         
         _myTextField = [_textFields objectAtIndex:i];
@@ -228,22 +224,12 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
         hazard.hazardName = _myTextField.text;
         hazard.solution = _solutionTextField.text;
         
-//        _newPersonsArray = _task.personArray;
-//        [newHazards addObject:hazard];
-        
         [self.delegate AddHazardsViewController:self didFinishAddingItem:hazard];
-        
-        NSLog(@"Hazard Name is %@", hazard.hazardName);
-        NSLog(@"Hazard Solution is %@", hazard.solution);
-        NSLog(@"_textFields count is: %lu", [_textFields count]);
-        NSLog(@"_solutionsTextFields count is: %lu", [_solutionTextFields count]);
         
         i += 1;
     }
     
     [self.delegate AddHazardsViewController:self AndPersonsArray:_newPersonsArray];
-    
-    
 }
 
 
