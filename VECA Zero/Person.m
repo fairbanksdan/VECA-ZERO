@@ -15,6 +15,9 @@
     if ((self = [super init])) {
         self.fullName = [aDecoder decodeObjectForKey:@"fullName"];
         self.checkInSignature = [aDecoder decodeObjectForKey:@"checkInSignature"];
+        self.isInjured = [aDecoder decodeBoolForKey:@"injured"];
+        self.supervisor = [aDecoder decodeObjectForKey:@"supervisor"];
+        self.checkOutSignature = [aDecoder decodeObjectForKey:@"checkOutSignature"];
     }
     return self;
 }
@@ -23,6 +26,10 @@
 {
     [aCoder encodeObject:self.fullName forKey:@"fullName"];
     [aCoder encodeObject:self.checkInSignature forKey:@"checkInSignature"];
+    [aCoder encodeBool:self.isInjured forKey:@"injured"];
+    [aCoder encodeObject:self.supervisor forKey:@"supervisor"];
+    [aCoder encodeObject:self.checkOutSignature forKey:@"checkOutSignature"];
+    
 }
 
 @end

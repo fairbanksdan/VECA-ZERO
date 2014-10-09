@@ -10,6 +10,12 @@
 #import "DataModel.h"
 
 @interface PersonCheckOutViewController ()
+@property (weak, nonatomic) IBOutlet UISegmentedControl *injuredPicker;
+@property (weak, nonatomic) IBOutlet UILabel *descibeIncidentLabel;
+@property (weak, nonatomic) IBOutlet UITextField *superVisorTextField;
+@property (weak, nonatomic) IBOutlet SignatureView *signatureView;
+@property (weak, nonatomic) IBOutlet UITextView *incidentTextView;
+@property (weak, nonatomic) IBOutlet UIImageView *supervisorBGImage;
 
 @end
 
@@ -25,6 +31,11 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     self.title = _person.fullName;
+    _person.isInjured = NO;
+    _incidentTextView.hidden = YES;
+    _descibeIncidentLabel.hidden = YES;
+    _supervisorBGImage.hidden = YES;
+    _superVisorTextField.hidden = YES;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -33,6 +44,31 @@
 }
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (IBAction)injuredPicked:(UISegmentedControl *)sender {
+    if ([sender selectedSegmentIndex] == 0) {
+        _person.isInjured = YES;
+        _incidentTextView.hidden = NO;
+        _descibeIncidentLabel.hidden = NO;
+        _supervisorBGImage.hidden = NO;
+        _superVisorTextField.hidden = NO;
+    } else if ([sender selectedSegmentIndex] == 1) {
+        _person.isInjured = NO;
+        _incidentTextView.hidden = YES;
+        _descibeIncidentLabel.hidden = YES;
+        _supervisorBGImage.hidden = YES;
+        _superVisorTextField.hidden = YES;
+    }
+}
+
+
+- (IBAction)doneButton:(UIBarButtonItem *)sender {
+    _person.supervisor = _superVisorTextField.text;
+    _person.checkOutSignature = _signatureView.signatureImage;
+    _person.incidentDescription = _incidentTextView.text;
+    
+    [self dismissViewControllerAnimated:YES completion:nil];    
 }
 
 /*

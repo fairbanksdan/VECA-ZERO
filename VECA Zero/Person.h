@@ -13,7 +13,7 @@
 @property (nonatomic, strong) NSString *fullName;
 //@property (nonatomic, strong) UIImage *checkInInitials;
 //@property (nonatomic, strong) UIImage *checkOutInitials;
-@property (nonatomic) BOOL *injured;
+@property (nonatomic) BOOL isInjured;
 @property (nonatomic, strong) NSString *supervisor;
 @property (nonatomic, strong) NSString *incidentDescription;
 @property (nonatomic, strong) UIImage *checkInSignature;

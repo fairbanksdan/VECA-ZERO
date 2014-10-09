@@ -746,6 +746,9 @@
                                     <segment title="No"/>
                                 </segments>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <connections>
+                                    <action selector="injuredPicked:" destination="I2p-xM-Brm" eventType="valueChanged" id="pml-j0-GGT"/>
+                                </connections>
                             </segmentedControl>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Were you involved in an injury, incident, or near miss during this task?" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjH-bu-qHe">
                                 <rect key="frame" x="16" y="8" width="288" height="53"/>
@@ -788,6 +791,7 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rKp-yb-2aQ">
                                 <rect key="frame" x="267" y="304" width="37" height="30"/>
                                 <state key="normal" title="Clear">
+                                    <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                     <color key="titleShadowColor" white="0.5" alpha="1" colorSpace="calibratedWhite"/>
                                 </state>
                             </button>
@@ -803,10 +807,19 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="done" id="1a0-B5-6TS">
                             <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <connections>
+                                <action selector="doneButton:" destination="I2p-xM-Brm" id="o8z-11-0hZ"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="checkOutSignature" destination="0oC-QK-SoG" id="FDR-aB-u9v"/>
+                        <outlet property="descibeIncidentLabel" destination="Syk-gI-mbX" id="XVy-aP-GBk"/>
+                        <outlet property="incidentTextView" destination="uji-HW-lp6" id="CQu-Ea-wKd"/>
+                        <outlet property="injuredPicker" destination="pNC-Ez-UwA" id="dWL-oB-eVN"/>
+                        <outlet property="signatureView" destination="0oC-QK-SoG" id="ESl-xP-tIE"/>
+                        <outlet property="superVisorTextField" destination="30H-vM-7H4" id="7Eb-Rs-Xty"/>
+                        <outlet property="supervisorBGImage" destination="nhZ-MN-uqo" id="j4S-K4-UWG"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="doC-pR-wFx" userLabel="First Responder" sceneMemberID="firstResponder"/>
