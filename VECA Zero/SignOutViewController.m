@@ -10,6 +10,7 @@
 #import "DataModel.h"
 #import "PersonCheckOutViewController.h"
 #import <MessageUI/MessageUI.h>
+#import "JobsViewController.h"
 
 @interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate,
 MFMessageComposeViewControllerDelegate>
@@ -75,6 +76,9 @@ MFMessageComposeViewControllerDelegate>
         controller.person = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:myIndexPath.row];
     
     
+    } else if ([segue.identifier isEqualToString:@"BackToJobs"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        JobsViewController *controller = (JobsViewController *)navigationController.topViewController;
     }
 }
 
@@ -222,33 +226,46 @@ MFMessageComposeViewControllerDelegate>
     }
     
     [self presentViewController:picker animated:YES completion:NULL];
+    
+//    if (picker.navigationBar. == MFMailComposeResultSent) {
+//        [self performSegueWithIdentifier:@"BackToJobs" sender:self];
+//    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
 //    self.feedbackMsg.hidden = NO;
-//    // Notifies users about errors associated with the interface
-//    switch (result)
-//    {
-//        case MFMailComposeResultCancelled:
-//            self.feedbackMsg.text = @"Result: Mail sending canceled";
-//            break;
-//        case MFMailComposeResultSaved:
+    // Notifies users about errors associated with the interface
+    switch (result)
+    {
+        case MFMailComposeResultCancelled:
+            //self.feedbackMsg.text = @"Result: Mail sending canceled";
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            break;
+        case MFMailComposeResultSaved:
 //            self.feedbackMsg.text = @"Result: Mail saved";
-//            break;
-//        case MFMailComposeResultSent:
+            break;
+        case MFMailComposeResultSent:
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            [self performSegueWithIdentifier:@"BackToJobs" sender:self];
 //            self.feedbackMsg.text = @"Result: Mail sent";
-//            break;
-//        case MFMailComposeResultFailed:
+            break;
+        case MFMailComposeResultFailed:
 //            self.feedbackMsg.text = @"Result: Mail sending failed";
-//            break;
-//        default:
+            break;
+        default:
 //            self.feedbackMsg.text = @"Result: Mail not sent";
-//            break;
-//    }
+            break;
+    }
     
-    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self dismissViewControllerAnimated:YES completion:NULL];
+//    [self performSegueWithIdentifier:@"BackToJobs" sender:self];
+//    if (MFMailComposeResultSent) {
+//        [self performSegueWithIdentifier:@"BackToJobs" sender:self];
+//    } else {
+//        [self dismissViewControllerAnimated:YES completion:NULL];
+//    }
 }
 
 /*

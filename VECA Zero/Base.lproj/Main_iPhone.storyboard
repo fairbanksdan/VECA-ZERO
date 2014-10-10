@@ -720,11 +720,12 @@
                     </navigationItem>
                     <connections>
                         <outlet property="tableView" destination="A1X-sT-3I1" id="Yft-6B-14Q"/>
+                        <segue destination="0xP-Zd-z3S" kind="modal" identifier="BackToJobs" modalTransitionStyle="flipHorizontal" id="BqD-96-IgV"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="lo5-w8-jct" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="4441" y="218"/>
+            <point key="canvasLocation" x="1620" y="93"/>
         </scene>
         <!--Check Out-->
         <scene sceneID="xoI-Rm-iMs">
@@ -1058,6 +1059,7 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
+        <segue reference="BqD-96-IgV"/>
         <segue reference="sSD-HF-z6h"/>
         <segue reference="t8B-rt-Q5i"/>
     </inferredMetricsTieBreakers>
