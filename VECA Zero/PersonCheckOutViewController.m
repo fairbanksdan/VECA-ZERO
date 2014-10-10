@@ -30,6 +30,10 @@
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    if (_person != nil) {
+        self.signatureView.image = _person.checkOutSignature;
+    }
+    
     self.title = _person.fullName;
     _person.isInjured = NO;
     _incidentTextView.hidden = YES;

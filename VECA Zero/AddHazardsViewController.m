@@ -110,6 +110,7 @@
                 [cellTextField setBorderStyle:UITextBorderStyleNone];
                 [cellTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
                 cellTextField.placeholder = @"Solution";
+                cellTextField.tintColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
 //                cellTextField.text = _myTextField.text;
               
                 [_solutionTextFields addObject:cellTextField];
@@ -138,6 +139,7 @@
                 
                 [cellTextField setBorderStyle:UITextBorderStyleNone];
                 cellTextField.placeholder = @"Hazard";
+                cellTextField.tintColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
                 
                 [_textFields addObject:cellTextField];
                 

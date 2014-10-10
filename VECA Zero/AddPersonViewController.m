@@ -19,6 +19,7 @@
 @interface AddPersonViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
 @end
 
@@ -47,6 +48,9 @@
     [super viewDidLoad];
     
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    [self.scrollView setScrollEnabled:YES];
+//    [self.scrollView setContentSize:CGSizeMake(320, 700)];
     
     [self.signatureView setLineWidth:2.0];
     self.signatureView.foregroundLineColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];

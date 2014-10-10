@@ -235,6 +235,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Task Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="xec-7S-FbT">
                                                     <rect key="frame" x="19" y="7" width="293" height="30"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -248,6 +249,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Specific Task Location" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HgH-TN-g1x">
                                                     <rect key="frame" x="19" y="8" width="293" height="30"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -290,6 +292,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Primary Emergency Evacuation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="aMe-qW-ZL0">
                                                     <rect key="frame" x="19" y="6" width="293" height="30"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -303,6 +306,7 @@
                                             <subviews>
                                                 <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Secondary Emergency Evacuation" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="Sox-bb-QJq">
                                                     <rect key="frame" x="19" y="7" width="293" height="30"/>
+                                                    <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits"/>
                                                 </textField>
@@ -557,6 +561,7 @@
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9G-I3-S3f">
                                                 <rect key="frame" x="16" y="24" width="288" height="30"/>
+                                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                 <textInputTraits key="textInputTraits"/>
                                                 <connections>
@@ -654,6 +659,7 @@
                         <outlet property="cancelButton" destination="gjE-PZ-vNR" id="l3G-7W-Gkm"/>
                         <outlet property="fullNameTextField" destination="b9G-I3-S3f" id="34A-Do-skS"/>
                         <outlet property="navBar" destination="zFm-bR-lR3" id="dnW-sU-Dl4"/>
+                        <outlet property="scrollView" destination="mHg-6c-Q1e" id="4CQ-bS-JhJ"/>
                         <outlet property="signatureView" destination="COY-0t-RMl" id="sfU-iy-BDY"/>
                         <outlet property="tableView" destination="S4i-w2-SGi" id="LBj-0T-Z7R"/>
                     </connections>
@@ -766,6 +772,7 @@
                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="uji-HW-lp6">
                                 <rect key="frame" x="0.0" y="144" width="320" height="89"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textView>
@@ -776,6 +783,7 @@
                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Supervisor's Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="30H-vM-7H4">
                                 <rect key="frame" x="16" y="252" width="288" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
                             </textField>
