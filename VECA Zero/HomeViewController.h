@@ -13,6 +13,4 @@
 
 //@property (nonatomic, strong) DataModel *dataModel;
 
-
-//Test
 @end

@@ -18,10 +18,12 @@
 #import "DataModel.h"
 #import "AppDelegate.h"
 
-@interface JobsViewController  () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate>
+@interface JobsViewController  () <UITableViewDataSource, UITableViewDelegate, UITextFieldDelegate, UISearchBarDelegate, UISearchDisplayDelegate>
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddJobBarButton;
+@property (weak, nonatomic) IBOutlet UISearchBar *jobSearchBar;
+@property (strong, nonatomic) NSMutableArray *filteredJobArray;
 
 @end
 
@@ -36,6 +38,8 @@
 {
     [super viewDidLoad];
     
+    self.filteredJobArray = [[NSMutableArray alloc] initWithCapacity:[DataModel.myDataModel.jobsArray count]];
+    
     self.tableView.dataSource = self;
     self.tableView.delegate = self;
     
@@ -47,6 +51,14 @@
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
 }
+
+//-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
+//    NSPredicate *predicate = [NSPredicate
+//                              predicateWithFormat:@"SELF.firstName contains[c] %@",
+//                              searchText];
+//    NSArray *filteredArray = [allPatientDetails filteredArrayUsingPredicate:predicate];
+//    [tableView reloadData];
+//}
 
 - (void)didReceiveMemoryWarning
 {
@@ -76,11 +88,13 @@
     [self.tableView reloadData];
 }
 
-- (void)configureTextForCell:(UITableViewCell *)cell
+- (void)configureTextForCell:(JobTableViewCell *)cell
            withJobName:(Job *)job
 {
-    UILabel *label = (UILabel *)[cell viewWithTag:1000];
-    label.text = job.jobName;
+//    UILabel *label = (UILabel *)[cell viewWithTag:1000];
+//    label.text = job.jobName;
+//    cell.jobName.textColor = [UIColor blackColor];
+    cell.jobName.text = job.jobName;
 }
 
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
@@ -89,7 +103,11 @@
 
 - (NSInteger)tableView:(UITableView *)tableView
  numberOfRowsInSection:(NSInteger)section {
-    return  [DataModel.myDataModel.jobsArray count];
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        return [self.filteredJobArray count];
+    } else {
+        return  [DataModel.myDataModel.jobsArray count];
+    }
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -105,6 +123,10 @@
     
     JobTableViewCell *cell = (JobTableViewCell *)[tableView dequeueReusableCellWithIdentifier:cellIdentifier];
     
+    if (cell == nil) {
+        cell = [[JobTableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:cellIdentifier];
+        cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
 
         cell.rightUtilityButtons = [self rightButtons];
         cell.delegate = self;
@@ -115,11 +137,24 @@
 
     //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JobCell"];
     
-    Job *job = DataModel.myDataModel.jobsArray[indexPath.row];
+    Job *job = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        job = [self.filteredJobArray objectAtIndex:indexPath.row];
+        cell.textLabel.text = job.jobName;
+    } else {
+        job = DataModel.myDataModel.jobsArray[indexPath.row];
+    }
+//    
+//    cell.jobName.text = job.jobName;
+    
     [self configureTextForCell:cell withJobName:job];
     
     return cell; //returns what is in each "cell" as defined in this method
 }
+
+//- (void)tableView:(UITableView *)tableView willDisplayCell:(JobTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
+//}
 
 - (void)AddJobViewController:(AddJobViewController *)controller
          didFinishAddingItem:(Job *)job; {
@@ -247,15 +282,32 @@
     [self performSegueWithIdentifier:@"EditJob" sender:self];
 }
 
-//- (void)navigationController:
-//(UINavigationController *)navigationController
-//      willShowViewController:(UIViewController *)viewController
-//                    animated:(BOOL)animated
-//{
-//    if (viewController == self) {
-//        [self.dataModel setIndexOfSelectedJob:-1];
-//    }
-//}
+#pragma mark Content Filtering
+-(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
+    // Update the filtered array based on the search text and scope.
+    // Remove all objects from the filtered search array
+    [self.filteredJobArray removeAllObjects];
+    // Filter the array using NSPredicate
+    NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.jobName contains[c] %@",searchText];
+    self.filteredJobArray = [NSMutableArray arrayWithArray:[DataModel.myDataModel.jobsArray filteredArrayUsingPredicate:predicate]];
+}
+
+#pragma mark - UISearchDisplayController Delegate Methods
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
+    // Tells the table data source to reload when text changes
+    [self filterContentForSearchText:searchString scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
+
+-(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
+    // Tells the table data source to reload when scope bar selection changes
+    [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
+     [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
+    // Return YES to cause the search result table view to be reloaded.
+    return YES;
+}
 
 
 @end

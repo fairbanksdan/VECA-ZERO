@@ -11,6 +11,6 @@
 
 @interface JobTableViewCell : SWTableViewCell
 
-@property (weak, nonatomic) UILabel *jobNameLabel;
+@property (weak, nonatomic) IBOutlet UILabel *jobName;
 
 @end

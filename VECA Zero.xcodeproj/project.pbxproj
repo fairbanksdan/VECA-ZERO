@@ -348,7 +348,6 @@
 				D65B5B2E19D4B8B100FD9021 /* PodFiles */,
 				D61AB7D1197ED5BF003AD671 /* Models */,
 				D61AB7D0197ED5AE003AD671 /* Views */,
-				D689E38019799DED003050F5 /* Images.xcassets */,
 				D61AB7CF197ED585003AD671 /* Controllers */,
 				D689E36C19799DED003050F5 /* Supporting Files */,
 			);
@@ -358,6 +357,7 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D689E38019799DED003050F5 /* Images.xcassets */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
