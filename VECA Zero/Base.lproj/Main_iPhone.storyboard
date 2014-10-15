@@ -47,7 +47,7 @@
                                         <gestureRecognizers/>
                                         <connections>
                                             <outlet property="jobName" destination="Ts5-nj-cNH" id="oxd-8A-CQR"/>
-                                            <segue destination="BnN-g2-Luv" kind="push" identifier="Task" id="00i-s1-8el"/>
+                                            <segue destination="y4E-uM-p9S" kind="push" identifier="Task" id="LmN-6L-iiP"/>
                                         </connections>
                                     </tableViewCell>
                                 </prototypes>
@@ -95,10 +95,61 @@
             </objects>
             <point key="canvasLocation" x="743" y="108"/>
         </scene>
+        <!--Task-->
+        <scene sceneID="EPT-4A-tpC">
+            <objects>
+                <tableViewController id="y4E-uM-p9S" customClass="TaskViewController" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" id="bR3-rd-LSB">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <prototypes>
+                            <tableViewCell tag="1000" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" textLabel="yZj-T8-kHf" detailTextLabel="0va-Mf-jWG" style="IBUITableViewCellStyleValue1" id="LgF-dW-o8n">
+                                <autoresizingMask key="autoresizingMask"/>
+                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LgF-dW-o8n" id="Flw-GI-Zy0">
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <subviews>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Title" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="yZj-T8-kHf">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" multipleTouchEnabled="YES" contentMode="left" text="Detail" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" id="0va-Mf-jWG">
+                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                            <color key="textColor" red="0.55686274509803924" green="0.55686274509803924" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                    </subviews>
+                                </tableViewCellContentView>
+                            </tableViewCell>
+                        </prototypes>
+                        <connections>
+                            <outlet property="dataSource" destination="y4E-uM-p9S" id="CC2-p7-pIr"/>
+                            <outlet property="delegate" destination="y4E-uM-p9S" id="Ofp-Br-3Rp"/>
+                        </connections>
+                    </tableView>
+                    <navigationItem key="navigationItem" title="Task" id="dXw-0l-CPg">
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="tJ8-2E-GKZ">
+                            <connections>
+                                <segue destination="ArH-ly-Btk" kind="modal" id="Frj-B7-YHU"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="addTaskBarButton" destination="tJ8-2E-GKZ" id="HTr-rw-ciX"/>
+                        <outlet property="tableView" destination="bR3-rd-LSB" id="rnb-Y9-4jK"/>
+                    </connections>
+                </tableViewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="B8L-Sb-Rn7" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1229" y="924"/>
+        </scene>
         <!--TaskViewController-->
         <scene sceneID="Fo5-qI-9NA">
             <objects>
-                <viewController id="BnN-g2-Luv" userLabel="TaskViewController" customClass="TaskViewController" sceneMemberID="viewController">
+                <viewController id="BnN-g2-Luv" userLabel="TaskViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="CvB-eR-xsr"/>
                         <viewControllerLayoutGuide type="bottom" id="I3F-st-hpg"/>
@@ -143,11 +194,7 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Tasks" id="ODh-bg-N6s">
-                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="scV-zt-KyJ">
-                            <connections>
-                                <segue destination="ArH-ly-Btk" kind="modal" identifier="NewTask" id="zys-af-iob"/>
-                            </connections>
-                        </barButtonItem>
+                        <barButtonItem key="rightBarButtonItem" systemItem="add" id="scV-zt-KyJ"/>
                     </navigationItem>
                     <connections>
                         <outlet property="addTaskBarButton" destination="scV-zt-KyJ" id="0v4-jJ-nbt"/>
@@ -156,7 +203,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jp5-Co-ad9" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1228" y="924"/>
+            <point key="canvasLocation" x="1229" y="1603"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="Oxm-D2-WcR">
@@ -848,6 +895,12 @@
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYu-wx-rsw">
+                                                    <rect key="frame" x="275" y="12" width="13" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                         </tableViewCellContentView>
                                         <connections>
@@ -1242,7 +1295,7 @@
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
         <segue reference="BqD-96-IgV"/>
-        <segue reference="sSD-HF-z6h"/>
+        <segue reference="34a-Lx-3mb"/>
         <segue reference="t8B-rt-Q5i"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>

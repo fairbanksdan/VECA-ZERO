@@ -11,8 +11,9 @@
 #import "Job.h"
 #import "Task.h"
 #import "Hazard.h"
+#import "PersonCheckOutViewController.h"
 
-@interface SignOutViewController : UIViewController
+@interface SignOutViewController : UIViewController <PersonCheckOutViewControllerDelegate>
 
 @property (strong, nonatomic) Job *job;
 @property (strong, nonatomic) Task *task;

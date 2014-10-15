@@ -20,6 +20,9 @@ MFMessageComposeViewControllerDelegate>
 @end
 
 @implementation SignOutViewController
+{
+    Person *_person;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -68,7 +71,11 @@ MFMessageComposeViewControllerDelegate>
     static NSString *SimpleTableIdentifier = @"PersonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
-    cell.textLabel.text = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:indexPath.row] fullName];
+    _person = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:indexPath.row];
+    
+    cell.textLabel.text = _person.fullName;
+    
+    [self configureCheckmarkForCell:cell withPerson:_person];
     
     return cell;
 }
@@ -84,6 +91,7 @@ MFMessageComposeViewControllerDelegate>
         
         UINavigationController *navigationController = segue.destinationViewController;
         PersonCheckOutViewController *controller = (PersonCheckOutViewController *)navigationController.topViewController;
+        controller.delegate = self;
         controller.job = _job;
         controller.task = _task;
         controller.person = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:myIndexPath.row];
@@ -94,45 +102,6 @@ MFMessageComposeViewControllerDelegate>
         JobsViewController *controller = (JobsViewController *)navigationController.topViewController;
     }
 }
-
-//- (IBAction)Submit:(UIBarButtonItem *)sender {
-//    NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-//    [formatter setDateStyle:NSDateFormatterMediumStyle];
-//
-//    
-//    NSString *jobName = [[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] jobName];
-//    NSString *jobNumber = [[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] jobNumber];
-//    NSString *taskName = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] taskName];
-//    NSString *taskLocation = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] specificTaskLocation];
-//    NSString *primaryEvacuation = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] PrimaryEvacuation];
-//    NSString *secondaryEvacuation = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] SecondaryEvacuation];
-//    NSString *taskDate = [formatter stringFromDate:[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] date]];
-//    
-//    NSString *hazardName = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] hazardName];
-//    NSString *hazardSolution = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] solution];
-//    NSString *firstPerson = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:0] fullName];
-//    
-//    UIImage *checkInSignature = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:0] checkInSignature];
-//    
-//    
-//    NSString *message = [NSString stringWithFormat:@"Job Name: %@ \nJob Number: %@\nTask Name: %@\nTask Location: %@\nTask Date: %@\nPrimary Evacuation Location: %@\nSecondary Evacuation Location: %@\nHazard Name: %@\nHazard Solution: %@\nFirst Person: %@", jobName, jobNumber, taskName, taskLocation, taskDate, primaryEvacuation, secondaryEvacuation, hazardName, hazardSolution, firstPerson];
-//    
-//    UIActivityViewController *activityViewController = [[UIActivityViewController alloc] initWithActivityItems:@[message, checkInSignature] applicationActivities:nil];;
-//    activityViewController.excludedActivityTypes = @[UIActivityTypePrint,
-//                                                     UIActivityTypeCopyToPasteboard,
-//                                                     UIActivityTypeAssignToContact,
-//                                                     UIActivityTypeSaveToCameraRoll,
-//                                                     UIActivityTypeAddToReadingList,
-//                                                     UIActivityTypePostToFlickr,
-//                                                     UIActivityTypePostToVimeo,
-//                                                     UIActivityTypePostToFacebook,
-//                                                     UIActivityTypePostToTwitter,
-//                                                     UIActivityTypeMessage,
-//                                                     UIActivityTypePostToTencentWeibo,
-//                                                     UIActivityTypePostToWeibo];
-//    
-//    [self presentViewController:activityViewController animated:YES completion:nil];
-//}
 
 - (IBAction)email:(id)sender {
     if ([MFMailComposeViewController canSendMail]) {
@@ -271,25 +240,33 @@ MFMessageComposeViewControllerDelegate>
 //            self.feedbackMsg.text = @"Result: Mail not sent";
             break;
     }
-    
-//    [self dismissViewControllerAnimated:YES completion:NULL];
-//    [self performSegueWithIdentifier:@"BackToJobs" sender:self];
-//    if (MFMailComposeResultSent) {
-//        [self performSegueWithIdentifier:@"BackToJobs" sender:self];
-//    } else {
-//        [self dismissViewControllerAnimated:YES completion:NULL];
-//    }
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
+- (void)configureCheckmarkForCell:(UITableViewCell *)cell
+                        withPerson:(Person *)person //methods for checking and unchecking a cell/row
 {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
+    UILabel *label = (UILabel *)[cell viewWithTag:2000];
+    
+    label.textColor = [UIColor blueColor];
+    
+    if (person.checkOutSignature != nil) {
+        label.text = @"√";
+    } else {
+        label.text = @"";
+    }
 }
-*/
+
+//- (void)PersonCheckOutViewController:(PersonCheckOutViewController *)controller didCheckOutPerson:(Person *)person {
+//    _person.checkOutSignature = person.checkOutSignature;
+//    [self.tableView reloadData];
+//    NSLog(@"Check triggered");
+//    [self dismissViewControllerAnimated:YES completion:nil]; 
+//}
+
+- (void)UpdateTableView {
+    [self.tableView reloadData];
+    NSLog(@"Check triggered");
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
 
 @end

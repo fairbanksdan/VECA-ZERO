@@ -56,11 +56,6 @@
     UILabel *label = (UILabel *)[cell viewWithTag:1000];
   
     label.text = task.taskName;
-  
-  
-  
-  
-    
 }
 
 

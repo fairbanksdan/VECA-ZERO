@@ -7,6 +7,7 @@
 //
 
 #import "PersonCheckOutViewController.h"
+#import "SignOutViewController.h"
 #import "DataModel.h"
 
 @interface PersonCheckOutViewController ()
@@ -76,9 +77,11 @@
     _person.supervisor = _superVisorTextField.text;
     _person.checkOutSignature = _signatureView.signatureImage;
     _person.incidentDescription = _incidentTextView.text;
+//    [self.delegate PersonCheckOutViewController:self didCheckOutPerson:_person];
+    [self.delegate UpdateTableView];
     
-    [self dismissViewControllerAnimated:YES completion:nil];    
 }
+
 
 /*
 #pragma mark - Navigation
