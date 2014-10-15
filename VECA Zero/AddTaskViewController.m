@@ -66,17 +66,6 @@
                                                    name:@"saveTaskData"
                                                  object:nil];
   
-    
-//    float y = IS_IPHONE_5:308:220
-//    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,308,320,44)];
-//    [_toolBar setBarStyle:UIBarStyleBlackOpaque];
-//    UIBarButtonItem *barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Item" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonTouched:)];
-    
-    // Uncomment the following line to preserve selection between presentations.
-    // self.clearsSelectionOnViewWillAppear = NO;
-    
-    // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
-    // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
 
 //-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
@@ -133,15 +122,23 @@
         controller.task = sender;
         controller.job = _job;
         controller.task = _task;
-      if (_newTask.taskName == nil) {
-        [self saveTask];
-      } else {
-        [self updateTask];
-        controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
-      }
+          if (_newTask.taskName == nil) {
+            [self saveTask];
+          } else {
+            [self updateTask];
+            controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
+          }
       
     }
 }
+- (IBAction)taskNameNext:(UITextField *)sender {
+    [self performSegueWithIdentifier:@"NewHazards" sender:self];
+}
+
+//- (IBAction)nextButton:(UIBarButtonItem *)sender {
+//    [self performSegueWithIdentifier:@"NewHazards" sender:self];
+//}
+
 
 -(void)saveTask {
 //    Task *myTask = [[Task alloc] init];

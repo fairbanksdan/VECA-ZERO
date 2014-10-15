@@ -16,6 +16,7 @@
 @property (weak, nonatomic) IBOutlet SignatureView *signatureView;
 @property (weak, nonatomic) IBOutlet UITextView *incidentTextView;
 @property (weak, nonatomic) IBOutlet UIImageView *supervisorBGImage;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 
 @end
 
@@ -40,6 +41,8 @@
     _descibeIncidentLabel.hidden = YES;
     _supervisorBGImage.hidden = YES;
     _superVisorTextField.hidden = YES;
+    
+    self.doneButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning {
@@ -57,12 +60,14 @@
         _descibeIncidentLabel.hidden = NO;
         _supervisorBGImage.hidden = NO;
         _superVisorTextField.hidden = NO;
+        self.doneButton.enabled = YES;
     } else if ([sender selectedSegmentIndex] == 1) {
         _person.isInjured = NO;
         _incidentTextView.hidden = YES;
         _descibeIncidentLabel.hidden = YES;
         _supervisorBGImage.hidden = YES;
         _superVisorTextField.hidden = YES;
+        self.doneButton.enabled = YES;
     }
 }
 

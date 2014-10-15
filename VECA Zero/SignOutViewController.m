@@ -15,6 +15,7 @@
 @interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate,
 MFMessageComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
 @end
 
@@ -35,6 +36,8 @@ MFMessageComposeViewControllerDelegate>
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    [self.submitButton.layer setCornerRadius:5];
+    
     // Do any additional setup after loading the view.
 }
 
@@ -45,6 +48,16 @@ MFMessageComposeViewControllerDelegate>
 }
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     [self dismissViewControllerAnimated:self completion:nil];
+}
+
+-(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
+    return 1;
+}
+
+-(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
+
+        return @"Click on each person below to check them out of this task:";
+    
 }
 
 -(NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {

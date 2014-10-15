@@ -21,6 +21,7 @@
 
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *saveTaskButton;
+@property (weak, nonatomic) IBOutlet UIButton *addPersonButton;
 
 
 @end
@@ -33,62 +34,6 @@
     Hazard *_hazard;
     NSMutableArray *_newHazardsArray;
 }
-//
-//- (NSString *)documentsDirectory
-//{
-//    NSArray *paths = NSSearchPathForDirectoriesInDomains(
-//                                                         NSDocumentDirectory, NSUserDomainMask, YES);
-//    NSString *documentsDirectory = [paths firstObject];
-//    return documentsDirectory;
-//}
-//
-//- (NSString *)dataFilePath
-//{
-//    return [[self documentsDirectory]
-//            stringByAppendingPathComponent:@"VECA Zero Person.plist"];
-//}
-//
-//- (void)savePersons
-//{
-//    NSMutableData *data = [[NSMutableData alloc] init];
-//    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
-//                                 initForWritingWithMutableData:data];
-//    [archiver encodeObject:_persons forKey:@"Persons"];
-//    [archiver finishEncoding];
-//    [data writeToFile:[self dataFilePath] atomically:YES];
-//}
-//
-//- (void)loadPersons
-//{
-//    NSString *path = [self dataFilePath];
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-//        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
-//                                         initForReadingWithData:data];
-//        _persons = [unarchiver decodeObjectForKey:@"Persons"];
-//        
-//        [unarchiver finishDecoding];
-//    } else {
-//        _persons = [[NSMutableArray alloc] initWithCapacity:20];
-//    }
-//}
-//
-//- (id)initWithCoder:(NSCoder *)aDecoder
-//{
-//    if ((self = [super initWithCoder:aDecoder])) {
-//        [self loadPersons];
-//    }
-//    return self;
-//}
-//
-//- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-//{
-//    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-//    if (self) {
-//        // Custom initialization
-//    }
-//    return self;
-//}
 
 - (void)viewDidLoad
 {
@@ -98,10 +43,16 @@
     self.tableView.delegate = self;
     
     [self.saveTaskButton.layer setCornerRadius:5];
+    [self.addPersonButton.layer setCornerRadius:5];
     
     [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
     
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
+    
+    NSLog(@"_persons count is: %lu", _persons.count);
+    
+    
+    
 }
 
 - (void)didReceiveMemoryWarning
@@ -113,6 +64,12 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
+    if (_persons.count == 0) {
+        self.saveTaskButton.hidden = YES;
+    } else if (_persons.count > 0) {
+        self.saveTaskButton.hidden = NO;
+        self.addPersonButton.hidden = YES;
+    }
 }
 
 - (void)configureTextForCell:(UITableViewCell *)cell withPersonName:(Person *)person {
@@ -275,6 +232,14 @@
             [self.tableView deleteRowsAtIndexPaths:indexPaths
                                   withRowAnimation:UITableViewRowAnimationLeft];
             
+            if (_persons.count == 0) {
+                self.saveTaskButton.hidden = YES;
+                self.addPersonButton.hidden = NO;
+            } else if (_persons.count > 0) {
+                self.saveTaskButton.hidden = NO;
+                self.addPersonButton.hidden = YES;
+            }
+            
 //            [self savePersons];
             break;
         }
@@ -288,7 +253,12 @@
 }
 
 - (IBAction)saveAllTaskData:(UIButton *)sender {
-    [[NSNotificationCenter defaultCenter] postNotificationName:@"saveAllTaskData" object:nil];
+        [[NSNotificationCenter defaultCenter] postNotificationName:@"saveAllTaskData" object:nil];
 }
+
+- (IBAction)addPersonButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"AddPerson" sender:self];
+}
+
 
 @end

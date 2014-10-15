@@ -136,6 +136,10 @@
     // Dispose of any resources that can be recreated.
 }
 
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    [self.fullNameTextField resignFirstResponder];
+}
+
 -(NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     return 1;
 }
@@ -230,50 +234,10 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    
-//    NSIndexPath *cellIndexPath = [self.tableView indexPathForSelectedRow];
-//    
-//    NSMutableArray *checkedHazardsArray = [[NSMutableArray alloc] initWithCapacity:([_localHazardArray count] *2)];
-//    NSMutableArray *myHazardsArray = [[NSMutableArray alloc] initWithCapacity:20];
+
     UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-//    int count;
-//    count = 1;
-//    
-//    NSString *newString = [NSString new];
-//    [myHazardsArray addObject:newString];
-//    
-//    if (cell.accessoryType == UITableViewCellAccessoryNone) {
-//        cell.accessoryType = UITableViewCellAccessoryCheckmark;
-////        NSMutableArray *myArray = [[NSMutableArray alloc] initWithCapacity:20];
-////        NSString *string = [NSString new];
-////        [myHazardsArray addObject:string];
-////        for (int i = 0; i < count; i++) {
-////            
-//////            NSString *newString = [NSString new];
-//////            [checkedHazardsArray addObject:newString];
-////            NSString *string = [NSString new];
-////            [checkedHazardsArray addObject:string];
-//////        }
-//////        if (cellIndexPath.row > ([checkedHazardsArray count] +1)) {
-//////        NSString *string = [NSString new];
-//////        [checkedHazardsArray addObjectsFromArray:myHazardsArray];
-//////        }
-////            count += 1;
-////        NSLog(@"checkHazardsArray count is: %lu", [checkedHazardsArray count]);
-//        //}
-//        
-//        
-//    } else {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-////        [checkedHazardsArray removeObjectAtIndex:([checkedHazardsArray count])];
-//    }
     
-    
-//    if ([checkedHazardsArray count] == ([_localHazardArray count] *2)) {
-//        self.doneButton.enabled = YES;
-//    } else if ([checkedHazardsArray count] < ([_localHazardArray count] *2)) {
-//        self.doneButton.enabled = NO;
-//    }
+    [self.fullNameTextField resignFirstResponder];
     
     Hazard *hazard = [Hazard new];
     

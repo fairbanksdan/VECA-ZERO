@@ -13,7 +13,7 @@
 #import "HazardTableViewCell.h"
 #import "SignInViewController.h"
 
-@interface AddHazardsViewController () /*<UITableViewDataSource, UITableViewDelegate>*/
+@interface AddHazardsViewController () <UITextFieldDelegate>/*<UITableViewDataSource, UITableViewDelegate>*/
 
 @end
 
@@ -111,6 +111,8 @@
                 [cellTextField setContentVerticalAlignment:UIControlContentVerticalAlignmentTop];
                 cellTextField.placeholder = @"Solution";
                 cellTextField.tintColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
+                cellTextField.returnKeyType = UIReturnKeyNext;
+                cellTextField.delegate = self;
 //                cellTextField.text = _myTextField.text;
               
                 [_solutionTextFields addObject:cellTextField];
@@ -140,6 +142,8 @@
                 [cellTextField setBorderStyle:UITextBorderStyleNone];
                 cellTextField.placeholder = @"Hazard";
                 cellTextField.tintColor = [[UIColor alloc] initWithRed:.027344 green:.445313 blue:.898438 alpha:1];
+                cellTextField.returnKeyType = UIReturnKeyNext;
+                cellTextField.delegate = self;
                 
                 [_textFields addObject:cellTextField];
                 
@@ -173,6 +177,15 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
 
+- (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    [self performSegueWithIdentifier:@"CheckIn" sender:self];
+//    [self textFieldDidEndEditing:textField];
+    return YES;
+}
+
+//- (void)textFieldDidEndEditing:(UITextField *)textField {
+//    [self performSegueWithIdentifier:@"CheckIn" sender:self];
+//}
 
 -(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
     if (indexPath.section == 0) {
