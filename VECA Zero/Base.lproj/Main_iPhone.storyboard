@@ -672,7 +672,7 @@
                                                 <rect key="frame" x="0.0" y="69" width="320" height="392"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="HazardCell" id="uCk-1n-PbU">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HazardCell" id="uCk-1n-PbU">
                                                         <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCk-1n-PbU" id="JaK-s4-WlI">
@@ -708,7 +708,7 @@
                                                                     <rect key="frame" x="0.0" y="90" width="320" height="20"/>
                                                                     <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                                 </imageView>
-                                                                <label opaque="NO" userInteractionEnabled="NO" tag="1002" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewa-qh-mV8">
+                                                                <label opaque="NO" clipsSubviews="YES" userInteractionEnabled="NO" tag="1005" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Ewa-qh-mV8">
                                                                     <rect key="frame" x="290" y="33" width="15" height="21"/>
                                                                     <fontDescription key="fontDescription" name="AvenirNext-Bold" family="Avenir Next" pointSize="17"/>
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
@@ -725,7 +725,7 @@
                                                 </connections>
                                             </tableView>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-Zz-ksb">
-                                                <rect key="frame" x="5" y="300" width="310" height="205"/>
+                                                <rect key="frame" x="5" y="205" width="310" height="205"/>
                                                 <subviews>
                                                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="COY-0t-RMl" customClass="SignatureView">
                                                         <rect key="frame" x="8" y="37" width="294" height="160"/>
@@ -781,6 +781,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="addSignatureButton" destination="cdK-PS-zJV" id="rXZ-wD-lL8"/>
                         <outlet property="cancelButton" destination="gjE-PZ-vNR" id="l3G-7W-Gkm"/>
                         <outlet property="clearButton" destination="hmG-Jw-dBo" id="LAv-T1-ran"/>
                         <outlet property="doneButton" destination="XTd-d0-J1p" id="Wd3-kd-c4U"/>

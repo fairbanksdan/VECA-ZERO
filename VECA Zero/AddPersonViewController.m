@@ -25,6 +25,7 @@
 @property (weak, nonatomic) IBOutlet UIView *signView;
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
+@property (weak, nonatomic) IBOutlet UIBarButtonItem *addSignatureButton;
 
 @end
 
@@ -32,6 +33,7 @@
 {
     NSMutableArray *_localHazardArray;
     NSMutableArray *_localSolutionArray;
+    int _count;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -80,6 +82,7 @@
     [self.signView.layer setCornerRadius:5];
     
     self.doneButton.enabled = NO;
+    self.addSignatureButton.enabled = NO;
 //    self.signatureView.hidden = YES;
 //    self.signBelowLabel.hidden = YES;
 //    self.clearButton.hidden = YES;
@@ -171,13 +174,13 @@
 //            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
 //            [solutionLabel setEditable:NO];
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
-            cellHazard.checked = NO;
+            cellHazard.solutionChecked = NO;
             
             solutionLabel.numberOfLines = 0;
             solutionLabel.text = cellHazard.solution;
             
             [cell addSubview:solutionLabel];
-            [self configureCheckmarkForCell:cell withChecklistItem:cellHazard];
+            [self configureSolutionCheckmarkForCell:cell withChecklistItem:cellHazard];
             return cell;
         } else {
             NSString *CellIdentifier = @"HazardCell";
@@ -206,6 +209,20 @@
     label.textColor = [UIColor blueColor];
     
     if (hazard.checked) {
+        label.text = @"√";
+    } else {
+        label.text = @"";
+    }
+}
+
+- (void)configureSolutionCheckmarkForCell:(UITableViewCell *)cell
+                withChecklistItem:(Hazard *)hazard //methods for checking and unchecking a cell/row
+{
+    UILabel *label = (UILabel *)[cell viewWithTag:1005];
+    
+    label.textColor = [UIColor blueColor];
+    
+    if (hazard.solutionChecked) {
         label.text = @"√";
     } else {
         label.text = @"";
@@ -262,11 +279,20 @@
     
     if (indexPath.row % 2) {
         hazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
+        [hazard toggleSolutionChecked];
+        [self configureSolutionCheckmarkForCell:cell withChecklistItem:hazard];
     } else {
         hazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
+        [hazard toggleChecked];
+        [self configureCheckmarkForCell:cell withChecklistItem:hazard];
     }
-    [hazard toggleChecked];
-    [self configureCheckmarkForCell:cell withChecklistItem:hazard];
+    
+    [self countCheckedHazards];
+    
+    if (_count == ([_localHazardArray count]* 2)) {
+        self.addSignatureButton.enabled = YES;
+    }
+    
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -276,18 +302,40 @@
     
 }
 - (IBAction)addSignature:(UIBarButtonItem *)sender {
-    self.signView.hidden = NO;
-    self.toolBar.hidden = YES;
+    
+    
+    if ([self.addSignatureButton.title isEqualToString:@"Add Signature"]) {
+        self.addSignatureButton.title = @"Close Signature View";
+        self.doneButton.enabled = YES;
+        self.signView.hidden = NO;
+    } else if ([self.addSignatureButton.title isEqualToString:@"Close Signature View"]) {
+        self.addSignatureButton.title = @"Add Signature";
+//        self.doneButton.enabled = NO;
+        self.signView.hidden = YES;
+    }
+    
+//    UIBarButtonItem *closeSignView = [[UIBarButtonItem alloc] initWithTitle:@"Close Signature View" style:UIBarButtonItemStylePlain target:self action:nil];
+//    self.toolBar.hidden = YES;
 //    self.signatureView.hidden = NO;
 //    self.signBelowLabel.hidden = NO;
 //    self.clearButton.hidden = NO;
     
 }
 
--(void)hazardsAreChecked {
-    if (self.areHazardsChecked) {
-        self.doneButton.enabled = YES;
+- (int)countCheckedHazards
+{
+    _count = 0;
+    for (Hazard *hazard in _localHazardArray) {
+        if (hazard.checked) {
+            _count += 1;
+        }
     }
+    for (Hazard *hazard in _localHazardArray) {
+        if (hazard.solutionChecked) {
+            _count += 1;
+        }
+    }
+    return _count;
 }
 /*
 #pragma mark - Navigation

@@ -15,6 +15,10 @@
     self.checked = !self.checked;
 }
 
+- (void)toggleSolutionChecked {
+    self.solutionChecked = !self.solutionChecked;
+}
+
 - (instancetype) initWithName:(NSString *)hazardName {
     if (self = [super init]) {
         self.hazardName = hazardName;
@@ -27,6 +31,8 @@
     if ((self = [super init])) {
         self.hazardName = [aDecoder decodeObjectForKey:@"hazardName"];
         self.solution = [aDecoder decodeObjectForKey:@"solution"];
+        self.checked = [aDecoder decodeBoolForKey:@"checked"];
+        self.solutionChecked = [aDecoder decodeBoolForKey:@"solutionChecked"];
     }
     return self;
 }
@@ -35,6 +41,8 @@
 {
     [aCoder encodeObject:self.hazardName forKey:@"hazardName"];
     [aCoder encodeObject:self.solution forKey:@"solution"];
+    [aCoder encodeBool:self.checked forKey:@"checked"];
+    [aCoder encodeBool:self.solutionChecked forKey:@"solutionChecked"];
 }
 
 @end

@@ -13,7 +13,10 @@
 @property (strong, nonatomic) NSString *hazardName;
 @property (strong, nonatomic) NSString *solution;
 @property BOOL checked;
+@property BOOL solutionChecked;
 
 - (void)toggleChecked;
+
+- (void)toggleSolutionChecked;
 
 @end
