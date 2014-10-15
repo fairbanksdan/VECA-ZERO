@@ -11,6 +11,10 @@
 #import "Hazard.h"
 #import "AddHazardsViewController.h"
 
+#define IS_IPHONE ( [[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
+#define IS_HEIGHT_GTE_568 [[UIScreen mainScreen ] bounds].size.height >= 568.0f
+#define IS_IPHONE_5 ( IS_IPHONE && IS_HEIGHT_GTE_568 )
+
 @interface AddTaskViewController ()
 
 @end
@@ -22,6 +26,8 @@
     BOOL _datePickerVisible;
     
     Task *_newTask;
+    
+    UIToolbar *_toolBar;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -38,6 +44,8 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
+    [self.taskNameTextField becomeFirstResponder];
+    
     _date = [NSDate date];
     
     [self updateDueDateLabel];
@@ -53,18 +61,46 @@
                                                  name:@"saveAllTaskData"
                                                object:nil];
   
-  [[NSNotificationCenter defaultCenter] addObserver:self
-                                           selector:@selector(saveTask)
-                                               name:@"saveTaskData"
-                                             object:nil];
+      [[NSNotificationCenter defaultCenter] addObserver:self
+                                               selector:@selector(saveTask)
+                                                   name:@"saveTaskData"
+                                                 object:nil];
   
-
+    
+//    float y = IS_IPHONE_5:308:220
+//    _toolBar = [[UIToolbar alloc] initWithFrame:CGRectMake(0,308,320,44)];
+//    [_toolBar setBarStyle:UIBarStyleBlackOpaque];
+//    UIBarButtonItem *barButtonDone = [[UIBarButtonItem alloc] initWithTitle:@"Item" style:UIBarButtonItemStyleBordered target:self action:@selector(doneButtonTouched:)];
+    
     // Uncomment the following line to preserve selection between presentations.
     // self.clearsSelectionOnViewWillAppear = NO;
     
     // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
     // self.navigationItem.rightBarButtonItem = self.editButtonItem;
 }
+
+//-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
+//{
+//    [_toolBar setHidden:NO];
+//    return YES;
+//}
+//
+//-(IBAction)doneButtonTouched:(id)sender
+//{
+//    [self.taskNameTextField resignFirstResponder];
+//    [_toolBar setHidden:YES];
+//}
+
+//-(void)viewWillAppear:(BOOL)animated {
+//    [self.taskNameTextField becomeFirstResponder];
+//}
+
+//-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    [self.taskNameTextField resignFirstResponder];
+//    [self.specificTaskLocationTextField resignFirstResponder];
+//    [self.PrimaryEvacTextField resignFirstResponder];
+//    [self.SecondaryEvacTextField resignFirstResponder];
+//}
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;

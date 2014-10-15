@@ -111,7 +111,15 @@
 }
 
 -(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    Job *job = DataModel.myDataModel.jobsArray[indexPath.row];
+    
+    Job *job = nil;
+    
+    if (tableView == self.searchDisplayController.searchResultsTableView) {
+        job = self.filteredJobArray[indexPath.row];
+        NSLog(@"SearchTableView filteredJobArray IndexPath.row is: %@", [self.filteredJobArray[indexPath.row] jobName]);
+    } else {
+        job = DataModel.myDataModel.jobsArray[indexPath.row];
+    }
     [self performSegueWithIdentifier:@"Task" sender:job];
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
 }
@@ -177,8 +185,9 @@
     NSInteger index = [DataModel.myDataModel.jobsArray indexOfObject:job];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
                                                 inSection:0];
-    UITableViewCell *cell = [self.tableView
+    JobTableViewCell *cell = [self.tableView
                              cellForRowAtIndexPath:indexPath];
+    
     [self configureTextForCell:cell withJobName:job];
     
     [self saveData];
@@ -227,7 +236,12 @@
         TaskViewController *destViewController = segue.destinationViewController;
         destViewController.job = sender;
         
-        myJob = [DataModel.myDataModel.jobsArray objectAtIndex:myIndexPath.row];
+        if (self.tableView == self.searchDisplayController.searchResultsTableView) {
+            myJob = self.filteredJobArray[myIndexPath.row];
+        } else {
+            myJob = DataModel.myDataModel.jobsArray[myIndexPath.row];
+        }
+//        myJob = [DataModel.myDataModel.jobsArray objectAtIndex:myIndexPath.row];
 //        destViewController.task = job.jobName;
         destViewController.title = @"Tasks";
         destViewController.job = myJob;

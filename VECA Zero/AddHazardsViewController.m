@@ -13,7 +13,7 @@
 #import "HazardTableViewCell.h"
 #import "SignInViewController.h"
 
-@interface AddHazardsViewController () <UITableViewDataSource, UITableViewDelegate>
+@interface AddHazardsViewController () /*<UITableViewDataSource, UITableViewDelegate>*/
 
 @end
 

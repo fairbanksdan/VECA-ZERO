@@ -10,6 +10,11 @@
 
 @implementation Hazard
 
+- (void)toggleChecked
+{
+    self.checked = !self.checked;
+}
+
 - (instancetype) initWithName:(NSString *)hazardName {
     if (self = [super init]) {
         self.hazardName = hazardName;

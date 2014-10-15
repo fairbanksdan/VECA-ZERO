@@ -69,6 +69,10 @@
     [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
 }
 
+-(void)viewWillAppear:(BOOL)animated {
+    [self.jobNumberTextField becomeFirstResponder];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];

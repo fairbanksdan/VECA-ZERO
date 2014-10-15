@@ -35,13 +35,14 @@
 @end
 
 
-@interface AddHazardsViewController : UIViewController <SignInViewControllerDelegate>
+@interface AddHazardsViewController : UITableViewController <SignInViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) Job *job;
 @property UITextField *myTextField;
-@property (weak, nonatomic) IBOutlet UITableView *tableView;
-//@property (strong, nonatomic) UITextField *textField;
+
+//@property (weak, nonatomic) IBOutlet UITableView *tableView;
+@property (strong, nonatomic) UITextField *textField;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *nextButton;
 
 @property (nonatomic, weak) id <AddHazardsViewControllerDelegate> delegate;

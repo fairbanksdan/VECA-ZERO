@@ -37,6 +37,7 @@
 @property (weak, nonatomic) IBOutlet UITextField *fullNameTextField;
 @property (weak, nonatomic) UIImage *signature;
 @property (weak, nonatomic) IBOutlet SignatureView *signatureView;
+@property BOOL areHazardsChecked;
 
 @property (strong, nonatomic) Person *personToEdit;
 @property (strong, nonatomic) Job *job;
