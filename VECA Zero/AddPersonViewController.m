@@ -14,7 +14,8 @@
 #import "Task.h"
 #import "Hazard.h"
 #import "Person.h"
-
+#import "HazardToBeCheckedTableViewCell.h"
+#import "SolutionToBeCheckedTableViewCell.h"
 
 @interface AddPersonViewController () <UITableViewDataSource, UITableViewDelegate>
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
@@ -170,10 +171,10 @@
     
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
+            SolutionToBeCheckedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            if (cell == nil) {
+//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            }
             UILabel *solutionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, 250, 80)];
 //            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
 //            [solutionLabel setEditable:NO];
@@ -188,10 +189,11 @@
             return cell;
         } else {
             NSString *CellIdentifier = @"HazardCell";
-            UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-            if (cell == nil) {
-                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-            }
+            HazardToBeCheckedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
+//            if (cell == nil) {
+//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
+//            }
+            
             
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
             cellHazard.checked = NO;
@@ -205,7 +207,7 @@
         }
 }
 
-- (void)configureCheckmarkForCell:(UITableViewCell *)cell
+- (void)configureCheckmarkForCell:(HazardToBeCheckedTableViewCell *)cell
                 withChecklistItem:(Hazard *)hazard //methods for checking and unchecking a cell/row
 {
     UILabel *label = (UILabel *)[cell viewWithTag:1004];
@@ -219,33 +221,37 @@
     }
 }
 
-- (void)configureSolutionCheckmarkForCell:(UITableViewCell *)cell
+- (void)configureSolutionCheckmarkForCell:(SolutionToBeCheckedTableViewCell *)cell
                 withChecklistItem:(Hazard *)hazard //methods for checking and unchecking a cell/row
 {
-    UILabel *label = (UILabel *)[cell viewWithTag:1005];
+//    UILabel *label = (UILabel *)[cell viewWithTag:1005];
     
-    label.textColor = [UIColor blueColor];
+    cell.checkmarkLabel.textColor = [UIColor blueColor];
     
     if (hazard.solutionChecked) {
-        label.text = @"√";
+//        label.text = @"√";
+        cell.checkmarkLabel.text = @"√";
     } else {
-        label.text = @"";
+//        label.text = @"";
+        cell.checkmarkLabel.text = @"";
     }
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
+//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
     
     [self.fullNameTextField resignFirstResponder];
     
     Hazard *hazard = [Hazard new];
     
     if (indexPath.row % 2) {
+        SolutionToBeCheckedTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         hazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
         [hazard toggleSolutionChecked];
         [self configureSolutionCheckmarkForCell:cell withChecklistItem:hazard];
     } else {
+        HazardToBeCheckedTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
         hazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
         [hazard toggleChecked];
         [self configureCheckmarkForCell:cell withChecklistItem:hazard];

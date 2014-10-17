@@ -92,9 +92,9 @@
     static NSString *SimpleTableIdentifier = @"HazardCell";
     HazardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
-    _hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:indexPath.row];
-    cell.hazardLabel.text = _hazard.hazardName;
-    cell.solutionLabel.text = _hazard.solution;
+    Hazard *hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:indexPath.row];
+    cell.hazardLabel.text = hazard.hazardName;
+    cell.solutionLabel.text = hazard.solution;
     
     return cell;
 }
@@ -187,7 +187,7 @@
 }
 
 - (void)AddHazardViewController:(AddHazardViewController *)controller didFinishAddingHazard:(Hazard *)hazard {
-    NSInteger newRowIndex = [_task.hazardArray count];
+    NSInteger newRowIndex = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] count];
     [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] addObject:hazard];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
@@ -196,8 +196,6 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
-    
-//    [DataModel.myDateModel saveData];
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

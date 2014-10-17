@@ -874,7 +874,7 @@
                                                 <rect key="frame" x="0.0" y="69" width="320" height="392"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <prototypes>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HazardCell" id="uCk-1n-PbU">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="HazardCell" id="uCk-1n-PbU" customClass="HazardToBeCheckedTableViewCell">
                                                         <rect key="frame" x="0.0" y="163" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="uCk-1n-PbU" id="JaK-s4-WlI">
@@ -894,8 +894,12 @@
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="checkmarkLabel" destination="NOe-JR-MIT" id="Ydk-Hw-GSG"/>
+                                                            <outlet property="verticalLine" destination="840-XY-dYJ" id="4av-qG-GMl"/>
+                                                        </connections>
                                                     </tableViewCell>
-                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SolutionCell" rowHeight="110" id="JQp-iK-7mR">
+                                                    <tableViewCell contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="SolutionCell" rowHeight="110" id="JQp-iK-7mR" customClass="SolutionToBeCheckedTableViewCell">
                                                         <rect key="frame" x="0.0" y="207" width="320" height="44"/>
                                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="JQp-iK-7mR" id="Yan-oP-AFs">
@@ -919,6 +923,11 @@
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <connections>
+                                                            <outlet property="bottomSpacer" destination="73u-Rx-8WN" id="wPG-J6-BO9"/>
+                                                            <outlet property="checkmarkLabel" destination="Ewa-qh-mV8" id="Yqb-B5-k1j"/>
+                                                            <outlet property="verticalLine" destination="T31-L5-6GQ" id="qwo-ij-mWI"/>
+                                                        </connections>
                                                     </tableViewCell>
                                                 </prototypes>
                                                 <connections>

@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		691681D619F1AFC50032EBC8 /* AddHazardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691681D519F1AFC50032EBC8 /* AddHazardViewController.m */; };
 		69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */; };
+		69C2E1EE19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */; };
+		69C2E1F119F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */; };
 		D61AB7CB197ED3F6003AD671 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AB7CA197ED3F6003AD671 /* logo.png */; };
 		D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7CD197ED57C003AD671 /* HomeViewController.m */; };
 		D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */; };
@@ -79,6 +81,10 @@
 		691681D519F1AFC50032EBC8 /* AddHazardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHazardViewController.m; sourceTree = "<group>"; };
 		69A5969C19F19A3000B9BAE6 /* HazardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardsViewController.h; sourceTree = "<group>"; };
 		69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardsViewController.m; sourceTree = "<group>"; };
+		69C2E1EC19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardToBeCheckedTableViewCell.h; sourceTree = "<group>"; };
+		69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardToBeCheckedTableViewCell.m; sourceTree = "<group>"; };
+		69C2E1EF19F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolutionToBeCheckedTableViewCell.h; sourceTree = "<group>"; };
+		69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolutionToBeCheckedTableViewCell.m; sourceTree = "<group>"; };
 		D61AB7CA197ED3F6003AD671 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D61AB7CC197ED57C003AD671 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D61AB7CD197ED57C003AD671 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -299,6 +305,10 @@
 				D61AB7DC197ED6D2003AD671 /* AddPersonViewController.m */,
 				D6F816AB19D9C407004E630B /* PersonTableViewCell.h */,
 				D6F816AC19D9C407004E630B /* PersonTableViewCell.m */,
+				69C2E1EC19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.h */,
+				69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */,
+				69C2E1EF19F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.h */,
+				69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */,
 			);
 			name = "Check In View Controllers";
 			sourceTree = "<group>";
@@ -547,6 +557,7 @@
 				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
 				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
 				D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */,
+				69C2E1EE19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m in Sources */,
 				69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */,
 				D6C79A4219DF18E300E04E4A /* PersonCheckOutViewController.m in Sources */,
 				D6F816B019DA0BD9004E630B /* DataModel.m in Sources */,
@@ -566,6 +577,7 @@
 				D65B5B3B19D4B8CE00FD9021 /* NSMutableArray+SWUtilityButtons.m in Sources */,
 				D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */,
 				D6F2D3CC19805A440056FDAA /* Job.m in Sources */,
+				69C2E1F119F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m in Sources */,
 				D6AA5B931992D026007FE5A8 /* DataController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
