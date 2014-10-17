@@ -891,11 +891,17 @@
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="iYz-8R-8uq">
+                                                                    <rect key="frame" x="8" y="12" width="259" height="21"/>
+                                                                    <fontDescription key="fontDescription" type="boldSystem" pointSize="17"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <outlet property="checkmarkLabel" destination="NOe-JR-MIT" id="Ydk-Hw-GSG"/>
+                                                            <outlet property="hazardLabel" destination="iYz-8R-8uq" id="D3x-5o-lsV"/>
                                                             <outlet property="verticalLine" destination="840-XY-dYJ" id="4av-qG-GMl"/>
                                                         </connections>
                                                     </tableViewCell>
@@ -920,12 +926,19 @@
                                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                                     <nil key="highlightedColor"/>
                                                                 </label>
+                                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="M2G-dE-ihw">
+                                                                    <rect key="frame" x="8" y="8" width="259" height="74"/>
+                                                                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                                    <nil key="highlightedColor"/>
+                                                                </label>
                                                             </subviews>
                                                         </tableViewCellContentView>
                                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                         <connections>
                                                             <outlet property="bottomSpacer" destination="73u-Rx-8WN" id="wPG-J6-BO9"/>
                                                             <outlet property="checkmarkLabel" destination="Ewa-qh-mV8" id="Yqb-B5-k1j"/>
+                                                            <outlet property="solutionLabel" destination="M2G-dE-ihw" id="vMw-7C-AL9"/>
                                                             <outlet property="verticalLine" destination="T31-L5-6GQ" id="qwo-ij-mWI"/>
                                                         </connections>
                                                     </tableViewCell>

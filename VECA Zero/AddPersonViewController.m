@@ -58,7 +58,6 @@
     [self setNeedsStatusBarAppearanceUpdate];
     
     [self.scrollView setScrollEnabled:YES];
-//    [self.scrollView setContentSize:CGSizeMake(320, 700)];
     
     [self.signatureView setLineWidth:2.0];
     self.signatureView.foregroundLineColor = [UIColor colorWithRed:0.204 green:0.596 blue:0.859 alpha:1.000];
@@ -84,31 +83,7 @@
     
     self.doneButton.enabled = NO;
     self.addSignatureButton.enabled = NO;
-//    self.signatureView.hidden = YES;
-//    self.signBelowLabel.hidden = YES;
-//    self.clearButton.hidden = YES;
-    
-    
-        
-//        _tableView.viewForBaselineLayout.bounds = CGRectMake(0, 62, 320, 426);
-    
-    
 }
-
-//-(void)viewWillAppear:(BOOL)animated {
-//    if (_localHazardArray.count == 1) {
-//        _tableView.frame = CGRectMake(0, 62, 320, 226);
-//        _tableView.contentSize = CGSizeMake(320, 226);
-//        
-//        //        _tableView.viewForBaselineLayout.bounds = CGRectMake(0, 62, 320, 226);
-//    } else if (_localHazardArray.count > 1) {
-//        CGRect tableViewFrame = [_tableView frame];
-//        [_tableView setFrame:CGRectMake(tableViewFrame.origin.x, tableViewFrame.origin.y, tableViewFrame.size.width, tableViewFrame.size.height +200)];
-//        [_tableView setContentSize:CGSizeMake(tableViewFrame.size.width, tableViewFrame.size.height +200)];
-////        _tableView.frame = CGRectMake(0, 62, 320, 426);
-////        _tableView.contentSize = CGSizeMake(320, 426);
-//    }
-//}
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -167,42 +142,25 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-
     
         if (indexPath.row % 2) {
             NSString *CellIdentifier = @"SolutionCell";
             SolutionToBeCheckedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//            if (cell == nil) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//            }
-            UILabel *solutionLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, 250, 80)];
-//            [solutionLabel setFont:[UIFont systemFontOfSize:17]];
-//            [solutionLabel setEditable:NO];
+
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
-            cellHazard.solutionChecked = NO;
+            cell.solutionLabel.text = cellHazard.solution;
             
-            solutionLabel.numberOfLines = 0;
-            solutionLabel.text = cellHazard.solution;
-            
-            [cell addSubview:solutionLabel];
             [self configureSolutionCheckmarkForCell:cell withChecklistItem:cellHazard];
             return cell;
         } else {
             NSString *CellIdentifier = @"HazardCell";
             HazardToBeCheckedTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:CellIdentifier];
-//            if (cell == nil) {
-//                cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:CellIdentifier];
-//            }
-            
             
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
-            cellHazard.checked = NO;
+            cell.hazardLabel.text = cellHazard.hazardName;
 
-            UILabel *hazardLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 7, 250, 30)];
-            hazardLabel.text = cellHazard.hazardName;
             [self configureCheckmarkForCell:cell withChecklistItem:cellHazard];
             
-            [cell addSubview:hazardLabel];
             return cell;
         }
 }
@@ -210,22 +168,18 @@
 - (void)configureCheckmarkForCell:(HazardToBeCheckedTableViewCell *)cell
                 withChecklistItem:(Hazard *)hazard //methods for checking and unchecking a cell/row
 {
-    UILabel *label = (UILabel *)[cell viewWithTag:1004];
-    
-    label.textColor = [UIColor blueColor];
+    cell.checkmarkLabel.textColor = [UIColor blueColor];
     
     if (hazard.checked) {
-        label.text = @"√";
+        cell.checkmarkLabel.text = @"√";
     } else {
-        label.text = @"";
+        cell.checkmarkLabel.text = @"";
     }
 }
 
 - (void)configureSolutionCheckmarkForCell:(SolutionToBeCheckedTableViewCell *)cell
                 withChecklistItem:(Hazard *)hazard //methods for checking and unchecking a cell/row
 {
-//    UILabel *label = (UILabel *)[cell viewWithTag:1005];
-    
     cell.checkmarkLabel.textColor = [UIColor blueColor];
     
     if (hazard.solutionChecked) {
@@ -238,23 +192,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-
-//    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    
+ 
     [self.fullNameTextField resignFirstResponder];
-    
-    Hazard *hazard = [Hazard new];
-    
+ 
     if (indexPath.row % 2) {
+        Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
         SolutionToBeCheckedTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        hazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
-        [hazard toggleSolutionChecked];
-        [self configureSolutionCheckmarkForCell:cell withChecklistItem:hazard];
+        cellHazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
+        [cellHazard toggleSolutionChecked];
+        [self configureSolutionCheckmarkForCell:cell withChecklistItem:cellHazard];
     } else {
+        Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
         HazardToBeCheckedTableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-        hazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
-        [hazard toggleChecked];
-        [self configureCheckmarkForCell:cell withChecklistItem:hazard];
+        cellHazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
+        [cellHazard toggleChecked];
+        [self configureCheckmarkForCell:cell withChecklistItem:cellHazard];
     }
     
     [self countCheckedHazards];
@@ -283,13 +235,6 @@
 //        self.doneButton.enabled = NO;
         self.signView.hidden = YES;
     }
-    
-//    UIBarButtonItem *closeSignView = [[UIBarButtonItem alloc] initWithTitle:@"Close Signature View" style:UIBarButtonItemStylePlain target:self action:nil];
-//    self.toolBar.hidden = YES;
-//    self.signatureView.hidden = NO;
-//    self.signBelowLabel.hidden = NO;
-//    self.clearButton.hidden = NO;
-    
 }
 
 - (int)countCheckedHazards
@@ -307,15 +252,5 @@
     }
     return _count;
 }
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender
-{
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

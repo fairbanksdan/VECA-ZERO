@@ -11,5 +11,6 @@
 @interface HazardToBeCheckedTableViewCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIImageView *verticalLine;
 @property (weak, nonatomic) IBOutlet UILabel *checkmarkLabel;
+@property (weak, nonatomic) IBOutlet UILabel *hazardLabel;
 
 @end

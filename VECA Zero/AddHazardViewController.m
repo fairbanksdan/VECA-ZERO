@@ -39,6 +39,8 @@
     Hazard *hazard = [Hazard new];
     hazard.hazardName = self.hazardNameTextField.text;
     hazard.solution = self.solutionTextView.text;
+    hazard.checked = NO;
+    hazard.solutionChecked = NO;
     [self.delegate AddHazardViewController:self didFinishAddingHazard:hazard];
 }
 
