@@ -219,14 +219,15 @@ forRowAtIndexPath:(NSIndexPath *)indexPath
             controller.job = _job;
             controller.task = _task;
             controller.task.hazardArray = _textFields;
+            controller.task.personArray = _task.personArray;
         }
         [self saveHazard];
     }
 }
 
--(void)SignInViewController:(SignInViewController *)controller didFinishSavingPersonArray:(NSMutableArray *)personsArray {
-    _newPersonsArray = personsArray;
-}
+//-(void)SignInViewController:(SignInViewController *)controller didFinishSavingPersonArray:(NSMutableArray *)personsArray {
+//    _newPersonsArray = personsArray;
+//}
 
 -(void)saveHazard {
     int i = 0;

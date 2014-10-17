@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		691681D619F1AFC50032EBC8 /* AddHazardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691681D519F1AFC50032EBC8 /* AddHazardViewController.m */; };
+		69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */; };
 		D61AB7CB197ED3F6003AD671 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AB7CA197ED3F6003AD671 /* logo.png */; };
 		D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7CD197ED57C003AD671 /* HomeViewController.m */; };
 		D61AB7D7197ED66C003AD671 /* AddHazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */; };
@@ -73,6 +75,10 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		691681D419F1AFC50032EBC8 /* AddHazardViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddHazardViewController.h; sourceTree = "<group>"; };
+		691681D519F1AFC50032EBC8 /* AddHazardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHazardViewController.m; sourceTree = "<group>"; };
+		69A5969C19F19A3000B9BAE6 /* HazardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardsViewController.h; sourceTree = "<group>"; };
+		69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardsViewController.m; sourceTree = "<group>"; };
 		D61AB7CA197ED3F6003AD671 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D61AB7CC197ED57C003AD671 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D61AB7CD197ED57C003AD671 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -274,8 +280,10 @@
 		D65B5B4F19D612AB00FD9021 /* Hazard View Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */,
-				D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */,
+				69A5969C19F19A3000B9BAE6 /* HazardsViewController.h */,
+				69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */,
+				691681D419F1AFC50032EBC8 /* AddHazardViewController.h */,
+				691681D519F1AFC50032EBC8 /* AddHazardViewController.m */,
 				D626BAD419DCBA0900209DC5 /* HazardTableViewCell.h */,
 				D626BAD519DCBA0900209DC5 /* HazardTableViewCell.m */,
 			);
@@ -357,6 +365,8 @@
 		D689E36C19799DED003050F5 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				D61AB7D5197ED66C003AD671 /* AddHazardsViewController.h */,
+				D61AB7D6197ED66C003AD671 /* AddHazardsViewController.m */,
 				D689E38019799DED003050F5 /* Images.xcassets */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
@@ -537,6 +547,7 @@
 				D689E37619799DED003050F5 /* AppDelegate.m in Sources */,
 				D61AB7DD197ED6D2003AD671 /* AddPersonViewController.m in Sources */,
 				D6F816AD19D9C407004E630B /* PersonTableViewCell.m in Sources */,
+				69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */,
 				D6C79A4219DF18E300E04E4A /* PersonCheckOutViewController.m in Sources */,
 				D6F816B019DA0BD9004E630B /* DataModel.m in Sources */,
 				D626BAD619DCBA0900209DC5 /* HazardTableViewCell.m in Sources */,
@@ -546,6 +557,7 @@
 				D6F2D3C919805A2E0056FDAA /* Person.m in Sources */,
 				D6F2D3CF19805A530056FDAA /* Task.m in Sources */,
 				D689E37219799DED003050F5 /* main.m in Sources */,
+				691681D619F1AFC50032EBC8 /* AddHazardViewController.m in Sources */,
 				D65B5B3E19D4B8CE00FD9021 /* SWTableViewCell.m in Sources */,
 				D65B5B4319D4BD7E00FD9021 /* JobTableViewCell.m in Sources */,
 				D623489919DB5E7B00E61655 /* AddTaskViewController.m in Sources */,

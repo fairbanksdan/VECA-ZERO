@@ -35,10 +35,11 @@
 @end
 
 
-@interface AddHazardsViewController : UITableViewController <SignInViewControllerDelegate>
+@interface AddHazardsViewController : UIViewController <SignInViewControllerDelegate>
 
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) Job *job;
+@property (strong, nonatomic) Hazard *hazard;
 @property UITextField *myTextField;
 
 //@property (weak, nonatomic) IBOutlet UITableView *tableView;

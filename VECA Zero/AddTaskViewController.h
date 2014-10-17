@@ -7,7 +7,7 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "AddHazardsViewController.h"
+#import "HazardsViewController.h"
 
 @class AddTaskViewController;
 @class Task;
@@ -24,7 +24,7 @@
 
 @end
 
-@interface AddTaskViewController : UITableViewController <AddHazardsViewControllerDelegate>
+@interface AddTaskViewController : UITableViewController /*<HazardsViewControllerDelegate>*/
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIColor *navBarColor;
@@ -41,6 +41,5 @@
 @property (nonatomic, strong) Task *task;
 
 - (IBAction)cancel;
-- (IBAction)next;
 
 @end

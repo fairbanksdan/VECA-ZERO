@@ -24,6 +24,7 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *AddJobBarButton;
 @property (weak, nonatomic) IBOutlet UISearchBar *jobSearchBar;
 @property (strong, nonatomic) NSMutableArray *filteredJobArray;
+@property (weak, nonatomic) IBOutlet UIButton *addJobButton;
 
 @end
 
@@ -50,6 +51,8 @@
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     self.navigationController.navigationBar.barStyle = UIBarStyleBlack;
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
+    
+    [self.addJobButton.layer setCornerRadius:5];
 }
 
 //-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
@@ -294,6 +297,9 @@
 
 -(void) segueToAddJobVC{
     [self performSegueWithIdentifier:@"EditJob" sender:self];
+}
+- (IBAction)addJobButton:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"AddJob" sender:self];
 }
 
 #pragma mark Content Filtering

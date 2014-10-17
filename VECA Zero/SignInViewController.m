@@ -45,7 +45,7 @@
     [self.saveTaskButton.layer setCornerRadius:5];
     [self.addPersonButton.layer setCornerRadius:5];
     
-    [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
+//    [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
     
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
     
@@ -122,7 +122,7 @@
 
 - (void)AddPersonViewController:(AddPersonViewController *)controller didFinishAddingItem:(Person *)person {
     NSInteger newRowIndex = [_persons count];
-    [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] addObject:person];
+    [_persons addObject:person];
     NSIndexPath *indexPath = [NSIndexPath
                               indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];

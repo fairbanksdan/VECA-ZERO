@@ -9,7 +9,7 @@
 #import "AddTaskViewController.h"
 #import "Task.h"
 #import "Hazard.h"
-#import "AddHazardsViewController.h"
+#import "HazardsViewController.h"
 
 #define IS_IPHONE ( [[[UIDevice currentDevice] model] isEqualToString:@"iPhone"])
 #define IS_HEIGHT_GTE_568 [[UIScreen mainScreen ] bounds].size.height >= 568.0f
@@ -116,8 +116,8 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"NewHazards"]) {
         UINavigationController *navigationController = segue.destinationViewController;
-        AddHazardsViewController *controller = (AddHazardsViewController *)navigationController;
-        controller.delegate = self;
+        HazardsViewController *controller = (HazardsViewController *)navigationController;
+//        controller.delegate = self;
 //        [self saveTask];
         controller.task = sender;
         controller.job = _job;
@@ -126,7 +126,7 @@
             [self saveTask];
           } else {
             [self updateTask];
-            controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
+//            controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
           }
       
     }
@@ -314,13 +314,13 @@ indentationLevelForRowAtIndexPath:indexPath];
     }
 }
 
--(void)AddHazardsViewController:(AddHazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
-    [_newTask.hazardArray addObject:hazard];
-}
-
--(void)AddHazardsViewController:(AddHazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray {
-    [_newTask.personArray addObjectsFromArray:myPersonArray];
-}
+//-(void)HazardsViewController:(HazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
+//    [_newTask.hazardArray addObject:hazard];
+//}
+//
+//-(void)HazardsViewController:(HazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray {
+//    [_newTask.personArray addObjectsFromArray:myPersonArray];
+//}
 
 
 
