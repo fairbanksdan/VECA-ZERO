@@ -7,6 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Hazard.h"
 
 @interface Person : NSObject <NSCoding>
 
@@ -19,5 +20,6 @@
 @property (nonatomic, strong) UIImage *checkInSignature;
 @property (nonatomic, strong) UIImage *checkOutSignature;
 
+@property (strong, nonatomic) NSMutableArray *personHazardsArray;
 
 @end

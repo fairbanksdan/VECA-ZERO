@@ -76,14 +76,17 @@
         self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
         self.signatureView.image = self.personToEdit.checkInSignature;
+        self.addSignatureButton.title = @"Edit Signature";
+        self.addSignatureButton.enabled = YES;
+        self.doneButton.enabled = YES;
+    } else if (self.personToEdit == nil) {
+        self.addSignatureButton.enabled = NO;
+        self.doneButton.enabled = NO;        
     }
-    
     self.signView.hidden = YES;
     [self.signView.layer setCornerRadius:5];
     
-    self.doneButton.enabled = NO;
-    self.addSignatureButton.enabled = NO;
-}
+    }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -149,6 +152,11 @@
 
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row - 1) / 2)];
             cell.solutionLabel.text = cellHazard.solution;
+            if (self.personToEdit == nil) {
+                cellHazard.solutionChecked = NO;
+            } else if (self.personToEdit != nil) {
+                cellHazard.solutionChecked = YES;
+            }
             
             [self configureSolutionCheckmarkForCell:cell withChecklistItem:cellHazard];
             return cell;
@@ -158,6 +166,11 @@
             
             Hazard *cellHazard = [_localHazardArray objectAtIndex:((indexPath.row) / 2)];
             cell.hazardLabel.text = cellHazard.hazardName;
+            if (self.personToEdit == nil) {
+                cellHazard.checked = NO;
+            } else if (self.personToEdit != nil) {
+                cellHazard.checked = YES;
+            }
 
             [self configureCheckmarkForCell:cell withChecklistItem:cellHazard];
             
@@ -231,9 +244,17 @@
         self.doneButton.enabled = YES;
         self.signView.hidden = NO;
     } else if ([self.addSignatureButton.title isEqualToString:@"Close Signature View"]) {
-        self.addSignatureButton.title = @"Add Signature";
+        if (self.personToEdit == nil) {
+            self.addSignatureButton.title = @"Add Signature";
+        } else if (self.personToEdit != nil) {
+        self.addSignatureButton.title = @"Edit Signature";
+        }
 //        self.doneButton.enabled = NO;
         self.signView.hidden = YES;
+    } else if ([self.addSignatureButton.title isEqualToString:@"Edit Signature"]) {
+        self.addSignatureButton.title = @"Close Signature View";
+        self.doneButton.enabled = YES;
+        self.signView.hidden = NO;
     }
 }
 

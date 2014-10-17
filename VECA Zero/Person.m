@@ -18,6 +18,7 @@
         self.isInjured = [aDecoder decodeBoolForKey:@"injured"];
         self.supervisor = [aDecoder decodeObjectForKey:@"supervisor"];
         self.checkOutSignature = [aDecoder decodeObjectForKey:@"checkOutSignature"];
+        self.personHazardsArray = [aDecoder decodeObjectForKey:@"personHazardsArray"];
     }
     return self;
 }
@@ -29,7 +30,7 @@
     [aCoder encodeBool:self.isInjured forKey:@"injured"];
     [aCoder encodeObject:self.supervisor forKey:@"supervisor"];
     [aCoder encodeObject:self.checkOutSignature forKey:@"checkOutSignature"];
-    
+    [aCoder encodeObject:self.personHazardsArray forKey:@"personHazardsArray"];    
 }
 
 @end

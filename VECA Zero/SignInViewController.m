@@ -176,7 +176,14 @@
         NSIndexPath *indexPath = [self.tableView
                                   indexPathForSelectedRow];
 //        controller.personToEdit = [Person new];
-        controller.personToEdit = _persons[indexPath.row];
+        if (sender == self) {
+            controller.personToEdit = _persons[indexPath.row];
+        } else {
+        controller.personToEdit = sender;
+        }
+        controller.job = _job;
+        controller.task = _task;
+        controller.task.hazardArray = _task.hazardArray;
 //        controller.fullNameTextField.text = controller.personToEdit.fullName;
 //        controller.signatureView.image = controller.personToEdit.checkInSignature;
         controller.delegate = self;
@@ -217,7 +224,7 @@
         case 0:
         {
             NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
-            Person *person = _persons[cellIndexPath.row];
+            Person *person = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:cellIndexPath.row];
             
             [self performSegueWithIdentifier:@"EditPerson" sender:person];
             break;
