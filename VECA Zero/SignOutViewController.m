@@ -192,19 +192,24 @@ MFMessageComposeViewControllerDelegate>
 
     for (int i = 0; i < [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] count]; i++) {
         [checkInSignaturesArray addObject:[[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i] checkInSignature]];
-        [checkOutSignaturesArray addObject:[[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i] checkOutSignature]];
+        if ([[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i] checkOutSignature] != nil) {
+            [checkOutSignaturesArray addObject:[[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i] checkOutSignature]];
+        }
+        
     }
-
+    
     for (int i = 0; i < [checkInSignaturesArray count]; i++) {
         UIImage *signInImage = [checkInSignaturesArray objectAtIndex:i];
         NSData *mysignInImage = [NSData dataWithData:UIImagePNGRepresentation(signInImage)];
         [picker addAttachmentData:mysignInImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Sign In Signature of %@ on %@", ([[personsArray objectAtIndex:i] fullName]), taskDate]];
     }
     
-    for (int i = 0; i < [checkOutSignaturesArray count]; i++) {
-        UIImage *signOutImage = [checkOutSignaturesArray objectAtIndex:i];
-        NSData *mysignOutImage = [NSData dataWithData:UIImagePNGRepresentation(signOutImage)];
-        [picker addAttachmentData:mysignOutImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Sign Out Signature of %@ on %@", ([[personsArray objectAtIndex:i] fullName]), taskDate]];
+    if (checkOutSignaturesArray.count > 0) {
+        for (int i = 0; i < [checkOutSignaturesArray count]; i++) {
+            UIImage *signOutImage = [checkOutSignaturesArray objectAtIndex:i];
+            NSData *mysignOutImage = [NSData dataWithData:UIImagePNGRepresentation(signOutImage)];
+            [picker addAttachmentData:mysignOutImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Sign Out Signature of %@ on %@", ([[personsArray objectAtIndex:i] fullName]), taskDate]];
+        }
     }
     
     [self presentViewController:picker animated:YES completion:NULL];

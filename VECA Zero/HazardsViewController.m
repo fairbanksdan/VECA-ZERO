@@ -21,16 +21,6 @@
 @end
 
 @implementation HazardsViewController
-{
-//    NSMutableArray *_localHazardsArray;
-//    
-//    UITextField *_solutionTextField;
-//    NSString *_string;
-//    NSMutableArray *_textFields;
-//    NSMutableArray *_solutionTextFields;
-//    NSMutableArray *_newPersonsArray;
-//    NSMutableArray *_tags;
-}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -45,20 +35,18 @@
 {
     [super viewDidLoad];
     
-//    _localHazardsArray = [[NSMutableArray alloc] initWithCapacity:20];
-//    
-//    _textFields = [[NSMutableArray alloc] initWithCapacity:20];
-//    
-//    _solutionTextFields = [[NSMutableArray alloc] initWithCapacity:20];
-//    
-//    _newPersonsArray = [[NSMutableArray alloc] initWithCapacity:20];
-    
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
     
     [self.addHazard.layer setCornerRadius:5];
     
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    
+    if ([[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] count] == 0) {
+        self.nextButton.enabled = NO;
+    } else {
+        self.nextButton.enabled = YES;
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -196,6 +184,7 @@
     [self.tableView insertRowsAtIndexPaths:indexPaths
                           withRowAnimation:UITableViewRowAnimationAutomatic];
     [self.tableView endUpdates];
+    self.nextButton.enabled = YES;
     
     [self dismissViewControllerAnimated:YES completion:nil];
     

@@ -65,6 +65,11 @@
                                                selector:@selector(saveTask)
                                                    name:@"saveTaskData"
                                                  object:nil];
+    if ([self.taskNameTextField.text length] > 0) {
+        self.nextBarButton.enabled = YES;
+    } else {
+        self.nextBarButton.enabled = NO;
+    }
   
 }
 
@@ -312,6 +317,14 @@ indentationLevelForRowAtIndexPath:indexPath];
     } else {
     [self hideDatePicker];
     }
+}
+- (IBAction)taskNameChanged:(UITextField *)sender {
+
+        if ([self.taskNameTextField.text length] > 0) {
+            self.nextBarButton.enabled = YES;
+        } else {
+            self.nextBarButton.enabled = NO;
+        }
 }
 
 //-(void)HazardsViewController:(HazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {

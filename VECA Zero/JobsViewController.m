@@ -233,7 +233,11 @@
         NSIndexPath *indexPath = [self.tableView
                                   indexPathForCell:sender];
         _jobsArray[indexPath.row] = sender;
-        controller.jobToEdit = DataModel.myDataModel.jobsArray[indexPath.row];
+        if (sender == nil) {
+            controller.jobToEdit = DataModel.myDataModel.jobsArray[indexPath.row];
+        } else {
+            controller.jobToEdit = sender;
+        }
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"Task"]) {
         TaskViewController *destViewController = segue.destinationViewController;
@@ -274,7 +278,9 @@
     switch (index) {
         case 0:
         {
-            [self performSegueWithIdentifier:@"EditJob" sender:self];
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            Job *job = [DataModel.myDataModel.jobsArray objectAtIndex:cellIndexPath.row];
+            [self performSegueWithIdentifier:@"EditJob" sender:job];
             break;
         }
         case 1:

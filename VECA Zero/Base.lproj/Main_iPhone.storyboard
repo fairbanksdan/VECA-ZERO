@@ -332,6 +332,7 @@
                                                     <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                     <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="next" enablesReturnKeyAutomatically="YES"/>
                                                     <connections>
+                                                        <action selector="taskNameChanged:" destination="UYT-O3-bg7" eventType="editingChanged" id="tl6-vc-EuJ"/>
                                                         <action selector="taskNameNext:" destination="UYT-O3-bg7" eventType="editingDidEndOnExit" id="KzC-Za-4uv"/>
                                                     </connections>
                                                 </textField>
@@ -565,7 +566,7 @@
                     </navigationItem>
                     <connections>
                         <outlet property="addHazard" destination="dfz-HH-byM" id="f6G-4q-UdQ"/>
-                        <outlet property="nextButton" destination="SPC-5K-NQZ" id="hRB-r7-rfQ"/>
+                        <outlet property="nextButton" destination="SPC-5K-NQZ" id="OBm-k5-YvX"/>
                         <outlet property="tableView" destination="vFC-nm-LVo" id="erQ-2t-Ta3"/>
                     </connections>
                 </viewController>
