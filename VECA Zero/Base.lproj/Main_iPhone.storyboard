@@ -423,19 +423,23 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="8h0-sw-f0L">
                                 <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="wzJ-1Q-C3l">
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="wzJ-1Q-C3l">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzJ-1Q-C3l" id="37Z-eW-hYk">
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-XR-LM3">
-                                                    <rect key="frame" x="8" y="11" width="42" height="21"/>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will there be any energized work associated with this task?" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-XR-LM3">
+                                                    <rect key="frame" x="8" y="6" width="247" height="57"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                                     <nil key="highlightedColor"/>
                                                 </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" on="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Q1I-tO-U9A">
-                                                    <rect key="frame" x="263" y="6" width="51" height="31"/>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q1I-tO-U9A">
+                                                    <rect key="frame" x="263" y="19" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.12549019610000001" green="0.34901960780000002" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="energizedWorkToggle:" destination="UYT-O3-bg7" eventType="valueChanged" id="OhG-eC-Qwm"/>
+                                                    </connections>
                                                 </switch>
                                             </subviews>
                                         </tableViewCellContentView>
@@ -467,6 +471,7 @@
                         <outlet property="SecondaryEvacTextField" destination="Sox-bb-QJq" id="S3I-2V-zqr"/>
                         <outlet property="cancelButton" destination="qUs-uk-jqq" id="jZK-NV-7oG"/>
                         <outlet property="dateLabel" destination="6DM-hD-kp1" id="dVD-hr-qLo"/>
+                        <outlet property="energizedSwitch" destination="Q1I-tO-U9A" id="Rn7-JJ-Anr"/>
                         <outlet property="nextBarButton" destination="yUT-JD-94m" id="obP-OW-9K8"/>
                         <outlet property="specificTaskLocationTextField" destination="HgH-TN-g1x" id="dkS-wR-q6a"/>
                         <outlet property="taskNameTextField" destination="xec-7S-FbT" id="QRB-NU-DEa"/>
@@ -474,7 +479,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KlU-aK-CUc" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="2168" y="924"/>
+            <point key="canvasLocation" x="2168" y="923"/>
         </scene>
         <!--Add Hazards View Controller-->
         <scene sceneID="vCq-xJ-Rhv">

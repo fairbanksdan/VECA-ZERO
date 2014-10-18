@@ -15,7 +15,8 @@
 #define IS_HEIGHT_GTE_568 [[UIScreen mainScreen ] bounds].size.height >= 568.0f
 #define IS_IPHONE_5 ( IS_IPHONE && IS_HEIGHT_GTE_568 )
 
-@interface AddTaskViewController ()
+@interface AddTaskViewController () <UIAlertViewDelegate>
+@property (weak, nonatomic) IBOutlet UISwitch *energizedSwitch;
 
 @end
 
@@ -28,6 +29,8 @@
     Task *_newTask;
     
     UIToolbar *_toolBar;
+    
+    UIAlertView *alert;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -70,6 +73,12 @@
     } else {
         self.nextBarButton.enabled = NO;
     }
+    
+    alert = [[UIAlertView alloc] initWithTitle:@"Energized Work"
+                                                    message:@"Please fill out a method of procedure form and submit to the safety department"
+                                                   delegate:self
+                                          cancelButtonTitle:@"OK"
+                                          otherButtonTitles:nil];
   
 }
 
@@ -326,6 +335,23 @@ indentationLevelForRowAtIndexPath:indexPath];
             self.nextBarButton.enabled = NO;
         }
 }
+- (IBAction)energizedWorkToggle:(UISwitch *)sender {
+    if(self.energizedSwitch.isOn == YES) {
+//        [self.taskNameTextField resignFirstResponder];
+//        [self.specificTaskLocationTextField resignFirstResponder];
+//        [self.PrimaryEvacTextField resignFirstResponder];
+//        [self.SecondaryEvacTextField resignFirstResponder];
+        
+        [alert show];
+    }
+    
+}
+
+- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
+
+    [alert dismissWithClickedButtonIndex:0 animated:YES];
+}
+
 
 //-(void)HazardsViewController:(HazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
 //    [_newTask.hazardArray addObject:hazard];
