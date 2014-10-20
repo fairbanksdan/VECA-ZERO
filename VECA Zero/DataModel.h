@@ -7,14 +7,18 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "Person.h"
 
 @interface DataModel : NSObject
 
 @property (nonatomic, strong) NSMutableArray *jobsArray;
+@property (nonatomic, strong) Person *mainUser;
+@property BOOL firstTime;
 
 + (DataModel *)myDataModel;
 
 - (void)saveJobs;
+- (void)saveMainUser;
 
 - (NSInteger)indexOfSelectedJob;
 - (void)setIndexOfSelectedJob:(NSInteger)index;

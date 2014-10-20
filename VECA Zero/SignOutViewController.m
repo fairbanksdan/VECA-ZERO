@@ -234,6 +234,11 @@ MFMessageComposeViewControllerDelegate>
 //            self.feedbackMsg.text = @"Result: Mail saved";
             break;
         case MFMailComposeResultSent:
+            DataModel.myDataModel.mainUser.checkInSignature = nil;
+            DataModel.myDataModel.mainUser.checkOutSignature = nil;
+            DataModel.myDataModel.mainUser.isInjured = nil;
+            DataModel.myDataModel.mainUser.incidentDescription = nil;
+            DataModel.myDataModel.mainUser.supervisor = nil;
             [self dismissViewControllerAnimated:YES completion:NULL];
             [self performSegueWithIdentifier:@"BackToJobs" sender:self];
 //            self.feedbackMsg.text = @"Result: Mail sent";

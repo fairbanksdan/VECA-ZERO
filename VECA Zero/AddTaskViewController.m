@@ -23,14 +23,10 @@
 @implementation AddTaskViewController
 {
     NSDate *_date;
-    
     BOOL _datePickerVisible;
-    
     Task *_newTask;
-    
     UIToolbar *_toolBar;
-    
-    UIAlertView *alert;
+    UIAlertController *energizedAlert;
 }
 
 - (id)initWithStyle:(UITableViewStyle)style
@@ -73,37 +69,7 @@
     } else {
         self.nextBarButton.enabled = NO;
     }
-    
-    alert = [[UIAlertView alloc] initWithTitle:@"Energized Work"
-                                                    message:@"Please fill out a method of procedure form and submit to the safety department"
-                                                   delegate:self
-                                          cancelButtonTitle:@"OK"
-                                          otherButtonTitles:nil];
-  
 }
-
-//-(BOOL)textViewShouldBeginEditing:(UITextView *)textView
-//{
-//    [_toolBar setHidden:NO];
-//    return YES;
-//}
-//
-//-(IBAction)doneButtonTouched:(id)sender
-//{
-//    [self.taskNameTextField resignFirstResponder];
-//    [_toolBar setHidden:YES];
-//}
-
-//-(void)viewWillAppear:(BOOL)animated {
-//    [self.taskNameTextField becomeFirstResponder];
-//}
-
-//-(void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    [self.taskNameTextField resignFirstResponder];
-//    [self.specificTaskLocationTextField resignFirstResponder];
-//    [self.PrimaryEvacTextField resignFirstResponder];
-//    [self.SecondaryEvacTextField resignFirstResponder];
-//}
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
     return UIStatusBarStyleLightContent;
@@ -148,10 +114,6 @@
 - (IBAction)taskNameNext:(UITextField *)sender {
     [self performSegueWithIdentifier:@"NewHazards" sender:self];
 }
-
-//- (IBAction)nextButton:(UIBarButtonItem *)sender {
-//    [self performSegueWithIdentifier:@"NewHazards" sender:self];
-//}
 
 
 -(void)saveTask {
@@ -337,19 +299,22 @@ indentationLevelForRowAtIndexPath:indexPath];
 }
 - (IBAction)energizedWorkToggle:(UISwitch *)sender {
     if(self.energizedSwitch.isOn == YES) {
-//        [self.taskNameTextField resignFirstResponder];
-//        [self.specificTaskLocationTextField resignFirstResponder];
-//        [self.PrimaryEvacTextField resignFirstResponder];
-//        [self.SecondaryEvacTextField resignFirstResponder];
+
+        energizedAlert = [UIAlertController alertControllerWithTitle:@"Energized Work" message:@"Please fill out a method of procedure form and submit to the safety department" preferredStyle:UIAlertControllerStyleAlert];
+            
+        UIAlertAction *cancel = [UIAlertAction
+                                 actionWithTitle:@"Cancel"
+                                 style:UIAlertActionStyleCancel
+                                 handler:^(UIAlertAction * action)
+                                 {
+                                     [energizedAlert dismissViewControllerAnimated:YES completion:nil];
+                                     
+                                 }];
         
-        [alert show];
+        [energizedAlert addAction:cancel];
+        
+        [self presentViewController:energizedAlert animated:YES completion:nil];
     }
-    
-}
-
-- (void)alertView:(UIAlertView *)alertView didDismissWithButtonIndex:(NSInteger)buttonIndex {
-
-    [alert dismissWithClickedButtonIndex:0 animated:YES];
 }
 
 

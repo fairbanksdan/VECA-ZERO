@@ -7,11 +7,12 @@
 //
 
 #import "HomeViewController.h"
+#import "JobsViewController.h"
 
 @interface HomeViewController () <UIGestureRecognizerDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *EmailTextField;
 @property (strong,nonatomic) NSArray *textFields;
-@property (weak, nonatomic) IBOutlet UITextField *NameTextField;
+@property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 @end
@@ -33,7 +34,7 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    self.textFields = @[self.EmailTextField, self.NameTextField];
+    self.textFields = @[self.EmailTextField, self.nameTextField];
     
     UITapGestureRecognizer *tapOutside = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.scrollView addGestureRecognizer:tapOutside];
@@ -42,9 +43,16 @@
     
     self.EmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
     
-    self.NameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
+    self.nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
     
     [self.continueButton.layer setCornerRadius:5];
+    
+    if (DataModel.myDataModel.mainUser != nil) {
+        self.nameTextField.text = DataModel.myDataModel.mainUser.fullName;
+    } else {
+        self.nameTextField.text = nil;
+
+    }
     
     
 }
@@ -89,15 +97,21 @@
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
-//-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-//    
-//    if ([segue.identifier isEqualToString:@"New Task"]) {
-//        UINavigationController *navigationController = segue.destinationViewController;
-//        NewTaskViewController *controller = (NewTaskViewController *)navigationController;
-//        controller.delegate = self;
-//    }
-//    
-//}
+- (IBAction)continueButton:(UIButton *)sender {
+    DataModel.myDataModel.mainUser.fullName = self.nameTextField.text;
+    DataModel.myDataModel.mainUser.checkInSignature = nil;
+    
+    [DataModel.myDataModel saveJobs];
+}
+
+-(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
+    
+    if ([segue.identifier isEqualToString:@"Jobs"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        JobsViewController *controller = (JobsViewController *)navigationController.topViewController;
+    }
+    
+}
 
 /*
 #pragma mark - Navigation

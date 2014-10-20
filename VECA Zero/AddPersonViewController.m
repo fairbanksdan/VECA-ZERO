@@ -35,6 +35,7 @@
     NSMutableArray *_localHazardArray;
     NSMutableArray *_localSolutionArray;
     int _count;
+    Person *_localMainUser;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -76,9 +77,22 @@
         self.navBar.title = @"Edit Person";
         self.fullNameTextField.text = self.personToEdit.fullName;
         self.signatureView.image = self.personToEdit.checkInSignature;
-        self.addSignatureButton.title = @"Edit Signature";
-        self.addSignatureButton.enabled = YES;
-        self.doneButton.enabled = YES;
+        if (self.personToEdit == DataModel.myDataModel.mainUser) {
+            if (self.personToEdit.checkInSignature == nil) {
+                self.addSignatureButton.title = @"Add Signature";
+                self.addSignatureButton.enabled = NO;
+                self.doneButton.enabled = NO;
+            } else {
+                self.addSignatureButton.title = @"Edit Signature";
+                self.addSignatureButton.enabled = YES;
+                self.doneButton.enabled = YES;
+            }
+        } else {
+            self.addSignatureButton.title = @"Edit Signature";
+            self.addSignatureButton.enabled = YES;
+            self.doneButton.enabled = YES;
+        }
+        
     } else if (self.personToEdit == nil) {
         self.addSignatureButton.enabled = NO;
         self.doneButton.enabled = NO;        
@@ -155,7 +169,15 @@
             if (self.personToEdit == nil) {
                 cellHazard.solutionChecked = NO;
             } else if (self.personToEdit != nil) {
-                cellHazard.solutionChecked = YES;
+                if (self.personToEdit == DataModel.myDataModel.mainUser) {
+                    if (self.personToEdit.checkInSignature == nil) {
+                        cellHazard.checked = NO;
+                    } else {
+                        cellHazard.checked = YES;
+                    }
+                } else {
+                    cellHazard.checked = YES;
+                }
             }
             
             [self configureSolutionCheckmarkForCell:cell withChecklistItem:cellHazard];
@@ -169,13 +191,23 @@
             if (self.personToEdit == nil) {
                 cellHazard.checked = NO;
             } else if (self.personToEdit != nil) {
-                cellHazard.checked = YES;
+                if (self.personToEdit == DataModel.myDataModel.mainUser) {
+                    if (self.personToEdit == DataModel.myDataModel.mainUser) {
+                        if (self.personToEdit.checkInSignature == nil) {
+                            cellHazard.checked = NO;
+                        } else {
+                            cellHazard.checked = YES;
+                        }
+                    } else {
+                        cellHazard.checked = YES;
+                    }
             }
-
+            }
             [self configureCheckmarkForCell:cell withChecklistItem:cellHazard];
             
             return cell;
         }
+        
 }
 
 - (void)configureCheckmarkForCell:(HazardToBeCheckedTableViewCell *)cell

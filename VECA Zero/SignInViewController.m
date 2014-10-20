@@ -45,9 +45,14 @@
     [self.saveTaskButton.layer setCornerRadius:5];
     [self.addPersonButton.layer setCornerRadius:5];
     
+    NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
+    
 //    [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
     
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
+    
+    Person *mainUser = DataModel.myDataModel.mainUser;
+    [_persons addObject:mainUser];
     
     NSLog(@"_persons count is: %lu", _persons.count);
     
@@ -105,19 +110,6 @@
     [self configureTextForCell:cell withPersonName:person];
     
     return cell;
-    
-//    
-//    if (cell == nil) {
-//        cell = [[UITableViewCell alloc] initWithStyle:UITableViewCellStyleDefault reuseIdentifier:SimpleTableIdentifier];
-//    }
-//    if (indexPath.row == 0) {
-//        Person *person = [self.personArray objectAtIndex:indexPath.row];
-//        cell.textLabel.text = person.fullName;
-//    } else {
-//        cell.textLabel.text = @"Add New Person";
-//    }
-//    
-//    return cell;
 }
 
 - (void)AddPersonViewController:(AddPersonViewController *)controller didFinishAddingItem:(Person *)person {
@@ -192,15 +184,8 @@
         destViewController.job = _job;
         destViewController.task = _task;
         destViewController.task.personArray = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
-//        myPerson = [_persons objectAtIndex:myIndexPath.row];
-//        destViewController.person = myPerson;
-      
-        
+   
     }
-    
-    
-    
-    
 }
 
 - (NSArray *)rightButtons
@@ -246,8 +231,6 @@
                 self.saveTaskButton.hidden = NO;
                 self.addPersonButton.hidden = YES;
             }
-            
-//            [self savePersons];
             break;
         }
         default:

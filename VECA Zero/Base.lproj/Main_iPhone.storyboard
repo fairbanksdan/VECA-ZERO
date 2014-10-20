@@ -7,7 +7,7 @@
         <!--Jobs View Controller-->
         <scene sceneID="ufC-wZ-h7g">
             <objects>
-                <viewController id="vXZ-lx-hvc" userLabel="Jobs View Controller" customClass="JobsViewController" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="JobsViewController" id="vXZ-lx-hvc" userLabel="Jobs View Controller" customClass="JobsViewController" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="jyV-Pf-zRb"/>
                         <viewControllerLayoutGuide type="bottom" id="2fi-mo-0CV"/>
@@ -78,6 +78,11 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     </view>
                     <navigationItem key="navigationItem" title="Jobs" id="WSP-sm-qpg">
+                        <barButtonItem key="leftBarButtonItem" title="Edit User" id="AWO-y0-hMr">
+                            <connections>
+                                <action selector="editUser:" destination="vXZ-lx-hvc" id="55A-79-wyP"/>
+                            </connections>
+                        </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="vCi-gp-hYy">
                             <connections>
                                 <segue destination="dLl-Zp-jad" kind="modal" identifier="AddJob" id="34a-Lx-3mb"/>
@@ -254,7 +259,7 @@
                                                 <rect key="frame" x="48" y="283" width="225" height="44"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="FhP-jV-e8o" id="20h-ba-bhw"/>
                                                 </connections>
@@ -263,7 +268,7 @@
                                                 <rect key="frame" x="47" y="241" width="225" height="44"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits" keyboardAppearance="alert"/>
+                                                <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 <connections>
                                                     <outlet property="delegate" destination="FhP-jV-e8o" id="DDT-hW-PoM"/>
                                                 </connections>
@@ -287,7 +292,8 @@
                                                     <color key="titleShadowColor" red="0.888671875" green="0.888671875" blue="0.888671875" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
                                                 <connections>
-                                                    <segue destination="0xP-Zd-z3S" kind="modal" id="Kxh-rG-k0T"/>
+                                                    <action selector="continueButton:" destination="FhP-jV-e8o" eventType="touchUpInside" id="XME-WH-zXy"/>
+                                                    <segue destination="0xP-Zd-z3S" kind="modal" identifier="Jobs" id="Kxh-rG-k0T"/>
                                                 </connections>
                                             </button>
                                         </subviews>
@@ -301,8 +307,8 @@
                     </view>
                     <connections>
                         <outlet property="EmailTextField" destination="KzG-Mu-7fl" id="Fum-ui-zpY"/>
-                        <outlet property="NameTextField" destination="8Zb-cC-ht7" id="Ddt-Ck-lq9"/>
                         <outlet property="continueButton" destination="MZc-80-4EX" id="zMf-9J-1eC"/>
+                        <outlet property="nameTextField" destination="8Zb-cC-ht7" id="Qod-cq-wHj"/>
                         <outlet property="scrollView" destination="ejl-2T-Vez" id="9TU-Mq-Vhp"/>
                     </connections>
                 </viewController>
@@ -1367,7 +1373,7 @@
         <!--Navigation Controller-->
         <scene sceneID="nfO-yd-IQ4">
             <objects>
-                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="0xP-Zd-z3S" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="NavController" automaticallyAdjustsScrollViewInsets="NO" id="0xP-Zd-z3S" sceneMemberID="viewController">
                     <toolbarItems/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="B2c-hE-bH6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
@@ -1474,9 +1480,9 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="BqD-96-IgV"/>
-        <segue reference="34a-Lx-3mb"/>
         <segue reference="t8B-rt-Q5i"/>
+        <segue reference="Kxh-rG-k0T"/>
+        <segue reference="34a-Lx-3mb"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

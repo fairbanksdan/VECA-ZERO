@@ -24,6 +24,20 @@
 //    JobsViewController *controller = navigationController.viewControllers[0];
 //    controller.jobsArray = DataModel.myDataModel.jobsArray;
     
+    DataModel.myDataModel.firstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstTime"];
+    
+    if (!DataModel.myDataModel.firstTime)
+    {
+        [[NSUserDefaults standardUserDefaults] setBool:YES forKey:@"firstTime"];
+        [[NSUserDefaults standardUserDefaults] synchronize];
+    }
+    else
+    {
+        UIStoryboard *MainStoryBoard = [UIStoryboard storyboardWithName:@"Main_iPhone" bundle:nil];
+        UINavigationController *JobsViewController = [MainStoryBoard instantiateViewControllerWithIdentifier:@"NavController"];
+        self.window.rootViewController = JobsViewController;
+    }
+    
     return YES;
 }
 							
@@ -36,6 +50,7 @@
 - (void)saveData
 {
     [DataModel.myDataModel saveJobs];
+//    [DataModel.myDataModel saveMainUser];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

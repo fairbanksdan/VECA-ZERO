@@ -9,7 +9,6 @@
 #import "JobsViewController.h"
 #import "AddJobViewController.h"
 #import "TaskViewController.h"
-#import "DataController.h"
 #import "Task.h"
 #import "Job.h"
 #import "NSMutableArray+SWUtilityButtons.h"
@@ -53,6 +52,8 @@
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
     
     [self.addJobButton.layer setCornerRadius:5];
+    
+    NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
 }
 
 //-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
@@ -206,7 +207,7 @@
     
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
 
-    Job *myJob;
+//    Job *myJob = [Job new];
     
     if ([segue.identifier isEqualToString:@"AddJob"]) {
 //        AddJobViewController *addJobVC = segue.destinationViewController;
@@ -241,17 +242,25 @@
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"Task"]) {
         TaskViewController *destViewController = segue.destinationViewController;
-        destViewController.job = sender;
+        
         
         if (self.tableView == self.searchDisplayController.searchResultsTableView) {
-            myJob = self.filteredJobArray[myIndexPath.row];
+//            if (sender == nil) {
+                destViewController.job = sender;
+//            } else {
+//                destViewController.job = sender;
+//            }
         } else {
-            myJob = DataModel.myDataModel.jobsArray[myIndexPath.row];
+            if (sender == nil) {
+                destViewController.job = DataModel.myDataModel.jobsArray[myIndexPath.row];
+            } else {
+                destViewController.job = sender;
+            }
         }
 //        myJob = [DataModel.myDataModel.jobsArray objectAtIndex:myIndexPath.row];
 //        destViewController.task = job.jobName;
         destViewController.title = @"Tasks";
-        destViewController.job = myJob;
+//        destViewController.job = myJob;
         destViewController.job.jobIndexPath = myIndexPath.row;
     }
     
@@ -333,6 +342,9 @@
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
     // Return YES to cause the search result table view to be reloaded.
     return YES;
+}
+- (IBAction)editUser:(UIBarButtonItem *)sender {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 
