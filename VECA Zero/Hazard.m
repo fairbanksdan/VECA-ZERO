@@ -33,6 +33,7 @@
         self.solution = [aDecoder decodeObjectForKey:@"solution"];
         self.checked = [aDecoder decodeBoolForKey:@"checked"];
         self.solutionChecked = [aDecoder decodeBoolForKey:@"solutionChecked"];
+        self.hazardImage = [aDecoder decodeObjectForKey:@"hazardImage"];
     }
     return self;
 }
@@ -43,6 +44,7 @@
     [aCoder encodeObject:self.solution forKey:@"solution"];
     [aCoder encodeBool:self.checked forKey:@"checked"];
     [aCoder encodeBool:self.solutionChecked forKey:@"solutionChecked"];
+    [aCoder encodeObject:self.hazardImage forKey:@"hazardImage"];
 }
 
 @end

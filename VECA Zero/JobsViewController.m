@@ -206,22 +206,15 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
     NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-
-//    Job *myJob = [Job new];
     
     if ([segue.identifier isEqualToString:@"AddJob"]) {
-//        AddJobViewController *addJobVC = segue.destinationViewController;
-//        myJob = [Job new];
-//        [[[DataController sharedData] jobArray] insertObject:myJob atIndex:0];
-//        addJobVC.selectedJob = myJob;
-        // 1
         UINavigationController *navigationController =
         segue.destinationViewController;
-        // 2
+
         AddJobViewController *controller =
         (AddJobViewController *)
         navigationController;
-        // 3
+
         controller.delegate = self;
         controller.jobToEdit = nil;
     } else if ([segue.identifier isEqualToString:@"EditJob"])
@@ -245,11 +238,7 @@
         
         
         if (self.tableView == self.searchDisplayController.searchResultsTableView) {
-//            if (sender == nil) {
-                destViewController.job = sender;
-//            } else {
-//                destViewController.job = sender;
-//            }
+            destViewController.job = sender;
         } else {
             if (sender == nil) {
                 destViewController.job = DataModel.myDataModel.jobsArray[myIndexPath.row];
@@ -257,14 +246,10 @@
                 destViewController.job = sender;
             }
         }
-//        myJob = [DataModel.myDataModel.jobsArray objectAtIndex:myIndexPath.row];
-//        destViewController.task = job.jobName;
+
         destViewController.title = @"Tasks";
-//        destViewController.job = myJob;
         destViewController.job.jobIndexPath = myIndexPath.row;
     }
-    
-    
 }
 
 - (NSArray *)rightButtons

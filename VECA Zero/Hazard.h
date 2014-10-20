@@ -12,6 +12,7 @@
 
 @property (strong, nonatomic) NSString *hazardName;
 @property (strong, nonatomic) NSString *solution;
+@property (strong, nonatomic) UIImage *hazardImage;
 @property BOOL checked;
 @property BOOL solutionChecked;
 

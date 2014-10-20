@@ -187,6 +187,7 @@ MFMessageComposeViewControllerDelegate>
 
     NSMutableArray *checkInSignaturesArray = [[NSMutableArray alloc] initWithCapacity:20];
     NSMutableArray *checkOutSignaturesArray = [[NSMutableArray alloc] initWithCapacity:20];
+    NSMutableArray *hazardImageArray = [[NSMutableArray alloc] initWithCapacity:20];
 
 //        UIImage *checkInSignature = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:0] checkInSignature];
 
@@ -204,6 +205,12 @@ MFMessageComposeViewControllerDelegate>
         [picker addAttachmentData:mysignInImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Sign In Signature of %@ on %@", ([[personsArray objectAtIndex:i] fullName]), taskDate]];
     }
     
+    for (int i = 0; i < [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] count]; i++) {
+        if ([[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:i] hazardImage] != nil) {
+            [hazardImageArray addObject:[[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:i] hazardImage]];
+        }
+    }
+    
     if (checkOutSignaturesArray.count > 0) {
         for (int i = 0; i < [checkOutSignaturesArray count]; i++) {
             UIImage *signOutImage = [checkOutSignaturesArray objectAtIndex:i];
@@ -211,6 +218,15 @@ MFMessageComposeViewControllerDelegate>
             [picker addAttachmentData:mysignOutImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Sign Out Signature of %@ on %@", ([[personsArray objectAtIndex:i] fullName]), taskDate]];
         }
     }
+    
+    if (hazardImageArray.count > 0) {
+        for (int i = 0; i < [hazardImageArray count]; i++) {
+            UIImage *hazardImage = [hazardImageArray objectAtIndex:i];
+            NSData *myHazardImage = [NSData dataWithData:UIImagePNGRepresentation(hazardImage)];
+            [picker addAttachmentData:myHazardImage mimeType:@"image/png" fileName:[NSString stringWithFormat:@"Hazard Named %@ on %@", ([[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:i] hazardName]), taskDate]];
+        }
+    }
+    
     
     [self presentViewController:picker animated:YES completion:NULL];
     

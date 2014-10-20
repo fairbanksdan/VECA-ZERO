@@ -38,6 +38,12 @@
         self.window.rootViewController = JobsViewController;
     }
     
+    DataModel.myDataModel.mainUser.checkInSignature = nil;
+    DataModel.myDataModel.mainUser.checkOutSignature = nil;
+    DataModel.myDataModel.mainUser.isInjured = nil;
+    DataModel.myDataModel.mainUser.incidentDescription = nil;
+    DataModel.myDataModel.mainUser.supervisor = nil;
+    
     return YES;
 }
 							
@@ -55,6 +61,11 @@
 
 - (void)applicationDidEnterBackground:(UIApplication *)application
 {
+    DataModel.myDataModel.mainUser.checkInSignature = nil;
+    DataModel.myDataModel.mainUser.checkOutSignature = nil;
+    DataModel.myDataModel.mainUser.isInjured = nil;
+    DataModel.myDataModel.mainUser.incidentDescription = nil;
+    DataModel.myDataModel.mainUser.supervisor = nil;
     [self saveData];
 }
 
@@ -70,6 +81,11 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application
 {
+    DataModel.myDataModel.mainUser.checkInSignature = nil;
+    DataModel.myDataModel.mainUser.checkOutSignature = nil;
+    DataModel.myDataModel.mainUser.isInjured = nil;
+    DataModel.myDataModel.mainUser.incidentDescription = nil;
+    DataModel.myDataModel.mainUser.supervisor = nil;
     [self saveData];
 }
 

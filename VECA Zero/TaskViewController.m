@@ -95,7 +95,7 @@
 
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task {
     NSInteger newRowIndex = [self.job.tasksForJobArray count];
-    [self.job.tasksForJobArray addObject:task];
+    [self.job.tasksForJobArray insertObject:task atIndex:0];
     
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
