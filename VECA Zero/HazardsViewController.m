@@ -136,7 +136,7 @@
             UINavigationController *navigationController = segue.destinationViewController;
             SignInViewController *controller = (SignInViewController *)navigationController;
             controller.delegate = self;
-
+            
             controller.job = _job;
             controller.task = _task;
             controller.task.hazardArray = _task.hazardArray;

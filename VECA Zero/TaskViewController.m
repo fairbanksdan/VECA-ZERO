@@ -94,7 +94,7 @@
 }
 
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task {
-    NSInteger newRowIndex = [self.job.tasksForJobArray count];
+    NSInteger newRowIndex = 0;
     [self.job.tasksForJobArray insertObject:task atIndex:0];
     
     
@@ -119,7 +119,7 @@
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"NewTask"]) {
         
-        NSInteger myIndexPath = (long)[_job.tasksForJobArray count];
+        NSInteger myIndexPath = 0;
         
         Task *myTask = [Task new];
         
