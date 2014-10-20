@@ -7,6 +7,8 @@
 //
 
 #import "HazardsViewController.h"
+#import "NSMutableArray+SWUtilityButtons.h"
+#import "SWTableViewCell.h"
 #import "Hazard.h"
 #import "Job.h"
 #import "Task.h"
@@ -76,58 +78,32 @@
     }
 }
 
--(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    static NSString *SimpleTableIdentifier = @"HazardCell";
-    HazardTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
-    
-    Hazard *hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:indexPath.row];
+-(void)configureTextForCell:(HazardTableViewCell *)cell withHazard:(Hazard *)hazard {
     cell.hazardLabel.text = hazard.hazardName;
     cell.solutionLabel.text = hazard.solution;
+}
+
+-(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    static NSString *SimpleTableIdentifier = @"HazardCell";
+    HazardTableViewCell *cell = (HazardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    
+    Hazard *hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:indexPath.row];
+//    cell.hazardLabel.text = hazard.hazardName;
+//    cell.solutionLabel.text = hazard.solution;
+    
+    [self configureTextForCell:cell withHazard:hazard];
+    
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
     
     return cell;
 }
-
-//-(void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == ([_localHazardsArray count]+ 1)) {
-//        _string = @"1";
-//        [_localHazardsArray addObject:_string];
-//        
-//        [tableView reloadData];
-//    }
-//    [tableView deselectRowAtIndexPath:indexPath animated:YES];
-//}
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
     [self performSegueWithIdentifier:@"CheckIn" sender:self];
 //    [self textFieldDidEndEditing:textField];
     return YES;
 }
-
-//- (void)textFieldDidEndEditing:(UITextField *)textField {
-//    [self performSegueWithIdentifier:@"CheckIn" sender:self];
-//}
-
-//-(UITableViewCellEditingStyle)tableView:(UITableView *)tableView editingStyleForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    if (indexPath.section == 0) {
-//        return UITableViewCellEditingStyleNone;
-//    } else if (indexPath.section == ([_localHazardsArray count]+ 1)){
-//        return UITableViewCellEditingStyleNone;
-//    } else {
-//        return UITableViewCellEditingStyleDelete;
-//    }
-//}
-
-//- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle
-//forRowAtIndexPath:(NSIndexPath *)indexPath
-//{
-//    if (editingStyle == UITableViewCellEditingStyleDelete) {
-//        [_localHazardsArray removeObjectAtIndex:indexPath.row];
-//        [_textFields removeObjectAtIndex:indexPath.row];
-//        [_solutionTextFields removeObjectAtIndex:indexPath.row];
-//
-//        [tableView deleteSections:[NSIndexSet indexSetWithIndex:indexPath.section] withRowAnimation:UITableViewRowAnimationLeft];
-//    }
-//}
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
@@ -144,31 +120,26 @@
         UINavigationController *navigationController = segue.destinationViewController;
         AddHazardViewController *controller = (AddHazardViewController *)navigationController.topViewController;
         controller.delegate = self;
+    } else if ([segue.identifier isEqualToString:@"EditHazard"]) {
+        UINavigationController *navigationController = segue.destinationViewController;
+        AddHazardViewController *controller = (AddHazardViewController *)navigationController.topViewController;
+        NSIndexPath *indexPath = [self.tableView
+                                  indexPathForCell:sender];
+        Hazard *sendingHazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex: indexPath.row];
+        sendingHazard = sender;
+        if (sender == nil) {
+            controller.hazardToEdit = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex: indexPath.row];
+        } else {
+            controller.hazardToEdit = sender;
+        }
+        
+        controller.delegate = self;
     }
 }
 
 -(void)SignInViewController:(SignInViewController *)controller didFinishSavingPersonArray:(NSMutableArray *)personsArray {
     _task.personArray = personsArray;
 }
-
-//-(void)saveHazard {
-//    int i = 0;
-//    while (i < ([_textFields count])) {
-//        
-//        _myTextField = [_textFields objectAtIndex:i];
-//        _solutionTextField = [_solutionTextFields objectAtIndex:i];
-//
-//        Hazard *hazard = [Hazard new];
-//        hazard.hazardName = _myTextField.text;
-//        hazard.solution = _solutionTextField.text;
-//        
-//        [self.delegate HazardsViewController:self didFinishAddingItem:hazard];
-//        
-//        i += 1;
-//    }
-//    
-//    [self.delegate HazardsViewController:self AndPersonsArray:_newPersonsArray];
-//}
 
 - (void)AddHazardViewControllerDidCancel:(AddHazardViewController *)controller {
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -187,9 +158,61 @@
     self.nextButton.enabled = YES;
     
     [self dismissViewControllerAnimated:YES completion:nil];
-    
 }
 
+- (void)AddHazardViewController:(AddHazardViewController *)controller didFinishEditingHazard:(Hazard *)hazard {
+    NSInteger index = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] indexOfObject:hazard];
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:index
+                                                inSection:0];
+    HazardTableViewCell *cell = [self.tableView cellForRowAtIndexPath:indexPath];
+    
+    [self configureTextForCell:cell withHazard:hazard];
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (NSArray *)rightButtons
+{
+    NSMutableArray *rightUtilityButtons = [NSMutableArray new];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:0.78f green:0.78f blue:0.8f alpha:1.0]
+                                                title:@"Edit"];
+    [rightUtilityButtons sw_addUtilityButtonWithColor:
+     [UIColor colorWithRed:1.0f green:0.231f blue:0.188 alpha:1.0f]
+                                                title:@"Delete"];
+    
+    HazardTableViewCell *cell;
+    cell.accessoryType = UITableViewCellAccessoryNone;
+    
+    return rightUtilityButtons;
+}
+
+- (void)swipeableTableViewCell:(SWTableViewCell *)cell didTriggerRightUtilityButtonWithIndex:(NSInteger)index {
+    switch (index) {
+        case 0:
+        {
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            Hazard *hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:cellIndexPath.row];
+            [self performSegueWithIdentifier:@"EditHazard" sender:hazard];
+            break;
+        }
+        case 1:
+        {
+            // Delete button was pressed
+            NSIndexPath *cellIndexPath = [self.tableView indexPathForCell:cell];
+            [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] removeObjectAtIndex:cellIndexPath.row];
+            
+            NSArray *indexPaths = @[cellIndexPath];
+            [self.tableView deleteRowsAtIndexPaths:indexPaths
+                                  withRowAnimation:UITableViewRowAnimationLeft];
+            
+//            [self saveData];
+            break;
+        }
+        default:
+            break;
+    }
+}
 
 
 @end

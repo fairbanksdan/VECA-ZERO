@@ -579,6 +579,7 @@
                         <outlet property="addHazard" destination="dfz-HH-byM" id="f6G-4q-UdQ"/>
                         <outlet property="nextButton" destination="SPC-5K-NQZ" id="OBm-k5-YvX"/>
                         <outlet property="tableView" destination="vFC-nm-LVo" id="erQ-2t-Ta3"/>
+                        <segue destination="mIg-JA-EEn" kind="modal" identifier="EditHazard" id="F5c-Hd-Nn8"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="REi-TH-Ltu" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -1483,9 +1484,10 @@
         <simulatedScreenMetrics key="destination" type="retina4"/>
     </simulatedMetricsContainer>
     <inferredMetricsTieBreakers>
-        <segue reference="t8B-rt-Q5i"/>
         <segue reference="Kxh-rG-k0T"/>
-        <segue reference="34a-Lx-3mb"/>
+        <segue reference="sSD-HF-z6h"/>
+        <segue reference="F5c-Hd-Nn8"/>
+        <segue reference="t8B-rt-Q5i"/>
     </inferredMetricsTieBreakers>
     <color key="tintColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
 </document>

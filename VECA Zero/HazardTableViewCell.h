@@ -7,12 +7,13 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "SWTableViewCell.h"
 
-@protocol HazardTableViewCellDelegate <NSObject>
+//@protocol HazardTableViewCellDelegate <NSObject>
+//
+//@end
 
-@end
-
-@interface HazardTableViewCell : UITableViewCell
+@interface HazardTableViewCell : SWTableViewCell
 
 @property (weak, nonatomic) IBOutlet UILabel *hazardLabel;
 @property (weak, nonatomic) IBOutlet UILabel *solutionLabel;
@@ -21,6 +22,6 @@
 
 //- (IBAction)hazardTFTextChanged:(UITextField *)sender;
 
-@property (nonatomic, weak) id <HazardTableViewCellDelegate> delegate;
+//@property (nonatomic, weak) id <HazardTableViewCellDelegate> delegate;
 
 @end

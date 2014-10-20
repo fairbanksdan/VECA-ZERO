@@ -38,6 +38,12 @@
     
     [self.view addGestureRecognizer:tap];
     [self.view addGestureRecognizer:pan];
+    
+    if (self.hazardToEdit != nil) {
+        self.hazardNameTextField.text = self.hazardToEdit.hazardName;
+        self.solutionTextView.text = self.hazardToEdit.solution;
+        self.hazardImageView.image = self.hazardToEdit.hazardImage;
+    }
 }
 
 - (void)didReceiveMemoryWarning {
@@ -55,6 +61,7 @@
 }
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
+    if (self.hazardToEdit == nil) {
     Hazard *hazard = [Hazard new];
     hazard.hazardName = self.hazardNameTextField.text;
     hazard.solution = self.solutionTextView.text;
@@ -62,6 +69,14 @@
     hazard.solutionChecked = NO;
     hazard.hazardImage = self.hazardImageView.image;
     [self.delegate AddHazardViewController:self didFinishAddingHazard:hazard];
+    } else {
+        self.hazardToEdit.hazardName = self.hazardNameTextField.text;
+        self.hazardToEdit.solution = self.solutionTextView.text;
+        self.hazardToEdit.checked = NO;
+        self.hazardToEdit.solutionChecked = NO;
+        self.hazardToEdit.hazardImage = self.hazardImageView.image;
+        [self.delegate AddHazardViewController:self didFinishEditingHazard:self.hazardToEdit];
+    }
 }
 
 - (IBAction)findPicture:(id)sender {
