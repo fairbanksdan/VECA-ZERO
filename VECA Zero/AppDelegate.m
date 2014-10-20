@@ -18,12 +18,6 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-//    _myDataModel = [[DataModel alloc] init];
-    
-//    UINavigationController *navigationController = (UINavigationController *)self.window.rootViewController;
-//    JobsViewController *controller = navigationController.viewControllers[0];
-//    controller.jobsArray = DataModel.myDataModel.jobsArray;
-    
     DataModel.myDataModel.firstTime = [[NSUserDefaults standardUserDefaults] boolForKey:@"firstTime"];
     
     if (!DataModel.myDataModel.firstTime)
@@ -56,7 +50,6 @@
 - (void)saveData
 {
     [DataModel.myDataModel saveJobs];
-//    [DataModel.myDataModel saveMainUser];
 }
 
 - (void)applicationDidEnterBackground:(UIApplication *)application

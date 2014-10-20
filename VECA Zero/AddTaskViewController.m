@@ -54,11 +54,6 @@
     _newTask = [Task new];
     
     self.navigationController.navigationBar.tintColor = [UIColor whiteColor];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self
-                                             selector:@selector(updateTask)
-                                                 name:@"saveAllTaskData"
-                                               object:nil];
   
       [[NSNotificationCenter defaultCenter] addObserver:self
                                                selector:@selector(saveTask)
@@ -84,31 +79,24 @@
 {
     NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
     [formatter setDateStyle:NSDateFormatterMediumStyle];
-//    [formatter setTimeStyle:NSDateFormatterShortStyle];
     self.dateLabel.text = [formatter stringFromDate:_date];
 }
 
 - (IBAction)cancel {
     [self.delegate AddTaskViewControllerDidCancel:self];
-//    [self saveTask];
 }
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     if ([segue.identifier isEqualToString:@"NewHazards"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         HazardsViewController *controller = (HazardsViewController *)navigationController;
-//        controller.delegate = self;
-//        [self saveTask];
+
         controller.task = sender;
         controller.job = _job;
         controller.task = _task;
           if (_newTask.taskName == nil) {
             [self saveTask];
-          } else {
-            [self updateTask];
-//            controller.myTextField.text = [_newTask.hazardArray objectAtIndex:0];
           }
-      
     }
 }
 - (IBAction)taskNameNext:(UITextField *)sender {
@@ -117,7 +105,6 @@
 
 
 -(void)saveTask {
-//    Task *myTask = [[Task alloc] init];
     _newTask.taskName = self.taskNameTextField.text;
     _newTask.specificTaskLocation = self.specificTaskLocationTextField.text;
     _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
@@ -127,16 +114,16 @@
     [self.delegate AddTaskViewController:self didFinishAddingItem:_newTask];
 }
 
--(void)updateTask {
-  _newTask.taskName = self.taskNameTextField.text;
-  _newTask.specificTaskLocation = self.specificTaskLocationTextField.text;
-  _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
-  _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
-  _newTask.date = _date;
-  
-  [self.delegate AddTaskViewController:self didFinishEditingItem:_newTask];
-  
-}
+//-(void)updateTask {
+//  _newTask.taskName = self.taskNameTextField.text;
+//  _newTask.specificTaskLocation = self.specificTaskLocationTextField.text;
+//  _newTask.PrimaryEvacuation = self.PrimaryEvacTextField.text;
+//  _newTask.SecondaryEvacuation = self.SecondaryEvacTextField.text;
+//  _newTask.date = _date;
+//  
+//  [self.delegate AddTaskViewController:self didFinishEditingItem:_newTask];
+//  
+//}
 
 #pragma mark - Table view data source
 
@@ -151,9 +138,8 @@
 - (UITableViewCell *)tableView:(UITableView *)tableView
          cellForRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    // 1
     if (indexPath.section == 1 && indexPath.row == 1) {
-        // 2
+
         UITableViewCell *cell = [tableView
                                  dequeueReusableCellWithIdentifier:@"DatePickerCell"];
         if (cell == nil) {
@@ -161,18 +147,17 @@
                     initWithStyle:UITableViewCellStyleDefault
                     reuseIdentifier:@"DatePickerCell"];
             cell.selectionStyle = UITableViewCellSelectionStyleNone;
-            // 3
+
             UIDatePicker *datePicker = [[UIDatePicker alloc]
                                         initWithFrame:CGRectMake(0.0f, 0.0f, 320.0f, 216.0f)];
             datePicker.datePickerMode = UIDatePickerModeDate;
             datePicker.tag = 100;
             [cell.contentView addSubview:datePicker];
-            // 4
+
             [datePicker addTarget:self action:@selector(dateChanged:)
                  forControlEvents:UIControlEventValueChanged];
         }
         return cell;
-        // 5
     } else {
         return [super tableView:tableView
           cellForRowAtIndexPath:indexPath];
@@ -316,16 +301,5 @@ indentationLevelForRowAtIndexPath:indexPath];
         [self presentViewController:energizedAlert animated:YES completion:nil];
     }
 }
-
-
-//-(void)HazardsViewController:(HazardsViewController *)controller didFinishAddingItem:(Hazard *)hazard {
-//    [_newTask.hazardArray addObject:hazard];
-//}
-//
-//-(void)HazardsViewController:(HazardsViewController *)controller AndPersonsArray:(NSMutableArray *)myPersonArray {
-//    [_newTask.personArray addObjectsFromArray:myPersonArray];
-//}
-
-
 
 @end

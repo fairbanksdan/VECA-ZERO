@@ -24,7 +24,7 @@
 
 @end
 
-@interface AddTaskViewController : UITableViewController /*<HazardsViewControllerDelegate>*/
+@interface AddTaskViewController : UITableViewController
 
 @property (strong, nonatomic) IBOutlet UIBarButtonItem *cancelButton;
 @property (strong, nonatomic) UIColor *navBarColor;

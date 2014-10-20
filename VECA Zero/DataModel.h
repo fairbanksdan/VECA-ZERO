@@ -18,7 +18,6 @@
 + (DataModel *)myDataModel;
 
 - (void)saveJobs;
-- (void)saveMainUser;
 
 - (NSInteger)indexOfSelectedJob;
 - (void)setIndexOfSelectedJob:(NSInteger)index;

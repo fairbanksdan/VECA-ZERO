@@ -128,8 +128,6 @@
     self.hazardImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     _hazard.hazardImage = editedImage;
-
-//    self.selectedPerson.headShot = editedImage;
     
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Completed");
@@ -156,25 +154,5 @@
         }
     }];
 }
-
-- (void)textFieldDidEndEditing:(UITextField *)textField {
-    [self.hazardNameTextField resignFirstResponder];
-//    [self.solutionTextView resignFirstResponder];
-}
-
-- (void)textViewDidEndEditing:(UITextView *)textView {
-//    [self.hazardNameTextField resignFirstResponder];
-    [self.solutionTextView resignFirstResponder];
-}
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

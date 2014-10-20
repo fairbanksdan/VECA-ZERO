@@ -38,11 +38,9 @@
 @property (weak, nonatomic) UIImage *signature;
 @property (weak, nonatomic) IBOutlet SignatureView *signatureView;
 @property BOOL areHazardsChecked;
-
 @property (strong, nonatomic) Person *personToEdit;
 @property (strong, nonatomic) Job *job;
 @property (strong, nonatomic) Task *task;
-
 @property (nonatomic, weak) id <AddPersonViewControllerDelegate> delegate;
 
 @end

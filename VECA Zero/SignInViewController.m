@@ -28,7 +28,7 @@
 
 @implementation SignInViewController
 {
-    NSMutableArray *_persons; //creates a mutable Array with the variable "_items"
+    NSMutableArray *_persons;
     Job *_job;
     Task *_task;
     Hazard *_hazard;
@@ -47,17 +47,12 @@
     
     NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
     
-//    [self.delegate SignInViewController:self didFinishSavingPersonArray:_persons];
-    
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
     
-    Person *mainUser = DataModel.myDataModel.mainUser;
-    [_persons addObject:mainUser];
-    
-    NSLog(@"_persons count is: %lu", _persons.count);
-    
-    
-    
+    if (_persons.count < 1) {
+        Person *mainUser = DataModel.myDataModel.mainUser;
+        [_persons addObject:mainUser];
+    }
 }
 
 - (void)didReceiveMemoryWarning
@@ -147,10 +142,6 @@
 
 -(void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
     
-//    NSIndexPath *myIndexPath = [self.tableView indexPathForSelectedRow];
-//    
-//    Person *myPerson;
-    
     if ([segue.identifier isEqualToString:@"AddPerson"]) {
         UINavigationController *navigationController =
         segue.destinationViewController;
@@ -167,7 +158,6 @@
         
         NSIndexPath *indexPath = [self.tableView
                                   indexPathForSelectedRow];
-//        controller.personToEdit = [Person new];
         if (sender == self) {
             controller.personToEdit = _persons[indexPath.row];
         } else {
@@ -176,8 +166,6 @@
         controller.job = _job;
         controller.task = _task;
         controller.task.hazardArray = _task.hazardArray;
-//        controller.fullNameTextField.text = controller.personToEdit.fullName;
-//        controller.signatureView.image = controller.personToEdit.checkInSignature;
         controller.delegate = self;
     } else if ([segue.identifier isEqualToString:@"MidTask"]) {
         MidTaskViewController *destViewController = segue.destinationViewController;

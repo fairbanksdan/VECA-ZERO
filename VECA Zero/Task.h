@@ -16,16 +16,8 @@
 @property (nonatomic, strong) NSString *specificTaskLocation;
 @property (nonatomic, strong) NSString *PrimaryEvacuation;
 @property (nonatomic, strong) NSString *SecondaryEvacuation;
-
 @property (nonatomic, strong) NSMutableArray *hazardArray;
 @property (nonatomic, strong) NSMutableArray *personArray;
-
 @property NSInteger taskIndexPath;
-
-//@property (readwrite) Job *job;
-
-//- (instancetype) initWithName:(NSString *)taskName;
-//
-//- (void) addTaskToJob:(Job *)job;
 
 @end

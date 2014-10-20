@@ -20,8 +20,4 @@
 @property (weak, nonatomic) IBOutlet UIImageView *thinLineImageView;
 @property (weak, nonatomic) IBOutlet UIImageView *cellSeperatorImageView;
 
-//- (IBAction)hazardTFTextChanged:(UITextField *)sender;
-
-//@property (nonatomic, weak) id <HazardTableViewCellDelegate> delegate;
-
 @end

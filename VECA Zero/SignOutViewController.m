@@ -40,8 +40,6 @@ MFMessageComposeViewControllerDelegate>
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
     [self.submitButton.layer setCornerRadius:5];
-    
-    // Do any additional setup after loading the view.
 }
 
 - (void)didReceiveMemoryWarning
@@ -119,12 +117,8 @@ MFMessageComposeViewControllerDelegate>
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:@"dan.fairbanks@freshconsulting.com"];
-//        NSArray *ccRecipients = [NSArray arrayWithObjects:@"second@example.com", @"third@example.com", nil];
-//        NSArray *bccRecipients = [NSArray arrayWithObject:@"fourth@example.com"];
 
     [picker setToRecipients:toRecipients];
-//        [picker setCcRecipients:ccRecipients];
-//        [picker setBccRecipients:bccRecipients];
 
     // Fill out the email body text
 
@@ -141,9 +135,6 @@ MFMessageComposeViewControllerDelegate>
     NSString *primaryEvacuation = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] PrimaryEvacuation];
     NSString *secondaryEvacuation = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] SecondaryEvacuation];
     NSString *taskDate = [formatter stringFromDate:[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] date]];
-//
-//    NSString *hazardName = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] hazardName];
-//    NSString *hazardSolution = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:0] solution];
 
     for (int i = 0; i < [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] count]; i++) {
         [hazardsArray addObject:[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:i]];
@@ -154,8 +145,6 @@ MFMessageComposeViewControllerDelegate>
         [personsArray addObject:[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i]];
     }
 
-
-//        NSString *firstPerson = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:0] fullName];
     NSString *emailContent = [NSString new];
     NSString *hazardStrings = [NSString new];
     NSString *mailMessage = [NSString new];
@@ -188,8 +177,6 @@ MFMessageComposeViewControllerDelegate>
     NSMutableArray *checkInSignaturesArray = [[NSMutableArray alloc] initWithCapacity:20];
     NSMutableArray *checkOutSignaturesArray = [[NSMutableArray alloc] initWithCapacity:20];
     NSMutableArray *hazardImageArray = [[NSMutableArray alloc] initWithCapacity:20];
-
-//        UIImage *checkInSignature = [[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:0] checkInSignature];
 
     for (int i = 0; i < [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] count]; i++) {
         [checkInSignaturesArray addObject:[[[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] objectAtIndex:i] checkInSignature]];
@@ -229,17 +216,11 @@ MFMessageComposeViewControllerDelegate>
     
     
     [self presentViewController:picker animated:YES completion:NULL];
-    
-//    if (picker.navigationBar. == MFMailComposeResultSent) {
-//        [self performSegueWithIdentifier:@"BackToJobs" sender:self];
-//    }
 }
 
 - (void)mailComposeController:(MFMailComposeViewController*)controller
           didFinishWithResult:(MFMailComposeResult)result error:(NSError*)error
 {
-//    self.feedbackMsg.hidden = NO;
-    // Notifies users about errors associated with the interface
     switch (result)
     {
         case MFMailComposeResultCancelled:
@@ -269,7 +250,7 @@ MFMessageComposeViewControllerDelegate>
 }
 
 - (void)configureCheckmarkForCell:(UITableViewCell *)cell
-                        withPerson:(Person *)person //methods for checking and unchecking a cell/row
+                        withPerson:(Person *)person
 {
     UILabel *label = (UILabel *)[cell viewWithTag:2000];
     
@@ -281,13 +262,6 @@ MFMessageComposeViewControllerDelegate>
         label.text = @"";
     }
 }
-
-//- (void)PersonCheckOutViewController:(PersonCheckOutViewController *)controller didCheckOutPerson:(Person *)person {
-//    _person.checkOutSignature = person.checkOutSignature;
-//    [self.tableView reloadData];
-//    NSLog(@"Check triggered");
-//    [self dismissViewControllerAnimated:YES completion:nil]; 
-//}
 
 - (void)UpdateTableView {
     [self.tableView reloadData];

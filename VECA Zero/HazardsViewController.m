@@ -85,11 +85,10 @@
 
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *SimpleTableIdentifier = @"HazardCell";
+    
     HazardTableViewCell *cell = (HazardTableViewCell *)[tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
     Hazard *hazard = [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] hazardArray] objectAtIndex:indexPath.row];
-//    cell.hazardLabel.text = hazard.hazardName;
-//    cell.solutionLabel.text = hazard.solution;
     
     [self configureTextForCell:cell withHazard:hazard];
     
@@ -100,8 +99,8 @@
 }
 
 - (BOOL)textFieldShouldReturn:(UITextField *)textField {
+    
     [self performSegueWithIdentifier:@"CheckIn" sender:self];
-//    [self textFieldDidEndEditing:textField];
     return YES;
 }
 
@@ -205,8 +204,6 @@
             NSArray *indexPaths = @[cellIndexPath];
             [self.tableView deleteRowsAtIndexPaths:indexPaths
                                   withRowAnimation:UITableViewRowAnimationLeft];
-            
-//            [self saveData];
             break;
         }
         default:

@@ -37,15 +37,4 @@
     [aCoder encodeInteger:self.jobIndexPath forKey:@"jobIndexPath"];
 }
 
-
-
-
-//- (void) addNewTaskWithName: (NSString *)name {
-//    
-//    Task *task = [[Task alloc] initWithName:name];
-//    
-//    [task addTaskToJob:self];
-//}
-
-
 @end

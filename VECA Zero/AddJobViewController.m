@@ -53,7 +53,6 @@
     self.projectNameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Project Name" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.doneBarButton.enabled = NO;
-//    [self nameOfJobDoesExist];
     
     if (self.jobToEdit != nil) {
         self.navBar.title = @"Edit Job";
@@ -62,8 +61,6 @@
         self.doneBarButton.enabled = YES;
     }
     
-    
-
     [self.jobTFBackgroundImage.layer setCornerRadius:3];
     [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
 }
@@ -85,17 +82,6 @@
     [self nameOfJobDoesExist];
 }
 
-//-(void)viewWillDisappear:(BOOL)animated {
-//    [super viewWillDisappear:animated];
-//    self.selectedJob.jobNumber = _jobNumberTextField.text;
-//    self.selectedJob.jobName = _projectNameTextField.text;
-//    self.selectedJob.foremanName = _foremanNameTextField.text;
-//    self.selectedJob.foremanEmail = _foremanEmailTextField.text;
-//    
-//    
-//    [[DataController sharedData] save];
-//}
-
 - (IBAction)doneButtonPressed:(id)sender {
     if (self.jobToEdit == nil) {
         Job *job = [[Job alloc] init];
@@ -107,17 +93,7 @@
         self.jobToEdit.jobNumber = self.jobNumberTextField.text;
         [self.delegate AddJobViewController:self didFinishEditingItem:self.jobToEdit];
     }
-    
-//    [[DataController sharedData] save];
-    
 }
-
-//- (BOOL)textField:(UITextField *)theTextField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-//{
-//    NSString *newText = [self.projectNameTextField.text stringByReplacingCharactersInRange:range withString:string];
-//    self.doneBarButton.enabled = ([newText length] > 0);
-//    return YES;
-//}
 
 - (void)nameOfJobDoesExist {
     if ([self.projectNameTextField.text length] > 0) {

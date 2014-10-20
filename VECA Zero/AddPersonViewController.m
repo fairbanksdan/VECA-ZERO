@@ -281,7 +281,6 @@
         } else if (self.personToEdit != nil) {
         self.addSignatureButton.title = @"Edit Signature";
         }
-//        self.doneButton.enabled = NO;
         self.signView.hidden = YES;
     } else if ([self.addSignatureButton.title isEqualToString:@"Edit Signature"]) {
         self.addSignatureButton.title = @"Close Signature View";

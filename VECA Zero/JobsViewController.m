@@ -29,9 +29,7 @@
 
 @implementation JobsViewController
 {
-    NSMutableArray *_lists; //creates a mutable Array with the variable "_items"
     DataModel *_sharedDataModel;
-    
 }
 
 - (void)viewDidLoad
@@ -56,14 +54,6 @@
     NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
 }
 
-//-(void)searchBar:(UISearchBar *)searchBar selectedScopeButtonIndexDidChange:(NSInteger)selectedScope {
-//    NSPredicate *predicate = [NSPredicate
-//                              predicateWithFormat:@"SELF.firstName contains[c] %@",
-//                              searchText];
-//    NSArray *filteredArray = [allPatientDetails filteredArrayUsingPredicate:predicate];
-//    [tableView reloadData];
-//}
-
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -75,29 +65,13 @@
     [DataModel.myDataModel saveJobs];
 }
 
-//- (void)viewDidAppear:(BOOL)animated
-//{
-//    [super viewDidAppear:animated];
-//    self.navigationController.delegate = self;
-//    NSInteger index = [self.dataModel indexOfSelectedJob];
-//    if (index >= 0 && index < [self.dataModel.tasksForJobs count]) {
-//        Job *job = self.dataModel.tasksForJobs[index];
-//        [self performSegueWithIdentifier:@"EditJob"
-//                                  sender:job];
-//    }
-//}
-
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
 }
 
 - (void)configureTextForCell:(JobTableViewCell *)cell
-           withJobName:(Job *)job
-{
-//    UILabel *label = (UILabel *)[cell viewWithTag:1000];
-//    label.text = job.jobName;
-//    cell.jobName.textColor = [UIColor blackColor];
+           withJobName:(Job *)job {
     cell.jobName.text = job.jobName;
 }
 
@@ -140,15 +114,9 @@
         cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
 
-        cell.rightUtilityButtons = [self rightButtons];
-        cell.delegate = self;
-    
-//    if (cell.rightUtilityButtons) {
-//        cell.accessoryType = UITableViewCellAccessoryNone;
-//    }
+    cell.rightUtilityButtons = [self rightButtons];
+    cell.delegate = self;
 
-    //UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"JobCell"];
-    
     Job *job = nil;
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
@@ -157,16 +125,11 @@
     } else {
         job = DataModel.myDataModel.jobsArray[indexPath.row];
     }
-//    
-//    cell.jobName.text = job.jobName;
     
     [self configureTextForCell:cell withJobName:job];
     
-    return cell; //returns what is in each "cell" as defined in this method
+    return cell;
 }
-
-//- (void)tableView:(UITableView *)tableView willDisplayCell:(JobTableViewCell *)cell forRowAtIndexPath:(NSIndexPath *)indexPath {
-//}
 
 - (void)AddJobViewController:(AddJobViewController *)controller
          didFinishAddingItem:(Job *)job; {
@@ -304,33 +267,30 @@
 
 #pragma mark Content Filtering
 -(void)filterContentForSearchText:(NSString*)searchText scope:(NSString*)scope {
-    // Update the filtered array based on the search text and scope.
-    // Remove all objects from the filtered search array
+
     [self.filteredJobArray removeAllObjects];
-    // Filter the array using NSPredicate
+
     NSPredicate *predicate = [NSPredicate predicateWithFormat:@"self.jobName contains[c] %@",searchText];
     self.filteredJobArray = [NSMutableArray arrayWithArray:[DataModel.myDataModel.jobsArray filteredArrayUsingPredicate:predicate]];
 }
 
 #pragma mark - UISearchDisplayController Delegate Methods
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchString:(NSString *)searchString {
-    // Tells the table data source to reload when text changes
+
     [self filterContentForSearchText:searchString scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:[self.searchDisplayController.searchBar selectedScopeButtonIndex]]];
-    // Return YES to cause the search result table view to be reloaded.
+
     return YES;
 }
 
 -(BOOL)searchDisplayController:(UISearchDisplayController *)controller shouldReloadTableForSearchScope:(NSInteger)searchOption {
-    // Tells the table data source to reload when scope bar selection changes
+
     [self filterContentForSearchText:self.searchDisplayController.searchBar.text scope:
      [[self.searchDisplayController.searchBar scopeButtonTitles] objectAtIndex:searchOption]];
-    // Return YES to cause the search result table view to be reloaded.
+
     return YES;
 }
-- (IBAction)editUser:(UIBarButtonItem *)sender {
-    [self dismissViewControllerAnimated:YES completion:nil];
-}
+
 
 
 @end

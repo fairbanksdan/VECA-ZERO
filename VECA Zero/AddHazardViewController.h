@@ -30,7 +30,6 @@
 - (IBAction)cancel;
 
 @property (strong, nonatomic) Hazard *hazardToEdit;
-
 @property (strong, nonatomic) Job *job;
 @property (strong, nonatomic) Task *task;
 @property (strong, nonatomic) Hazard *hazard;

@@ -52,7 +52,4 @@
     [aCoder encodeInteger:self.taskIndexPath forKey:@"taskIndexPath"];
 }
 
-
-
-
 @end

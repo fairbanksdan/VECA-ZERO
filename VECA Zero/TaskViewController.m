@@ -20,8 +20,6 @@
     DataModel *_dataModel;
 }
 
-//@property (nonatomic, strong) NSMutableArray *taskArray;
-
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addTaskBarButton;
 
@@ -94,13 +92,15 @@
 }
 
 - (void)AddTaskViewController:(AddTaskViewController *)controller didFinishAddingItem:(Task *)task {
-    NSInteger newRowIndex = 0;
+    NSInteger newRowIndex = self.job.tasksForJobArray.count;
     [self.job.tasksForJobArray insertObject:task atIndex:0];
     
     
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:newRowIndex inSection:0];
     NSArray *indexPaths = @[indexPath];
+    [self.tableView beginUpdates];
     [self.tableView insertRowsAtIndexPaths:indexPaths withRowAnimation:UITableViewRowAnimationAutomatic];
+    [self.tableView endUpdates];
 
     [self saveData];
 }
@@ -110,7 +110,8 @@
   NSInteger newRowIndex = ([self.job.tasksForJobArray count] -1);
 
   [self.job.tasksForJobArray replaceObjectAtIndex:newRowIndex withObject:task];
-
+    
+    NSLog(@"Accidently Edited First Task");
   [self saveData];
   [self.tableView reloadData];
 

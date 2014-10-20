@@ -34,7 +34,6 @@
 @property (weak, nonatomic) IBOutlet UITextField *projectNameTextField;
 @property (weak, nonatomic) IBOutlet UINavigationItem *navBar;
 
-//@property (strong, nonatomic) Job *selectedJob;
 @property (strong, nonatomic) Job *jobToEdit;
 
 @property (nonatomic, weak) id <AddJobViewControllerDelegate> delegate;

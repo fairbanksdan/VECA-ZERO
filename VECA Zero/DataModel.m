@@ -15,7 +15,6 @@
     static dispatch_once_t once = 0;
     dispatch_once(&once, ^{
         sharedModel = [[self alloc] init];
-//        sharedModel.jobsArray = [[NSMutableArray alloc] init];
     });
     return sharedModel;
 }
@@ -25,9 +24,6 @@
     self = [super init];
     if (self) {
         [self loadJobs];
-//        [self loadMainUser];
-//        DataModel *_dataModel = [DataModel myDataModel];
-//        _jobsArray = [[NSMutableArray alloc] initWithCapacity:20];
     }
     return  self;
 }
@@ -45,29 +41,6 @@
     return [[self documentsDirectory]
             stringByAppendingPathComponent:@"VECA Zero.plist"];
 }
-
-- (void)saveMainUser {
-    NSMutableData *data = [[NSMutableData alloc] init];
-    NSKeyedArchiver *archiver = [[NSKeyedArchiver alloc]
-                                 initForWritingWithMutableData:data];
-    [archiver encodeObject:_mainUser forKey:@"mainUser"];
-    [archiver finishEncoding];
-    [data writeToFile:[self dataFilePath] atomically:YES];
-}
-
-//- (void)loadMainUser {
-//    NSString *path = [self dataFilePath];
-//    if ([[NSFileManager defaultManager] fileExistsAtPath:path]) {
-//        NSData *data = [[NSData alloc] initWithContentsOfFile:path];
-//        NSKeyedUnarchiver *unarchiver = [[NSKeyedUnarchiver alloc]
-//                                         initForReadingWithData:data];
-//        _mainUser= [unarchiver decodeObjectForKey:@"mainUser"];
-//        
-//        [unarchiver finishDecoding];
-//    } else {
-//        _mainUser = [Person new];
-//    }
-//}
 
 - (void)saveJobs
 {
