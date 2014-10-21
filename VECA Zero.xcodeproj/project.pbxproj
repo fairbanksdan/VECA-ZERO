@@ -11,6 +11,7 @@
 		69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */; };
 		69C2E1EE19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */; };
 		69C2E1F119F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */; };
+		69C2E1F319F5C4380039B6B6 /* VECA V Black Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69C2E1F219F5C4380039B6B6 /* VECA V Black Logo.jpg */; };
 		D61AB7CB197ED3F6003AD671 /* logo.png in Resources */ = {isa = PBXBuildFile; fileRef = D61AB7CA197ED3F6003AD671 /* logo.png */; };
 		D61AB7CE197ED57C003AD671 /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7CD197ED57C003AD671 /* HomeViewController.m */; };
 		D61AB7DA197ED69F003AD671 /* SignInViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D61AB7D9197ED69F003AD671 /* SignInViewController.m */; };
@@ -83,6 +84,7 @@
 		69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardToBeCheckedTableViewCell.m; sourceTree = "<group>"; };
 		69C2E1EF19F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolutionToBeCheckedTableViewCell.h; sourceTree = "<group>"; };
 		69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SolutionToBeCheckedTableViewCell.m; sourceTree = "<group>"; };
+		69C2E1F219F5C4380039B6B6 /* VECA V Black Logo.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "VECA V Black Logo.jpg"; sourceTree = "<group>"; };
 		D61AB7CA197ED3F6003AD671 /* logo.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = logo.png; sourceTree = "<group>"; };
 		D61AB7CC197ED57C003AD671 /* HomeViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeViewController.h; sourceTree = "<group>"; };
 		D61AB7CD197ED57C003AD671 /* HomeViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeViewController.m; sourceTree = "<group>"; };
@@ -369,6 +371,7 @@
 			children = (
 				D689E38019799DED003050F5 /* Images.xcassets */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
+				69C2E1F219F5C4380039B6B6 /* VECA V Black Logo.jpg */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
 				D62E73A2198F678100DB3441 /* VECA V Logo.png */,
@@ -509,6 +512,7 @@
 				D6AA5B951992E126007FE5A8 /* Job.plist in Resources */,
 				D62E739E198F603E00DB3441 /* BG Blur 8.png in Resources */,
 				D6AA5B9019905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png in Resources */,
+				69C2E1F319F5C4380039B6B6 /* VECA V Black Logo.jpg in Resources */,
 				D62E739F198F603E00DB3441 /* BG Blur 5.png in Resources */,
 				D62E73A5198F698400DB3441 /* VECA V Black.png in Resources */,
 				D62E73A1198F603E00DB3441 /* BG Blur 6.png in Resources */,
@@ -713,6 +717,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VECA Zero/VECA Zero-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -733,6 +738,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VECA Zero/VECA Zero-Bridging-Header.h";
+				TARGETED_DEVICE_FAMILY = 1;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;

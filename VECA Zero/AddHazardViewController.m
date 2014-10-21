@@ -26,11 +26,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-//    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemDone target:self.hazardNameTextField action:@selector(resignFirstResponder)];
-//    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-//    toolbar.items = [NSArray arrayWithObject:barButton];
-//    
-//    self.hazardNameTextField.inputAccessoryView = toolbar;
+    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCamera target:nil action:@selector(findPicture:)];
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
+    toolbar.items = [NSArray arrayWithObject:barButton];
+    
+    self.hazardNameTextField.inputAccessoryView = toolbar;
+    self.solutionTextView.inputAccessoryView = toolbar;
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];

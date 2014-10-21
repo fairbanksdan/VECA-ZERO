@@ -50,8 +50,6 @@
     self.AddJobBarButton.tintColor = [UIColor whiteColor];
     
     [self.addJobButton.layer setCornerRadius:5];
-    
-    NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
 }
 
 - (void)didReceiveMemoryWarning
@@ -94,7 +92,6 @@
     
     if (tableView == self.searchDisplayController.searchResultsTableView) {
         job = self.filteredJobArray[indexPath.row];
-        NSLog(@"SearchTableView filteredJobArray IndexPath.row is: %@", [self.filteredJobArray[indexPath.row] jobName]);
     } else {
         job = DataModel.myDataModel.jobsArray[indexPath.row];
     }

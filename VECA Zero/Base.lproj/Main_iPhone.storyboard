@@ -129,7 +129,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell tag="1000" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="TaskCell" textLabel="yZj-T8-kHf" detailTextLabel="0va-Mf-jWG" style="IBUITableViewCellStyleValue1" id="LgF-dW-o8n">
+                            <tableViewCell tag="1000" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="TaskCell" textLabel="yZj-T8-kHf" detailTextLabel="0va-Mf-jWG" style="IBUITableViewCellStyleValue1" id="LgF-dW-o8n">
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="LgF-dW-o8n" id="Flw-GI-Zy0">
                                     <autoresizingMask key="autoresizingMask"/>
@@ -197,21 +197,13 @@
                                                 <rect key="frame" x="47" y="283" width="225" height="2"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                             </imageView>
-                                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Email" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="KzG-Mu-7fl">
-                                                <rect key="frame" x="48" y="283" width="225" height="44"/>
-                                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                                <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
-                                                <textInputTraits key="textInputTraits" keyboardType="emailAddress" keyboardAppearance="alert"/>
-                                                <connections>
-                                                    <outlet property="delegate" destination="FhP-jV-e8o" id="20h-ba-bhw"/>
-                                                </connections>
-                                            </textField>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="8Zb-cC-ht7">
                                                 <rect key="frame" x="47" y="241" width="225" height="44"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
                                                 <connections>
+                                                    <action selector="userNameEntered:" destination="FhP-jV-e8o" eventType="editingChanged" id="jMo-uf-WhB"/>
                                                     <outlet property="delegate" destination="FhP-jV-e8o" id="DDT-hW-PoM"/>
                                                 </connections>
                                             </textField>
@@ -233,6 +225,9 @@
                                                     <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                     <color key="titleShadowColor" red="0.888671875" green="0.888671875" blue="0.888671875" alpha="1" colorSpace="calibratedRGB"/>
                                                 </state>
+                                                <state key="disabled">
+                                                    <color key="titleColor" white="1" alpha="0.25" colorSpace="calibratedWhite"/>
+                                                </state>
                                                 <connections>
                                                     <action selector="continueButton:" destination="FhP-jV-e8o" eventType="touchUpInside" id="XME-WH-zXy"/>
                                                     <segue destination="0xP-Zd-z3S" kind="modal" identifier="Jobs" id="Kxh-rG-k0T"/>
@@ -248,7 +243,6 @@
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
                     </view>
                     <connections>
-                        <outlet property="EmailTextField" destination="KzG-Mu-7fl" id="Fum-ui-zpY"/>
                         <outlet property="continueButton" destination="MZc-80-4EX" id="zMf-9J-1eC"/>
                         <outlet property="nameTextField" destination="8Zb-cC-ht7" id="Qod-cq-wHj"/>
                         <outlet property="scrollView" destination="ejl-2T-Vez" id="9TU-Mq-Vhp"/>
@@ -333,6 +327,31 @@
                             </tableViewSection>
                             <tableViewSection headerTitle="" id="Pse-1j-i3s">
                                 <cells>
+                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="wzJ-1Q-C3l">
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzJ-1Q-C3l" id="37Z-eW-hYk">
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will there be any energized work associated with this task?" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-XR-LM3">
+                                                    <rect key="frame" x="8" y="6" width="247" height="57"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q1I-tO-U9A">
+                                                    <rect key="frame" x="263" y="19" width="51" height="31"/>
+                                                    <color key="onTintColor" red="0.12549019610000001" green="0.34901960780000002" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
+                                                    <connections>
+                                                        <action selector="energizedWorkToggle:" destination="UYT-O3-bg7" eventType="valueChanged" id="OhG-eC-Qwm"/>
+                                                    </connections>
+                                                </switch>
+                                            </subviews>
+                                        </tableViewCellContentView>
+                                    </tableViewCell>
+                                </cells>
+                            </tableViewSection>
+                            <tableViewSection headerTitle="" id="8h0-sw-f0L">
+                                <cells>
                                     <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="AzI-hv-k9w">
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="AzI-hv-k9w" id="Owc-38-uYa">
@@ -364,31 +383,6 @@
                                                         <action selector="taskNameNext:" destination="UYT-O3-bg7" eventType="editingDidEndOnExit" id="G5G-Bk-Pi2"/>
                                                     </connections>
                                                 </textField>
-                                            </subviews>
-                                        </tableViewCellContentView>
-                                    </tableViewCell>
-                                </cells>
-                            </tableViewSection>
-                            <tableViewSection headerTitle="" id="8h0-sw-f0L">
-                                <cells>
-                                    <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="70" id="wzJ-1Q-C3l">
-                                        <autoresizingMask key="autoresizingMask"/>
-                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wzJ-1Q-C3l" id="37Z-eW-hYk">
-                                            <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Will there be any energized work associated with this task?" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Af0-XR-LM3">
-                                                    <rect key="frame" x="8" y="6" width="247" height="57"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <switch opaque="NO" contentMode="scaleToFill" horizontalHuggingPriority="750" verticalHuggingPriority="750" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" translatesAutoresizingMaskIntoConstraints="NO" id="Q1I-tO-U9A">
-                                                    <rect key="frame" x="263" y="19" width="51" height="31"/>
-                                                    <color key="onTintColor" red="0.12549019610000001" green="0.34901960780000002" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
-                                                    <connections>
-                                                        <action selector="energizedWorkToggle:" destination="UYT-O3-bg7" eventType="valueChanged" id="OhG-eC-Qwm"/>
-                                                    </connections>
-                                                </switch>
                                             </subviews>
                                         </tableViewCellContentView>
                                     </tableViewCell>

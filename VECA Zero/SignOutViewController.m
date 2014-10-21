@@ -265,7 +265,6 @@ MFMessageComposeViewControllerDelegate>
 
 - (void)UpdateTableView {
     [self.tableView reloadData];
-    NSLog(@"Check triggered");
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

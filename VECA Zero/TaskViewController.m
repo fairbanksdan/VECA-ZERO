@@ -11,7 +11,6 @@
 #import "Job.h"
 #import "Hazard.h"
 #import "JobsViewController.h"
-#import "AddHazardsViewController.h"
 #import "DataModel.h"
 #import "SignInViewController.h"
 
@@ -111,7 +110,6 @@
 
   [self.job.tasksForJobArray replaceObjectAtIndex:newRowIndex withObject:task];
     
-    NSLog(@"Accidently Edited First Task");
   [self saveData];
   [self.tableView reloadData];
 

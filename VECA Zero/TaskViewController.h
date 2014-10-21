@@ -11,7 +11,6 @@
 #import "Task.h"
 #import "Hazard.h"
 #import "AddTaskViewController.h"
-#import "AddHazardsViewController.h"
 
 @interface TaskViewController : UITableViewController <AddTaskViewControllerDelegate>
 

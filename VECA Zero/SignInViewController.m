@@ -45,8 +45,6 @@
     [self.saveTaskButton.layer setCornerRadius:5];
     [self.addPersonButton.layer setCornerRadius:5];
     
-    NSLog(@"Main User is: %@", DataModel.myDataModel.mainUser.fullName);
-    
     _persons = [[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray];
     
     if (_persons.count < 1) {

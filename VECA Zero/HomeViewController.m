@@ -10,7 +10,7 @@
 #import "JobsViewController.h"
 
 @interface HomeViewController () <UIGestureRecognizerDelegate, UITextFieldDelegate>
-@property (weak, nonatomic) IBOutlet UITextField *EmailTextField;
+
 @property (strong,nonatomic) NSArray *textFields;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
@@ -34,14 +34,12 @@
     
     [self setNeedsStatusBarAppearanceUpdate];
     
-    self.textFields = @[self.EmailTextField, self.nameTextField];
+    self.textFields = @[self.nameTextField];
     
     UITapGestureRecognizer *tapOutside = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard:)];
     [self.scrollView addGestureRecognizer:tapOutside];
     
     UIColor *color = [UIColor whiteColor];
-    
-    self.EmailTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Email" attributes:@{NSForegroundColorAttributeName: color}];
     
     self.nameTextField.attributedPlaceholder = [[NSAttributedString alloc] initWithString:@"Full Name" attributes:@{NSForegroundColorAttributeName: color}];
     
@@ -106,6 +104,14 @@
     if ([segue.identifier isEqualToString:@"Jobs"]) {
         UINavigationController *navigationController = segue.destinationViewController;
         JobsViewController *controller = (JobsViewController *)navigationController.topViewController;
+    }
+    
+}
+- (IBAction)userNameEntered:(UITextField *)sender {
+    if (([self.nameTextField.text length]) > 0) {
+        self.continueButton.enabled = YES;
+    } else {
+        self.continueButton.enabled = NO;
     }
     
 }
