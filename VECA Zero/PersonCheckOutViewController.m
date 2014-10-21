@@ -11,7 +11,7 @@
 #import "DataModel.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface PersonCheckOutViewController ()
+@interface PersonCheckOutViewController () <UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *injuredPicker;
 @property (weak, nonatomic) IBOutlet UILabel *descibeIncidentLabel;
 @property (weak, nonatomic) IBOutlet UITextField *superVisorTextField;
@@ -23,16 +23,20 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addSignatureButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
 
+
 @end
 
 @implementation PersonCheckOutViewController
+{
+    UIBarButtonItem *_barButton;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    UIBarButtonItem *barButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Signature" style:UIBarButtonItemStylePlain target:nil action:@selector(addSignature:)];
+    _barButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Signature" style:UIBarButtonItemStylePlain target:nil action:@selector(addSignature:)];
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    toolbar.items = [NSArray arrayWithObject:barButton];
+    toolbar.items = [NSArray arrayWithObject:_barButton];
     
     self.incidentTextView.inputAccessoryView = toolbar;
     self.superVisorTextField.inputAccessoryView = toolbar;
@@ -43,12 +47,16 @@
     
     self.navigationController.navigationBar.titleTextAttributes = @{NSForegroundColorAttributeName: [UIColor whiteColor]};
     
+    self.incidentTextView.delegate = self;
+    
     self.title = _person.fullName;
     
     _incidentTextView.hidden = YES;
     _descibeIncidentLabel.hidden = YES;
     _supervisorBGImage.hidden = YES;
     _superVisorTextField.hidden = YES;
+//    _injuredPicker.selectedSegmentIndex = 1;
+    
     
     if (_person != nil) {
         self.signatureView.image = _person.checkOutSignature;
@@ -56,27 +64,28 @@
             self.addSignatureButton.title = @"Add Signature";
             self.addSignatureButton.enabled = YES;
             self.doneButton.enabled = NO;
+            self.addSignatureButton.enabled = NO;
+            _barButton.enabled = NO;
         } else {
             self.addSignatureButton.title = @"Edit Signature";
             self.addSignatureButton.enabled = YES;
             self.doneButton.enabled = YES;
-            
-            
+            self.addSignatureButton.enabled = YES;
+            _barButton.enabled = YES;
         }
-        
-        if (_person.isInjured != NO && _person.isInjured != YES) {
-        
-        } else {
-            if (_person.isInjured == YES) {
-                _injuredPicker.selectedSegmentIndex = 0;
-                self.incidentTextView.hidden = NO;
-                self.superVisorTextField.hidden = NO;
-                self.supervisorBGImage.hidden = NO;
-                self.incidentTextView.text = _person.incidentDescription;
-                self.superVisorTextField.text = _person.supervisor;
-            } else if (_person.isInjured == NO) {
-                _injuredPicker.selectedSegmentIndex = 1;
-            }
+            
+        if (_person.isInjured == YES) {
+            _injuredPicker.selectedSegmentIndex = 0;
+            self.incidentTextView.hidden = NO;
+            self.superVisorTextField.hidden = NO;
+            self.supervisorBGImage.hidden = NO;
+            self.descibeIncidentLabel.hidden = NO;
+            self.incidentTextView.text = _person.incidentDescription;
+            self.superVisorTextField.text = _person.supervisor;
+        } else if (_person.isInjured == NO) {
+            _injuredPicker.selectedSegmentIndex = 1;
+            self.addSignatureButton.enabled = YES;
+            _barButton.enabled = YES;
         }
     }
     
@@ -85,6 +94,7 @@
     _incidentTextView.layer.sublayerTransform = CATransform3DMakeTranslation(12, 0, 0);
     
 //    self.doneButton.enabled = NO;
+    
     self.signView.hidden = YES;
     [self.signView.layer setCornerRadius:5];
 }
@@ -92,7 +102,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     _scrollView.frame = CGRectMake(0, 0, 320, 568);
-    _scrollView.contentSize = CGSizeMake(320, 650);
+    _scrollView.contentSize = CGSizeMake(320, 670);
     [_scrollView setScrollEnabled:YES];
 }
 
@@ -101,23 +111,26 @@
     // Dispose of any resources that can be recreated.
 }
 - (IBAction)cancel:(UIBarButtonItem *)sender {
+    _person.isInjured = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 - (IBAction)injuredPicked:(UISegmentedControl *)sender {
     if ([sender selectedSegmentIndex] == 0) {
-        _person.isInjured = YES;
         _incidentTextView.hidden = NO;
         _descibeIncidentLabel.hidden = NO;
         _supervisorBGImage.hidden = NO;
         _superVisorTextField.hidden = NO;
-        self.doneButton.enabled = YES;
+        self.addSignatureButton.enabled = NO;
+        _barButton.enabled = NO;
+        
     } else if ([sender selectedSegmentIndex] == 1) {
-        _person.isInjured = NO;
         _incidentTextView.hidden = YES;
         _descibeIncidentLabel.hidden = YES;
         _supervisorBGImage.hidden = YES;
         _superVisorTextField.hidden = YES;
+        self.addSignatureButton.enabled = YES;
+        _barButton.enabled = YES;
     }
 }
 
@@ -131,6 +144,11 @@
 //        self.doneButton.enabled = YES;
         self.signView.hidden = NO;
         [_scrollView setScrollEnabled:NO];
+        if (_injuredPicker.selectedSegmentIndex == 0 && self.incidentTextView.text.length > 0  && self.superVisorTextField.text.length > 0) {
+            self.doneButton.enabled = YES;
+        } else if (_injuredPicker.selectedSegmentIndex == 1) {
+            self.doneButton.enabled = YES;
+        }
     } else if ([self.addSignatureButton.title isEqualToString:@"Close Signature View"]) {
         if (_person == nil) {
             self.addSignatureButton.title = @"Add Signature";
@@ -144,16 +162,60 @@
         self.doneButton.enabled = YES;
         self.signView.hidden = NO;
         [_scrollView setScrollEnabled:NO];
+        if (_injuredPicker.selectedSegmentIndex == 0 && self.incidentTextView.text.length > 0  && self.superVisorTextField.text.length > 0) {
+            self.doneButton.enabled = YES;
+        } else if (_injuredPicker.selectedSegmentIndex == 1) {
+            self.doneButton.enabled = YES;
+        }
     }
 }
 
+-(void)textViewDidChange:(UITextView *)textView {
+    if (self.incidentTextView.text.length > 0) {
+        if (self.superVisorTextField.text.length > 0) {
+            self.addSignatureButton.enabled = YES;
+            _barButton.enabled = YES;
+        }
+    } else if (self.incidentTextView.text.length < 1) {
+        self.addSignatureButton.enabled = NO;
+        _barButton.enabled = NO;
+    }
+}
+
+- (IBAction)supervisorTextChanged:(UITextField *)sender {
+    if (self.superVisorTextField.text.length > 0) {
+        if (self.incidentTextView.text.length > 0) {
+        self.addSignatureButton.enabled = YES;
+        _barButton.enabled = YES;
+        }
+    } else if (self.superVisorTextField.text.length < 1) {
+        self.addSignatureButton.enabled = NO;
+        _barButton.enabled = NO;
+    }
+//    if ((_person.checkOutSignature != nil) && (self.incidentTextView.text.length > 0) && (self.superVisorTextField.text.length > 0)) {
+//        self.doneButton.enabled = YES;
+//    } else {
+//        self.doneButton.enabled = NO;
+//    }
+}
+
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
-    _person.supervisor = _superVisorTextField.text;
-    _person.checkOutSignature = _signatureView.signatureImage;
-    _person.incidentDescription = _incidentTextView.text;
-    [self.delegate UpdateTableView];
+    if (_injuredPicker.selectedSegmentIndex == 1) {
+        _person.isInjured = NO;
+        _person.incidentDescription = nil;
+        _person.checkOutSignature = _signatureView.signatureImage;
+        _person.supervisor = nil;
+        [self.delegate UpdateTableView];
+    } else {
+        _person.isInjured = YES;
+        _person.supervisor = _superVisorTextField.text;
+        _person.checkOutSignature = _signatureView.signatureImage;
+        _person.incidentDescription = _incidentTextView.text;
+        [self.delegate UpdateTableView];
+    }
     
 }
+
 - (IBAction)clearButton:(UIButton *)sender {
     [self.signatureView clear];
 }

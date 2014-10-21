@@ -1064,6 +1064,9 @@
                                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                                <connections>
+                                                    <action selector="supervisorTextChanged:" destination="I2p-xM-Brm" eventType="editingChanged" id="ouA-wY-hD2"/>
+                                                </connections>
                                             </textField>
                                             <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xBt-H1-m89">
                                                 <rect key="frame" x="5" y="205" width="310" height="205"/>
