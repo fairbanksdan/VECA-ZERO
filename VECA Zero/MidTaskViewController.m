@@ -15,6 +15,9 @@
 @end
 
 @implementation MidTaskViewController
+{
+    UIAlertController *_noteToUser;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -29,6 +32,28 @@
 {
     [super viewDidLoad];
     [self.checkOutButton.layer setCornerRadius:5];
+
+    
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    _noteToUser = [UIAlertController alertControllerWithTitle:@"Note to User" message:@"\nGo perform the task.\n\nReturn to this page when the task is complete to check out of the task.\n\nThis alert will not be shown again." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:@"Dismiss"
+                             style:UIAlertActionStyleCancel
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [_noteToUser dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    [_noteToUser addAction:cancel];
+    
+    if (DataModel.myDataModel.firstCheckOut == YES) {
+        [self presentViewController:_noteToUser animated:YES completion:nil];
+        DataModel.myDataModel.firstCheckOut = NO;
+    }
 }
 
 - (void)didReceiveMemoryWarning

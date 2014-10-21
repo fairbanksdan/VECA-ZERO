@@ -68,6 +68,7 @@
     } else {
         _jobsArray = [[NSMutableArray alloc] initWithCapacity:20];
         _mainUser = [Person new];
+        _firstCheckOut = YES;
     }
 }
 

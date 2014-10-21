@@ -63,10 +63,9 @@
     [super viewWillAppear:animated];
     [self.tableView reloadData];
     if (_persons.count == 0) {
-        self.saveTaskButton.hidden = YES;
+        self.saveTaskButton.enabled = NO;
     } else if (_persons.count > 0) {
-        self.saveTaskButton.hidden = NO;
-        self.addPersonButton.hidden = YES;
+        self.saveTaskButton.enabled = YES;
     }
 }
 
@@ -82,7 +81,6 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    
     return [_persons count];
 }
 
@@ -94,7 +92,7 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *SimpleTableIdentifier = @"PersonCell";
-    SWTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
+    PersonTableViewCell *cell = (PersonTableViewCell *)[tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
     
     cell.rightUtilityButtons = [self rightButtons];
     cell.delegate = self;
@@ -211,11 +209,9 @@
                                   withRowAnimation:UITableViewRowAnimationLeft];
             
             if (_persons.count == 0) {
-                self.saveTaskButton.hidden = YES;
-                self.addPersonButton.hidden = NO;
+                self.saveTaskButton.enabled = NO;
             } else if (_persons.count > 0) {
-                self.saveTaskButton.hidden = NO;
-                self.addPersonButton.hidden = YES;
+                self.saveTaskButton.enabled = YES;
             }
             break;
         }

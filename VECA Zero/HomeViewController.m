@@ -48,8 +48,10 @@
     if (DataModel.myDataModel.mainUser != nil) {
         self.nameTextField.text = DataModel.myDataModel.mainUser.fullName;
     } else {
-        self.nameTextField.text = nil;
+        self.nameTextField.text = nil;        
     }
+    
+    self.continueButton.enabled = NO;
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{

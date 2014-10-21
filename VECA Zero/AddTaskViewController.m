@@ -288,7 +288,7 @@ indentationLevelForRowAtIndexPath:indexPath];
         energizedAlert = [UIAlertController alertControllerWithTitle:@"Energized Work" message:@"Please fill out a method of procedure form and submit to the safety department" preferredStyle:UIAlertControllerStyleAlert];
             
         UIAlertAction *cancel = [UIAlertAction
-                                 actionWithTitle:@"Cancel"
+                                 actionWithTitle:@"Dismiss"
                                  style:UIAlertActionStyleCancel
                                  handler:^(UIAlertAction * action)
                                  {

@@ -14,6 +14,7 @@
 @property (nonatomic, strong) NSMutableArray *jobsArray;
 @property (nonatomic, strong) Person *mainUser;
 @property BOOL firstTime;
+@property BOOL firstCheckOut;
 
 + (DataModel *)myDataModel;
 
