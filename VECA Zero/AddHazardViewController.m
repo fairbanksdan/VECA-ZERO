@@ -12,6 +12,7 @@
 #import "Job.h"
 #import "Hazard.h"
 #import "DataModel.h"
+#import <QuartzCore/QuartzCore.h>
 
 @interface AddHazardViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *hazardNameTextField;
@@ -45,6 +46,8 @@
         self.solutionTextView.text = self.hazardToEdit.solution;
         self.hazardImageView.image = self.hazardToEdit.hazardImage;
     }
+    
+    self.solutionTextView.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0);
 }
 
 - (void)didReceiveMemoryWarning {

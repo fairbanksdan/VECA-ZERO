@@ -144,7 +144,7 @@
 
 -(NSString *)tableView:(UITableView *)tableView titleForHeaderInSection:(NSInteger)section {
     if (section == 0) {
-        return @"Review and Check Off Hazards";
+        return @"Review & Select Each Hazard to Check Off";
     } else {
         return @"";
     }

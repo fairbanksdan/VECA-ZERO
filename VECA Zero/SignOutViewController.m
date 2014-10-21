@@ -22,6 +22,7 @@ MFMessageComposeViewControllerDelegate>
 @implementation SignOutViewController
 {
     Person *_person;
+    UIAlertController *_verificationAlert;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -65,6 +66,20 @@ MFMessageComposeViewControllerDelegate>
     return [[[[[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] tasksForJobArray] objectAtIndex:_task.taskIndexPath] personArray] count];
 }
 
+- (void)configureCheckmarkForCell:(UITableViewCell *)cell
+                       withPerson:(Person *)person
+{
+    UILabel *label = (UILabel *)[cell viewWithTag:2000];
+    
+    label.textColor = [UIColor blueColor];
+    
+    if (person.checkOutSignature != nil) {
+        label.text = @"√";
+    } else {
+        label.text = @"";
+    }
+}
+
 -(UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     static NSString *SimpleTableIdentifier = @"PersonCell";
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:SimpleTableIdentifier];
@@ -101,12 +116,52 @@ MFMessageComposeViewControllerDelegate>
     }
 }
 
+- (IBAction)submitButtonPressed:(id)sender {
+    [self showAlert:(id)sender];
+}
+
 - (IBAction)email:(id)sender {
     if ([MFMailComposeViewController canSendMail]) {
         [self displayMailComposerSheet];
     } else {
         NSLog(@"Device is unable to send email in its current state.");
     }
+}
+
+- (IBAction)showAlert:(id)sender {
+    _verificationAlert = [UIAlertController alertControllerWithTitle:@"Verify" message:@"\nHave all of the users who checked into this task checked out of this task?\n\nUsers who have checked out will have a checkmark next to their name. If someone is not available to check out of the task you may select 'Yes' to submit the task without the person being checked out." preferredStyle:UIAlertControllerStyleAlert];
+    
+    UIAlertAction *cancel = [UIAlertAction
+                             actionWithTitle:@"No"
+                             style:UIAlertActionStyleCancel
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [_verificationAlert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    UIAlertAction *notSure = [UIAlertAction
+                             actionWithTitle:@"Not Sure"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [_verificationAlert dismissViewControllerAnimated:YES completion:nil];
+                                 
+                             }];
+    
+    UIAlertAction *submit = [UIAlertAction
+                             actionWithTitle:@"Yes"
+                             style:UIAlertActionStyleDefault
+                             handler:^(UIAlertAction * action)
+                             {
+                                 [self email:(id)sender];
+                             }];
+    
+    [_verificationAlert addAction:submit];
+    [_verificationAlert addAction:cancel];
+    [_verificationAlert addAction:notSure];
+    
+    [self presentViewController:_verificationAlert animated:YES completion:nil];
 }
 
 - (void)displayMailComposerSheet {
@@ -249,19 +304,7 @@ MFMessageComposeViewControllerDelegate>
     }
 }
 
-- (void)configureCheckmarkForCell:(UITableViewCell *)cell
-                        withPerson:(Person *)person
-{
-    UILabel *label = (UILabel *)[cell viewWithTag:2000];
-    
-    label.textColor = [UIColor blueColor];
-    
-    if (person.checkOutSignature != nil) {
-        label.text = @"√";
-    } else {
-        label.text = @"";
-    }
-}
+
 
 - (void)UpdateTableView {
     [self.tableView reloadData];
