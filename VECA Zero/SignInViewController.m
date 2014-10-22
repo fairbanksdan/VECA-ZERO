@@ -51,6 +51,8 @@
         Person *mainUser = DataModel.myDataModel.mainUser;
         [_persons addObject:mainUser];
     }
+    
+    _saveTaskButton.enabled = NO;
 }
 
 - (void)didReceiveMemoryWarning
@@ -62,11 +64,6 @@
 -(void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self.tableView reloadData];
-    if (_persons.count == 0) {
-        self.saveTaskButton.enabled = NO;
-    } else if (_persons.count > 0) {
-        self.saveTaskButton.enabled = YES;
-    }
 }
 
 - (void)configureTextForCell:(UITableViewCell *)cell withPersonName:(Person *)person {
@@ -115,6 +112,7 @@
     [self.tableView endUpdates];
     
 //    [self savePersons];
+    _saveTaskButton.enabled = YES;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -128,6 +126,7 @@
     [self configureTextForCell:cell withPersonName:person];
     
 //    [self savePersons];
+    _saveTaskButton.enabled = YES;
     
     [self dismissViewControllerAnimated:YES completion:nil];
 }
@@ -210,9 +209,8 @@
             
             if (_persons.count == 0) {
                 self.saveTaskButton.enabled = NO;
-            } else if (_persons.count > 0) {
-                self.saveTaskButton.enabled = YES;
             }
+            
             break;
         }
         default:
