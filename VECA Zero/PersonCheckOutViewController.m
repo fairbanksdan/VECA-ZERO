@@ -103,7 +103,7 @@
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     _scrollView.frame = CGRectMake(0, 0, 320, 568);
-    _scrollView.contentSize = CGSizeMake(320, 670);
+    _scrollView.contentSize = CGSizeMake(320, 690);
     [_scrollView setScrollEnabled:YES];
 }
 
@@ -238,7 +238,9 @@
     MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
     picker.messageComposeDelegate = self;
     
-    NSArray *toRecipients = [NSArray arrayWithObject:@"206-683-4583"];
+    
+    
+    NSArray *toRecipients = [[NSArray alloc] initWithObjects:@"206-234-2238", @"509-431-5561", nil];
     
     [picker setRecipients:toRecipients];
     

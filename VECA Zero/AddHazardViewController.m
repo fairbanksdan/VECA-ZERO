@@ -17,8 +17,9 @@
 @interface AddHazardViewController () <UIActionSheetDelegate, UIImagePickerControllerDelegate, UITextFieldDelegate, UITextViewDelegate>
 @property (weak, nonatomic) IBOutlet UITextField *hazardNameTextField;
 @property (weak, nonatomic) IBOutlet UITextView *solutionTextView;
-@property (weak, nonatomic) IBOutlet UIImageView *hazardImageView;
+@property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 @property (strong,nonatomic) UIActionSheet *myActionSheet;
+@property (weak, nonatomic) IBOutlet UIImageView *hazardImageView;
 
 @end
 
@@ -44,7 +45,7 @@
     if (self.hazardToEdit != nil) {
         self.hazardNameTextField.text = self.hazardToEdit.hazardName;
         self.solutionTextView.text = self.hazardToEdit.solution;
-        self.hazardImageView.image = self.hazardToEdit.hazardImage;
+        self.placeholderImageView.image = self.hazardToEdit.hazardImage;
     }
     
     self.solutionTextView.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0);
@@ -131,6 +132,8 @@
     self.hazardImageView.image = [info objectForKey:UIImagePickerControllerEditedImage];
     UIImage *editedImage = [info objectForKey:UIImagePickerControllerEditedImage];
     _hazard.hazardImage = editedImage;
+    
+    self.placeholderImageView.hidden = YES;
     
     [self dismissViewControllerAnimated:YES completion:^{
         NSLog(@"Completed");

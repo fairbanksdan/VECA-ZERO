@@ -170,7 +170,7 @@
     [picker setSubject:@"VECA JSA Test Email"];
     
     // Set up recipients
-    NSArray *toRecipients = [NSArray arrayWithObject:@"dan.fairbanks@freshconsulting.com"];
+    NSArray *toRecipients = [NSArray arrayWithObject:@"bryan.morrison@veca.com"];
 
     [picker setToRecipients:toRecipients];
 
