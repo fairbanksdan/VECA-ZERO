@@ -12,7 +12,7 @@
 #import "Hazard.h"
 #import "AddTaskViewController.h"
 
-@interface TaskViewController : UITableViewController <AddTaskViewControllerDelegate>
+@interface TaskViewController : UIViewController <AddTaskViewControllerDelegate>
 
 @property (strong, nonatomic) Job *job;
 @property (strong, nonatomic) Task *task;

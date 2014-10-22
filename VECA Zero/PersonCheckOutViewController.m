@@ -10,8 +10,9 @@
 #import "SignOutViewController.h"
 #import "DataModel.h"
 #import <QuartzCore/QuartzCore.h>
+#import <MessageUI/MessageUI.h>
 
-@interface PersonCheckOutViewController () <UITextViewDelegate>
+@interface PersonCheckOutViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *injuredPicker;
 @property (weak, nonatomic) IBOutlet UILabel *descibeIncidentLabel;
 @property (weak, nonatomic) IBOutlet UITextField *superVisorTextField;
@@ -211,7 +212,7 @@
         _person.supervisor = _superVisorTextField.text;
         _person.checkOutSignature = _signatureView.signatureImage;
         _person.incidentDescription = _incidentTextView.text;
-        [self.delegate UpdateTableView];
+        [self textMessage:(id)sender];
     }
     
 }
@@ -223,6 +224,63 @@
 - (void)scrollViewDidScroll:(UIScrollView *)scrollView {
     [self.incidentTextView resignFirstResponder];
     [self.superVisorTextField resignFirstResponder];
+}
+
+- (IBAction)textMessage:(id)sender {
+    if ([MFMessageComposeViewController canSendText]) {
+        [self displayMessageComposerSheet];
+    } else {
+        NSLog(@"Device is unable to send email in its current state.");
+    }
+}
+
+- (void)displayMessageComposerSheet {
+    MFMessageComposeViewController *picker = [[MFMessageComposeViewController alloc] init];
+    picker.messageComposeDelegate = self;
+    
+    NSArray *toRecipients = [NSArray arrayWithObject:@"206-683-4583"];
+    
+    [picker setRecipients:toRecipients];
+    
+    NSString *jobName = [[DataModel.myDataModel.jobsArray objectAtIndex:_job.jobIndexPath] jobName];
+
+    NSString *personName = _person.fullName;
+    NSString *incidentDesc = _person.incidentDescription;
+    NSString *superVName = _person.supervisor;
+    NSString *messageContent = [NSString stringWithFormat:@"%@ got injured today at %@. Description of incident: %@. The supervisor is: %@", personName, jobName, incidentDesc, superVName];
+    
+    [picker setBody:messageContent];
+    
+    [self presentViewController:picker animated:YES completion:NULL];
+}
+
+- (void)messageComposeViewController:(MFMessageComposeViewController *)controller didFinishWithResult:(MessageComposeResult)result {
+    
+    switch (result)
+    
+    {
+        case MessageComposeResultCancelled: {
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            break;
+        }
+            
+        case MessageComposeResultFailed: {
+            
+            break;
+        }
+            
+        case MessageComposeResultSent: {
+            [self.delegate UpdateTableView];
+            [self dismissViewControllerAnimated:YES completion:NULL];
+            [self dismissPersonCheckOutViewController];
+            break;
+        }
+    }
+    
+}
+
+- (void)dismissPersonCheckOutViewController {
+    [self dismissViewControllerAnimated:YES completion:nil];
 }
 
 @end

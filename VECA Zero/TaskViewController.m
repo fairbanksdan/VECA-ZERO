@@ -21,6 +21,7 @@
 
 @property (strong, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addTaskBarButton;
+@property (weak, nonatomic) IBOutlet UIButton *addTaskButton;
 
 @end
 
@@ -30,6 +31,8 @@
 {
     [super viewDidLoad];
     self.addTaskBarButton.tintColor = [UIColor whiteColor];
+    
+    [self.addTaskButton.layer setCornerRadius:5];
 }
 
 - (void)didReceiveMemoryWarning
@@ -129,6 +132,9 @@
         controller.task = myTask;
         controller.task.taskIndexPath = myIndexPath;
     }
+}
+- (IBAction)addTask:(UIButton *)sender {
+    [self performSegueWithIdentifier:@"NewTask" sender:self];
 }
 
 @end

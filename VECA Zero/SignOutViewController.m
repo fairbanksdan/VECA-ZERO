@@ -12,8 +12,7 @@
 #import <MessageUI/MessageUI.h>
 #import "JobsViewController.h"
 
-@interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate,
-MFMessageComposeViewControllerDelegate>
+@interface SignOutViewController () <UITableViewDataSource, UITableViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
 @property (weak, nonatomic) IBOutlet UIButton *submitButton;
 
