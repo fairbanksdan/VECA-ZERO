@@ -17,8 +17,6 @@
 
 @protocol PersonCheckOutViewControllerDelegate <NSObject>
 
-- (void)PersonCheckOutViewController:(PersonCheckOutViewController *)controller didCheckOutPerson:(Person *)person;
-
 - (void)UpdateTableView;
 
 @end
