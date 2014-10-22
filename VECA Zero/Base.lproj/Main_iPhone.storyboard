@@ -652,9 +652,9 @@
                                 <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-YG-b12">
-                                <rect key="frame" x="31" y="329" width="259" height="182"/>
-                                <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hazardImageViewBG.png" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-YG-b12">
+                                <rect key="frame" x="16" y="329" width="288" height="182"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1469,6 +1469,7 @@
     <resources>
         <image name="BG Blur 5.png" width="640" height="1136"/>
         <image name="VECA V Black.png" width="130" height="130"/>
+        <image name="hazardImageViewBG.png" width="1886" height="1174"/>
         <image name="iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png" width="640" height="1136"/>
     </resources>
     <simulatedMetricsContainer key="defaultSimulatedMetrics">

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		691681D619F1AFC50032EBC8 /* AddHazardViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 691681D519F1AFC50032EBC8 /* AddHazardViewController.m */; };
 		69A5969E19F19A3000B9BAE6 /* HazardsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */; };
+		69B447B619F811A4002E5C45 /* hazardImageViewBG.png in Resources */ = {isa = PBXBuildFile; fileRef = 69B447B519F811A4002E5C45 /* hazardImageViewBG.png */; };
 		69C2E1EE19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */; };
 		69C2E1F119F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 69C2E1F019F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.m */; };
 		69C2E1F319F5C4380039B6B6 /* VECA V Black Logo.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 69C2E1F219F5C4380039B6B6 /* VECA V Black Logo.jpg */; };
@@ -80,6 +81,7 @@
 		691681D519F1AFC50032EBC8 /* AddHazardViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddHazardViewController.m; sourceTree = "<group>"; };
 		69A5969C19F19A3000B9BAE6 /* HazardsViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardsViewController.h; sourceTree = "<group>"; };
 		69A5969D19F19A3000B9BAE6 /* HazardsViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardsViewController.m; sourceTree = "<group>"; };
+		69B447B519F811A4002E5C45 /* hazardImageViewBG.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = hazardImageViewBG.png; sourceTree = "<group>"; };
 		69C2E1EC19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HazardToBeCheckedTableViewCell.h; sourceTree = "<group>"; };
 		69C2E1ED19F1B61A0039B6B6 /* HazardToBeCheckedTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HazardToBeCheckedTableViewCell.m; sourceTree = "<group>"; };
 		69C2E1EF19F1B6BD0039B6B6 /* SolutionToBeCheckedTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SolutionToBeCheckedTableViewCell.h; sourceTree = "<group>"; };
@@ -372,6 +374,7 @@
 				D689E38019799DED003050F5 /* Images.xcassets */,
 				D6AA5B8F19905087007FE5A8 /* iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png */,
 				69C2E1F219F5C4380039B6B6 /* VECA V Black Logo.jpg */,
+				69B447B519F811A4002E5C45 /* hazardImageViewBG.png */,
 				D62E73A6198F6A6400DB3441 /* VECA Logo Black.png */,
 				D62E73A4198F698400DB3441 /* VECA V Black.png */,
 				D62E73A2198F678100DB3441 /* VECA V Logo.png */,
@@ -521,6 +524,7 @@
 				D689E38119799DED003050F5 /* Images.xcassets in Resources */,
 				D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */,
 				D689E37019799DED003050F5 /* InfoPlist.strings in Resources */,
+				69B447B619F811A4002E5C45 /* hazardImageViewBG.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

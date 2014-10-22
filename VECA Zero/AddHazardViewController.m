@@ -121,7 +121,6 @@
     } else {
         
         return;
-        
     }
     
     [self presentViewController:imagePicker animated:YES completion:nil];
