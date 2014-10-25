@@ -167,7 +167,7 @@
     MFMailComposeViewController *picker = [[MFMailComposeViewController alloc] init];
     picker.mailComposeDelegate = self;
     
-    [picker setSubject:@"VECA JSA Test Email"];
+    
     
     // Set up recipients
     NSArray *toRecipients = [NSArray arrayWithObject:@"bryan.morrison@veca.com"];
@@ -222,9 +222,10 @@
         emailContent = [emailContent stringByAppendingString:[NSString stringWithFormat:@"\nPerson assigned to Task: %@\nWas %@ involved in an injury, incident, or near miss?: %@\nIncident Description: %@\nSupervisor: %@", newPerson, newPerson, isInjured, incidentDesc, superVName]];
         finalMessage = [mailMessage stringByAppendingString:emailContent];
     }
+    
+    [picker setSubject:[NSString stringWithFormat:@"VECA JSA for %@", jobName]];
 
     [picker setMessageBody:finalMessage isHTML:NO];
-
 
     // Attach an image to the email
 

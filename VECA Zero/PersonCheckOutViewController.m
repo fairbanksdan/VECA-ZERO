@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MessageUI/MessageUI.h>
 
-@interface PersonCheckOutViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate>
+@interface PersonCheckOutViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UIToolbarDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *injuredPicker;
 @property (weak, nonatomic) IBOutlet UILabel *descibeIncidentLabel;
 @property (weak, nonatomic) IBOutlet UITextField *superVisorTextField;
@@ -30,14 +30,21 @@
 @implementation PersonCheckOutViewController
 {
     UIBarButtonItem *_barButton;
+    UIBarButtonItem *_flexibleSpace;
+    UITapGestureRecognizer *_tap;
+    UITapGestureRecognizer *_pan;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    
+    
     _barButton = [[UIBarButtonItem alloc] initWithTitle:@"Add Signature" style:UIBarButtonItemStylePlain target:nil action:@selector(addSignature:)];
+    _flexibleSpace = [[UIBarButtonItem alloc]initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace target:nil action:nil];
+    
     UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 44)];
-    toolbar.items = [NSArray arrayWithObject:_barButton];
+    toolbar.items = [NSArray arrayWithObjects:_flexibleSpace, _barButton, _flexibleSpace, nil];
     
     self.incidentTextView.inputAccessoryView = toolbar;
     self.superVisorTextField.inputAccessoryView = toolbar;
@@ -98,6 +105,19 @@
     
     self.signView.hidden = YES;
     [self.signView.layer setCornerRadius:5];
+    
+    _tap = [[UITapGestureRecognizer alloc] initWithTarget:self
+                                                                          action:@selector(dismissKeyboard)];
+    _pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+    
+    [self.view addGestureRecognizer:_tap];
+    [self.view addGestureRecognizer:_pan];
+}
+
+-(void)dismissKeyboard {
+    
+    [self.incidentTextView resignFirstResponder];
+    [self.superVisorTextField resignFirstResponder];
 }
 
 - (void)viewDidAppear:(BOOL)animated {
@@ -150,6 +170,8 @@
         } else if (_injuredPicker.selectedSegmentIndex == 1) {
             self.doneButton.enabled = YES;
         }
+        [self.view removeGestureRecognizer:_tap];
+        [self.view removeGestureRecognizer:_pan];
     } else if ([self.addSignatureButton.title isEqualToString:@"Close Signature View"]) {
         if (_person == nil) {
             self.addSignatureButton.title = @"Add Signature";
@@ -158,6 +180,8 @@
         }
         self.signView.hidden = YES;
         [_scrollView setScrollEnabled:YES];
+        [self.view addGestureRecognizer:_tap];
+        [self.view addGestureRecognizer:_pan];
     } else if ([self.addSignatureButton.title isEqualToString:@"Edit Signature"]) {
         self.addSignatureButton.title = @"Close Signature View";
         self.doneButton.enabled = YES;
@@ -168,6 +192,8 @@
         } else if (_injuredPicker.selectedSegmentIndex == 1) {
             self.doneButton.enabled = YES;
         }
+        [self.view removeGestureRecognizer:_tap];
+        [self.view removeGestureRecognizer:_pan];
     }
 }
 
