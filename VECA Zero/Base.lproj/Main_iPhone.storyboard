@@ -925,7 +925,7 @@
                                             <segue destination="u6I-zE-DI8" kind="presentation" identifier="MidTask" modalTransitionStyle="flipHorizontal" id="iWk-aO-UtI"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" id="S7t-Ie-4Oh"/>
@@ -1559,7 +1559,7 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBt-H1-m89">
                                 <rect key="frame" x="10" y="250" width="580" height="210"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oC-QK-SoG" customClass="SignatureView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oC-QK-SoG" customClass="SignatureView">
                                         <rect key="frame" x="10" y="35" width="560" height="165"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                     </imageView>
@@ -1591,10 +1591,13 @@
                                 <color key="backgroundColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="rKp-yb-2aQ" secondAttribute="trailing" constant="8" id="HDU-4y-Z0n"/>
+                                    <constraint firstItem="0oC-QK-SoG" firstAttribute="leading" secondItem="xBt-H1-m89" secondAttribute="leading" constant="10" id="L7S-UY-q1V"/>
+                                    <constraint firstAttribute="trailing" secondItem="0oC-QK-SoG" secondAttribute="trailing" constant="10" id="MVP-II-wG1"/>
                                     <constraint firstItem="OTg-Yr-UW6" firstAttribute="leading" secondItem="xBt-H1-m89" secondAttribute="leading" constant="8" id="UdR-jE-q6r"/>
                                     <constraint firstAttribute="height" constant="210" id="XDJ-PD-945"/>
                                     <constraint firstItem="rKp-yb-2aQ" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="top" constant="4" id="ove-CC-30N"/>
                                     <constraint firstItem="OTg-Yr-UW6" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="top" constant="8" id="p5A-Na-XA1"/>
+                                    <constraint firstAttribute="bottom" secondItem="0oC-QK-SoG" secondAttribute="bottom" constant="10" id="wEw-2m-NAS"/>
                                 </constraints>
                             </view>
                         </subviews>
