@@ -43,7 +43,6 @@
 		D689E37219799DED003050F5 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37119799DED003050F5 /* main.m */; };
 		D689E37619799DED003050F5 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37519799DED003050F5 /* AppDelegate.m */; };
 		D689E37919799DED003050F5 /* Main_iPhone.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37719799DED003050F5 /* Main_iPhone.storyboard */; };
-		D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D689E37A19799DED003050F5 /* Main_iPad.storyboard */; };
 		D689E37F19799DED003050F5 /* JobsViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = D689E37E19799DED003050F5 /* JobsViewController.m */; };
 		D689E38119799DED003050F5 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D689E38019799DED003050F5 /* Images.xcassets */; };
 		D689E38819799DED003050F5 /* XCTest.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = D689E38719799DED003050F5 /* XCTest.framework */; };
@@ -136,7 +135,6 @@
 		D689E37419799DED003050F5 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		D689E37519799DED003050F5 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		D689E37819799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPhone.storyboard; sourceTree = "<group>"; };
-		D689E37B19799DED003050F5 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main_iPad.storyboard; sourceTree = "<group>"; };
 		D689E37D19799DED003050F5 /* JobsViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JobsViewController.h; sourceTree = "<group>"; };
 		D689E37E19799DED003050F5 /* JobsViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JobsViewController.m; sourceTree = "<group>"; };
 		D689E38019799DED003050F5 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -213,7 +211,6 @@
 			isa = PBXGroup;
 			children = (
 				D689E37719799DED003050F5 /* Main_iPhone.storyboard */,
-				D689E37A19799DED003050F5 /* Main_iPad.storyboard */,
 			);
 			name = Views;
 			sourceTree = "<group>";
@@ -509,7 +506,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				D62E7397198F5DCC00DB3441 /* Screen Shot 2014-08-03 at 11.20.02 PM.png in Resources */,
-				D689E37C19799DED003050F5 /* Main_iPad.storyboard in Resources */,
 				D62E73A3198F678100DB3441 /* VECA V Logo.png in Resources */,
 				D62E73A7198F6A6400DB3441 /* VECA Logo Black.png in Resources */,
 				D6AA5B951992E126007FE5A8 /* Job.plist in Resources */,
@@ -613,14 +609,6 @@
 			name = Main_iPhone.storyboard;
 			sourceTree = "<group>";
 		};
-		D689E37A19799DED003050F5 /* Main_iPad.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				D689E37B19799DED003050F5 /* Base */,
-			);
-			name = Main_iPad.storyboard;
-			sourceTree = "<group>";
-		};
 		D689E39019799DED003050F5 /* InfoPlist.strings */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -721,7 +709,7 @@
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VECA Zero/VECA Zero-Bridging-Header.h";
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -742,7 +730,7 @@
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = "VECA Zero/VECA Zero-Bridging-Header.h";
-				TARGETED_DEVICE_FAMILY = 1;
+				TARGETED_DEVICE_FAMILY = "1,2";
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
