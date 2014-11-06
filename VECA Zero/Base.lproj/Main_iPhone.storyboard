@@ -1547,9 +1547,13 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTs-oc-T4S">
-                                <rect key="frame" x="29" y="240" width="263" height="47"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UTs-oc-T4S">
+                                <rect key="frame" x="169" y="276" width="263" height="47"/>
                                 <color key="backgroundColor" red="0.94421635839999996" green="0.94421635839999996" blue="0.94421635839999996" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="47" id="Ehb-jb-dem"/>
+                                    <constraint firstAttribute="width" constant="263" id="tdX-ZQ-ScU"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="25"/>
                                 <state key="normal" title="Check Out of Task">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1559,8 +1563,12 @@
                                     <segue destination="loZ-pl-bmF" kind="presentation" identifier="SignOut" id="X3r-XP-led"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIY-kI-0pR">
-                                <rect key="frame" x="48" y="290" width="225" height="32"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="MIY-kI-0pR">
+                                <rect key="frame" x="188" y="326" width="225" height="32"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="225" id="Aod-ik-LT7"/>
+                                    <constraint firstAttribute="height" constant="32" id="t1r-mF-Wwp"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="15"/>
                                 <state key="normal" title="Or, Add Person Mid-Task">
                                     <color key="titleColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -1572,6 +1580,12 @@
                             </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="centerX" secondItem="MIY-kI-0pR" secondAttribute="centerX" id="6hd-QE-MGE"/>
+                            <constraint firstAttribute="centerX" secondItem="UTs-oc-T4S" secondAttribute="centerX" id="NEa-Yv-AaF"/>
+                            <constraint firstItem="MIY-kI-0pR" firstAttribute="top" secondItem="UTs-oc-T4S" secondAttribute="bottom" constant="3" id="PNM-zQ-T6n"/>
+                            <constraint firstAttribute="centerY" secondItem="UTs-oc-T4S" secondAttribute="centerY" id="QNK-4I-WiD"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="K1v-aZ-CVR"/>
                     <connections>
