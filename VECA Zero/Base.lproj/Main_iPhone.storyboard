@@ -718,18 +718,65 @@
                         <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DVD-iy-Uz3">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="DVD-iy-Uz3">
+                                <rect key="frame" x="0.0" y="105" width="600" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Bgm-LW-7Aa"/>
+                                </constraints>
                             </imageView>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HJx-Bi-cJ9">
-                                <rect key="frame" x="16" y="105" width="288" height="44"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="HJx-Bi-cJ9">
+                                <rect key="frame" x="16" y="105" width="568" height="44"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="Amo-Vz-LpZ"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                             </textField>
-                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="bpq-2C-TwH">
-                                <rect key="frame" x="0.0" y="524" width="320" height="44"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the Hazard Below:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jov-bQ-oCk">
+                                <rect key="frame" x="16" y="76" width="201" height="21"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="201" id="L6u-rC-9hS"/>
+                                    <constraint firstAttribute="height" constant="21" id="u81-Gn-BND"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the solution, mitigation, and/or preventative measures below:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNp-G2-HSV">
+                                <rect key="frame" x="16" y="161" width="568" height="37"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="37" id="cli-xV-yrz"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="hazardImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-YG-b12">
+                                <rect key="frame" x="16" y="329" width="568" height="204"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3w2-Rm-GlW">
+                                <rect key="frame" x="0.0" y="329" width="600" height="204"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                            </imageView>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MZN-18-Xtl">
+                                <rect key="frame" x="0.0" y="206" width="600" height="100"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="xG9-lU-S2f"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="bpq-2C-TwH">
+                                <rect key="frame" x="0.0" y="556" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="1gA-p0-Lfs"/>
+                                </constraints>
                                 <items>
                                     <barButtonItem systemItem="camera" id="DZS-4Z-NkR">
                                         <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
@@ -739,33 +786,35 @@
                                     </barButtonItem>
                                 </items>
                             </toolbar>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Describe the Hazard Below:" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jov-bQ-oCk">
-                                <rect key="frame" x="16" y="76" width="201" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Describe the solution, mitigation, and/or preventative measures below:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNp-G2-HSV">
-                                <rect key="frame" x="16" y="161" width="288" height="37"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hazardImagePlaceholder" translatesAutoresizingMaskIntoConstraints="NO" id="2QM-YG-b12">
-                                <rect key="frame" x="16" y="329" width="288" height="182"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="3w2-Rm-GlW">
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
-                            </imageView>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="MZN-18-Xtl">
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                                <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
-                            </textView>
                         </subviews>
                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="bpq-2C-TwH" secondAttribute="trailing" id="8me-kZ-V2Y"/>
+                            <constraint firstItem="HJx-Bi-cJ9" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" constant="16" id="8tr-Vh-3wI"/>
+                            <constraint firstItem="bpq-2C-TwH" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" id="9PJ-il-1WR"/>
+                            <constraint firstItem="HJx-Bi-cJ9" firstAttribute="top" secondItem="jov-bQ-oCk" secondAttribute="bottom" constant="8" id="AoT-xi-Bjm"/>
+                            <constraint firstItem="bpq-2C-TwH" firstAttribute="top" secondItem="3w2-Rm-GlW" secondAttribute="bottom" constant="23" id="Hnh-XE-bhh"/>
+                            <constraint firstItem="2QM-YG-b12" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" constant="16" id="K06-It-DgY"/>
+                            <constraint firstItem="3w2-Rm-GlW" firstAttribute="top" secondItem="MZN-18-Xtl" secondAttribute="bottom" constant="23" id="Ms0-gk-l0V"/>
+                            <constraint firstItem="HNp-G2-HSV" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" constant="16" id="ReU-Eb-qJY"/>
+                            <constraint firstItem="MZN-18-Xtl" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" id="UGQ-y7-Ae2"/>
+                            <constraint firstItem="bpq-2C-TwH" firstAttribute="top" secondItem="2QM-YG-b12" secondAttribute="bottom" constant="23" id="Vih-8I-2ST"/>
+                            <constraint firstAttribute="trailing" secondItem="HNp-G2-HSV" secondAttribute="trailing" constant="16" id="Wiu-jU-Lzy"/>
+                            <constraint firstItem="jov-bQ-oCk" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" constant="16" id="Xb1-Et-NJb"/>
+                            <constraint firstItem="HNp-G2-HSV" firstAttribute="top" secondItem="HJx-Bi-cJ9" secondAttribute="bottom" constant="12" id="Xm5-3V-GcY"/>
+                            <constraint firstAttribute="trailing" secondItem="DVD-iy-Uz3" secondAttribute="trailing" id="Ye5-2d-nyl"/>
+                            <constraint firstAttribute="trailing" secondItem="2QM-YG-b12" secondAttribute="trailing" constant="16" id="Z6D-tO-bCR"/>
+                            <constraint firstAttribute="trailing" secondItem="HJx-Bi-cJ9" secondAttribute="trailing" constant="16" id="bmo-2S-YBc"/>
+                            <constraint firstItem="jov-bQ-oCk" firstAttribute="top" secondItem="bc6-Ln-Xg6" secondAttribute="bottom" constant="12" id="cLT-Nk-WXp"/>
+                            <constraint firstItem="DVD-iy-Uz3" firstAttribute="top" secondItem="jov-bQ-oCk" secondAttribute="bottom" constant="8" id="cXb-6X-um6"/>
+                            <constraint firstItem="3w2-Rm-GlW" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" id="ehK-f0-vXM"/>
+                            <constraint firstItem="DVD-iy-Uz3" firstAttribute="leading" secondItem="S9p-qz-uXe" secondAttribute="leading" id="izj-So-Prn"/>
+                            <constraint firstItem="OGm-Yv-5zD" firstAttribute="top" secondItem="bpq-2C-TwH" secondAttribute="bottom" id="jca-Y0-G8C"/>
+                            <constraint firstAttribute="trailing" secondItem="MZN-18-Xtl" secondAttribute="trailing" id="lMO-gn-VEs"/>
+                            <constraint firstAttribute="trailing" secondItem="3w2-Rm-GlW" secondAttribute="trailing" id="lQe-c3-WIh"/>
+                            <constraint firstItem="2QM-YG-b12" firstAttribute="top" secondItem="MZN-18-Xtl" secondAttribute="bottom" constant="23" id="rmr-C0-urk"/>
+                            <constraint firstItem="MZN-18-Xtl" firstAttribute="top" secondItem="HNp-G2-HSV" secondAttribute="bottom" constant="8" id="vQ5-6L-IUq"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Add Hazard" id="CV7-b6-PCg">
                         <barButtonItem key="leftBarButtonItem" systemItem="cancel" id="IFn-kC-B88">
@@ -788,7 +837,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="vgN-ik-Ufy" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="5750.625" y="1704.9295774647885"/>
+            <point key="canvasLocation" x="5750" y="1704"/>
         </scene>
         <!--Sign In View Controller-->
         <scene sceneID="1yG-4r-Dc0">
