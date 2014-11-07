@@ -63,6 +63,14 @@
     
     if (self.view.frame.size.height <= 480) {
         self.iPhone4S = YES;
+    } else if (self.view.frame.size.height <= 568) {
+        self.iPhone5 = YES;
+    } else if (self.view.frame.size.height <= 667) {
+        self.iPhone6 = YES;
+    } else if (self.view.frame.size.height <= 960) {
+        self.iPhone6Plus = YES;
+    } else if (self.view.frame.size.height <= 1024) {
+        self.iPad = YES;
     }
 }
 
@@ -95,25 +103,43 @@
     NSInteger startPointTwo;
     NSInteger offset;
     NSInteger inset;
+    NSInteger buttonEndPoint;
     
     if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
-        startPoint = 0;
-        startPointTwo = 0;
-        offset = 10;
-        inset = 280;
-        
+        if (self.iPhone4S) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 10;
+            inset = 280;
+            
+        } else if (self.iPhone5) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 10;
+            inset = 280;
+        } else {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 60;
+            inset = 280;
+        }
         
     } else {
         if (self.iPhone4S) {
             startPoint = 0;
             startPointTwo = 0;
-            offset = 75;
+            offset = 100;
             inset = 260;
             
+        } else if (self.iPhone5) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 200;
+            inset = 260;
         } else {
             startPoint = 0;
             startPointTwo = 0;
-            offset = 75;
+            offset = 233;
             inset = 260;
         }
         
@@ -124,23 +150,36 @@
         [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         
         if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                buttonEndPoint = 225;
+            } else if (self.iPhone5) {
+                buttonEndPoint = 225;
+            } else if (self.iPhone6) {
+                buttonEndPoint = 225;
+            } else if (self.iPhone6Plus) {
+                buttonEndPoint = 235;
+            }
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:0.5f];
-            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 225, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, buttonEndPoint, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
             [UIView commitAnimations];
-//            self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 225, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
         } else {
+            if (self.iPhone4S) {
+                buttonEndPoint = 325;
+            } else if (self.iPhone5) {
+                buttonEndPoint = 325;
+            } else if (self.iPhone6) {
+                buttonEndPoint = 360;
+            } else if (self.iPhone6Plus) {
+                buttonEndPoint = 395;
+            }
+            
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:0.5f];
-            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 325, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, buttonEndPoint, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
             [UIView commitAnimations];
-//            self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 325, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
         }
     }
-    
-//    if (textField.frame.origin.y > startPointTwo) {
-//        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, inset, 0);
-//    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
@@ -152,13 +191,11 @@
         [UIView setAnimationDuration:0.5f];
         [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
         [UIView commitAnimations];
-//        self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
     } else {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5f];
         [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
         [UIView commitAnimations];
-//        self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
     }
 }
 
