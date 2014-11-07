@@ -20,6 +20,12 @@
 @property (weak, nonatomic) IBOutlet UIImageView *placeholderImageView;
 @property (strong,nonatomic) UIActionSheet *myActionSheet;
 @property (weak, nonatomic) IBOutlet UIImageView *hazardImageView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) BOOL iPhone4S;
+@property (nonatomic) BOOL iPhone5;
+@property (nonatomic) BOOL iPhone6;
+@property (nonatomic) BOOL iPhone6Plus;
+@property (nonatomic) BOOL iPad;
 
 @end
 
@@ -37,10 +43,10 @@
     
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self
                                                                           action:@selector(dismissKeyboard)];
-    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
+//    UIPanGestureRecognizer *pan = [[UIPanGestureRecognizer alloc] initWithTarget:self action:@selector(dismissKeyboard)];
     
     [self.view addGestureRecognizer:tap];
-    [self.view addGestureRecognizer:pan];
+//    [self.view addGestureRecognizer:pan];
     
     if (self.hazardToEdit != nil) {
         self.hazardNameTextField.text = self.hazardToEdit.hazardName;
@@ -49,11 +55,43 @@
     }
     
     self.solutionTextView.layer.sublayerTransform = CATransform3DMakeTranslation(14, 0, 0);
+    
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        if (self.view.frame.size.height <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 667) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 960) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 1024) {
+            self.iPad = YES;
+        }
+    } else {
+        if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 750) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 1080) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 768) {
+            self.iPad = YES;
+        }
+    }
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateLayoutForNewOrientation:self.interfaceOrientation];
+    [super viewDidAppear:animated];
 }
 
 -(void)dismissKeyboard {
@@ -101,6 +139,101 @@
     
     
     [self.myActionSheet showInView:self.view];
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    NSInteger offset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (self.iPhone4S) {
+            offset = 35;
+        } else if (self.iPhone5) {
+            offset = 35;
+        } else if (self.iPhone6){
+            offset = 75;
+        } else {
+            offset = 95;
+        }
+        
+        [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        
+    } else {
+        if (self.iPhone4S) {
+            offset = 80;
+            [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone5) {
+            offset = 155;
+            [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        }
+        
+    }
+    
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSInteger offset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (self.iPhone4S) {
+            offset = 35;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone5) {
+            offset = 35;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        }
+    }
+}
+
+-(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
+    if ([self.hazardNameTextField isFirstResponder]) {
+        NSInteger offset;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                offset = 35;
+                [self.scrollView setContentOffset:CGPointMake(0, self.hazardNameTextField.frame.origin.y - offset) animated:YES];
+            } else if (self.iPhone5) {
+                offset = 35;
+                [self.scrollView setContentOffset:CGPointMake(0, self.hazardNameTextField.frame.origin.y - offset) animated:YES];
+            }
+        }
+    } else if ([self.solutionTextView isFirstResponder]) {
+        NSInteger offset;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                offset = 35;
+            } else if (self.iPhone5) {
+                offset = 35;
+            } else if (self.iPhone6){
+                offset = 75;
+            } else {
+                offset = 95;
+            }
+            
+            [self.scrollView setContentOffset:CGPointMake(0, self.solutionTextView.frame.origin.y - offset) animated:YES];
+            
+        } else {
+            if (self.iPhone4S) {
+                offset = 80;
+                [self.scrollView setContentOffset:CGPointMake(0, self.solutionTextView.frame.origin.y - offset) animated:YES];
+            } else if (self.iPhone5) {
+                offset = 155;
+                [self.scrollView setContentOffset:CGPointMake(0, self.solutionTextView.frame.origin.y - offset) animated:YES];
+            }
+            
+        }
+    }
+    
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self updateLayoutForNewOrientation: toInterfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 - (void)actionSheet:(UIActionSheet *)actionSheet clickedButtonAtIndex:(NSInteger)buttonIndex
