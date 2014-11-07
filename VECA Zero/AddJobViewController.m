@@ -14,6 +14,12 @@
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneBarButton;
 @property (weak, nonatomic) IBOutlet UIImageView *jobTFBackgroundImage;
 @property (weak, nonatomic) IBOutlet UIImageView *projectNumberTFBackgroundImage;
+@property (nonatomic) BOOL iPhone4S;
+@property (nonatomic) BOOL iPhone5;
+@property (nonatomic) BOOL iPhone6;
+@property (nonatomic) BOOL iPhone6Plus;
+@property (nonatomic) BOOL iPad;
+@property (strong, nonatomic) IBOutlet UIView *addJobView;
 
 @end
 
@@ -63,6 +69,18 @@
     
     [self.jobTFBackgroundImage.layer setCornerRadius:3];
     [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
+    
+    if (self.view.frame.size.height <= 480) {
+        self.iPhone4S = YES;
+    } else if (self.view.frame.size.height <= 568) {
+        self.iPhone5 = YES;
+    } else if (self.view.frame.size.height <= 667) {
+        self.iPhone6 = YES;
+    } else if (self.view.frame.size.height <= 960) {
+        self.iPhone6Plus = YES;
+    } else if (self.view.frame.size.height <= 1024) {
+        self.iPad = YES;
+    }
 }
 
 -(void)viewWillAppear:(BOOL)animated {
@@ -101,6 +119,38 @@
     } else {
         self.doneBarButton.enabled = NO;
     }
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSInteger startPoint;
+    NSInteger startPointTwo;
+    NSInteger offset;
+    NSInteger inset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (self.iPhone4S) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 10;
+            inset = 280;
+            
+        } else if (self.iPhone5) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 10;
+            inset = 280;
+        } else {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 60;
+            inset = 280;
+        }
+        
+        if (textField.frame.origin.y > startPoint) {
+            [self.addJobView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+            
+        }
+    
 }
 
 @end
