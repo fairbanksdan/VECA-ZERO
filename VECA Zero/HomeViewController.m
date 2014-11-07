@@ -15,6 +15,11 @@
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
 @property (weak, nonatomic) IBOutlet UIButton *continueButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (nonatomic) BOOL iPhone4S;
+@property (nonatomic) BOOL iPhone5;
+@property (nonatomic) BOOL iPhone6;
+@property (nonatomic) BOOL iPhone6Plus;
+@property (nonatomic) BOOL iPad;
 @end
 
 @implementation HomeViewController
@@ -55,6 +60,10 @@
     } else {
         self.continueButton.enabled = NO;
     }
+    
+    if (self.view.frame.size.height <= 480) {
+        self.iPhone4S = YES;
+    }
 }
 
 -(UIStatusBarStyle)preferredStatusBarStyle{
@@ -82,19 +91,75 @@
 }
 
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
-    if (textField.frame.origin.y > 0)
+    NSInteger startPoint;
+    NSInteger startPointTwo;
+    NSInteger offset;
+    NSInteger inset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        startPoint = 0;
+        startPointTwo = 0;
+        offset = 10;
+        inset = 280;
+        
+        
+    } else {
+        if (self.iPhone4S) {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 75;
+            inset = 260;
+            
+        } else {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 75;
+            inset = 260;
+        }
+        
+    }
+
+    if (textField.frame.origin.y > startPoint)
     {
-        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - 84) animated:YES];
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.5f];
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 225, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+//            self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 225, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
+        } else {
+            [UIView beginAnimations:nil context:nil];
+            [UIView setAnimationDuration:0.5f];
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 325, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+//            self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 325, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
+        }
     }
     
-    if (textField.frame.origin.y > 0) {
-        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, 260, 0);
-    }
+//    if (textField.frame.origin.y > startPointTwo) {
+//        self.scrollView.contentInset = UIEdgeInsetsMake(0, 0, inset, 0);
+//    }
 }
 
 - (void)textFieldDidEndEditing:(UITextField *)textField
 {
     [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5f];
+        [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+        [UIView commitAnimations];
+//        self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
+    } else {
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5f];
+        [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+        [UIView commitAnimations];
+//        self.continueButton.frame = CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height);
+    }
 }
 
 - (IBAction)continueButton:(UIButton *)sender {

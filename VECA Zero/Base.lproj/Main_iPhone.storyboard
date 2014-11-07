@@ -325,19 +325,27 @@
                                         </subviews>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstItem="1XJ-cV-Gip" firstAttribute="top" secondItem="oy1-8d-9bn" secondAttribute="top" constant="57" id="3fC-lT-QAr"/>
+                                            <constraint firstItem="1XJ-cV-Gip" firstAttribute="top" secondItem="oy1-8d-9bn" secondAttribute="top" constant="57" id="3fC-lT-QAr">
+                                                <variation key="heightClass=compact" constant="10"/>
+                                            </constraint>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="8Zb-cC-ht7" secondAttribute="centerX" id="651-Kk-njl"/>
                                             <constraint firstAttribute="centerX" secondItem="MZc-80-4EX" secondAttribute="centerX" id="FEm-2u-4uK"/>
-                                            <constraint firstItem="bL6-cn-5aT" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="100" id="GcS-2v-r9e"/>
+                                            <constraint firstItem="bL6-cn-5aT" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="100" id="GcS-2v-r9e">
+                                                <variation key="heightClass=compact" constant="55"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerX" secondItem="bdY-Ng-Qkq" secondAttribute="centerX" id="Ltb-WZ-dSv"/>
                                             <constraint firstAttribute="centerX" secondItem="1XJ-cV-Gip" secondAttribute="centerX" id="Mu1-Yj-XDX"/>
                                             <constraint firstAttribute="centerX" secondItem="bL6-cn-5aT" secondAttribute="centerX" id="P2x-Lc-zxd"/>
                                             <constraint firstItem="bdY-Ng-Qkq" firstAttribute="top" secondItem="1XJ-cV-Gip" secondAttribute="bottom" constant="2" id="V54-Ym-mXm"/>
-                                            <constraint firstItem="8Zb-cC-ht7" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="58" id="YNW-x6-RQP"/>
+                                            <constraint firstItem="8Zb-cC-ht7" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="58" id="YNW-x6-RQP">
+                                                <variation key="heightClass=compact" constant="15"/>
+                                            </constraint>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="MZc-80-4EX" secondAttribute="centerX" id="eXl-IX-a7V"/>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="bdY-Ng-Qkq" secondAttribute="centerX" id="hnA-HZ-wjj"/>
                                             <constraint firstItem="bdY-Ng-Qkq" firstAttribute="top" secondItem="1XJ-cV-Gip" secondAttribute="bottom" constant="2" id="j2p-mW-bbQ"/>
-                                            <constraint firstItem="MZc-80-4EX" firstAttribute="top" secondItem="bL6-cn-5aT" secondAttribute="bottom" constant="146" id="jdD-4p-J83"/>
+                                            <constraint firstItem="MZc-80-4EX" firstAttribute="top" secondItem="bL6-cn-5aT" secondAttribute="bottom" constant="146" id="jdD-4p-J83">
+                                                <variation key="heightClass=compact" constant="70"/>
+                                            </constraint>
                                             <constraint firstAttribute="centerX" secondItem="8Zb-cC-ht7" secondAttribute="centerX" id="kEG-vB-Fbf"/>
                                         </constraints>
                                     </view>
@@ -1245,7 +1253,7 @@
                                         </items>
                                     </toolbar>
                                 </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="S4i-w2-SGi" secondAttribute="trailing" id="1VH-cx-nhk"/>
                                     <constraint firstItem="IkQ-Sd-4WS" firstAttribute="top" secondItem="ozE-Zz-ksb" secondAttribute="bottom" constant="32" id="38G-EN-1T3"/>
@@ -1334,7 +1342,7 @@
                                                     <nil key="highlightedColor"/>
                                                 </label>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="2000" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="√" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rYu-wx-rsw">
-                                                    <rect key="frame" x="555" y="12" width="13" height="21"/>
+                                                    <rect key="frame" x="555" y="12" width="13" height="20"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="13" id="hVe-AM-gX7"/>
                                                     </constraints>
@@ -1345,7 +1353,7 @@
                                             </subviews>
                                             <constraints>
                                                 <constraint firstItem="rYu-wx-rsw" firstAttribute="top" secondItem="FzO-5s-aTI" secondAttribute="topMargin" constant="4" id="9bA-BI-y4D"/>
-                                                <constraint firstAttribute="bottomMargin" secondItem="rYu-wx-rsw" secondAttribute="bottom" constant="2.5" id="Rxn-lX-s2N"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="rYu-wx-rsw" secondAttribute="bottom" constant="4" id="Rxn-lX-s2N"/>
                                                 <constraint firstAttribute="trailingMargin" secondItem="rYu-wx-rsw" secondAttribute="trailing" constant="-9" id="iN0-CC-Qea"/>
                                             </constraints>
                                         </tableViewCellContentView>
