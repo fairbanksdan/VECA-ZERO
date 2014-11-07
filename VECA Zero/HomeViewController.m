@@ -134,7 +134,7 @@
         } else if (self.iPhone5) {
             startPoint = 0;
             startPointTwo = 0;
-            offset = 200;
+            offset = 180;
             inset = 260;
         } else {
             startPoint = 0;
@@ -151,11 +151,11 @@
         
         if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
             if (self.iPhone4S) {
-                buttonEndPoint = 225;
+                buttonEndPoint = 210;
             } else if (self.iPhone5) {
-                buttonEndPoint = 225;
+                buttonEndPoint = 210;
             } else if (self.iPhone6) {
-                buttonEndPoint = 225;
+                buttonEndPoint = 210;
             } else if (self.iPhone6Plus) {
                 buttonEndPoint = 235;
             }
@@ -165,11 +165,11 @@
             [UIView commitAnimations];
         } else {
             if (self.iPhone4S) {
-                buttonEndPoint = 325;
+                buttonEndPoint = 310;
             } else if (self.iPhone5) {
-                buttonEndPoint = 325;
+                buttonEndPoint = 315;
             } else if (self.iPhone6) {
-                buttonEndPoint = 360;
+                buttonEndPoint = 350;
             } else if (self.iPhone6Plus) {
                 buttonEndPoint = 395;
             }
