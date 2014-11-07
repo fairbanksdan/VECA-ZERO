@@ -71,16 +71,30 @@
     [self.jobTFBackgroundImage.layer setCornerRadius:3];
     [self.projectNumberTFBackgroundImage.layer setCornerRadius:3];
     
-    if (self.view.frame.size.height <= 480) {
-        self.iPhone4S = YES;
-    } else if (self.view.frame.size.height <= 568) {
-        self.iPhone5 = YES;
-    } else if (self.view.frame.size.height <= 667) {
-        self.iPhone6 = YES;
-    } else if (self.view.frame.size.height <= 960) {
-        self.iPhone6Plus = YES;
-    } else if (self.view.frame.size.height <= 1024) {
-        self.iPad = YES;
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        if (self.view.frame.size.height <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 667) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 960) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 1024) {
+            self.iPad = YES;
+        }
+    } else {
+        if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 750) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 1080) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 768) {
+            self.iPad = YES;
+        }
     }
 }
 
@@ -137,13 +151,13 @@
     
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         if (self.iPhone4S) {
-            buttonEndPoint = 85;
+            buttonEndPoint = 80;
             horizantolEndPoint = 8;
             horizantolEndPointTwo = 244;
             imageWidth = 228;
             textFieldwidth = 210;
         } else if (self.iPhone5) {
-            buttonEndPoint = 85;
+            buttonEndPoint = 80;
             horizantolEndPoint = 29;
             horizantolEndPointTwo = 299;
             imageWidth = 240;
@@ -161,7 +175,6 @@
             textFieldwidth = 225;
         }
         
-//        [self.scrollView setContentOffset:CGPointMake(0, self.jobNumberTextField.frame.origin.y - offset) animated:YES];
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5f];
         [self.jobNumberTextField setFrame:CGRectMake(horizantolEndPoint + 7, buttonEndPoint, textFieldwidth, self.jobNumberTextField.frame.size.height)];
@@ -179,38 +192,6 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     return YES;
-}
-
-- (void)textFieldDidBeginEditing:(UITextField *)textField {
-    NSInteger startPoint;
-    NSInteger startPointTwo;
-    NSInteger offset;
-    NSInteger inset;
-    
-    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
-        if (self.iPhone4S) {
-            startPoint = 0;
-            startPointTwo = 0;
-            offset = 10;
-            inset = 280;
-            
-        } else if (self.iPhone5) {
-            startPoint = 0;
-            startPointTwo = 0;
-            offset = 10;
-            inset = 280;
-        } else {
-            startPoint = 0;
-            startPointTwo = 0;
-            offset = 60;
-            inset = 280;
-        }
-        
-        if (textField.frame.origin.y > startPoint) {
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
-            
-        }
-    }
 }
 
 @end

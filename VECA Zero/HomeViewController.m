@@ -61,16 +61,30 @@
         self.continueButton.enabled = NO;
     }
     
-    if (self.view.frame.size.height <= 480) {
-        self.iPhone4S = YES;
-    } else if (self.view.frame.size.height <= 568) {
-        self.iPhone5 = YES;
-    } else if (self.view.frame.size.height <= 667) {
-        self.iPhone6 = YES;
-    } else if (self.view.frame.size.height <= 960) {
-        self.iPhone6Plus = YES;
-    } else if (self.view.frame.size.height <= 1024) {
-        self.iPad = YES;
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        if (self.view.frame.size.height <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 667) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 960) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 1024) {
+            self.iPad = YES;
+        }
+    } else {
+        if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 750) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 1080) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 768) {
+            self.iPad = YES;
+        }
     }
 }
 

@@ -933,7 +933,7 @@
                                             <segue destination="u6I-zE-DI8" kind="presentation" identifier="MidTask" modalTransitionStyle="flipHorizontal" id="iWk-aO-UtI"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" id="S7t-Ie-4Oh"/>
@@ -1044,6 +1044,18 @@
                                             <constraint firstAttribute="height" constant="44" id="Rpt-MF-o97"/>
                                         </constraints>
                                     </imageView>
+                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9G-I3-S3f">
+                                        <rect key="frame" x="16" y="15" width="568" height="44"/>
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="44" id="1qP-qC-brC"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
+                                        <connections>
+                                            <action selector="personNameAdded:" destination="zA6-kV-JuD" eventType="editingDidEnd" id="wMf-C7-v07"/>
+                                        </connections>
+                                    </textField>
                                     <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="grouped" separatorStyle="default" rowHeight="44" sectionHeaderHeight="10" sectionFooterHeight="10" translatesAutoresizingMaskIntoConstraints="NO" id="S4i-w2-SGi">
                                         <rect key="frame" x="0.0" y="80" width="600" height="412"/>
                                         <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
@@ -1180,7 +1192,7 @@
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ozE-Zz-ksb">
                                         <rect key="frame" x="10" y="250" width="580" height="210"/>
                                         <subviews>
-                                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="COY-0t-RMl" customClass="SignatureView">
+                                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="COY-0t-RMl" customClass="SignatureView">
                                                 <rect key="frame" x="10" y="35" width="560" height="165"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
@@ -1224,18 +1236,6 @@
                                             <constraint firstAttribute="height" constant="210" id="vbG-4W-oXt"/>
                                         </constraints>
                                     </view>
-                                    <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Full Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="b9G-I3-S3f">
-                                        <rect key="frame" x="16" y="15" width="568" height="44"/>
-                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                        <constraints>
-                                            <constraint firstAttribute="height" constant="44" id="1qP-qC-brC"/>
-                                        </constraints>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
-                                        <connections>
-                                            <action selector="personNameAdded:" destination="zA6-kV-JuD" eventType="editingDidEnd" id="wMf-C7-v07"/>
-                                        </connections>
-                                    </textField>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-Sd-4WS">
                                         <rect key="frame" x="0.0" y="492" width="600" height="44"/>
                                         <constraints>
@@ -1256,7 +1256,9 @@
                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                 <constraints>
                                     <constraint firstAttribute="trailing" secondItem="S4i-w2-SGi" secondAttribute="trailing" id="1VH-cx-nhk"/>
-                                    <constraint firstItem="IkQ-Sd-4WS" firstAttribute="top" secondItem="ozE-Zz-ksb" secondAttribute="bottom" constant="32" id="38G-EN-1T3"/>
+                                    <constraint firstItem="IkQ-Sd-4WS" firstAttribute="top" secondItem="ozE-Zz-ksb" secondAttribute="bottom" constant="32" id="38G-EN-1T3">
+                                        <variation key="heightClass=compact" constant="10"/>
+                                    </constraint>
                                     <constraint firstItem="ozE-Zz-ksb" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" constant="10" id="773-Qj-e4Z"/>
                                     <constraint firstItem="b9G-I3-S3f" firstAttribute="top" secondItem="u1S-Go-guL" secondAttribute="top" constant="15" id="EU0-bd-Mzf"/>
                                     <constraint firstAttribute="trailing" secondItem="Sz9-H6-Zwb" secondAttribute="trailing" id="Z6Z-Cq-Qbv"/>
@@ -1567,9 +1569,12 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBt-H1-m89">
                                 <rect key="frame" x="10" y="250" width="580" height="210"/>
                                 <subviews>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" ambiguous="YES" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="0oC-QK-SoG" customClass="SignatureView">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="0oC-QK-SoG" customClass="SignatureView">
                                         <rect key="frame" x="10" y="35" width="560" height="165"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="165" id="ytM-hS-6GQ"/>
+                                        </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTg-Yr-UW6">
                                         <rect key="frame" x="8" y="8" width="93" height="21"/>
@@ -1617,7 +1622,9 @@
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="b3u-ZI-lc1"/>
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="top" secondItem="Jv0-mR-u8H" secondAttribute="bottom" id="pqd-iR-be5"/>
                             <constraint firstAttribute="trailing" secondItem="xBt-H1-m89" secondAttribute="trailing" constant="10" id="ytT-s4-lax"/>
-                            <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="bottom" constant="76" id="zqs-wp-ydl"/>
+                            <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="bottom" constant="76" id="zqs-wp-ydl">
+                                <variation key="heightClass=compact" constant="55"/>
+                            </constraint>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Check Out" id="p6M-oQ-P22">
@@ -1734,6 +1741,9 @@
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="iOS Simulator Screen shot Aug 4, 2014, 4.32.17 PM.png" translatesAutoresizingMaskIntoConstraints="NO" id="c5q-48-Y7R">
                                                 <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
                                                 <color key="backgroundColor" red="0.0" green="0.33333333333333331" blue="0.8901960784313725" alpha="1" colorSpace="calibratedRGB"/>
+                                                <variation key="heightClass=compact" fixedFrame="YES">
+                                                    <rect key="frame" x="0.0" y="0.0" width="600" height="400"/>
+                                                </variation>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" alpha="0.20000000298023224" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="kHM-GL-b2V">
                                                 <rect key="frame" x="180" y="131" width="240" height="44"/>
@@ -1813,7 +1823,6 @@
                                                 <color key="backgroundColor" red="0.050499234277289563" green="0.44589328793531408" blue="0.90788277116402116" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="20" id="4gZ-l9-O5w"/>
-                                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="20" id="naV-Fr-dXq"/>
                                                 </constraints>
                                             </imageView>
                                         </subviews>
@@ -1838,6 +1847,11 @@
                                         <variation key="default">
                                             <mask key="constraints">
                                                 <exclude reference="NIf-m6-Jo0"/>
+                                            </mask>
+                                        </variation>
+                                        <variation key="heightClass=compact">
+                                            <mask key="subviews">
+                                                <include reference="Fsk-o2-h5e"/>
                                             </mask>
                                         </variation>
                                     </view>
