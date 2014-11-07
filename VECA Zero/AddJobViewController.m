@@ -19,7 +19,8 @@
 @property (nonatomic) BOOL iPhone6;
 @property (nonatomic) BOOL iPhone6Plus;
 @property (nonatomic) BOOL iPad;
-@property (strong, nonatomic) IBOutlet UIView *addJobView;
+@property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+
 
 @end
 
@@ -87,6 +88,12 @@
     [self.jobNumberTextField becomeFirstResponder];
 }
 
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateLayoutForNewOrientation:self.interfaceOrientation];
+    [super viewDidAppear:animated];
+}
+
 - (void)didReceiveMemoryWarning
 {
     [super didReceiveMemoryWarning];
@@ -121,6 +128,59 @@
     }
 }
 
+-(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
+    NSInteger buttonEndPoint;
+    NSInteger horizantolEndPoint;
+    NSInteger horizantolEndPointTwo;
+    NSInteger textFieldwidth;
+    NSInteger imageWidth;
+    
+    if (UIInterfaceOrientationIsLandscape(orientation)) {
+        if (self.iPhone4S) {
+            buttonEndPoint = 85;
+            horizantolEndPoint = 8;
+            horizantolEndPointTwo = 244;
+            imageWidth = 228;
+            textFieldwidth = 210;
+        } else if (self.iPhone5) {
+            buttonEndPoint = 85;
+            horizantolEndPoint = 29;
+            horizantolEndPointTwo = 299;
+            imageWidth = 240;
+            textFieldwidth = 225;
+        } else if (self.iPhone6) {
+            buttonEndPoint = 100;
+            horizantolEndPoint = 62;
+            horizantolEndPointTwo = 365;
+            imageWidth = 240;
+            textFieldwidth = 225;
+        } else if (self.iPhone6Plus) {
+            buttonEndPoint = 130;
+            horizantolEndPointTwo = 247;
+            imageWidth = 240;
+            textFieldwidth = 225;
+        }
+        
+//        [self.scrollView setContentOffset:CGPointMake(0, self.jobNumberTextField.frame.origin.y - offset) animated:YES];
+        [UIView beginAnimations:nil context:nil];
+        [UIView setAnimationDuration:0.5f];
+        [self.jobNumberTextField setFrame:CGRectMake(horizantolEndPoint + 7, buttonEndPoint, textFieldwidth, self.jobNumberTextField.frame.size.height)];
+        [self.projectNumberTFBackgroundImage setFrame:CGRectMake(horizantolEndPoint, buttonEndPoint, imageWidth, self.jobNumberTextField.frame.size.height)];
+        [self.projectNameTextField setFrame:CGRectMake(horizantolEndPointTwo + 7, buttonEndPoint, textFieldwidth, self.projectNameTextField.frame.size.height)];
+        [self.jobTFBackgroundImage setFrame:CGRectMake(horizantolEndPointTwo, buttonEndPoint, imageWidth, self.jobTFBackgroundImage.frame.size.height)];
+        [UIView commitAnimations];
+    }
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self updateLayoutForNewOrientation: toInterfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
+}
+
 - (void)textFieldDidBeginEditing:(UITextField *)textField {
     NSInteger startPoint;
     NSInteger startPointTwo;
@@ -147,10 +207,10 @@
         }
         
         if (textField.frame.origin.y > startPoint) {
-            [self.addJobView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
             
         }
-    
+    }
 }
 
 @end

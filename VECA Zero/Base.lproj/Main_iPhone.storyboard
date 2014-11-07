@@ -1866,13 +1866,13 @@
                     </navigationItem>
                     <simulatedStatusBarMetrics key="simulatedStatusBarMetrics" statusBarStyle="lightContent"/>
                     <connections>
-                        <outlet property="addJobView" destination="SAU-BJ-O7n" id="xI4-SN-4Fg"/>
                         <outlet property="doneBarButton" destination="9XL-rh-g5z" id="p0o-Pw-bxP"/>
                         <outlet property="jobNumberTextField" destination="vX4-Mj-bph" id="eeJ-9R-nNT"/>
-                        <outlet property="jobTFBackgroundImage" destination="3cH-FH-R8Q" id="o2e-qR-gVr"/>
+                        <outlet property="jobTFBackgroundImage" destination="3cH-FH-R8Q" id="Lwm-ZU-IaT"/>
                         <outlet property="navBar" destination="jWX-Cw-ixB" id="zCj-hs-DaR"/>
                         <outlet property="projectNameTextField" destination="IgJ-LD-xlz" id="H9p-Gr-oLw"/>
-                        <outlet property="projectNumberTFBackgroundImage" destination="kHM-GL-b2V" id="piL-13-Fc2"/>
+                        <outlet property="projectNumberTFBackgroundImage" destination="kHM-GL-b2V" id="LQ9-Wc-SWX"/>
+                        <outlet property="scrollView" destination="sKE-en-kQF" id="IkP-9B-VFo"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Kgq-gD-hMW" userLabel="First Responder" sceneMemberID="firstResponder"/>
