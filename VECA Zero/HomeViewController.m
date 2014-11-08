@@ -69,9 +69,9 @@
             self.iPhone4S = YES;
         } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
             self.iPhone5 = YES;
-        } else if (self.view.frame.size.height <= 750) {
+        } else if (self.view.frame.size.height <= 475) {
             self.iPhone6 = YES;
-        } else if (self.view.frame.size.height <= 1080) {
+        } else if (self.view.frame.size.height <= 540) {
             self.iPhone6Plus = YES;
         } else if (self.view.frame.size.height <= 768) {
             self.iPad = YES;
@@ -87,6 +87,12 @@
 {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
+}
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateLayoutForNewOrientation:self.interfaceOrientation];
+    [super viewDidAppear:animated];
 }
 
 -(void)dismissKeyboard:(id)sender
@@ -202,6 +208,101 @@
         [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
         [UIView commitAnimations];
     }
+}
+
+-(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
+    if ([self.nameTextField isFirstResponder]) {
+        NSInteger startPoint;
+        NSInteger startPointTwo;
+        NSInteger offset;
+        NSInteger inset;
+        NSInteger buttonEndPoint;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 10;
+                inset = 280;
+                
+            } else if (self.iPhone5) {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 10;
+                inset = 280;
+            } else {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 60;
+                inset = 280;
+            }
+            
+        } else {
+            if (self.iPhone4S) {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 100;
+                inset = 260;
+                
+            } else if (self.iPhone5) {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 180;
+                inset = 260;
+            } else {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 233;
+                inset = 260;
+            }
+            
+        }
+        
+        if (self.nameTextField.frame.origin.y > startPoint)
+        {
+            [self.scrollView setContentOffset:CGPointMake(0, self.nameTextField.frame.origin.y - offset) animated:YES];
+            
+            if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+                if (self.iPhone4S) {
+                    buttonEndPoint = 210;
+                } else if (self.iPhone5) {
+                    buttonEndPoint = 210;
+                } else if (self.iPhone6) {
+                    buttonEndPoint = 210;
+                } else if (self.iPhone6Plus) {
+                    buttonEndPoint = 235;
+                }
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:0.5f];
+                [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, buttonEndPoint, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+                [UIView commitAnimations];
+            } else {
+                if (self.iPhone4S) {
+                    buttonEndPoint = 310;
+                } else if (self.iPhone5) {
+                    buttonEndPoint = 315;
+                } else if (self.iPhone6) {
+                    buttonEndPoint = 350;
+                } else if (self.iPhone6Plus) {
+                    buttonEndPoint = 395;
+                }
+                
+                [UIView beginAnimations:nil context:nil];
+                [UIView setAnimationDuration:0.5f];
+                [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, buttonEndPoint, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+                [UIView commitAnimations];
+            }
+        }
+    }
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self updateLayoutForNewOrientation: toInterfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 - (IBAction)continueButton:(UIButton *)sender {

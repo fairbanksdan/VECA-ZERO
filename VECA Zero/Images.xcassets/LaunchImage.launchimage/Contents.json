@@ -40,6 +40,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "iPad LaunchScreen Portrait 1X.png",
       "scale" : "1x"
     },
     {
@@ -47,6 +48,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "iPad LaunchScreen 1X.png",
       "scale" : "1x"
     },
     {
@@ -54,6 +56,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "iPad LaunchScreen Portrait 2X.png",
       "scale" : "2x"
     },
     {
@@ -61,6 +64,7 @@
       "idiom" : "ipad",
       "extent" : "full-screen",
       "minimum-system-version" : "7.0",
+      "filename" : "iPad LaunchScreen 2X.png",
       "scale" : "2x"
     }
   ],
