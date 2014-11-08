@@ -1347,6 +1347,7 @@
                         <outlet property="doneButton" destination="XTd-d0-J1p" id="Wd3-kd-c4U"/>
                         <outlet property="fullNameTextField" destination="b9G-I3-S3f" id="34A-Do-skS"/>
                         <outlet property="navBar" destination="zFm-bR-lR3" id="dnW-sU-Dl4"/>
+                        <outlet property="personTextField" destination="b9G-I3-S3f" id="ox9-jR-Inm"/>
                         <outlet property="signBelowLabel" destination="o9i-fD-9L7" id="LBn-1T-drx"/>
                         <outlet property="signView" destination="ozE-Zz-ksb" id="PBd-T4-Akd"/>
                         <outlet property="signatureView" destination="COY-0t-RMl" id="lUy-6t-Vpu"/>
@@ -1542,22 +1543,6 @@
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
                                             </textView>
-                                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-gA-Idb">
-                                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
-                                                <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="8S4-tH-3oI"/>
-                                                </constraints>
-                                                <items>
-                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RDv-MP-gvY"/>
-                                                    <barButtonItem title="Add Signature" id="5Oa-gg-0vB">
-                                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
-                                                        <connections>
-                                                            <action selector="addSignature:" destination="I2p-xM-Brm" id="N95-je-C9Z"/>
-                                                        </connections>
-                                                    </barButtonItem>
-                                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UvE-tY-dpn"/>
-                                                </items>
-                                            </toolbar>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="pNC-Ez-UwA">
                                                 <rect key="frame" x="156" y="69" width="288" height="29"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
@@ -1582,7 +1567,6 @@
                                             <constraint firstAttribute="trailing" secondItem="DjH-bu-qHe" secondAttribute="trailing" constant="16" id="CqR-gr-eLx"/>
                                             <constraint firstAttribute="trailing" secondItem="30H-vM-7H4" secondAttribute="trailing" constant="16" id="HOq-lv-96H"/>
                                             <constraint firstItem="nhZ-MN-uqo" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" id="NrO-qK-fLc"/>
-                                            <constraint firstAttribute="trailing" secondItem="kM5-gA-Idb" secondAttribute="trailing" id="Pac-xp-PyE"/>
                                             <constraint firstItem="DjH-bu-qHe" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" constant="16" id="Psm-P0-VVn"/>
                                             <constraint firstAttribute="centerX" secondItem="pNC-Ez-UwA" secondAttribute="centerX" id="U8e-C0-THy"/>
                                             <constraint firstAttribute="trailing" secondItem="uji-HW-lp6" secondAttribute="trailing" id="WIg-K3-IzN"/>
@@ -1590,9 +1574,7 @@
                                             <constraint firstItem="DjH-bu-qHe" firstAttribute="top" secondItem="79z-Mp-NRq" secondAttribute="top" constant="8" id="ZUu-Qd-lyi"/>
                                             <constraint firstItem="uji-HW-lp6" firstAttribute="top" secondItem="Syk-gI-mbX" secondAttribute="bottom" constant="8" id="Zkh-vf-HPK"/>
                                             <constraint firstItem="30H-vM-7H4" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" constant="16" id="buL-9x-ew8"/>
-                                            <constraint firstAttribute="bottom" secondItem="kM5-gA-Idb" secondAttribute="bottom" id="heC-RY-dBp"/>
                                             <constraint firstItem="pNC-Ez-UwA" firstAttribute="top" secondItem="DjH-bu-qHe" secondAttribute="bottom" constant="8" id="kce-BT-fOn"/>
-                                            <constraint firstItem="kM5-gA-Idb" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" id="uTN-Dq-o91"/>
                                             <constraint firstAttribute="trailing" secondItem="nhZ-MN-uqo" secondAttribute="trailing" id="w2c-92-GUy"/>
                                             <constraint firstItem="30H-vM-7H4" firstAttribute="top" secondItem="uji-HW-lp6" secondAttribute="bottom" constant="21" id="xty-ah-QBp"/>
                                         </constraints>
@@ -1608,6 +1590,22 @@
                                     <constraint firstAttribute="trailing" secondItem="79z-Mp-NRq" secondAttribute="trailing" id="tAh-3b-45e"/>
                                 </constraints>
                             </scrollView>
+                            <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-gA-Idb">
+                                <rect key="frame" x="0.0" y="492" width="600" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="8S4-tH-3oI"/>
+                                </constraints>
+                                <items>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="RDv-MP-gvY"/>
+                                    <barButtonItem title="Add Signature" id="5Oa-gg-0vB">
+                                        <color key="tintColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                        <connections>
+                                            <action selector="addSignature:" destination="I2p-xM-Brm" id="N95-je-C9Z"/>
+                                        </connections>
+                                    </barButtonItem>
+                                    <barButtonItem style="plain" systemItem="flexibleSpace" id="UvE-tY-dpn"/>
+                                </items>
+                            </toolbar>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="xBt-H1-m89">
                                 <rect key="frame" x="10" y="250" width="580" height="210"/>
                                 <subviews>
@@ -1659,10 +1657,13 @@
                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="GuJ-Y6-yny" secondAttribute="bottom" id="7Rz-K0-ydb"/>
+                            <constraint firstAttribute="trailing" secondItem="kM5-gA-Idb" secondAttribute="trailing" id="DPt-On-D0U"/>
                             <constraint firstItem="xBt-H1-m89" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" constant="10" id="H37-0q-l5Q"/>
+                            <constraint firstItem="kM5-gA-Idb" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="Jpp-04-Yej"/>
                             <constraint firstAttribute="trailing" secondItem="GuJ-Y6-yny" secondAttribute="trailing" id="UsM-J9-kmg"/>
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="b3u-ZI-lc1"/>
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="top" secondItem="Jv0-mR-u8H" secondAttribute="bottom" id="pqd-iR-be5"/>
+                            <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="kM5-gA-Idb" secondAttribute="bottom" id="wi9-mI-xk6"/>
                             <constraint firstAttribute="trailing" secondItem="xBt-H1-m89" secondAttribute="trailing" constant="10" id="ytT-s4-lax"/>
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="bottom" constant="76" id="zqs-wp-ydl">
                                 <variation key="heightClass=compact" constant="55"/>

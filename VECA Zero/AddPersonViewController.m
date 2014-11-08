@@ -27,6 +27,7 @@
 @property (weak, nonatomic) IBOutlet UIToolbar *toolBar;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *doneButton;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addSignatureButton;
+@property (weak, nonatomic) IBOutlet UITextField *personTextField;
 
 @end
 
@@ -36,17 +37,8 @@
     NSMutableArray *_localSolutionArray;
     int _count;
     Person *_localMainUser;
+    UIBarButtonItem *_dismissKeyboardButton;
 }
-
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        // Custom initialization
-    }
-    return self;
-}
-
 
 - (IBAction)Cancel {
     [self.delegate AddPersonViewControllerDidCancel:self];
@@ -57,6 +49,13 @@
     [super viewDidLoad];
     
     [self setNeedsStatusBarAppearanceUpdate];
+    
+    _dismissKeyboardButton = [[UIBarButtonItem alloc] initWithTitle:@"Dismiss Keyboard" style:UIBarButtonItemStylePlain target:nil action:@selector(dismissKeyboard)];
+
+    UIToolbar *toolbar = [[UIToolbar alloc] initWithFrame:CGRectMake(0, 0, 320, 32)];
+    toolbar.items = [NSArray arrayWithObject:_dismissKeyboardButton];
+    
+    self.personTextField.inputAccessoryView = toolbar;
     
     [self.scrollView setScrollEnabled:YES];
     
@@ -106,6 +105,10 @@
     return UIStatusBarStyleLightContent;
 }
 
+-(void)dismissKeyboard {
+    [self.personTextField resignFirstResponder];
+}
+
 - (IBAction)doneButtonPressed:(id)sender {
     if (self.personToEdit == nil) {
         Person *person = [Person new];
@@ -151,7 +154,7 @@
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 30;
+    return 50;
 }
 
 -(CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
