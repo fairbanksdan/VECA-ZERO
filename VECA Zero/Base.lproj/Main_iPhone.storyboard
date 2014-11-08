@@ -18,7 +18,7 @@
                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="22" sectionFooterHeight="22" translatesAutoresizingMaskIntoConstraints="NO" id="ORa-y1-Idc">
-                                <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                                <rect key="frame" x="0.0" y="0.0" width="600" height="546"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <searchBar key="tableHeaderView" contentMode="redraw" id="Uc6-kr-aUb">
                                     <rect key="frame" x="0.0" y="64" width="600" height="44"/>
@@ -94,7 +94,7 @@
                             <constraint firstAttribute="trailing" secondItem="ORa-y1-Idc" secondAttribute="trailing" id="87f-mI-MVm"/>
                             <constraint firstItem="QTX-ex-mZx" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="DDp-wU-Kek"/>
                             <constraint firstItem="ORa-y1-Idc" firstAttribute="leading" secondItem="kh9-bI-dsS" secondAttribute="leading" id="Ig4-BH-OW4"/>
-                            <constraint firstAttribute="bottom" secondItem="ORa-y1-Idc" secondAttribute="bottom" id="yl2-dZ-Qti"/>
+                            <constraint firstAttribute="bottom" secondItem="ORa-y1-Idc" secondAttribute="bottom" constant="54" id="yl2-dZ-Qti"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Jobs" id="WSP-sm-qpg">
@@ -1492,7 +1492,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
                                 <subviews>
                                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="79z-Mp-NRq">
-                                        <rect key="frame" x="0.0" y="0.0" width="600" height="536"/>
+                                        <rect key="frame" x="0.0" y="0.0" width="600" height="620"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Were you involved in an injury, incident, or near miss during this task?" lineBreakMode="wordWrap" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="DjH-bu-qHe">
                                                 <rect key="frame" x="16" y="8" width="568" height="53"/>
@@ -1531,6 +1531,7 @@
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words"/>
                                                 <connections>
                                                     <action selector="supervisorTextChanged:" destination="I2p-xM-Brm" eventType="editingChanged" id="ouA-wY-hD2"/>
+                                                    <outlet property="delegate" destination="I2p-xM-Brm" id="vOd-Iz-zTG"/>
                                                 </connections>
                                             </textField>
                                             <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="uji-HW-lp6">
@@ -1542,6 +1543,9 @@
                                                 </constraints>
                                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                                <connections>
+                                                    <outlet property="delegate" destination="I2p-xM-Brm" id="wMw-FU-bXP"/>
+                                                </connections>
                                             </textView>
                                             <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" translatesAutoresizingMaskIntoConstraints="NO" id="pNC-Ez-UwA">
                                                 <rect key="frame" x="156" y="69" width="288" height="29"/>
@@ -1559,7 +1563,7 @@
                                                 </connections>
                                             </segmentedControl>
                                         </subviews>
-                                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                        <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                         <constraints>
                                             <constraint firstItem="nhZ-MN-uqo" firstAttribute="top" secondItem="uji-HW-lp6" secondAttribute="bottom" constant="21" id="0qx-5v-uRH"/>
                                             <constraint firstItem="uji-HW-lp6" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" id="75A-Fe-a2p"/>
@@ -1568,6 +1572,7 @@
                                             <constraint firstAttribute="trailing" secondItem="30H-vM-7H4" secondAttribute="trailing" constant="16" id="HOq-lv-96H"/>
                                             <constraint firstItem="nhZ-MN-uqo" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" id="NrO-qK-fLc"/>
                                             <constraint firstItem="DjH-bu-qHe" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" constant="16" id="Psm-P0-VVn"/>
+                                            <constraint firstAttribute="height" constant="620" id="TKf-cT-MeJ"/>
                                             <constraint firstAttribute="centerX" secondItem="pNC-Ez-UwA" secondAttribute="centerX" id="U8e-C0-THy"/>
                                             <constraint firstAttribute="trailing" secondItem="uji-HW-lp6" secondAttribute="trailing" id="WIg-K3-IzN"/>
                                             <constraint firstItem="Syk-gI-mbX" firstAttribute="leading" secondItem="79z-Mp-NRq" secondAttribute="leading" constant="16" id="YXE-2x-TkL"/>
@@ -1582,13 +1587,17 @@
                                 </subviews>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                 <constraints>
-                                    <constraint firstAttribute="centerX" secondItem="79z-Mp-NRq" secondAttribute="centerX" id="JvT-jS-8Wn"/>
                                     <constraint firstItem="79z-Mp-NRq" firstAttribute="top" secondItem="GuJ-Y6-yny" secondAttribute="top" id="RHM-fX-DzM"/>
                                     <constraint firstAttribute="centerY" secondItem="79z-Mp-NRq" secondAttribute="centerY" id="bAD-pP-rhW"/>
                                     <constraint firstItem="79z-Mp-NRq" firstAttribute="leading" secondItem="GuJ-Y6-yny" secondAttribute="leading" id="puG-EH-1uz"/>
                                     <constraint firstAttribute="bottom" secondItem="79z-Mp-NRq" secondAttribute="bottom" id="qYJ-lH-hoF"/>
                                     <constraint firstAttribute="trailing" secondItem="79z-Mp-NRq" secondAttribute="trailing" id="tAh-3b-45e"/>
                                 </constraints>
+                                <variation key="default">
+                                    <mask key="constraints">
+                                        <exclude reference="bAD-pP-rhW"/>
+                                    </mask>
+                                </variation>
                             </scrollView>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="kM5-gA-Idb">
                                 <rect key="frame" x="0.0" y="492" width="600" height="44"/>
@@ -1657,6 +1666,7 @@
                         <color key="backgroundColor" red="0.92156862750000001" green="0.92156862750000001" blue="0.94509803920000002" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="GuJ-Y6-yny" secondAttribute="bottom" id="7Rz-K0-ydb"/>
+                            <constraint firstItem="79z-Mp-NRq" firstAttribute="width" secondItem="V3B-N1-3lX" secondAttribute="width" id="8Zg-oW-DJy"/>
                             <constraint firstAttribute="trailing" secondItem="kM5-gA-Idb" secondAttribute="trailing" id="DPt-On-D0U"/>
                             <constraint firstItem="xBt-H1-m89" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" constant="10" id="H37-0q-l5Q"/>
                             <constraint firstItem="kM5-gA-Idb" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="Jpp-04-Yej"/>
@@ -1691,6 +1701,7 @@
                         <outlet property="doneButton" destination="1a0-B5-6TS" id="Ocz-Bm-Zdc"/>
                         <outlet property="incidentTextView" destination="uji-HW-lp6" id="CQu-Ea-wKd"/>
                         <outlet property="injuredPicker" destination="pNC-Ez-UwA" id="dWL-oB-eVN"/>
+                        <outlet property="mainView" destination="79z-Mp-NRq" id="eTP-O1-tJT"/>
                         <outlet property="scrollView" destination="GuJ-Y6-yny" id="s1Q-Kr-IeC"/>
                         <outlet property="signView" destination="xBt-H1-m89" id="59f-mT-I5S"/>
                         <outlet property="signatureView" destination="0oC-QK-SoG" id="ESl-xP-tIE"/>

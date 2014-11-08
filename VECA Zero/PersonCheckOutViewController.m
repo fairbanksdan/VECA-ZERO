@@ -12,7 +12,7 @@
 #import <QuartzCore/QuartzCore.h>
 #import <MessageUI/MessageUI.h>
 
-@interface PersonCheckOutViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UIToolbarDelegate>
+@interface PersonCheckOutViewController () <UITextViewDelegate, MFMailComposeViewControllerDelegate, MFMessageComposeViewControllerDelegate, UIToolbarDelegate, UITextFieldDelegate>
 @property (weak, nonatomic) IBOutlet UISegmentedControl *injuredPicker;
 @property (weak, nonatomic) IBOutlet UILabel *descibeIncidentLabel;
 @property (weak, nonatomic) IBOutlet UITextField *superVisorTextField;
@@ -23,6 +23,13 @@
 @property (weak, nonatomic) IBOutlet UIView *signView;
 @property (weak, nonatomic) IBOutlet UIBarButtonItem *addSignatureButton;
 @property (weak, nonatomic) IBOutlet UIScrollView *scrollView;
+@property (weak, nonatomic) IBOutlet UIView *mainView;
+@property (nonatomic) BOOL iPhone4S;
+@property (nonatomic) BOOL iPhone5;
+@property (nonatomic) BOOL iPhone6;
+@property (nonatomic) BOOL iPhone6Plus;
+@property (nonatomic) BOOL iPad;
+
 
 
 @end
@@ -112,6 +119,32 @@
     
     [self.view addGestureRecognizer:_tap];
     [self.view addGestureRecognizer:_pan];
+    
+    if (UIInterfaceOrientationIsPortrait([[UIDevice currentDevice] orientation])) {
+        if (self.view.frame.size.height <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 667) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 960) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 1024) {
+            self.iPad = YES;
+        }
+    } else {
+        if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 480) {
+            self.iPhone4S = YES;
+        } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
+            self.iPhone5 = YES;
+        } else if (self.view.frame.size.height <= 475) {
+            self.iPhone6 = YES;
+        } else if (self.view.frame.size.height <= 540) {
+            self.iPhone6Plus = YES;
+        } else if (self.view.frame.size.height <= 768) {
+            self.iPad = YES;
+        }
+    }
 }
 
 -(void)dismissKeyboard {
@@ -120,17 +153,17 @@
     [self.superVisorTextField resignFirstResponder];
 }
 
-- (void)viewDidAppear:(BOOL)animated {
-    [super viewDidAppear:animated];
-    _scrollView.frame = CGRectMake(0, 0, 320, 568);
-    _scrollView.contentSize = CGSizeMake(320, 690);
-    [_scrollView setScrollEnabled:YES];
-}
-
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
+
+- (void)viewDidAppear:(BOOL)animated
+{
+    [self updateLayoutForNewOrientation:self.interfaceOrientation];
+    [super viewDidAppear:animated];
+}
+
 - (IBAction)cancel:(UIBarButtonItem *)sender {
     _person.isInjured = nil;
     [self dismissViewControllerAnimated:YES completion:nil];
@@ -247,10 +280,10 @@
     [self.signatureView clear];
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    [self.incidentTextView resignFirstResponder];
-    [self.superVisorTextField resignFirstResponder];
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    [self.incidentTextView resignFirstResponder];
+//    [self.superVisorTextField resignFirstResponder];
+//}
 
 - (IBAction)textMessage:(id)sender {
     if ([MFMessageComposeViewController canSendText]) {
@@ -309,6 +342,149 @@
 
 - (void)dismissPersonCheckOutViewController {
     [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField {
+    NSInteger offset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (self.iPhone4S) {
+            offset = 5;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone5) {
+            offset = 5;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone6) {
+            offset = 50;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else {
+            offset = 75;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        }
+    } else {
+        if (self.iPhone4S) {
+            offset = 55;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone5) {
+            offset = 140;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone6) {
+            offset = 240;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else {
+            offset = 265;
+            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        }
+    }
+}
+
+-(void)textViewDidBeginEditing:(UITextView *)textView {
+    NSInteger offset;
+    
+    if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+        if (self.iPhone4S) {
+            offset = 5;
+        } else if (self.iPhone5) {
+            offset = 5;
+        } else if (self.iPhone6){
+            offset = 45;
+        } else {
+            offset = 65;
+        }
+        
+        [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        
+    } else {
+        if (self.iPhone4S || self.iPhone5) {
+            offset = 35;
+            [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone6) {
+            offset = 119;
+            [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        } else {
+            offset = 144;
+            [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
+        }
+        
+    }
+    
+}
+
+-(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
+    if (_person.isInjured == YES) {
+        _injuredPicker.selectedSegmentIndex = 0;
+    } else {
+        _injuredPicker.selectedSegmentIndex = 1;
+    }
+
+    if ([self.incidentTextView isFirstResponder]) {
+        NSInteger offset;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                offset = 5;
+            } else if (self.iPhone5) {
+                offset = 5;
+            } else if (self.iPhone6){
+                offset = 45;
+            } else {
+                offset = 65;
+            }
+            
+            [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
+            
+        } else {
+            if (self.iPhone4S || self.iPhone5) {
+                offset = 35;
+                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
+            } else if (self.iPhone6) {
+                offset = 119;
+                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
+            } else {
+                offset = 144;
+                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
+            }
+            
+        }
+    } else if ([self.superVisorTextField isFirstResponder]) {
+        NSInteger offset;
+        
+        if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
+            if (self.iPhone4S) {
+                offset = 5;
+            } else if (self.iPhone5) {
+                offset = 5;
+            } else if (self.iPhone6){
+                offset = 45;
+            } else {
+                offset = 65;
+            }
+            
+            [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
+            
+        } else {
+            if (self.iPhone4S || self.iPhone5) {
+                offset = 35;
+                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
+            } else if (self.iPhone6) {
+                offset = 119;
+                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
+            } else {
+                offset = 265;
+                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
+            }
+            
+        }
+    }
+}
+
+-(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
+    [self updateLayoutForNewOrientation: toInterfaceOrientation];
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    return YES;
 }
 
 @end
