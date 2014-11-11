@@ -73,9 +73,9 @@
             self.iPhone4S = YES;
         } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
             self.iPhone5 = YES;
-        } else if (self.view.frame.size.height <= 750) {
+        } else if (self.view.frame.size.height <= 375) {
             self.iPhone6 = YES;
-        } else if (self.view.frame.size.height <= 1080) {
+        } else if (self.view.frame.size.height <= 414) {
             self.iPhone6Plus = YES;
         } else if (self.view.frame.size.height <= 768) {
             self.iPad = YES;
@@ -151,8 +151,10 @@
             offset = 35;
         } else if (self.iPhone6){
             offset = 75;
-        } else {
+        } else if (self.iPhone6Plus){
             offset = 95;
+        } else {
+            offset = 206;
         }
         
         [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
@@ -207,8 +209,10 @@
                 offset = 35;
             } else if (self.iPhone6){
                 offset = 75;
-            } else {
+            } else if (self.iPhone6Plus) {
                 offset = 95;
+            } else {
+                offset = 206;
             }
             
             [self.scrollView setContentOffset:CGPointMake(0, self.solutionTextView.frame.origin.y - offset) animated:YES];

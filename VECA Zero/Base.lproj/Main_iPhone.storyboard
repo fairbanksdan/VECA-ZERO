@@ -773,14 +773,18 @@
                                                 <rect key="frame" x="16" y="260" width="568" height="204"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="204" id="WAA-sq-6dv"/>
+                                                    <constraint firstAttribute="height" constant="204" id="WAA-sq-6dv">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="380"/>
+                                                    </constraint>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3w2-Rm-GlW">
                                                 <rect key="frame" x="0.0" y="260" width="600" height="204"/>
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="204" id="dyT-PG-rzG"/>
+                                                    <constraint firstAttribute="height" constant="204" id="dyT-PG-rzG">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="380"/>
+                                                    </constraint>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Describe the solution, mitigation, and/or preventative measures below:" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="HNp-G2-HSV">
@@ -1255,7 +1259,9 @@
                                                 <rect key="frame" x="10" y="35" width="560" height="165"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="165" id="Uoc-bF-471"/>
+                                                    <constraint firstAttribute="height" constant="165" id="Uoc-bF-471">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="255"/>
+                                                    </constraint>
                                                 </constraints>
                                             </imageView>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="o9i-fD-9L7">
@@ -1292,7 +1298,9 @@
                                             <constraint firstAttribute="bottom" secondItem="COY-0t-RMl" secondAttribute="bottom" constant="10" id="d89-u9-vRy"/>
                                             <constraint firstAttribute="trailing" secondItem="hmG-Jw-dBo" secondAttribute="trailing" constant="8" id="pfi-KO-7UZ"/>
                                             <constraint firstItem="hmG-Jw-dBo" firstAttribute="top" secondItem="ozE-Zz-ksb" secondAttribute="top" constant="4" id="tVN-JW-zpH"/>
-                                            <constraint firstAttribute="height" constant="210" id="vbG-4W-oXt"/>
+                                            <constraint firstAttribute="height" constant="210" id="vbG-4W-oXt">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                                            </constraint>
                                         </constraints>
                                     </view>
                                     <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="IkQ-Sd-4WS">
@@ -1318,13 +1326,17 @@
                                     <constraint firstItem="IkQ-Sd-4WS" firstAttribute="top" secondItem="ozE-Zz-ksb" secondAttribute="bottom" constant="32" id="38G-EN-1T3">
                                         <variation key="heightClass=compact" constant="10"/>
                                     </constraint>
-                                    <constraint firstItem="ozE-Zz-ksb" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" constant="10" id="773-Qj-e4Z"/>
+                                    <constraint firstItem="ozE-Zz-ksb" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" constant="10" id="773-Qj-e4Z">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
                                     <constraint firstItem="b9G-I3-S3f" firstAttribute="top" secondItem="u1S-Go-guL" secondAttribute="top" constant="15" id="EU0-bd-Mzf"/>
                                     <constraint firstAttribute="trailing" secondItem="Sz9-H6-Zwb" secondAttribute="trailing" id="Z6Z-Cq-Qbv"/>
                                     <constraint firstItem="Sz9-H6-Zwb" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" id="Zc5-Us-qrD"/>
                                     <constraint firstItem="b9G-I3-S3f" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" constant="16" id="aYu-Pb-5va"/>
                                     <constraint firstAttribute="trailing" secondItem="b9G-I3-S3f" secondAttribute="trailing" constant="16" id="bbj-Lh-YBF"/>
-                                    <constraint firstAttribute="trailing" secondItem="ozE-Zz-ksb" secondAttribute="trailing" constant="10" id="clT-eh-xqV"/>
+                                    <constraint firstAttribute="trailing" secondItem="ozE-Zz-ksb" secondAttribute="trailing" constant="10" id="clT-eh-xqV">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                    </constraint>
                                     <constraint firstItem="IkQ-Sd-4WS" firstAttribute="top" secondItem="S4i-w2-SGi" secondAttribute="bottom" id="dHY-Ch-1FA"/>
                                     <constraint firstItem="S4i-w2-SGi" firstAttribute="top" secondItem="b9G-I3-S3f" secondAttribute="bottom" constant="5" id="fHl-rG-qGH"/>
                                     <constraint firstItem="IkQ-Sd-4WS" firstAttribute="leading" secondItem="u1S-Go-guL" secondAttribute="leading" id="gVK-qo-JeL"/>
@@ -1639,7 +1651,9 @@
                                         <rect key="frame" x="10" y="35" width="560" height="165"/>
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
-                                            <constraint firstAttribute="height" constant="165" id="ytM-hS-6GQ"/>
+                                            <constraint firstAttribute="height" constant="165" id="ytM-hS-6GQ">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="255"/>
+                                            </constraint>
                                         </constraints>
                                     </imageView>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Initial Below" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OTg-Yr-UW6">
@@ -1673,7 +1687,9 @@
                                     <constraint firstItem="0oC-QK-SoG" firstAttribute="leading" secondItem="xBt-H1-m89" secondAttribute="leading" constant="10" id="L7S-UY-q1V"/>
                                     <constraint firstAttribute="trailing" secondItem="0oC-QK-SoG" secondAttribute="trailing" constant="10" id="MVP-II-wG1"/>
                                     <constraint firstItem="OTg-Yr-UW6" firstAttribute="leading" secondItem="xBt-H1-m89" secondAttribute="leading" constant="8" id="UdR-jE-q6r"/>
-                                    <constraint firstAttribute="height" constant="210" id="XDJ-PD-945"/>
+                                    <constraint firstAttribute="height" constant="210" id="XDJ-PD-945">
+                                        <variation key="heightClass=regular-widthClass=regular" constant="300"/>
+                                    </constraint>
                                     <constraint firstItem="rKp-yb-2aQ" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="top" constant="4" id="ove-CC-30N"/>
                                     <constraint firstItem="OTg-Yr-UW6" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="top" constant="8" id="p5A-Na-XA1"/>
                                     <constraint firstAttribute="bottom" secondItem="0oC-QK-SoG" secondAttribute="bottom" constant="10" id="wEw-2m-NAS"/>
@@ -1685,13 +1701,15 @@
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="GuJ-Y6-yny" secondAttribute="bottom" id="7Rz-K0-ydb"/>
                             <constraint firstItem="79z-Mp-NRq" firstAttribute="width" secondItem="V3B-N1-3lX" secondAttribute="width" id="8Zg-oW-DJy"/>
                             <constraint firstAttribute="trailing" secondItem="kM5-gA-Idb" secondAttribute="trailing" id="DPt-On-D0U"/>
-                            <constraint firstItem="xBt-H1-m89" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" constant="10" id="H37-0q-l5Q"/>
+                            <constraint firstItem="xBt-H1-m89" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" constant="10" id="H37-0q-l5Q">
+                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                            </constraint>
                             <constraint firstItem="kM5-gA-Idb" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="Jpp-04-Yej"/>
                             <constraint firstAttribute="trailing" secondItem="GuJ-Y6-yny" secondAttribute="trailing" id="UsM-J9-kmg"/>
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="leading" secondItem="V3B-N1-3lX" secondAttribute="leading" id="b3u-ZI-lc1"/>
                             <constraint firstItem="GuJ-Y6-yny" firstAttribute="top" secondItem="Jv0-mR-u8H" secondAttribute="bottom" id="pqd-iR-be5"/>
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="kM5-gA-Idb" secondAttribute="bottom" id="wi9-mI-xk6"/>
-                            <constraint firstAttribute="trailing" secondItem="xBt-H1-m89" secondAttribute="trailing" constant="10" id="ytT-s4-lax"/>
+                            <constraint firstAttribute="trailing" secondItem="xBt-H1-m89" secondAttribute="trailing" constant="100" id="ytT-s4-lax"/>
                             <constraint firstItem="Nau-4q-5wK" firstAttribute="top" secondItem="xBt-H1-m89" secondAttribute="bottom" constant="76" id="zqs-wp-ydl">
                                 <variation key="heightClass=compact" constant="55"/>
                             </constraint>

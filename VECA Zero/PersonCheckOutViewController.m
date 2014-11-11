@@ -280,11 +280,6 @@
     [self.signatureView clear];
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    [self.incidentTextView resignFirstResponder];
-//    [self.superVisorTextField resignFirstResponder];
-//}
-
 - (IBAction)textMessage:(id)sender {
     if ([MFMessageComposeViewController canSendText]) {
         [self displayMessageComposerSheet];
@@ -350,31 +345,31 @@
     if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         if (self.iPhone4S) {
             offset = 5;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         } else if (self.iPhone5) {
             offset = 5;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         } else if (self.iPhone6) {
             offset = 50;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
-        } else {
+        } else if (self.iPhone6Plus){
             offset = 75;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else {
+            offset = 215;
         }
+        
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
     } else {
         if (self.iPhone4S) {
             offset = 55;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         } else if (self.iPhone5) {
             offset = 140;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         } else if (self.iPhone6) {
             offset = 240;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
+        } else if (self.iPhone6Plus){
+            offset = 265;
         } else {
             offset = 265;
-            [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
         }
+        
+        [self.scrollView setContentOffset:CGPointMake(0, textField.frame.origin.y - offset) animated:YES];
     }
 }
 
@@ -388,8 +383,10 @@
             offset = 5;
         } else if (self.iPhone6){
             offset = 45;
-        } else {
+        } else if (self.iPhone6Plus) {
             offset = 65;
+        } else {
+            offset = 94;
         }
         
         [self.scrollView setContentOffset:CGPointMake(0, textView.frame.origin.y - offset) animated:YES];
@@ -427,8 +424,10 @@
                 offset = 5;
             } else if (self.iPhone6){
                 offset = 45;
-            } else {
+            } else if (self.iPhone6Plus) {
                 offset = 65;
+            } else {
+                offset = 94;
             }
             
             [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
@@ -436,14 +435,13 @@
         } else {
             if (self.iPhone4S || self.iPhone5) {
                 offset = 35;
-                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
             } else if (self.iPhone6) {
                 offset = 119;
-                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
             } else {
                 offset = 144;
-                [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
             }
+            
+            [self.scrollView setContentOffset:CGPointMake(0, self.incidentTextView.frame.origin.y - offset) animated:YES];
             
         }
     } else if ([self.superVisorTextField isFirstResponder]) {
@@ -454,10 +452,12 @@
                 offset = 5;
             } else if (self.iPhone5) {
                 offset = 5;
-            } else if (self.iPhone6){
-                offset = 45;
+            } else if (self.iPhone6) {
+                offset = 50;
+            } else if (self.iPhone6Plus){
+                offset = 75;
             } else {
-                offset = 65;
+                offset = 215;
             }
             
             [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
@@ -465,17 +465,24 @@
         } else {
             if (self.iPhone4S || self.iPhone5) {
                 offset = 35;
-                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
             } else if (self.iPhone6) {
                 offset = 119;
-                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
             } else {
                 offset = 265;
-                [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
             }
+            
+            [self.scrollView setContentOffset:CGPointMake(0, self.superVisorTextField.frame.origin.y - offset) animated:YES];
             
         }
     }
+}
+
+-(void)textFieldDidEndEditing:(UITextField *)textField {
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
+}
+
+-(void)textViewDidEndEditing:(UITextView *)textView {
+    [self.scrollView setContentOffset:CGPointMake(0, 0) animated:YES];
 }
 
 -(void)willAnimateRotationToInterfaceOrientation:(UIInterfaceOrientation)toInterfaceOrientation duration:(NSTimeInterval)duration {
