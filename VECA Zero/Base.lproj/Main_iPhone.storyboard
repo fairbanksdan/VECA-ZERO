@@ -1816,7 +1816,9 @@
                                                     <constraint firstAttribute="height" constant="44" id="aze-m1-S2S">
                                                         <variation key="heightClass=regular-widthClass=regular" constant="50"/>
                                                     </constraint>
-                                                    <constraint firstAttribute="width" constant="345" id="ctm-07-3dh"/>
+                                                    <constraint firstAttribute="width" constant="240" id="ctm-07-3dh">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="345"/>
+                                                    </constraint>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3cH-FH-R8Q">

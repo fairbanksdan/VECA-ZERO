@@ -63,7 +63,7 @@
             self.iPhone5 = YES;
         } else if (self.view.frame.size.height <= 667) {
             self.iPhone6 = YES;
-        } else if (self.view.frame.size.height <= 960) {
+        } else if (self.view.frame.size.height <= 736) {
             self.iPhone6Plus = YES;
         } else if (self.view.frame.size.height <= 1024) {
             self.iPad = YES;

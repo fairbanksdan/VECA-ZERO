@@ -69,7 +69,7 @@
             self.iPhone5 = YES;
         } else if (self.view.frame.size.height <= 667) {
             self.iPhone6 = YES;
-        } else if (self.view.frame.size.height <= 960) {
+        } else if (self.view.frame.size.height <= 736) {
             self.iPhone6Plus = YES;
         } else if (self.view.frame.size.height <= 1024) {
             self.iPad = YES;
@@ -79,9 +79,9 @@
             self.iPhone4S = YES;
         } else if (self.view.frame.size.height <= 320 && self.view.frame.size.width <= 568) {
             self.iPhone5 = YES;
-        } else if (self.view.frame.size.height <= 750) {
+        } else if (self.view.frame.size.height <= 375) {
             self.iPhone6 = YES;
-        } else if (self.view.frame.size.height <= 1080) {
+        } else if (self.view.frame.size.height <= 414) {
             self.iPhone6Plus = YES;
         } else if (self.view.frame.size.height <= 768) {
             self.iPad = YES;
@@ -135,6 +135,7 @@
 
 -(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
     NSInteger buttonEndPoint;
+    NSInteger verticalEndPoint;
     NSInteger horizantolEndPoint;
     NSInteger horizantolEndPointTwo;
     NSInteger textFieldwidth;
@@ -143,35 +144,52 @@
     if (UIInterfaceOrientationIsLandscape(orientation)) {
         if (self.iPhone4S) {
             buttonEndPoint = 80;
+            verticalEndPoint = buttonEndPoint;
             horizantolEndPoint = 8;
             horizantolEndPointTwo = 244;
             imageWidth = 228;
             textFieldwidth = 210;
+            NSLog(@"iPhone 4S");
         } else if (self.iPhone5) {
             buttonEndPoint = 80;
+            verticalEndPoint = buttonEndPoint;
             horizantolEndPoint = 29;
             horizantolEndPointTwo = 299;
             imageWidth = 240;
             textFieldwidth = 225;
+            NSLog(@"iPhone 5");
         } else if (self.iPhone6) {
             buttonEndPoint = 100;
+            verticalEndPoint = buttonEndPoint;
             horizantolEndPoint = 62;
             horizantolEndPointTwo = 365;
             imageWidth = 240;
             textFieldwidth = 225;
+            NSLog(@"iPhone 6");
         } else if (self.iPhone6Plus) {
-            buttonEndPoint = 130;
-            horizantolEndPointTwo = 247;
+            buttonEndPoint = 115;
+            verticalEndPoint = buttonEndPoint;
+            horizantolEndPoint = 80;
+            horizantolEndPointTwo = 410;
             imageWidth = 240;
             textFieldwidth = 225;
+            NSLog(@"iPhone 6 Plus");
+        } else if (self.iPad) {
+            buttonEndPoint = 164;
+            verticalEndPoint = 249;
+            horizantolEndPoint = 340;
+            horizantolEndPointTwo = 340;
+            imageWidth = 345;
+            textFieldwidth = 325;
+            NSLog(@"iPad");
         }
         
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5f];
         [self.jobNumberTextField setFrame:CGRectMake(horizantolEndPoint + 7, buttonEndPoint, textFieldwidth, self.jobNumberTextField.frame.size.height)];
         [self.projectNumberTFBackgroundImage setFrame:CGRectMake(horizantolEndPoint, buttonEndPoint, imageWidth, self.jobNumberTextField.frame.size.height)];
-        [self.projectNameTextField setFrame:CGRectMake(horizantolEndPointTwo + 7, buttonEndPoint, textFieldwidth, self.projectNameTextField.frame.size.height)];
-        [self.jobTFBackgroundImage setFrame:CGRectMake(horizantolEndPointTwo, buttonEndPoint, imageWidth, self.jobTFBackgroundImage.frame.size.height)];
+        [self.projectNameTextField setFrame:CGRectMake(horizantolEndPointTwo + 7, verticalEndPoint, textFieldwidth, self.projectNameTextField.frame.size.height)];
+        [self.jobTFBackgroundImage setFrame:CGRectMake(horizantolEndPointTwo, verticalEndPoint, imageWidth, self.jobTFBackgroundImage.frame.size.height)];
         [UIView commitAnimations];
     }
 }
