@@ -252,11 +252,6 @@
         self.addSignatureButton.enabled = NO;
         _barButton.enabled = NO;
     }
-//    if ((_person.checkOutSignature != nil) && (self.incidentTextView.text.length > 0) && (self.superVisorTextField.text.length > 0)) {
-//        self.doneButton.enabled = YES;
-//    } else {
-//        self.doneButton.enabled = NO;
-//    }
 }
 
 - (IBAction)doneButton:(UIBarButtonItem *)sender {
@@ -408,7 +403,7 @@
 }
 
 -(void)updateLayoutForNewOrientation:(UIInterfaceOrientation)orientation {
-    if (_person.isInjured == YES) {
+    if (_injuredPicker.selectedSegmentIndex == 0) {
         _injuredPicker.selectedSegmentIndex = 0;
     } else {
         _injuredPicker.selectedSegmentIndex = 1;
