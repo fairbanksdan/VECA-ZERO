@@ -128,10 +128,15 @@
             startPointTwo = 0;
             offset = 10;
             inset = 280;
-        } else {
+        } else if (self.iPhone6 || self.iPhone6Plus) {
             startPoint = 0;
             startPointTwo = 0;
             offset = 60;
+            inset = 280;
+        } else {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 200;
             inset = 280;
         }
         
@@ -147,10 +152,15 @@
             startPointTwo = 0;
             offset = 180;
             inset = 260;
-        } else {
+        } else if (self.iPhone6 || self.iPhone6Plus) {
             startPoint = 0;
             startPointTwo = 0;
             offset = 233;
+            inset = 260;
+        } else {
+            startPoint = 0;
+            startPointTwo = 0;
+            offset = 368;
             inset = 260;
         }
         
@@ -169,6 +179,8 @@
                 buttonEndPoint = 210;
             } else if (self.iPhone6Plus) {
                 buttonEndPoint = 235;
+            } else if (self.iPad) {
+                buttonEndPoint = 460;
             }
             [UIView beginAnimations:nil context:nil];
             [UIView setAnimationDuration:0.5f];
@@ -183,6 +195,8 @@
                 buttonEndPoint = 350;
             } else if (self.iPhone6Plus) {
                 buttonEndPoint = 395;
+            } else if (self.iPad) {
+                buttonEndPoint = 564;
             }
             
             [UIView beginAnimations:nil context:nil];
@@ -200,13 +214,23 @@
     if (UIInterfaceOrientationIsLandscape([[UIDevice currentDevice] orientation])) {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5f];
-        [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
-        [UIView commitAnimations];
+        if (self.iPad) {
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 564, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+        } else {
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 255, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+        }
     } else {
         [UIView beginAnimations:nil context:nil];
         [UIView setAnimationDuration:0.5f];
-        [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
-        [UIView commitAnimations];
+        if (self.iPad) {
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 564, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+        } else {
+            [self.continueButton setFrame:CGRectMake(self.continueButton.frame.origin.x, 423, self.continueButton.frame.size.width, self.continueButton.frame.size.height)];
+            [UIView commitAnimations];
+        }
     }
 }
 
@@ -230,13 +254,17 @@
                 startPointTwo = 0;
                 offset = 10;
                 inset = 280;
-            } else {
+            } else if (self.iPhone6 || self.iPhone6Plus) {
                 startPoint = 0;
                 startPointTwo = 0;
                 offset = 60;
                 inset = 280;
+            } else {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 200;
+                inset = 280;
             }
-            
         } else {
             if (self.iPhone4S) {
                 startPoint = 0;
@@ -249,10 +277,15 @@
                 startPointTwo = 0;
                 offset = 180;
                 inset = 260;
-            } else {
+            } else if (self.iPhone6 || self.iPhone6Plus) {
                 startPoint = 0;
                 startPointTwo = 0;
                 offset = 233;
+                inset = 260;
+            } else {
+                startPoint = 0;
+                startPointTwo = 0;
+                offset = 368;
                 inset = 260;
             }
             
@@ -271,6 +304,8 @@
                     buttonEndPoint = 210;
                 } else if (self.iPhone6Plus) {
                     buttonEndPoint = 235;
+                } else if (self.iPad) {
+                    buttonEndPoint = 460;
                 }
                 [UIView beginAnimations:nil context:nil];
                 [UIView setAnimationDuration:0.5f];
@@ -285,6 +320,8 @@
                     buttonEndPoint = 350;
                 } else if (self.iPhone6Plus) {
                     buttonEndPoint = 395;
+                } else if (self.iPad) {
+                    buttonEndPoint = 564;
                 }
                 
                 [UIView beginAnimations:nil context:nil];

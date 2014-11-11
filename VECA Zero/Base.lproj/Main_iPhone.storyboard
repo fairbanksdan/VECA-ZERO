@@ -266,11 +266,16 @@
                                                 <rect key="frame" x="188" y="233" width="225" height="44"/>
                                                 <constraints>
                                                     <constraint firstAttribute="height" constant="44" id="BHy-Y1-BPl"/>
-                                                    <constraint firstAttribute="width" constant="225" id="zyk-KY-btU"/>
+                                                    <constraint firstAttribute="width" constant="225" id="zyk-KY-btU">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="275"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" keyboardAppearance="alert"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="26"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="userNameEntered:" destination="FhP-jV-e8o" eventType="editingChanged" id="jMo-uf-WhB"/>
                                                     <outlet property="delegate" destination="FhP-jV-e8o" id="DDT-hW-PoM"/>
@@ -298,8 +303,12 @@
                                                 <rect key="frame" x="205" y="423" width="190" height="41"/>
                                                 <color key="backgroundColor" red="0.3921017238357698" green="0.78029121959962633" blue="0.99571508290816324" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="41" id="1pb-Fj-f05"/>
-                                                    <constraint firstAttribute="width" constant="190" id="dXw-Vn-z4u"/>
+                                                    <constraint firstAttribute="height" constant="41" id="1pb-Fj-f05">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="51"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="190" id="dXw-Vn-z4u">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="250"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="21"/>
                                                 <state key="normal" title="Continue">
@@ -309,6 +318,9 @@
                                                 <state key="disabled">
                                                     <color key="titleColor" white="1" alpha="0.25" colorSpace="calibratedWhite"/>
                                                 </state>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="Avenir-Light" family="Avenir" pointSize="28"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="continueButton:" destination="FhP-jV-e8o" eventType="touchUpInside" id="XME-WH-zXy"/>
                                                     <segue destination="0xP-Zd-z3S" kind="presentation" identifier="Jobs" id="Kxh-rG-k0T"/>
@@ -318,7 +330,9 @@
                                                 <rect key="frame" x="188" y="275" width="225" height="2"/>
                                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="225" id="ONb-tC-zkf"/>
+                                                    <constraint firstAttribute="width" constant="225" id="ONb-tC-zkf">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="275"/>
+                                                    </constraint>
                                                     <constraint firstAttribute="height" constant="2" id="dvZ-x1-GRF"/>
                                                 </constraints>
                                             </imageView>
@@ -327,11 +341,13 @@
                                         <constraints>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="top" secondItem="oy1-8d-9bn" secondAttribute="top" constant="57" id="3fC-lT-QAr">
                                                 <variation key="heightClass=compact" constant="10"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="150"/>
                                             </constraint>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="8Zb-cC-ht7" secondAttribute="centerX" id="651-Kk-njl"/>
                                             <constraint firstAttribute="centerX" secondItem="MZc-80-4EX" secondAttribute="centerX" id="FEm-2u-4uK"/>
                                             <constraint firstItem="bL6-cn-5aT" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="100" id="GcS-2v-r9e">
                                                 <variation key="heightClass=compact" constant="55"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="148"/>
                                             </constraint>
                                             <constraint firstAttribute="centerX" secondItem="bdY-Ng-Qkq" secondAttribute="centerX" id="Ltb-WZ-dSv"/>
                                             <constraint firstAttribute="centerX" secondItem="1XJ-cV-Gip" secondAttribute="centerX" id="Mu1-Yj-XDX"/>
@@ -339,6 +355,7 @@
                                             <constraint firstItem="bdY-Ng-Qkq" firstAttribute="top" secondItem="1XJ-cV-Gip" secondAttribute="bottom" constant="2" id="V54-Ym-mXm"/>
                                             <constraint firstItem="8Zb-cC-ht7" firstAttribute="top" secondItem="bdY-Ng-Qkq" secondAttribute="bottom" constant="58" id="YNW-x6-RQP">
                                                 <variation key="heightClass=compact" constant="15"/>
+                                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
                                             </constraint>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="MZc-80-4EX" secondAttribute="centerX" id="eXl-IX-a7V"/>
                                             <constraint firstItem="1XJ-cV-Gip" firstAttribute="centerX" secondItem="bdY-Ng-Qkq" secondAttribute="centerX" id="hnA-HZ-wjj"/>
@@ -975,7 +992,7 @@
                                             <segue destination="u6I-zE-DI8" kind="presentation" identifier="MidTask" modalTransitionStyle="flipHorizontal" id="iWk-aO-UtI"/>
                                         </connections>
                                     </button>
-                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
+                                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wRg-VH-DGY">
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="width" id="S7t-Ie-4Oh"/>
@@ -1796,16 +1813,22 @@
                                                 <rect key="frame" x="180" y="131" width="240" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="aze-m1-S2S"/>
-                                                    <constraint firstAttribute="width" constant="240" id="ctm-07-3dh"/>
+                                                    <constraint firstAttribute="height" constant="44" id="aze-m1-S2S">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="345" id="ctm-07-3dh"/>
                                                 </constraints>
                                             </imageView>
                                             <imageView userInteractionEnabled="NO" alpha="0.80000000000000004" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="3cH-FH-R8Q">
                                                 <rect key="frame" x="180" y="189" width="240" height="44"/>
                                                 <color key="backgroundColor" cocoaTouchSystemColor="groupTableViewBackgroundColor"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="240" id="IEB-UP-sSW"/>
-                                                    <constraint firstAttribute="height" constant="44" id="NEY-kA-0aP"/>
+                                                    <constraint firstAttribute="width" constant="240" id="IEB-UP-sSW">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="345"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="44" id="NEY-kA-0aP">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                                    </constraint>
                                                 </constraints>
                                             </imageView>
                                             <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="Project Name" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="IgJ-LD-xlz">
@@ -1813,11 +1836,18 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.12549019610000001" green="0.34901960780000002" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="height" constant="44" id="Bh2-TJ-KYz"/>
-                                                    <constraint firstAttribute="width" constant="225" id="bp0-wV-2vT"/>
+                                                    <constraint firstAttribute="height" constant="44" id="Bh2-TJ-KYz">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="width" constant="225" id="bp0-wV-2vT">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="325"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits" autocapitalizationType="words" returnKeyType="done"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <action selector="doneButtonPressed:" destination="dLl-Zp-jad" eventType="editingDidEndOnExit" id="p0d-of-gwd"/>
                                                     <action selector="jobNameAdded:" destination="dLl-Zp-jad" eventType="editingChanged" id="Qul-GF-bcc"/>
@@ -1829,11 +1859,18 @@
                                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
                                                 <color key="tintColor" red="0.12549019610000001" green="0.34901960780000002" blue="0.8862745098" alpha="1" colorSpace="calibratedRGB"/>
                                                 <constraints>
-                                                    <constraint firstAttribute="width" constant="225" id="4Sv-vw-DdF"/>
-                                                    <constraint firstAttribute="height" constant="44" id="6r0-6d-rfR"/>
+                                                    <constraint firstAttribute="width" constant="225" id="4Sv-vw-DdF">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="325"/>
+                                                    </constraint>
+                                                    <constraint firstAttribute="height" constant="44" id="6r0-6d-rfR">
+                                                        <variation key="heightClass=regular-widthClass=regular" constant="50"/>
+                                                    </constraint>
                                                 </constraints>
                                                 <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="20"/>
                                                 <textInputTraits key="textInputTraits"/>
+                                                <variation key="heightClass=regular-widthClass=regular">
+                                                    <fontDescription key="fontDescription" name="AvenirNext-Regular" family="Avenir Next" pointSize="30"/>
+                                                </variation>
                                                 <connections>
                                                     <outlet property="delegate" destination="dLl-Zp-jad" id="eBE-jG-fkp"/>
                                                 </connections>
@@ -1876,8 +1913,12 @@
                                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                         <constraints>
                                             <constraint firstAttribute="centerX" secondItem="kHM-GL-b2V" secondAttribute="centerX" id="0NF-vS-xAd"/>
-                                            <constraint firstItem="vX4-Mj-bph" firstAttribute="top" secondItem="Ses-s6-Uwz" secondAttribute="bottom" constant="67" id="4aZ-TB-pxk"/>
-                                            <constraint firstItem="IgJ-LD-xlz" firstAttribute="top" secondItem="vX4-Mj-bph" secondAttribute="bottom" constant="14" id="4pB-1f-0lA"/>
+                                            <constraint firstItem="vX4-Mj-bph" firstAttribute="top" secondItem="Ses-s6-Uwz" secondAttribute="bottom" constant="67" id="4aZ-TB-pxk">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                            </constraint>
+                                            <constraint firstItem="IgJ-LD-xlz" firstAttribute="top" secondItem="vX4-Mj-bph" secondAttribute="bottom" constant="14" id="4pB-1f-0lA">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                            </constraint>
                                             <constraint firstItem="Ses-s6-Uwz" firstAttribute="top" secondItem="Fsk-o2-h5e" secondAttribute="bottom" id="C0a-Zf-eBV"/>
                                             <constraint firstAttribute="trailing" secondItem="Fsk-o2-h5e" secondAttribute="trailing" id="FrC-fI-7dQ"/>
                                             <constraint firstAttribute="centerX" secondItem="3cH-FH-R8Q" secondAttribute="centerX" id="Jlz-Gc-QFH"/>
@@ -1887,8 +1928,12 @@
                                             <constraint firstItem="Ses-s6-Uwz" firstAttribute="leading" secondItem="1Z8-C0-R2c" secondAttribute="leading" id="Yl4-M0-lVX"/>
                                             <constraint firstAttribute="centerX" secondItem="IgJ-LD-xlz" secondAttribute="centerX" id="bic-LI-KdE"/>
                                             <constraint firstAttribute="centerX" secondItem="vX4-Mj-bph" secondAttribute="centerX" id="fTd-1H-3op"/>
-                                            <constraint firstItem="3cH-FH-R8Q" firstAttribute="top" secondItem="vX4-Mj-bph" secondAttribute="bottom" constant="14" id="hm5-sR-ksb"/>
-                                            <constraint firstItem="kHM-GL-b2V" firstAttribute="top" secondItem="Ses-s6-Uwz" secondAttribute="bottom" constant="67" id="p5e-q4-mzk"/>
+                                            <constraint firstItem="3cH-FH-R8Q" firstAttribute="top" secondItem="vX4-Mj-bph" secondAttribute="bottom" constant="14" id="hm5-sR-ksb">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="35"/>
+                                            </constraint>
+                                            <constraint firstItem="kHM-GL-b2V" firstAttribute="top" secondItem="Ses-s6-Uwz" secondAttribute="bottom" constant="67" id="p5e-q4-mzk">
+                                                <variation key="heightClass=regular-widthClass=regular" constant="100"/>
+                                            </constraint>
                                             <constraint firstItem="Fsk-o2-h5e" firstAttribute="leading" secondItem="1Z8-C0-R2c" secondAttribute="leading" id="sI9-s7-rjt"/>
                                         </constraints>
                                         <variation key="default">
